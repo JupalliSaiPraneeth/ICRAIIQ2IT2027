@@ -1,0 +1,65 @@
+import React from 'react';
+import { BookOpen, CheckCircle2, ShieldCheck, ExternalLink, Award } from 'lucide-react';
+import { conferenceData } from '../data/conferenceData';
+import ScientificBackground from '../components/ScientificBackground';
+import SectionHeading from '../components/SectionHeading';
+
+export const PublicationPage = () => {
+  return (
+    <div className="relative min-h-screen bg-navy-950 text-slate-100 pt-28 pb-24">
+      <ScientificBackground variant="dark" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        
+        <SectionHeading
+          number="08 / PUBLICATION"
+          eyebrow="INDEXING ECOSYSTEM"
+          title="Publication Opportunities & Proceedings"
+          subtitle={conferenceData.publicationDetails.description}
+          variant="dark"
+        />
+
+        {/* Indexing Partners Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {conferenceData.publicationDetails.partners.map((partner, idx) => (
+            <div 
+              key={idx}
+              className="p-6 rounded-3xl bg-navy-900 border border-white/10 hover:border-brand-500/60 hover:shadow-[0_0_30px_rgba(251,146,0,0.15)] transition-all space-y-3"
+            >
+              <div className="w-10 h-10 rounded-xl bg-brand-500/10 border border-brand-500/30 text-brand-400 flex items-center justify-center">
+                <BookOpen className="w-5 h-5" />
+              </div>
+              <h3 className="text-xl font-bold text-white">{partner.name}</h3>
+              <div className="text-xs font-mono text-brand-400 font-bold uppercase">{partner.type}</div>
+              <p className="text-xs text-slate-300">{partner.note}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Publication Integrity & Guidelines */}
+        <div className="p-8 sm:p-12 rounded-3xl bg-navy-900 border border-white/10 space-y-6">
+          <div className="flex items-center gap-3">
+            <ShieldCheck className="w-8 h-8 text-brand-400" />
+            <h3 className="text-2xl font-extrabold text-white">Peer Review & Editorial Integrity</h3>
+          </div>
+
+          <p className="text-sm text-slate-300 leading-relaxed">
+            All submitted manuscripts undergo a rigorous double-blind peer review process conducted by at least two independent international domain experts. Peer evaluation criteria focus on novelty, technical soundness, clarity, and relevance to the conference scope.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+            {conferenceData.publicationDetails.guidelines.map((g, idx) => (
+              <div key={idx} className="p-4 rounded-xl bg-navy-850 border border-white/5 flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-brand-400 shrink-0 mt-0.5" />
+                <span className="text-xs text-slate-200 leading-relaxed">{g}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+export default PublicationPage;
