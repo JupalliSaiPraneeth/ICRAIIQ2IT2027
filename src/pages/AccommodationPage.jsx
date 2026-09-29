@@ -447,7 +447,7 @@ export const AccommodationPage = () => {
           </h1>
 
           <p className="mx-auto mt-1 max-w-2xl text-xs leading-relaxed text-slate-600 sm:text-sm">
-            Recommended hotels and budget-friendly accommodations in Vijayawada for ICRAIIQ2IT 2027 attendees and delegates.
+            Recommended hotels and budget-friendly accommodations in Vijayawada for ICRAIQ2IT - 2027 attendees and delegates.
           </p>
         </div>
       </section>

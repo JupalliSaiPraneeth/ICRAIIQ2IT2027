@@ -11,52 +11,20 @@ import {
   Sparkles,
   Target,
   Users,
+  BookOpen,
+  Cpu,
+  Layers,
+  FlaskConical
 } from 'lucide-react';
 import { conferenceData } from '../data/conferenceData';
 
 const DEFAULT_CONFERENCE_TITLE =
-  '5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence, and Inclusive Technologies';
+  '5th International Conference on Recent Advancements in Artificial Intelligence and Quantum Intelligence and Inclusive Technologies';
 
 const DEFAULT_ORGANIZER = {
-  name: 'NRI Institute of Technology',
-  acronym: 'NRIIT',
+  name: 'Dr RVR NRI Institute of Technology (Deemed to be University)',
+  acronym: 'Dr RVR NRIIT (DTBU)',
 };
-
-const DEFAULT_OBJECTIVES = [
-  'Foster cross-border scientific exchanges in Artificial Intelligence, Quantum Information Science, and 6G Communications.',
-  'Facilitate peer-reviewed publication of original research manuscripts in Scopus and Web of Science indexed proceedings.',
-  'Provide young research scholars and PhD candidates direct mentorship from global keynote speakers and IEEE/ACM fellows.',
-];
-
-const DEFAULT_INSTITUTION =
-  'NRI Institute of Technology (NRIIT), located in Visadala, Guntur, AP, is a center of academic excellence approved by AICTE and permanently affiliated with JNTU Kakinada. The institution boasts state-of-the-art supercomputing labs, R&D centers of excellence, and active international MOU partnerships.';
-
-const DEFAULT_FACTS = [
-  { value: '2008', label: 'Established' },
-  { value: '10', label: 'B.Tech Courses' },
-  { value: '6', label: 'PG Programs' },
-  { value: '23 KM', label: 'From Vijayawada' },
-];
-
-const DEFAULT_COURSES = [
-  'Undergraduate (B.Tech)',
-  'Postgraduate (M.Tech & MBA)',
-];
-
-const DEFAULT_ABOUT =
-  'The 5th International Conference on Recent Advancements in Intelligent, Quantum, and Information Technologies (ICRAIIQ2IT 2027) provides a premier forum for researchers, scientists, engineers, industry practitioners, and doctoral scholars across the globe to exchange ideas, present breakthroughs, and initiate international research collaborations.';
-
-const DEFAULT_CAMPUS =
-  'The host institution provides an academic environment designed to support technical education, research, innovation, and collaboration across engineering, science, and management disciplines.';
-
-const DEFAULT_MISSION =
-  'To provide strong technical foundations, promote research and development, and prepare graduates to succeed in industry and academia.';
-
-const getValue = (value, fallback) =>
-  value === undefined || value === null || value === '' ? fallback : value;
-
-const getList = (value, fallback) =>
-  Array.isArray(value) && value.length > 0 ? value : fallback;
 
 function FactCard({ value, label }) {
   return (
@@ -69,7 +37,7 @@ function FactCard({ value, label }) {
   );
 }
 
-function DepartmentAccordion({ title, children, defaultOpen = false }) {
+function ProgramAccordion({ title, items, defaultOpen = false }) {
   const [open, setOpen] = useState(defaultOpen);
 
   return (
@@ -82,14 +50,22 @@ function DepartmentAccordion({ title, children, defaultOpen = false }) {
       >
         <span>{title}</span>
         <ChevronDown
-          className={`h-4 w-4 shrink-0 text-slate-500 transition-transform duration-200 ${open ? 'rotate-180 text-[#F97316]' : ''
-            }`}
+          className={`h-4 w-4 shrink-0 text-slate-500 transition-transform duration-200 ${
+            open ? 'rotate-180 text-[#F97316]' : ''
+          }`}
         />
       </button>
 
       {open && (
-        <div className="border-t border-orange-100 px-4 py-3 text-sm leading-6 text-slate-600">
-          {children}
+        <div className="border-t border-orange-100 px-4 py-3 text-sm leading-6 text-slate-600 bg-orange-50/20">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {items.map((item, idx) => (
+              <li key={idx} className="flex items-start gap-2">
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-[#F97316] mt-1" />
+                <span className="text-slate-700">{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>
@@ -100,63 +76,22 @@ export const AboutPage = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
   const data = conferenceData || {};
+  const inst = data.institution || {};
+  const school = data.organizingSchool || {};
 
-  const conferenceTitle = getValue(
-    data.title,
-    DEFAULT_CONFERENCE_TITLE
-  );
-
+  const conferenceTitle = data.title || DEFAULT_CONFERENCE_TITLE;
   const organizer = {
-    name: getValue(data.organizer?.name, DEFAULT_ORGANIZER.name),
-    acronym: getValue(data.organizer?.acronym, DEFAULT_ORGANIZER.acronym),
+    name: data.organizer?.name || DEFAULT_ORGANIZER.name,
+    acronym: data.organizer?.acronym || DEFAULT_ORGANIZER.acronym,
   };
 
-  const aboutText = getValue(
-    data.aboutText || data.aboutDescription,
-    DEFAULT_ABOUT
-  );
-
-  const objectives = getList(data.objectives, DEFAULT_OBJECTIVES);
-
-  const institutionDescription = getValue(
-    data.institutionDescription,
-    DEFAULT_INSTITUTION
-  );
-
-  const mission = getValue(data.mission, DEFAULT_MISSION);
-
-  const campusDescription = getValue(
-    data.campusDescription,
-    DEFAULT_CAMPUS
-  );
-
-  const facts = useMemo(() => {
-    if (Array.isArray(data.institutionFacts) && data.institutionFacts.length) {
-      return data.institutionFacts.slice(0, 4);
-    }
-
-    return DEFAULT_FACTS;
-  }, [data.institutionFacts]);
-
-  const courses = getList(
-    data.departments || data.courses,
-    DEFAULT_COURSES
-  );
-
-  const location = getValue(
-    data.location,
-    'Visadala, Guntur, Andhra Pradesh'
-  );
+  const objectives = data.objectives || [];
 
   return (
     <main className="min-h-screen bg-white text-[#17213a]">
       {/* =========================================================
-          PAGE CONTENT
-          The global conference Header/Footer can remain in your
-          existing layout. This page intentionally starts directly
-          with the About content to match the supplied reference.
+          HERO / INSTITUTION OVERVIEW HEADER
          ========================================================= */}
-
       <section className="border-t border-orange-100 bg-white">
         <div className="mx-auto max-w-[1320px] px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_435px] lg:gap-12">
@@ -166,47 +101,49 @@ export const AboutPage = () => {
             <div className="min-w-0">
               {/* Page heading */}
               <div>
-                <div className="mb-2 text-sm font-semibold text-[#F97316]">
+                <div className="mb-2 text-sm font-semibold text-[#F97316] uppercase tracking-wider">
                   About the Host Institution
                 </div>
 
                 <h1 className="max-w-[900px] text-3xl font-extrabold leading-[1.2] tracking-[-0.02em] text-[#F97316] sm:text-4xl lg:text-[40px]">
-                  NRI Institute of Technology (Autonomous), Pothavarappadu
+                  Dr RVR NRI Institute of Technology (Deemed to be University)
                 </h1>
+                <p className="mt-2 text-sm font-semibold text-slate-500">
+                  Pothavarappadu, Agiripalli Mandalam, Eluru District, Vijayawada Rural, Andhra Pradesh
+                </p>
               </div>
 
               {/* Institution introduction */}
               <div className="mt-5 max-w-[900px] space-y-4 text-[15px] leading-7 text-[#29405f] sm:text-[16px]">
                 <p>
-                  {institutionDescription}
+                  Established in <strong>2008</strong> under the aegis of <strong>Sri Durga Malleswari Educational Society, Vijayawada</strong>, NRI Institute of Technology has recently attained the prestigious status of a <strong>Deemed to be University</strong>, reflecting its unwavering commitment to academic excellence, research, and innovation in Science, Engineering, Technology, and Management.
                 </p>
 
                 <p>
-                  <strong className="font-bold text-[#17213a]">
-                    {organizer.name} ({organizer.acronym})
-                  </strong>{' '}
-                  serves as the host institution for{' '}
-                  <strong className="font-bold text-[#17213a]">
-                    ICRAIIQ2IT 2027
-                  </strong>
-                  , bringing together researchers, academicians, industry
-                  professionals, research scholars, and students to exchange
-                  ideas and research findings.
+                  The institution is situated in a peaceful and eco-friendly environment amidst lush greenery on a sprawling <strong>20-acre campus of mango groves</strong> along the Vijayawada–Nuziveedu State Highway. The campus is well connected through college bus facilities and public transportation, located nearly <strong>23 km from Vijayawada city</strong> and about <strong>22 km from Gannavaram Airport (Vijayawada International Airport)</strong>.
+                </p>
+
+                <p>
+                  All departments are equipped with modern infrastructure, advanced laboratories, sophisticated research facilities, and contemporary software tools to support quality teaching, innovation, and research activities. The institution continuously strives to create an academically vibrant environment that nurtures creativity, technical competence, and professional ethics among students.
                 </p>
               </div>
 
               {/* Highlight pills */}
-              <div className="mt-6 flex flex-wrap gap-3">
-                <span className="rounded-full border border-[#F97316] px-4 py-2 text-sm font-semibold text-[#F97316]">
+              <div className="mt-6 flex flex-wrap gap-2.5">
+                <span className="rounded-full border border-[#F97316] bg-orange-50/50 px-4 py-1.5 text-xs sm:text-sm font-semibold text-[#F97316]">
+                  Deemed to be University
+                </span>
+                <span className="rounded-full border border-[#F97316] bg-orange-50/50 px-4 py-1.5 text-xs sm:text-sm font-semibold text-[#F97316]">
                   Established 2008
                 </span>
-
-                <span className="rounded-full border border-[#F97316] px-4 py-2 text-sm font-semibold text-[#F97316]">
-                  20 acres campus
+                <span className="rounded-full border border-[#F97316] bg-orange-50/50 px-4 py-1.5 text-xs sm:text-sm font-semibold text-[#F97316]">
+                  20-Acre Mango Groves Campus
                 </span>
-
-                <span className="rounded-full border border-[#F97316] px-4 py-2 text-sm font-semibold text-[#F97316]">
-                  10 B.Tech • 6 PG Programs
+                <span className="rounded-full border border-[#F97316] bg-orange-50/50 px-4 py-1.5 text-xs sm:text-sm font-semibold text-[#F97316]">
+                  AICTE IDEA LAB
+                </span>
+                <span className="rounded-full border border-[#F97316] bg-orange-50/50 px-4 py-1.5 text-xs sm:text-sm font-semibold text-[#F97316]">
+                  NAAC A+ Grade
                 </span>
               </div>
 
@@ -220,9 +157,10 @@ export const AboutPage = () => {
                   aria-label="Institution information"
                 >
                   {[
-                    { id: 'overview', label: 'Overview' },
-                    { id: 'courses', label: 'Courses' },
-                    { id: 'facilities', label: 'Facilities & Labs' },
+                    { id: 'overview', label: 'School of Computer Studies' },
+                    { id: 'pharmacy', label: 'NRI College of Pharmacy' },
+                    { id: 'courses', label: 'Academic Programmes' },
+                    { id: 'facilities', label: 'Facilities & IDEA Lab' },
                   ].map((tab) => {
                     const active = activeTab === tab.id;
 
@@ -233,10 +171,11 @@ export const AboutPage = () => {
                         role="tab"
                         aria-selected={active}
                         onClick={() => setActiveTab(tab.id)}
-                        className={`relative py-3 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 ${active
-                          ? 'text-[#F97316]'
-                          : 'text-[#17213a] hover:text-[#F97316]'
-                          }`}
+                        className={`relative py-3 text-sm font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 ${
+                          active
+                            ? 'text-[#F97316]'
+                            : 'text-[#17213a] hover:text-[#F97316]'
+                        }`}
                       >
                         {tab.label}
 
@@ -255,61 +194,143 @@ export const AboutPage = () => {
               <div className="pt-7">
                 {activeTab === 'overview' && (
                   <div className="space-y-6">
-                    <section>
-                      <div className="text-sm font-medium text-[#F97316]">
-                        Campus & Location
+                    <section className="rounded-2xl border border-orange-200 bg-orange-50/30 p-6">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Cpu className="h-6 w-6 text-[#F97316]" />
+                        <h2 className="text-xl font-bold text-[#1d315f]">
+                          About the Organizing School: School of Computer Studies
+                        </h2>
                       </div>
 
-                      <p className="mt-1 text-[15px] leading-7 text-[#17213a] sm:text-[16px]">
-                        Ideally located about{' '}
-                        <strong className="font-extrabold">
-                          23 KM from Vijayawada
-                        </strong>{' '}
-                        and{' '}
-                        <strong className="font-extrabold">
-                          22 KM from Gannavaram Airport
-                        </strong>
-                        , the campus offers serene surroundings and is well
-                        connected by college buses and public transport.
+                      <p className="text-[15px] leading-7 text-slate-700">
+                        The School of Computer Studies at Dr. RVR NRI Institute of Technology (Deemed to be University) was established with the objective of delivering high-quality education and fostering innovation and research in the field of computing and emerging technologies.
                       </p>
+
+                      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div className="rounded-xl bg-white p-4 border border-orange-100">
+                          <h3 className="font-bold text-[#1d315f] text-sm">Undergraduate Programmes</h3>
+                          <p className="text-xs text-slate-600 mt-1">
+                            B.Tech in Computer Science and Engineering (CSE), CSE (Artificial Intelligence & Machine Learning), AIML, CSE (Data Science), CSE (Telugu Medium), and Information Technology (IT).
+                          </p>
+                        </div>
+
+                        <div className="rounded-xl bg-white p-4 border border-orange-100">
+                          <h3 className="font-bold text-[#1d315f] text-sm">Postgraduate & Doctoral Programmes</h3>
+                          <p className="text-xs text-slate-600 mt-1">
+                            M.Tech in Computer Science and Engineering, and Ph.D in Computer Science and allied disciplines, enabling advanced research in emerging computing domains.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="mt-4 p-4 rounded-xl bg-white border border-orange-100">
+                        <h3 className="font-bold text-[#1d315f] text-sm">Industry Collaborations & AICTE IDEA Lab</h3>
+                        <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                          The department is strengthened by experienced, highly qualified faculty members dedicated to academic excellence and research. The School is supported with state-of-the-art laboratories and advanced computing facilities. It actively collaborates with industry professionals, academic experts, and research organisations to conduct workshops, seminars, faculty development programmes, and conferences. It holds formal MOUs with leading industries and academic institutions, and houses an <strong>AICTE IDEA LAB</strong> for promoting innovation and research.
+                        </p>
+                      </div>
                     </section>
+                  </div>
+                )}
 
-                    <section>
-                      <div className="text-sm font-medium text-[#F97316]">
-                        Mission
+                {activeTab === 'pharmacy' && (
+                  <div className="space-y-6">
+                    <section className="rounded-2xl border border-orange-200 bg-white p-6 shadow-sm">
+                      <div className="flex items-center gap-3 mb-3">
+                        <FlaskConical className="h-6 w-6 text-[#F97316]" />
+                        <h2 className="text-xl font-bold text-[#1d315f]">
+                          NRI College of Pharmacy
+                        </h2>
                       </div>
 
-                      <p className="mt-1 text-[15px] leading-7 text-[#17213a] sm:text-[16px]">
-                        {mission}
+                      <p className="text-[15px] leading-7 text-slate-700">
+                        NRI College of Pharmacy, established in <strong>2007</strong> under the auspices of <strong>Sri Durga Malleswara Educational Society</strong>, is a premier pharmaceutical institution situated at Pothavarappadu, Agiripalli Mandal, near Vijayawada, Andhra Pradesh.
                       </p>
-                    </section>
 
-                    <section>
-                      <div className="text-sm font-medium text-[#F97316]">
-                        Conference Perspective
+                      <div className="mt-4 p-4 rounded-xl bg-orange-50/50 border border-orange-100 space-y-3">
+                        <div className="flex flex-wrap gap-2">
+                          <span className="px-3 py-1 bg-white rounded-md text-xs font-semibold text-slate-700 border border-orange-200">
+                            PCI Approved
+                          </span>
+                          <span className="px-3 py-1 bg-white rounded-md text-xs font-semibold text-slate-700 border border-orange-200">
+                            AICTE Approved
+                          </span>
+                          <span className="px-3 py-1 bg-white rounded-md text-xs font-semibold text-slate-700 border border-orange-200">
+                            Permanently Affiliated to JNTUK
+                          </span>
+                        </div>
+
+                        <p className="text-sm text-slate-600 leading-relaxed">
+                          The institution offers comprehensive professional and academic programs including:
+                        </p>
+
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-700">
+                          <li className="flex items-center gap-2">
+                            <CheckCircle2 className="h-4 w-4 text-[#F97316] shrink-0" />
+                            <span>Bachelor of Pharmacy (B.Pharm)</span>
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <CheckCircle2 className="h-4 w-4 text-[#F97316] shrink-0" />
+                            <span>Doctor of Pharmacy (Pharm.D)</span>
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <CheckCircle2 className="h-4 w-4 text-[#F97316] shrink-0" />
+                            <span>M.Pharm in Pharmaceutics</span>
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <CheckCircle2 className="h-4 w-4 text-[#F97316] shrink-0" />
+                            <span>M.Pharm in Pharmaceutical Analysis</span>
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <CheckCircle2 className="h-4 w-4 text-[#F97316] shrink-0" />
+                            <span>M.Pharm in Regulatory Affairs</span>
+                          </li>
+                        </ul>
                       </div>
-
-                      <p className="mt-1 text-[15px] leading-7 text-[#17213a] sm:text-[16px]">
-                        {aboutText}
-                      </p>
                     </section>
                   </div>
                 )}
 
                 {activeTab === 'courses' && (
-                  <div className="space-y-3">
-                    {courses.map((course, index) => (
-                      <DepartmentAccordion
-                        key={`${course}-${index}`}
-                        title={course}
-                        defaultOpen={index === 0}
-                      >
-                        Academic programmes and course information for this
-                        category can be presented here. Replace this text
-                        with the official programme details supplied by
-                        NRIIT.
-                      </DepartmentAccordion>
-                    ))}
+                  <div className="space-y-4">
+                    <ProgramAccordion
+                      title="Undergraduate Engineering Programmes (B.Tech)"
+                      defaultOpen={true}
+                      items={inst.undergraduatePrograms || [
+                        "Computer Science and Engineering (CSE)",
+                        "CSE (Artificial Intelligence & Machine Learning)",
+                        "CSE (Data Science)",
+                        "Artificial Intelligence & Machine Learning (AIML)",
+                        "CSE (Telugu Medium)",
+                        "Information Technology (IT)",
+                        "Electronics & Communication Engineering (ECE)",
+                        "Electrical & Electronics Engineering (EEE)",
+                        "Mechanical Engineering",
+                        "Civil Engineering"
+                      ]}
+                    />
+
+                    <ProgramAccordion
+                      title="Postgraduate Programmes (M.Tech, MBA, M.Pharm)"
+                      defaultOpen={true}
+                      items={inst.postgraduatePrograms || [
+                        "M.Tech. in Computer Science and Engineering (CSE)",
+                        "M.Tech. in Digital Electronics and Communication Systems",
+                        "M.Tech. in Power Electronics and Drives",
+                        "M.Tech. in Structural Engineering",
+                        "M.Tech. in Thermal Engineering",
+                        "Master of Business Administration (MBA)",
+                        "M.Pharm (Pharmaceutics, Analysis, Regulatory Affairs)"
+                      ]}
+                    />
+
+                    <ProgramAccordion
+                      title="Doctoral Research Programmes (Ph.D)"
+                      defaultOpen={true}
+                      items={inst.doctoralPrograms || [
+                        "Ph.D in Computer Science and Engineering",
+                        "Ph.D in Allied Engineering & Technology Disciplines"
+                      ]}
+                    />
                   </div>
                 )}
 
@@ -317,29 +338,29 @@ export const AboutPage = () => {
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {[
                       {
-                        icon: Microscope,
-                        title: 'Research & R&D',
-                        text: 'Research-oriented infrastructure and centres can be highlighted here.',
+                        icon: Sparkles,
+                        title: 'AICTE IDEA LAB',
+                        text: 'Dedicated advanced innovation lab fostering hands-on experimentation, prototyping, and interdisciplinary technology incubation.',
                       },
                       {
-                        icon: GraduationCap,
-                        title: 'Academic Infrastructure',
-                        text: 'Academic facilities supporting engineering, science, and management education.',
+                        icon: Microscope,
+                        title: 'Research & Innovation Labs',
+                        text: 'High-performance computing clusters, GPU workstations, and dedicated research facilities for AI, ML, and Quantum simulations.',
                       },
                       {
                         icon: Building2,
-                        title: 'Campus Facilities',
-                        text: 'Campus facilities and student-support infrastructure can be presented here.',
+                        title: '20-Acre Lush Campus',
+                        text: 'Eco-friendly campus with mango groves, modern smart classrooms, digital libraries, and 1200+ capacity auditorium along Vijayawada–Nuziveedu Highway.',
                       },
                       {
                         icon: Users,
-                        title: 'Industry & Collaboration',
-                        text: 'Collaborative initiatives, partnerships, and research activities can be described here.',
+                        title: 'Industry MOUs & Partnerships',
+                        text: 'Active partnerships with top tier technology companies and premier universities worldwide for joint research and faculty-student exchange.',
                       },
                     ].map(({ icon: Icon, title, text }) => (
                       <article
                         key={title}
-                        className="rounded-xl border border-orange-100 bg-orange-50 p-5"
+                        className="rounded-xl border border-orange-100 bg-orange-50/40 p-5"
                       >
                         <Icon className="h-5 w-5 text-[#F97316]" />
                         <h3 className="mt-3 text-base font-bold text-[#17213a]">
@@ -368,7 +389,7 @@ export const AboutPage = () => {
                     </div>
 
                     <h2 className="mt-1 text-base font-extrabold text-[#111827]">
-                      NRIIT at a glance
+                      NRIIT (DTBU) at a glance
                     </h2>
                   </div>
 
@@ -383,33 +404,10 @@ export const AboutPage = () => {
                 </div>
 
                 <div className="mt-5 grid grid-cols-2 gap-3">
-                  {facts.map((fact, index) => (
-                    <FactCard
-                      key={`${fact.label}-${index}`}
-                      value={fact.value}
-                      label={fact.label}
-                    />
-                  ))}
-                </div>
-              </section>
-
-              {/* Departments */}
-              <section className="rounded-xl border border-orange-200 bg-white p-4">
-                <h2 className="text-base font-medium text-[#F97316]">
-                  Departments
-                </h2>
-
-                <div className="mt-4 space-y-2">
-                  {courses.map((course, index) => (
-                    <DepartmentAccordion
-                      key={`${course}-sidebar-${index}`}
-                      title={course}
-                      defaultOpen={false}
-                    >
-                      Course and department information can be supplied here
-                      from the official NRIIT content.
-                    </DepartmentAccordion>
-                  ))}
+                  <FactCard value="2008" label="Established" />
+                  <FactCard value="DTBU" label="Deemed University" />
+                  <FactCard value="23 KM" label="From Vijayawada" />
+                  <FactCard value="22 KM" label="From Airport" />
                 </div>
               </section>
 
@@ -422,23 +420,29 @@ export const AboutPage = () => {
 
                   <div>
                     <div className="text-xs font-extrabold uppercase tracking-wider text-[#F97316]">
-                      Institutional Profile
+                      Accreditation & Approvals
                     </div>
                     <div className="mt-1 text-sm font-bold text-[#17213a]">
-                      Academic & Research Environment
+                      Deemed to be University
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-4 flex flex-wrap gap-2">
                   <span className="rounded-md border border-orange-100 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600">
+                    Deemed to be University
+                  </span>
+                  <span className="rounded-md border border-orange-100 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600">
                     NAAC A+ Grade
                   </span>
                   <span className="rounded-md border border-orange-100 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600">
-                    NBA Accredited Programs
+                    AICTE Approved
                   </span>
                   <span className="rounded-md border border-orange-100 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600">
-                    Autonomous Status
+                    PCI Approved
+                  </span>
+                  <span className="rounded-md border border-orange-100 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600">
+                    AICTE IDEA Lab
                   </span>
                 </div>
               </section>
@@ -452,17 +456,20 @@ export const AboutPage = () => {
 
                   <div>
                     <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-[#FDBA74]">
-                      Location
+                      Campus Location
                     </div>
                     <div className="mt-1 text-sm font-bold">
-                      {location}
+                      Vijayawada Rural, Andhra Pradesh
                     </div>
                   </div>
                 </div>
 
-                <p className="mt-4 text-sm leading-6 text-slate-200">
-                  {campusDescription}
+                <p className="mt-4 text-xs leading-5 text-orange-100">
+                  Pothavarappadu, Agiripalli Mandalam, Eluru District, Pin - 521212. Situated along Vijayawada–Nuziveedu State Highway.
                 </p>
+                <div className="mt-3 text-xs font-mono text-orange-200">
+                  GPS: 16.663279, 80.737776
+                </div>
               </section>
             </aside>
           </div>
@@ -482,14 +489,14 @@ export const AboutPage = () => {
               </div>
 
               <h2 className="mt-5 text-2xl font-extrabold text-[#17213a]">
-                Conference Objectives
+                Objectives of the Conference
               </h2>
 
-              <ul className="mt-6 space-y-4">
+              <ul className="mt-6 space-y-3.5">
                 {objectives.map((objective, index) => (
                   <li
                     key={index}
-                    className="flex items-start gap-3 text-sm leading-6 text-slate-600"
+                    className="flex items-start gap-3 text-sm leading-6 text-slate-700"
                   >
                     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#F97316]" />
                     <span>{objective}</span>
@@ -498,29 +505,40 @@ export const AboutPage = () => {
               </ul>
             </article>
 
-            {/* About NRIIT */}
+            {/* About ICRAIQ2IT - 2027 */}
             <article className="rounded-2xl border border-orange-100 bg-white p-7 shadow-sm sm:p-8">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#FFF7ED] text-[#F97316]">
                 <Award className="h-5 w-5" />
               </div>
 
               <h2 className="mt-5 text-2xl font-extrabold text-[#17213a]">
-                About {organizer.acronym}
+                About ICRAIQ2IT - 2027
               </h2>
 
-              <p className="mt-5 text-sm leading-7 text-slate-600">
-                {institutionDescription}
-              </p>
+              <div className="mt-5 text-sm leading-7 text-slate-600 space-y-3">
+                <p>
+                  The <strong>5th International Conference on Recent Advancements in Artificial Intelligence and Quantum Intelligence and Inclusive Technologies (ICRAIQ2IT – 2027)</strong> is scheduled to be held during <strong>09–10 April 2027</strong> in Blended mode.
+                </p>
+                <p>
+                  The conference aims to provide a premier international platform for academicians, scientists, researchers, industry professionals, innovators, and students to exchange ideas, present research outcomes, and discuss emerging trends in Artificial Intelligence, Quantum-Inspired Computing, and Deep Technology Innovations.
+                </p>
+                <p>
+                  ICRAIQ2IT – 2027 seeks to bridge the gap between theoretical research and practical applications by encouraging interdisciplinary collaboration and knowledge sharing among global experts.
+                </p>
+              </div>
 
               <div className="mt-6 flex flex-wrap gap-2">
                 <span className="rounded-md border border-orange-100 bg-orange-50 px-3 py-1.5 text-xs font-semibold text-slate-600">
-                  NAAC A+ Grade
+                  09–10 April 2027
                 </span>
                 <span className="rounded-md border border-orange-100 bg-orange-50 px-3 py-1.5 text-xs font-semibold text-slate-600">
-                  NBA Accredited Programs
+                  Blended Mode
                 </span>
                 <span className="rounded-md border border-orange-100 bg-orange-50 px-3 py-1.5 text-xs font-semibold text-slate-600">
-                  Autonomous Status
+                  Scopus Indexation
+                </span>
+                <span className="rounded-md border border-orange-100 bg-orange-50 px-3 py-1.5 text-xs font-semibold text-slate-600">
+                  Microsoft CMT
                 </span>
               </div>
             </article>
@@ -544,7 +562,7 @@ export const AboutPage = () => {
 
           <div className="flex items-center gap-2 text-sm text-slate-500">
             <Sparkles className="h-4 w-4 text-[#F97316]" />
-            <span>5th Edition • 2027</span>
+            <span>09 – 10, April 2027 • Vijayawada</span>
           </div>
         </div>
       </section>

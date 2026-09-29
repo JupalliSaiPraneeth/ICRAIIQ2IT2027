@@ -72,18 +72,14 @@ export const ContactPage = () => {
                   <Mail className="mt-1 h-5 w-5 shrink-0 text-[#F97316]" />
                   <div>
                     <div className="font-medium">
-                      Dr. K. V. Sambasiva Rao, Professor &amp; Dean, CSE, NRIIT
-                      {contactEmail && (
-                        <>
-                          {' '}–{' '}
-                          <a
-                            href={`mailto:${contactEmail}`}
-                            className="transition-colors hover:text-[#EA580C] hover:underline"
-                          >
-                            {contactEmail}
-                          </a>
-                        </>
-                      )}
+                      Dr. K. V. Sambasiva Rao, Professor &amp; Dean, R &amp; D, Dr RVR NRIIT (DTBU)
+                      {' '}–{' '}
+                      <a
+                        href="mailto:icraiq2it27@nriit.edu.in"
+                        className="transition-colors hover:text-[#EA580C] hover:underline"
+                      >
+                        icraiq2it27@nriit.edu.in
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -92,32 +88,29 @@ export const ContactPage = () => {
                   <Mail className="mt-1 h-5 w-5 shrink-0 text-[#F97316]" />
                   <div>
                     <div className="font-medium">
-                      Dr. D. Suneetha, Professor &amp; HOD, CSE, NRIIT
-                      {helplinePhone ? (
-                        <>
-                          {' '}–{' '}
-                          <a
-                            href={`mailto:${helplinePhone}`}
-                            className="transition-colors hover:text-[#EA580C] hover:underline"
-                          >
-                            {helplinePhone}
-                          </a>
-                        </>
-                      ) : (
-                        ' – hod.csenriit@gmail.com'
-                      )}
+                      Dr. D. Sunitha, HOD &amp; Dean : School of Computer Studies, Dr RVR NRIIT (DTBU)
+                      {' '}–{' '}
+                      <a
+                        href="mailto:icraiq2it27@nriit.edu.in"
+                        className="transition-colors hover:text-[#EA580C] hover:underline"
+                      >
+                        icraiq2it27@nriit.edu.in
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="mt-7 border-t border-orange-100 pt-6">
-                <h2 className="text-[30px] font-extrabold leading-tight text-[#F97316] sm:text-[32px]">
-                  {organizer.name || 'NRI Institute of Technology'}
+                <h2 className="text-[28px] font-extrabold leading-tight text-[#F97316] sm:text-[30px]">
+                  Conference Secretariat, ICRAIQ2IT-2027
                 </h2>
-                <div className="mt-4 space-y-1 text-[18px] leading-7 text-[#334155]">
+                <div className="mt-2 text-base font-bold text-slate-800">
+                  {organizer.name || 'Dr RVR NRI Institute of Technology (Deemed to be University)'}
+                </div>
+                <div className="mt-3 space-y-1 text-[16px] leading-7 text-[#334155]">
                   <p>Pothavarappadu, Agiripalli Mandalam</p>
-                  <p>Krishna District, Andhra Pradesh, India</p>
+                  <p>Eluru District, Vijayawada Rural, Andhra Pradesh, India</p>
                   <p>Pin – 521212</p>
                 </div>
               </div>

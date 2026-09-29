@@ -33,7 +33,7 @@ export const QuantumOrbit = () => {
           <div className="w-4 h-4 rounded-full bg-brand-500 shadow-[0_0_15px_#fb9200]" />
         </div>
         <span className="text-[10px] font-mono tracking-widest text-brand-400 font-bold uppercase">QUANTUM</span>
-        <span className="text-[12px] font-sans font-extrabold text-white tracking-wide">ICRAIIQ2IT</span>
+        <span className="text-[12px] font-sans font-extrabold text-white tracking-wide">ICRAIQ2IT</span>
         <span className="text-[9px] font-mono text-slate-400">2027</span>
       </div>
 

@@ -1,63 +1,86 @@
 import React from 'react';
-import { Trophy } from 'lucide-react';
+import { Trophy, Award, CheckCircle2, Medal, Sparkles } from 'lucide-react';
 
 const AwardsPage = () => {
-  const awardsList = [
-    {
-      title: "Best Paper Award",
-      category: "Research Innovation",
-      desc: "Awarded to the top research manuscripts evaluated by the international review panel."
-    },
-    {
-      title: "Best Student Paper Award",
-      category: "Academic Excellence",
-      desc: "Recognizing outstanding research contributed by primary UG/PG/PhD student authors."
-    },
-    {
-      title: "Best Poster Presentation",
-      category: "Visual & Technical Impact",
-      desc: "Awarded during interactive poster sessions for technical clarity and visual presentation."
-    },
-    {
-      title: "Young Researcher Award",
-      category: "Early Career Pioneer",
-      desc: "Honoring early-career scholars demonstrating high potential in AI, Quantum, or IT domains."
-    }
-  ];
-
   return (
-    <div className="relative min-h-screen bg-[#FFFBF8] text-slate-900 py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-6">
-          <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-[#F97316]">
-            Honors
+    <div className="relative min-h-screen bg-[#FFFBF8] text-slate-900 py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-8">
+          <div className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#F97316]">
+            Recognition & Honors
           </div>
-          <h2 className="mt-1 text-2xl font-extrabold text-[#1d315f] sm:text-3xl">
-            ICRAIIQ2IT 2027 Research Awards
-          </h2>
+          <h1 className="mt-2 text-3xl font-extrabold text-[#1d315f] sm:text-4xl">
+            ICRAIQ2IT - 2027 Conference Awards
+          </h1>
+          <p className="mt-3 text-sm text-slate-600 max-w-2xl mx-auto">
+            Recognizing outstanding scientific presentations and exceptional contributions in Artificial Intelligence, Quantum Computing, and Inclusive Technologies.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4">
-          {awardsList.map((award, idx) => (
-            <div
-              key={idx}
-              className="group p-4 sm:p-5 rounded-xl bg-white border border-orange-100 hover:border-[#F97316] hover:shadow-md hover:shadow-orange-100/60 transition-all duration-300 space-y-2"
-            >
-              <Trophy className="w-6 h-6 text-[#F97316] transition-transform duration-300 group-hover:scale-110" />
-
-              <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#FFF7ED] text-[#EA580C] border border-orange-100 text-[10px] font-bold uppercase">
-                {award.category}
+        {/* Featured Award: Best Presentation Award */}
+        <div className="mb-8 rounded-2xl border-2 border-orange-200 bg-white p-6 sm:p-8 shadow-lg shadow-orange-500/5">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 border-b border-orange-100 pb-5">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500 text-white shadow-md shadow-orange-500/20">
+              <Trophy className="h-7 w-7" />
+            </div>
+            <div>
+              <span className="inline-block px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-bold uppercase tracking-wider mb-1">
+                Premier Conference Honor
               </span>
+              <h2 className="text-2xl font-black text-[#1d315f]">
+                Best Presentation Award
+              </h2>
+            </div>
+          </div>
 
-              <h3 className="text-base sm:text-lg font-bold text-[#1d315f]">
-                {award.title}
-              </h3>
-
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                {award.desc}
+          <div className="mt-5 space-y-4 text-sm leading-relaxed text-slate-700">
+            <p>
+              To encourage meaningful contributions and promote quality research, the conference will recognize outstanding presentations through prestigious awards.
+            </p>
+            <p>
+              Based on evaluations by the committee and the discretion of the <strong>Conference Chair</strong>, the <strong>Best Presentation Award</strong> will be given to the most inspiring, impactful, and professionally delivered talk.
+            </p>
+            <div className="rounded-xl bg-orange-50/60 p-4 border border-orange-100 flex items-start gap-3">
+              <Sparkles className="h-5 w-5 text-orange-600 shrink-0 mt-0.5" />
+              <p className="text-xs text-orange-950 font-medium">
+                <strong>Selection Criteria:</strong> The selection will be made considering both the interactive presentation delivery scores and the peer-reviewed technical quality of the submitted paper.
               </p>
             </div>
-          ))}
+          </div>
+        </div>
+
+        {/* Certificates Section */}
+        <div className="rounded-2xl border border-orange-100 bg-white p-6 sm:p-8 shadow-sm">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
+              <Medal className="h-5 w-5" />
+            </div>
+            <h2 className="text-xl font-bold text-[#1d315f]">
+              Participation & Publication Certificates
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
+            <div className="p-4 rounded-xl bg-[#FFFBF8] border border-orange-100 flex items-start gap-3">
+              <CheckCircle2 className="h-5 w-5 text-orange-600 shrink-0 mt-0.5" />
+              <div>
+                <h3 className="text-sm font-bold text-[#1d315f]">Participation Certificate</h3>
+                <p className="text-xs text-slate-600 mt-1">
+                  All registered attendees, delegates, and co-authors participating in conference sessions will receive an official Participation Certificate.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-[#FFFBF8] border border-orange-100 flex items-start gap-3">
+              <CheckCircle2 className="h-5 w-5 text-orange-600 shrink-0 mt-0.5" />
+              <div>
+                <h3 className="text-sm font-bold text-[#1d315f]">Paper Presentation cum Publication Certificate</h3>
+                <p className="text-xs text-slate-600 mt-1">
+                  Authors presenting their accepted manuscripts (oral or poster) will receive a Paper Presentation cum Publication Certificate.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown, Download, ExternalLink } from 'lucide-react';
 import { conferenceData } from '../data/conferenceData';
 
 const DEFAULT_TITLE =
-  '5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence, and Inclusive Technologies';
+  '5th International Conference on Recent Advancements in Artificial Intelligence and Quantum Intelligence and Inclusive Technologies';
 
-const DEFAULT_SHORT_TITLE = 'ICRAIIQ2IT 2027';
+const DEFAULT_SHORT_TITLE = 'ICRAIQ2IT - 2027';
 
 const NAV_PRIMARY = [
   { label: 'HOME', to: '/' },
@@ -34,7 +34,30 @@ function getDataValue(value, fallback) {
 
 export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSouvenirOpen, setMobileSouvenirOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [souvenirDropdownOpen, setSouvenirDropdownOpen] = useState(false);
+  const souvenirRef = useRef(null);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 25);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (souvenirRef.current && !souvenirRef.current.contains(e.target)) {
+        setSouvenirDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const data = conferenceData || {};
 
@@ -48,7 +71,10 @@ export const Navbar = () => {
     DEFAULT_SHORT_TITLE
   );
 
-  const closeMobileMenu = () => setMobileMenuOpen(false);
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    setMobileSouvenirOpen(false);
+  };
 
   const isActive = (path) => {
     if (path === '/') {
@@ -59,27 +85,41 @@ export const Navbar = () => {
   };
 
   return (
-    <header className="relative z-50 border-b border-slate-200 bg-white shadow-[0_2px_12px_rgba(15,23,42,0.05)]">
+    <header
+      className={`sticky top-0 z-50 border-b border-slate-200 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-[0_4px_20px_rgba(15,23,42,0.10)]'
+          : 'bg-white shadow-[0_2px_12px_rgba(15,23,42,0.05)]'
+      }`}
+    >
 
       {/* =========================================================
-          CONFERENCE TITLE (Compact Padding)
+          CONFERENCE TITLE (Compact Padding, Smooth Scale on Scroll)
       ========================================================= */}
-      <div className="mx-auto max-w-[1500px] px-4 pb-2 pt-3 sm:px-6 lg:px-8">
+      <div
+        className={`mx-auto max-w-[1500px] px-4 transition-all duration-300 sm:px-6 lg:px-8 ${
+          isScrolled ? 'pb-1 pt-1.5' : 'pb-2 pt-3'
+        }`}
+      >
         <Link
           to="/"
-          aria-label="ICRAIIQ2IT 2027 home"
+          aria-label="ICRAIQ2IT - 2027 home"
           className="group mx-auto block max-w-[1400px] text-center"
         >
           <h1
-            className="
-              text-[20px]
+            className={`
               font-extrabold
               leading-snug
               tracking-[-0.02em]
               text-[#1D315F]
-              sm:text-[24px]
-              lg:text-[28px]
-            "
+              transition-all
+              duration-300
+              ${
+                isScrolled
+                  ? 'text-[17px] sm:text-[20px] lg:text-[22px]'
+                  : 'text-[20px] sm:text-[24px] lg:text-[28px]'
+              }
+            `}
           >
             {conferenceTitle}
 
@@ -141,6 +181,204 @@ export const Navbar = () => {
           >
             {[...NAV_PRIMARY, ...NAV_SECONDARY].map((item) => {
               const active = isActive(item.to);
+
+              if (item.label === 'SOUVENIR') {
+                const isSouvenirActive = location.pathname === '/souvenir';
+
+                return (
+                  <div
+                    key={item.label}
+                    ref={souvenirRef}
+                    className="relative flex items-center"
+                    onMouseEnter={() => setSouvenirDropdownOpen(true)}
+                    onMouseLeave={() => setSouvenirDropdownOpen(false)}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setSouvenirDropdownOpen((prev) => !prev)}
+                      aria-expanded={souvenirDropdownOpen}
+                      className={`
+                        group
+                        relative
+                        flex
+                        min-h-[36px]
+                        items-center
+                        gap-1
+                        px-2
+                        py-1
+                        text-[14px]
+                        font-bold
+                        tracking-[0.01em]
+                        transition-all
+                        duration-200
+                        ease-out
+                        focus:outline-none
+                        focus-visible:ring-2
+                        focus-visible:ring-[#F59E0B]
+                        xl:text-[15px]
+
+                        ${active || isSouvenirActive || souvenirDropdownOpen
+                          ? 'text-[#E87500]'
+                          : 'text-[#344054] hover:text-[#E87500]'
+                        }
+                      `}
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown
+                        className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                          souvenirDropdownOpen ? 'rotate-180 text-[#E87500]' : 'text-slate-400'
+                        }`}
+                      />
+
+                      {/* Animated orange underline */}
+                      <span
+                        className={`
+                          absolute
+                          bottom-0
+                          left-1/2
+                          h-[2px]
+                          -translate-x-1/2
+                          rounded-full
+                          bg-[#F59E0B]
+                          transition-all
+                          duration-300
+                          ease-out
+
+                          ${active || isSouvenirActive || souvenirDropdownOpen
+                            ? 'w-full opacity-100'
+                            : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
+                          }
+                        `}
+                      />
+                    </button>
+
+                    {/* SOUVENIR DROPDOWN MENU */}
+                    {souvenirDropdownOpen && (
+                      <div
+                        className="
+                          absolute
+                          left-0
+                          top-full
+                          z-[120]
+                          mt-1
+                          w-52
+                          overflow-hidden
+                          rounded-xl
+                          border
+                          border-slate-100
+                          bg-white
+                          p-2
+                          shadow-[0_12px_32px_rgba(0,0,0,0.12)]
+                          ring-1
+                          ring-black/5
+                        "
+                      >
+                        <a
+                          href="/sov/1sov.pdf"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setSouvenirDropdownOpen(false)}
+                          className="
+                            flex
+                            items-center
+                            gap-2.5
+                            rounded-lg
+                            px-3
+                            py-2
+                            text-[14px]
+                            font-semibold
+                            text-slate-700
+                            transition-colors
+                            hover:bg-slate-50
+                            hover:text-[#E87500]
+                          "
+                        >
+                          <span className="text-base select-none">🎁</span>
+                          <span className="tracking-tight">ICRAIC2IT-2022</span>
+                        </a>
+
+                        <a
+                          href="/sov/2sov.pdf"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setSouvenirDropdownOpen(false)}
+                          className="
+                            flex
+                            items-center
+                            gap-2.5
+                            rounded-lg
+                            px-3
+                            py-2
+                            text-[14px]
+                            font-semibold
+                            text-slate-700
+                            transition-colors
+                            hover:bg-slate-50
+                            hover:text-[#E87500]
+                          "
+                        >
+                          <span className="text-base select-none">🎁</span>
+                          <span className="tracking-tight">ICRAIC2IT-2025</span>
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              if (item.label === 'BROCHURE') {
+                return (
+                  <a
+                    key={item.label}
+                    href="/brocher/ICRAIQ2IT%20-%202027%20Brochure%20-%20English%2029092026.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                      group
+                      relative
+                      flex
+                      min-h-[36px]
+                      items-center
+                      px-2
+                      py-1
+                      text-[14px]
+                      font-bold
+                      tracking-[0.01em]
+                      text-[#344054]
+                      transition-all
+                      duration-200
+                      ease-out
+                      hover:text-[#E87500]
+                      focus:outline-none
+                      focus-visible:ring-2
+                      focus-visible:ring-[#F59E0B]
+                      xl:text-[15px]
+                    "
+                  >
+                    {item.label}
+
+                    {/* Animated orange underline */}
+                    <span
+                      className="
+                        absolute
+                        bottom-0
+                        left-1/2
+                        h-[2px]
+                        w-0
+                        -translate-x-1/2
+                        rounded-full
+                        bg-[#F59E0B]
+                        opacity-0
+                        transition-all
+                        duration-300
+                        ease-out
+                        group-hover:w-full
+                        group-hover:opacity-100
+                      "
+                    />
+                  </a>
+                );
+              }
 
               return (
                 <Link
@@ -380,6 +618,138 @@ export const Navbar = () => {
 
                 {[...NAV_PRIMARY, ...NAV_SECONDARY].map((item) => {
                   const active = isActive(item.to);
+
+                  if (item.label === 'SOUVENIR') {
+                    return (
+                      <div key={item.label} className="space-y-1">
+                        <button
+                          type="button"
+                          onClick={() => setMobileSouvenirOpen((prev) => !prev)}
+                          className={`
+                            group
+                            relative
+                            flex
+                            w-full
+                            min-h-12
+                            items-center
+                            justify-between
+                            overflow-hidden
+                            rounded-xl
+                            px-4
+                            text-sm
+                            font-semibold
+                            transition-all
+                            duration-200
+                            ${active || mobileSouvenirOpen
+                              ? 'bg-[#FFF7E6] font-bold text-[#E87500]'
+                              : 'text-[#344054] hover:bg-[#FFF7E6] hover:text-[#E87500]'
+                            }
+                          `}
+                        >
+                          {/* Orange left indicator */}
+                          <span
+                            className={`
+                              absolute
+                              left-0
+                              top-1/2
+                              h-6
+                              -translate-y-1/2
+                              rounded-r-full
+                              bg-[#F59E0B]
+                              transition-all
+                              duration-200
+                              ${active || mobileSouvenirOpen
+                                ? 'w-1 opacity-100'
+                                : 'w-0 opacity-0 group-hover:w-1 group-hover:opacity-100'
+                              }
+                            `}
+                          />
+
+                          <span>{item.label}</span>
+                          <ChevronDown
+                            className={`h-4 w-4 transition-transform duration-200 ${
+                              mobileSouvenirOpen ? 'rotate-180 text-[#E87500]' : 'text-slate-400'
+                            }`}
+                          />
+                        </button>
+
+                        {mobileSouvenirOpen && (
+                          <div className="ml-3 space-y-1 rounded-xl border border-slate-100 bg-slate-50/80 p-2">
+                            <a
+                              href="/sov/1sov.pdf"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={closeMobileMenu}
+                              className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-white hover:text-[#E87500]"
+                            >
+                              <span className="text-base select-none">🎁</span>
+                              <span>ICRAIC2IT-2022</span>
+                            </a>
+                            <a
+                              href="/sov/2sov.pdf"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={closeMobileMenu}
+                              className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-white hover:text-[#E87500]"
+                            >
+                              <span className="text-base select-none">🎁</span>
+                              <span>ICRAIC2IT-2025</span>
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }
+
+                  if (item.label === 'BROCHURE') {
+                    return (
+                      <a
+                        key={item.label}
+                        href="/brocher/ICRAIQ2IT%20-%202027%20Brochure%20-%20English%2029092026.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={closeMobileMenu}
+                        className="
+                          group
+                          relative
+                          flex
+                          min-h-12
+                          items-center
+                          overflow-hidden
+                          rounded-xl
+                          px-4
+                          text-sm
+                          font-semibold
+                          text-[#344054]
+                          transition-all
+                          duration-200
+                          hover:bg-[#FFF7E6]
+                          hover:pl-5
+                          hover:text-[#E87500]
+                        "
+                      >
+                        {/* Orange left indicator */}
+                        <span
+                          className="
+                            absolute
+                            left-0
+                            top-1/2
+                            h-6
+                            w-0
+                            -translate-y-1/2
+                            rounded-r-full
+                            bg-[#F59E0B]
+                            opacity-0
+                            transition-all
+                            duration-200
+                            group-hover:w-1
+                            group-hover:opacity-100
+                          "
+                        />
+                        {item.label}
+                      </a>
+                    );
+                  }
 
                   return (
                     <Link

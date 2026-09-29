@@ -56,28 +56,28 @@ const ATTRACTIONS = [
 ];
 
 const DEFAULT_VIJAYAWADA_DESCRIPTION = [
-  `Vijayawada is one of the major cities of Andhra Pradesh, located on the banks of the River Krishna beside the Eastern Ghats (Indrakeeladri Hills). It is popularly known as the “Business Capital of Andhra Pradesh” and stands as the second largest city in the state.`,
-  `The city has been recognized as a “Global City of the Future” by McKinsey and is a major hub for trade, transport, agriculture, and tourism. With strong economic growth, it is one of the fastest developing cities in South India. Top attractions include the famous Kanaka Durga Temple, Undavalli Caves, the iconic Prakasam Barrage, and several ancient cultural and spiritual sites.`,
-  `From peaceful islands like Bhavani Island to bustling commercial streets and vibrant food culture, the city offers a perfect blend of nature, devotion, and urban excitement. Its central location makes it a preferred starting point to explore the coastal belt and the Amaravati region.`,
-  `Vijayawada also boasts efficient air, rail, and road connectivity, making it one of India's most accessible cities.`,
+  `Vijayawada, the second-largest city in Andhra Pradesh, lies on the banks of the Krishna River, flanked by the Indrakeeladri Hills. Known as “The Business Capital of Andhra Pradesh,” it is a key center for commerce, politics, and agriculture. Major attractions include the Kanaka Durga Temple, Prakasam Barrage, Undavalli Caves, Bhavani Island, Gandhi Hill, and Mogalarajapuram Caves.`,
+  `Weather in February: February offers pleasant weather, with temperatures ranging between 20°C to 30°C, making it an ideal time for sightseeing. During April (conference dates: 09–10 April 2027), the climate is pleasant and sunny, welcoming delegates from across the globe.`,
+  `Vijayawada is well connected by air, rail, and road. The Vijayawada International Airport (13.5 km from the city) operates flights to Delhi, Mumbai, Chennai, Bengaluru, Hyderabad, and more. The Vijayawada Railway Junction is a major station on the Chennai-Howrah and Chennai-Delhi routes. The city also has a robust road network with frequent bus services from various parts of India. Vijayawada’s strategic location, tourist spots, and connectivity make it a perfect destination for both business and leisure travel.`
 ];
 
 const DEFAULT_CONTACTS = [
   {
     name: 'Dr. K. V. Sambasiva Rao',
-    designation: 'Professor & Dean, CSE, NRIIT',
-    email: 'kvsrao@nriit.edu.in',
+    designation: 'Professor & Dean, R & D, Dr RVR NRIIT (DTBU)',
+    email: 'icraiq2it27@nriit.edu.in',
   },
   {
-    name: 'Dr. D. Suneetha',
-    designation: 'Professor & HOD, CSE, NRIIT',
-    email: 'hod.csenriit@gmail.com',
+    name: 'Dr. D. Sunitha',
+    designation: 'HOD & Dean : School of Computer Studies, Dr RVR NRIIT (DTBU)',
+    email: 'icraiq2it27@nriit.edu.in',
   },
 ];
 
 const DEFAULT_ADDRESS = [
+  'Dr RVR NRI Institute of Technology, Deemed to be University',
   'Pothavarappadu, Agiripalli Mandalam',
-  'Krishna District, Andhra Pradesh, India',
+  'Eluru District, Andhra Pradesh, India',
   'Pin – 521212',
 ];
 
@@ -87,9 +87,9 @@ const DEFAULT_COORDINATES = {
 };
 
 const DEFAULT_TRAVEL = {
-  air: `Vijayawada International Airport (13.5 km) has flights to Delhi, Mumbai, Chennai, Bengaluru, Hyderabad, Tirupati, Vizag, etc.`,
-  rail: `Vijayawada Junction is one of India's largest junctions, located on Chennai–Howrah & Chennai–Delhi main routes.`,
-  road: `Regular APSRTC & private buses connect Vijayawada to all major cities in South and North India.`,
+  air: `Vijayawada International Airport (13.5 km from the city, ~22 km from campus) operates flights to Delhi, Mumbai, Chennai, Bengaluru, Hyderabad, and more.`,
+  rail: `Vijayawada Railway Junction is a major station on the Chennai-Howrah and Chennai-Delhi routes with frequent trains.`,
+  road: `The city has a robust road network with frequent bus services from various parts of India along the Vijayawada–Nuzvid State Highway.`,
 };
 
 const DEFAULT_GALLERY = [
@@ -127,7 +127,7 @@ const getValue = (value, fallback) =>
 const getMapQuery = (data) =>
   getValue(
     data.organizer?.mapQuery,
-    'NRI Institute of Technology, Pothavarappadu, Agiripalli, Andhra Pradesh'
+    'Dr RVR NRI Institute of Technology, Pothavarappadu, Agiripalli Mandalam, Andhra Pradesh 521212'
   );
 
 function TravelCard({ icon: Icon, title, children, centered = false }) {

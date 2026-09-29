@@ -4,9 +4,9 @@ import { Mail, Facebook, Twitter, Youtube, Linkedin, Instagram } from 'lucide-re
 import { conferenceData } from '../data/conferenceData';
 
 const DEFAULT_TITLE =
-  '5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence, and Inclusive Technologies';
+  '5th International Conference on Recent Advancements in Artificial Intelligence and Quantum Intelligence and Inclusive Technologies';
 
-const DEFAULT_SHORT_TITLE = 'ICRAIIQ2IT 2027';
+const DEFAULT_SHORT_TITLE = 'ICRAIQ2IT - 2027';
 
 const NAV_PRIMARY = [
   { label: 'HOME', to: '/' },
@@ -43,13 +43,14 @@ export const Footer = () => {
 
   const organizerName = getDataValue(
     data.organizer?.name,
-    'NRI Institute of Technology'
+    'Dr RVR NRI Institute of Technology (Deemed to be University)'
   );
 
   const email =
     data.contact?.email ||
-    data.email ||
-    'conference@nriit.edu.in';
+    data.organizer?.email ||
+    data.links?.contactEmail ||
+    'icraiq2it27@nriit.edu.in';
 
   return (
     <footer className="bg-[#f1f3f6] text-[#263653]">
@@ -64,12 +65,12 @@ export const Footer = () => {
             />
             <div>
               <div className="text-sm font-extrabold leading-tight text-[#1d315f]">
-                NRI Institute of
+                Dr RVR NRI Institute of
                 <br />
                 <span className="text-[#f97316]">Technology</span>
               </div>
               <div className="text-[11px] font-semibold text-slate-500">
-                Autonomous • NAAC A+
+                Deemed to be University • NAAC A+
               </div>
             </div>
           </Link>
@@ -109,15 +110,31 @@ export const Footer = () => {
           </h3>
 
           <div className="mt-4 space-y-2.5">
-            {NAV_SECONDARY.map((item) => (
-              <Link
-                key={item.label}
-                to={item.to}
-                className="block text-sm text-slate-600 transition hover:text-[#f97316]"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {NAV_SECONDARY.map((item) => {
+              if (item.label === 'BROCHURE') {
+                return (
+                  <a
+                    key={item.label}
+                    href="/brocher/ICRAIQ2IT%20-%202027%20Brochure%20-%20English%2029092026.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-sm text-slate-600 transition hover:text-[#f97316]"
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
+
+              return (
+                <Link
+                  key={item.label}
+                  to={item.to}
+                  className="block text-sm text-slate-600 transition hover:text-[#f97316]"
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
 
             <Link
               to="/important-dates"

@@ -36,44 +36,52 @@ import { conferenceData } from '../data/conferenceData';
 */
 
 const DEFAULT_BANK_DETAILS = {
-  accountName: 'The Principal, NRI Institute of Technology, Agiripalli',
+  accountName: 'The Principal, Dr RVR NRI Institute of Technology (Deemed to be University), Agiripalli',
   bankName: 'BANK OF BARODA',
-  accountNumber: '',
-  ifsc: '',
-  branch: '',
+  accountNumber: 'Available upon submission / invoice request',
+  ifsc: 'BARB0AGIRIP',
+  branch: 'Agiripalli / Pothavarappadu',
 };
 
 const DEFAULT_FEES = [
   {
-    category: 'Research Scholar / Student',
-    indian: 'To be announced',
-    international: 'To be announced',
+    category: 'Conference Registration Fee (Base Participation)',
+    indian: '₹ 3,500',
+    international: '$ 75 USD',
   },
   {
-    category: 'Faculty / Academic',
-    indian: 'To be announced',
-    international: 'To be announced',
+    category: 'Ph.D Scholars, PG / UG Students (Publication Fee)',
+    indian: '₹ 6,500',
+    international: '150 USD',
   },
   {
-    category: 'Industry / Professional',
-    indian: 'To be announced',
-    international: 'To be announced',
+    category: 'Academicians / Faculty Members (Publication Fee)',
+    indian: '₹ 7,500',
+    international: '150 USD',
   },
   {
-    category: 'Listener / Attendee',
-    indian: 'To be announced',
-    international: 'To be announced',
+    category: 'Industry Professionals (Publication Fee)',
+    indian: '₹ 10,000',
+    international: '150 USD',
+  },
+  {
+    category: 'International Participants (Publication Fee)',
+    indian: '₹ 12,500',
+    international: '150 USD',
   },
 ];
 
 const DEFAULT_NOTES = [
-  'At least one author must register & present the paper at the venue.',
-  'No modification in paper after final submission date.',
-  'Publication options: Scopus indexed proceedings (publication fee) or Online Proceedings with ISBN (non-Scopus).',
+  'Faculty members, research scholars, postgraduate students from AICTE-approved institutions, and industry professionals are eligible to apply.',
+  'Conference Registration Fee: ₹ 3,500. Publication Fee: Students/Scholars ₹ 6,500, Academicians ₹ 7,500, Industry Professionals ₹ 10,000, International $150 USD.',
+  'The conference proceedings shall be published in Taylor & Francis / American Institute of Physics (AIP) / Springer group / Elsevier / EasyChair subject to approval and confirmation.',
+  'All accepted papers will be compiled into the official conference proceedings and will have Scopus indexation.',
+  'Mode of Conference: Blended (Online & In-Person).',
+  'All participants will be issued a Participation Certificate. Paper presenters will receive a Paper Presentation cum Publication Certificate.'
 ];
 
 const DEFAULT_ORGANIZER_STATEMENT =
-  'Authors of accepted papers are required to complete registration and present their work according to the conference registration and presentation requirements.';
+  'Faculty members, research scholars, postgraduate students from AICTE-approved institutions, and industry professionals are eligible to participate. All accepted and presented papers will be published in official proceedings with Scopus indexation.';
 
 const getValue = (value, fallback) =>
   value === undefined || value === null || value === '' ? fallback : value;
@@ -209,7 +217,7 @@ export const RegistrationPage = () => {
 
   const conferenceTitle = getValue(
     data.shortTitle || data.title,
-    'ICRAIIQ2IT 2027'
+    'ICRAIQ2IT - 2027'
   );
 
   const openRegistrationForm = () => {

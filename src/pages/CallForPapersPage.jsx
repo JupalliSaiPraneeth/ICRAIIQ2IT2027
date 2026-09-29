@@ -7,101 +7,77 @@ import {
   ShieldCheck,
   Lock,
   ExternalLink,
+  Calendar,
+  Layers
 } from 'lucide-react';
 import { conferenceData } from '../data/conferenceData';
 
-/*
-  ICRAIIQ2IT 2027 — Call for Papers / Author Guidelines
-
-  Redesigned from the supplied reference screenshots.
-
-  Layout:
-  ┌─────────────────────────────────────────────────────────────┐
-  │ CALL FOR PAPERS              PAPER SUBMISSION GUIDELINES    │
-  │                                                             │
-  ├─────────────────────────────────────────────────────────────┤
-  │ TOPICS FOR SUBMISSIONS       IMPORTANT DATES                │
-  └─────────────────────────────────────────────────────────────┘
-
-  Visual direction:
-  - Clean white academic-conference layout
-  - Pink #F97316 section branding
-  - Navy / dark-blue body text
-  - No ScientificBackground
-  - No dark futuristic cards
-  - Responsive desktop / tablet / mobile
-  - Data-first rendering from conferenceData where available
-*/
-
 const DEFAULT_TOPICS = [
-  'Quantum Computing in AI',
-  'Explainable AI and Ethical AI',
-  'AI for Social Good',
-  'Fuzzy Systems and Applications',
-  'Evolutionary Algorithms and Swarm Intelligence',
-  'Neural Networks and Cognitive Computing',
-  'Intelligent Decision Support Systems',
-  'Quantum Intelligence in Data Mining',
-  'Computational Neuroscience',
-  'Assistive Technologies for Differentially-abled Individuals',
-  'AI for Accessibility and Inclusive Design',
-  'Smart Devices and Ubiquitous Computing',
-  'Blockchain Applications in AI and IoT',
-  'Augmented and Virtual Reality in Intelligent Systems',
-  'Internet of Things (IoT) and Smart Cities',
-  'Cybersecurity and Privacy in AI Systems',
-  'Human-Computer Interaction and User Experience',
-  'Autonomous Vehicles and Robotics',
-  'Applications of AI',
+  'Machine Learning and Deep Learning Applications',
+  'Generative AI and Large Language Models',
+  'Quantum Inspired Computing and Algorithms',
+  'Data Science, Big Data Analytics, and Business Intelligence',
+  'Explainable, Ethical, and Responsible AI',
+  'Edge Computing and Intelligent Automation',
+  'Internet of Things (IoT) and Smart Systems',
+  'Cloud Computing and Distributed Systems',
+  'Cybersecurity, Blockchain, and Digital Forensics',
+  'Computer Vision and Image Processing',
+  'Natural Language Processing and Speech Technologies',
+  'Human–Computer Interaction and Cognitive Computing',
+  'AI in Healthcare, Education, Agriculture, and Smart Cities',
+  'AI for Sustainable Development and Climate Solutions',
+  'Quantum Cryptography and Intelligent Security Systems',
+  'Embedded Systems and Smart Sensor Technologies',
+  'High-Performance Computing and Next-Generation Networks',
+  'Deep-Tech Innovations and Emerging Technologies',
+  'AI Applications in Finance, Manufacturing, and Logistics',
+  'Innovation Ecosystems, Startups, and Technology Entrepreneurship',
+  'Interdisciplinary Applications of AI and Quantum Inspired Technologies'
 ];
 
 const DEFAULT_GUIDELINES = [
-  'Background, Motivation, and Objective',
-  'Statement of Contribution, Methodology',
-  'Results, Discussions and Conclusions',
-  'Maximum number of pages is 8 in 8.5 × 11-inch paper single-column template.',
-  'The Paper format will be: AIP / publisher author template.',
-  'Language: English is the official language of the conference. The paper should be written and presented only in English.',
-  'Plagiarism must not be above 10% to 15%.',
+  'Maximum number of pages is 6 in 8.25 × 11 inch paper single-column template.',
+  'The Paper format will be IEEE, A4 USA FORMAT SUBMITTED IN LATEX / WORD FORMAT.',
+  'Plagiarism and AI Similarity must not be above 10 % (without references); check should be performed by the authors and the report must also be attached along with the paper.',
   'Few papers would be allowed as poster presentations.',
+  'Paper submission Link: MICROSOFT CMT',
+  'All accepted and presented papers will be published in the conference proceedings with Scopus indexation.'
 ];
 
 const DEFAULT_DATES = [
   {
-    label: 'Submission deadline for Full-Text Paper:',
-    date: 'April 05, 2027',
+    label: 'Submission of Manuscripts:',
+    date: '24th Jan, 2027',
   },
   {
-    label: 'Notification of Acceptance/Rejection:',
-    date: 'April 15, 2027',
+    label: 'Notification of Acceptance:',
+    date: '24th Feb, 2027',
   },
   {
-    label:
-      'Last date for Camera-ready Full paper submission (with modification) & Registration with Fees:',
-    date: 'April 30, 2027',
+    label: 'Registration Deadline:',
+    date: '10th Mar, 2027',
+  },
+  {
+    label: 'Camera Ready Submission:',
+    date: '30th Mar, 2027',
   },
   {
     label: 'Conference Dates:',
-    date: 'May 08 – 09, 2027',
+    date: '09–10 Apr, 2027',
   },
 ];
 
 const DEFAULT_CALL_TEXT = [
-  'Original contributions based on the results of research and developments are solicited. Prospective authors are requested to submit their papers in the prescribed conference paper format. All accepted and presented papers will be considered for publication through the conference publication arrangements.',
-  'ICRAIIQ2IT 2027 invites academicians, researchers, industry professionals and research scholars to submit their original, previously unpublished and high-quality research papers. The conference will be focused on addressing research challenges in the following fields, but are not limited to the topics listed below.',
+  'We warmly invite Faculty members, research scholars, postgraduate students from AICTE-approved institutions, and industry professionals to participate and submit original, unpublished, and high-quality research papers in the areas of Artificial Intelligence, Quantum Inspired Computing, and Deep Technology Innovations.',
+  'Manuscripts should be prepared in the prescribed IEEE format and limited to 6 pages. All accepted and presented papers will be published in the conference proceedings. The conference will be focused on addressing research challenges across key cutting-edge domains.'
 ];
-
-const getValue = (value, fallback) =>
-  value === undefined || value === null || value === '' ? fallback : value;
-
-const getArray = (value, fallback) =>
-  Array.isArray(value) && value.length > 0 ? value : fallback;
 
 function SectionIcon({ label }) {
   return (
     <div
       aria-hidden="true"
-      className="flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-2xl bg-[#F97316] text-[18px] font-extrabold text-white shadow-[0_5px_10px_rgba(220,47,104,0.18)] sm:h-[61px] sm:w-[61px]"
+      className="flex h-[54px] w-[54px] shrink-0 items-center justify-center rounded-2xl bg-[#F97316] text-[16px] font-extrabold text-white shadow-[0_5px_10px_rgba(249,115,22,0.18)]"
     >
       {label}
     </div>
@@ -112,8 +88,7 @@ function SectionTitle({ code, title }) {
   return (
     <div className="flex items-center gap-3">
       <SectionIcon label={code} />
-
-      <h2 className="text-[24px] font-extrabold uppercase leading-tight tracking-[-0.01em] text-[#F97316] sm:text-[25px]">
+      <h2 className="text-[22px] font-extrabold uppercase leading-tight tracking-[-0.01em] text-[#F97316] sm:text-[24px]">
         {title}
       </h2>
     </div>
@@ -122,10 +97,13 @@ function SectionTitle({ code, title }) {
 
 function GuidelineList({ items }) {
   return (
-    <ol className="mt-6 space-y-3.5 pl-7 text-[15px] leading-6 text-[#173c69] marker:text-[#173c69] sm:text-[16px]">
+    <ol className="mt-6 space-y-3.5 pl-6 text-[15px] leading-6 text-[#173c69] sm:text-[16px]">
       {items.map((item, index) => (
-        <li key={`${item}-${index}`} className="pl-1">
-          {item}
+        <li key={index} className="flex items-start gap-2.5">
+          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange-100 text-xs font-bold text-orange-600 mt-0.5">
+            {index + 1}
+          </span>
+          <span className="text-slate-700">{item}</span>
         </li>
       ))}
     </ol>
@@ -134,13 +112,14 @@ function GuidelineList({ items }) {
 
 function TopicGrid({ topics }) {
   return (
-    <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {topics.map((topic, index) => (
         <div
-          key={`${topic}-${index}`}
-          className="flex min-h-[63px] items-center rounded-lg border border-orange-100 bg-[#FFF7ED] px-4 py-3 text-[14px] leading-5 text-[#173c69] shadow-[0_2px_5px_rgba(15,23,42,0.08)] transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:bg-orange-50 hover:shadow-md"
+          key={index}
+          className="flex min-h-[58px] items-center gap-2.5 rounded-xl border border-orange-100 bg-[#FFF7ED] px-4 py-3 text-[13.5px] font-medium leading-snug text-[#173c69] shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:bg-orange-50 hover:shadow-md"
         >
-          {topic}
+          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#F97316]" />
+          <span>{topic}</span>
         </div>
       ))}
     </div>
@@ -149,18 +128,19 @@ function TopicGrid({ topics }) {
 
 function DatesTable({ dates }) {
   return (
-    <div className="mt-5 overflow-hidden rounded-xl border border-orange-100 bg-white shadow-[0_2px_8px_rgba(15,23,42,0.06)]">
+    <div className="mt-5 overflow-hidden rounded-xl border border-orange-100 bg-white shadow-sm">
       {dates.map((item, index) => (
         <div
-          key={`${item.label}-${index}`}
-          className={`grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_136px] ${index !== dates.length - 1 ? 'border-b border-orange-200' : ''
-            }`}
+          key={index}
+          className={`grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_160px] ${
+            index !== dates.length - 1 ? 'border-b border-orange-100' : ''
+          }`}
         >
-          <div className="flex min-h-[80px] items-center bg-white px-4 py-4 text-[14px] font-medium leading-6 text-[#173c69] sm:px-4 sm:text-[15px]">
+          <div className="flex min-h-[64px] items-center bg-white px-5 py-3 text-[14px] font-semibold text-[#173c69]">
             {item.label}
           </div>
 
-          <div className="flex min-h-[80px] items-center justify-start bg-[#FFFBF8] px-4 py-4 text-left text-[14px] font-medium leading-6 text-[#173c69] sm:justify-center sm:text-center">
+          <div className="flex min-h-[64px] items-center justify-start sm:justify-center bg-orange-50/50 px-5 py-3 text-[14px] font-bold text-[#ea580c]">
             {item.date}
           </div>
         </div>
@@ -172,96 +152,26 @@ function DatesTable({ dates }) {
 export const CallForPapersPage = () => {
   const data = conferenceData || {};
 
-  const callText = getArray(
-    data.callForPapersText || data.callText,
-    DEFAULT_CALL_TEXT
-  );
-
-  const topics = getArray(
-    data.submissionTopics || data.topicsForSubmission || data.topics,
-    DEFAULT_TOPICS
-  );
-
-  const guidelines = getArray(
-    data.paperSubmissionGuidelines || data.submissionGuidelines,
-    DEFAULT_GUIDELINES
-  );
+  const callText = DEFAULT_CALL_TEXT;
+  const topics = data.topicsList || DEFAULT_TOPICS;
+  const guidelines = data.publicationDetails?.guidelines || DEFAULT_GUIDELINES;
 
   const importantDates = useMemo(() => {
-    if (
-      Array.isArray(data.importantDates) &&
-      data.importantDates.length > 0
-    ) {
-      return data.importantDates.map((item) => ({
-        label:
-          item.label ||
-          item.title ||
-          item.name ||
-          'Conference milestone',
-        date: item.date || item.value || '',
+    if (Array.isArray(data.importantDatesList) && data.importantDatesList.length > 0) {
+      return data.importantDatesList.map((item) => ({
+        label: `${item.title}:`,
+        date: item.date,
       }));
     }
+    return DEFAULT_DATES;
+  }, [data.importantDatesList]);
 
-    const dates = data.dates || {};
-
-    return [
-      {
-        label: 'Submission deadline for Full-Text Paper:',
-        date: getValue(
-          dates.submissionDeadline,
-          DEFAULT_DATES[0].date
-        ),
-      },
-      {
-        label: 'Notification of Acceptance/Rejection:',
-        date: getValue(
-          dates.notificationDate || dates.notification,
-          DEFAULT_DATES[1].date
-        ),
-      },
-      {
-        label:
-          'Last date for Camera-ready Full paper submission (with modification) & Registration with Fees:',
-        date: getValue(
-          dates.cameraReadyDate || dates.cameraReady,
-          DEFAULT_DATES[2].date
-        ),
-      },
-      {
-        label: 'Conference Dates:',
-        date: getValue(
-          dates.conferenceDates || dates.conferenceDate,
-          DEFAULT_DATES[3].date
-        ),
-      },
-    ];
-  }, [data.importantDates, data.dates]);
-
-  const submissionUrl =
-    data.submissionUrl ||
-    data.paperSubmissionUrl ||
-    data.links?.submission ||
-    '';
-
-  const templateDocUrl =
-    data.templateDocUrl ||
-    data.links?.wordTemplate ||
-    '#template-doc';
-
-  const templateLatexUrl =
-    data.templateLatexUrl ||
-    data.links?.latexTemplate ||
-    '#template-latex';
-
-  const formatText = getValue(
-    data.paperFormat,
-    'Max 8 Pages | Prescribed Conference Format'
-  );
-
-  const publisherText = getValue(
-    data.publisher,
-    'Conference Publication'
-  );
+  const ieeeTemplateUrl =
+    data.publicationDetails?.ieeeTemplateUrl ||
+    'https://www.ieee.org/conferences/publishing/templates';
+  const ieeeDocxUrl =
+    data.publicationDetails?.ieeeDocxUrl ||
+    'https://ieee-org.widen.net/content/ge5anzdecd/original/conference-template-a4.docx';
 
   return (
     <main className="min-h-screen bg-white text-[#17213a]">
@@ -275,9 +185,9 @@ export const CallForPapersPage = () => {
                 CALL FOR PAPERS
                ------------------------------------------------- */}
             <section>
-              <SectionTitle code="CF" title="Call for Papers" />
+              <SectionTitle code="CF" title="Call for Papers (CFP)" />
 
-              <div className="mt-6 max-w-[760px] space-y-5">
+              <div className="mt-6 max-w-[760px] space-y-4">
                 {callText.map((paragraph, index) => (
                   <p
                     key={index}
@@ -288,21 +198,23 @@ export const CallForPapersPage = () => {
                 ))}
               </div>
 
-              <div className="mt-6 rounded-r-lg border-l-4 border-[#F97316] bg-[#FFF7ED] px-4 py-4 text-[13px] leading-6 text-[#173c69] shadow-sm">
-                <strong className="font-extrabold text-[#17213a]">
-                  Conference:
-                </strong>{' '}
-                ICRAIIQ2IT 2027
-                <span className="mx-2 text-slate-400">|</span>
-                <strong className="font-extrabold text-[#17213a]">
-                  Format:
-                </strong>{' '}
-                {formatText}
-                <span className="mx-2 text-slate-400">|</span>
-                <strong className="font-extrabold text-[#17213a]">
-                  Publisher:
-                </strong>{' '}
-                {publisherText}
+              <div className="mt-6 rounded-r-xl border-l-4 border-[#F97316] bg-[#FFF7ED] p-4 text-[13.5px] leading-6 text-[#173c69] shadow-sm space-y-1">
+                <div>
+                  <strong className="font-extrabold text-[#17213a]">Conference:</strong>{' '}
+                  ICRAIQ2IT - 2027 (5th Edition)
+                </div>
+                <div>
+                  <strong className="font-extrabold text-[#17213a]">Dates & Venue:</strong>{' '}
+                  09 – 10, April 2027 | Vijayawada, India | Blended Mode
+                </div>
+                <div>
+                  <strong className="font-extrabold text-[#17213a]">Format & Limit:</strong>{' '}
+                  IEEE A4 USA Format (LaTeX / Word) • Maximum 6 Pages
+                </div>
+                <div>
+                  <strong className="font-extrabold text-[#17213a]">Indexation:</strong>{' '}
+                  Official Conference Proceedings with Scopus Indexation
+                </div>
               </div>
             </section>
 
@@ -310,29 +222,28 @@ export const CallForPapersPage = () => {
                 PAPER SUBMISSION GUIDELINES
                ------------------------------------------------- */}
             <section>
-              <SectionTitle
-                code="PG"
-                title="Paper Submission Guidelines"
-              />
+              <SectionTitle code="PG" title="Paper Submission Guidelines" />
 
               <GuidelineList items={guidelines} />
 
-              {submissionUrl && (
-                <div className="mt-4 text-[15px] leading-7 text-[#173c69]">
-                  <strong className="font-bold text-[#17213a]">
-                    Paper Submission Link:
-                  </strong>{' '}
-                  <a
-                    href={submissionUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="break-all text-[#1769aa] underline decoration-[#1769aa]/40 underline-offset-2 hover:text-[#F97316]"
-                  >
-                    {submissionUrl}
-                    <ExternalLink className="ml-1 inline-block h-3.5 w-3.5" />
-                  </a>
+              <div className="mt-6 p-4 rounded-xl border border-orange-200 bg-orange-50/40">
+                <div className="text-sm font-bold text-[#1d315f] mb-2 flex items-center gap-2">
+                  <Lock className="h-4 w-4 text-[#F97316]" />
+                  Paper Submission Portal: MICROSOFT CMT
                 </div>
-              )}
+                <p className="text-xs text-slate-600 mb-3">
+                  Authors must submit their original papers adhering strictly to the IEEE conference format with plagiarism below 10%.
+                </p>
+                <a
+                  href="https://cmt3.research.microsoft.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg bg-[#F97316] px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition hover:bg-[#ea580c]"
+                >
+                  Go to Microsoft CMT Portal
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
             </section>
           </div>
         </div>
@@ -343,15 +254,15 @@ export const CallForPapersPage = () => {
          ========================================================= */}
       <section className="border-t border-orange-100 bg-white px-5 pb-14 pt-8 sm:px-8 lg:px-10 lg:pb-16 lg:pt-10">
         <div className="mx-auto max-w-[1540px]">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(500px,0.95fr)] lg:gap-14">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(420px,0.8fr)] lg:gap-14">
             {/* -------------------------------------------------
                 TOPICS
                ------------------------------------------------- */}
             <section>
-              <SectionTitle
-                code="TP"
-                title="Topics for Submissions"
-              />
+              <SectionTitle code="TP" title="Conference Topics" />
+              <p className="mt-2 text-sm text-slate-500">
+                The conference addresses research challenges across the following domains (not limited to):
+              </p>
 
               <TopicGrid topics={topics} />
             </section>
@@ -361,6 +272,9 @@ export const CallForPapersPage = () => {
                ------------------------------------------------- */}
             <section>
               <SectionTitle code="ID" title="Important Dates" />
+              <p className="mt-2 text-sm text-slate-500">
+                Key conference milestones and paper submission deadlines:
+              </p>
 
               <DatesTable dates={importantDates} />
             </section>
@@ -370,51 +284,37 @@ export const CallForPapersPage = () => {
 
       {/* =========================================================
           DOWNLOAD TEMPLATES
-          Kept compact so it does not dominate the reference
-          layout, but remains available for authors.
          ========================================================= */}
       <section className="border-t border-orange-100 bg-[#FFFBF8] px-5 py-9 sm:px-8 lg:px-10">
         <div className="mx-auto flex max-w-[1100px] flex-col items-center justify-between gap-5 rounded-xl border border-orange-100 bg-white px-6 py-5 text-center shadow-sm sm:flex-row sm:text-left">
           <div>
             <h2 className="text-base font-extrabold text-[#17213a]">
-              Download Paper Templates
+              Download IEEE Paper Templates (A4)
             </h2>
             <p className="mt-1 text-sm text-slate-500">
-              Use the official template package when preparing your manuscript.
+              Prepare your manuscript according to the official IEEE template.
             </p>
           </div>
 
           <div className="flex flex-wrap justify-center gap-3">
             <a
-              href={templateDocUrl}
-              target={templateDocUrl !== '#template-doc' ? '_blank' : undefined}
-              rel={
-                templateDocUrl !== '#template-doc'
-                  ? 'noopener noreferrer'
-                  : undefined
-              }
-              className="inline-flex items-center gap-2 rounded-lg border border-[#F97316] px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-[#F97316] transition-all hover:bg-[#F97316] hover:text-white"
+              href={ieeeDocxUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-[#F97316] bg-white px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-[#F97316] transition-all hover:bg-[#F97316] hover:text-white"
             >
               <Download className="h-4 w-4" />
-              Word Template
+              Download IEEE A4 Template (DOCX)
             </a>
 
             <a
-              href={templateLatexUrl}
-              target={
-                templateLatexUrl !== '#template-latex'
-                  ? '_blank'
-                  : undefined
-              }
-              rel={
-                templateLatexUrl !== '#template-latex'
-                  ? 'noopener noreferrer'
-                  : undefined
-              }
-              className="inline-flex items-center gap-2 rounded-lg border border-[#F97316] px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-[#F97316] transition-all hover:bg-[#F97316] hover:text-white"
+              href={ieeeTemplateUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-[#F97316] px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white transition-all hover:bg-[#ea580c]"
             >
-              <Download className="h-4 w-4" />
-              LaTeX Package
+              <ExternalLink className="h-4 w-4" />
+              IEEE LaTeX / Formatting Portal
             </a>
           </div>
         </div>

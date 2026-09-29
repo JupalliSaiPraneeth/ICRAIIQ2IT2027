@@ -47,7 +47,7 @@ export const SubmissionModal = ({ isOpen, onClose }) => {
               </div>
               <h4 className="text-2xl font-extrabold text-white">Submission Token Generated!</h4>
               <p className="text-sm text-slate-300 max-w-md mx-auto">
-                Your preliminary paper submission request for <strong className="text-brand-400">{formData.paperTitle || 'Manuscript'}</strong> has been registered under reference <code className="px-2 py-1 rounded bg-navy-800 font-mono text-brand-400 font-bold">ICRAIIQ2IT-2027-{Math.floor(1000 + Math.random() * 9000)}</code>.
+                Your preliminary paper submission request for <strong className="text-brand-400">{formData.paperTitle || 'Manuscript'}</strong> has been registered under reference <code className="px-2 py-1 rounded bg-navy-800 font-mono text-brand-400 font-bold">ICRAIQ2IT-2027-{Math.floor(1000 + Math.random() * 9000)}</code>.
               </p>
               <div className="pt-4">
                 <button
@@ -97,7 +97,7 @@ export const SubmissionModal = ({ isOpen, onClose }) => {
                   <input
                     type="text"
                     required
-                    placeholder="NRI Institute of Technology"
+                    placeholder="Dr RVR NRI Institute of Technology"
                     value={formData.affiliation}
                     onChange={(e) => setFormData({ ...formData, affiliation: e.target.value })}
                     className="w-full px-3 py-2 rounded-xl bg-navy-850 border border-white/10 text-white placeholder-slate-500 text-sm focus:border-brand-500 outline-none"

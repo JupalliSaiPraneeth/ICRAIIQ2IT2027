@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import ScrollProgress from './components/ScrollProgress';
 import BackToTop from './components/BackToTop';
 
 // Pages
@@ -36,7 +35,6 @@ export function App() {
   return (
     <Router>
       <ScrollToTop />
-      <ScrollProgress />
       <div className="flex flex-col min-h-screen bg-white text-slate-900 font-sans selection:bg-[#d92d67] selection:text-white">
         <Navbar />
         <main className="flex-grow">
