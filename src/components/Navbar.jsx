@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Download, ExternalLink } from 'lucide-react';
 import { conferenceData } from '../data/conferenceData';
@@ -71,6 +71,21 @@ export const Navbar = () => {
     DEFAULT_SHORT_TITLE
   );
 
+  const titleParts = useMemo(() => {
+    const splitKey = 'and Inclusive Technologies';
+    if (conferenceTitle.includes(splitKey)) {
+      const idx = conferenceTitle.indexOf(splitKey);
+      return {
+        line1: conferenceTitle.slice(0, idx).trim(),
+        line2: splitKey,
+      };
+    }
+    return {
+      line1: conferenceTitle,
+      line2: '',
+    };
+  }, [conferenceTitle]);
+
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
     setMobileSouvenirOpen(false);
@@ -86,73 +101,95 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b border-slate-200 transition-all duration-300 ${
+      className={`sticky top-0 z-50 border-b border-slate-200 transition-[box-shadow,background-color] duration-200 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-[0_4px_20px_rgba(15,23,42,0.10)]'
-          : 'bg-white shadow-[0_2px_12px_rgba(15,23,42,0.05)]'
+          ? 'bg-white/95 backdrop-blur-md shadow-[0_4px_20px_rgba(15,23,42,0.08)]'
+          : 'bg-white shadow-[0_2px_12px_rgba(15,23,42,0.04)]'
       }`}
     >
 
       {/* =========================================================
-          CONFERENCE TITLE (Compact Padding, Smooth Scale on Scroll)
+          CONFERENCE TITLE & BADGE (Rock-solid layout, zero jiggling)
       ========================================================= */}
-      <div
-        className={`mx-auto max-w-[1500px] px-4 transition-all duration-300 sm:px-6 lg:px-8 ${
-          isScrolled ? 'pb-1 pt-1.5' : 'pb-2 pt-3'
-        }`}
-      >
+      <div className="mx-auto max-w-[1500px] px-4 py-2 sm:px-6 sm:py-2.5 lg:px-8">
         <Link
           to="/"
-          aria-label="ICRAIQ2IT - 2027 home"
+          aria-label={`${conferenceShortTitle} home`}
           className="group mx-auto block max-w-[1400px] text-center"
         >
-          <h1
-            className={`
-              font-extrabold
-              leading-snug
-              tracking-[-0.02em]
-              text-[#1D315F]
-              transition-all
-              duration-300
-              ${
-                isScrolled
-                  ? 'text-[17px] sm:text-[20px] lg:text-[22px]'
-                  : 'text-[20px] sm:text-[24px] lg:text-[28px]'
-              }
-            `}
-          >
-            {conferenceTitle}
-
-            {/* ORANGE ROUNDED CONFERENCE BADGE */}
-            <span
-              className="
-                ml-2
-                inline-flex
-                translate-y-[-1px]
-                items-center
-                rounded-full
-                border
-                border-[#F59E0B]
-                bg-[#FFF7E6]
-                px-3
-                py-1
-                align-middle
-                text-[0.75em]
-                font-black
-                tracking-[-0.01em]
-                text-[#E87500]
-                shadow-[0_2px_6px_rgba(245,158,11,0.12)]
-                transition-all
-                duration-300
-                group-hover:border-[#EA580C]
-                group-hover:bg-[#F59E0B]
-                group-hover:text-white
-                sm:px-4
-                sm:py-1
-              "
-            >
-              {conferenceShortTitle}
-            </span>
+          <h1 className="text-[17px] font-extrabold leading-snug tracking-[-0.02em] text-[#1D315F] sm:text-[21px] lg:text-[24px] xl:text-[26px]">
+            {titleParts.line2 ? (
+              <>
+                <span className="block">
+                  {titleParts.line1}
+                </span>
+                <span className="mt-0.5 inline-flex flex-wrap items-center justify-center gap-2">
+                  <span>{titleParts.line2}</span>
+                  {/* ORANGE ROUNDED CONFERENCE BADGE */}
+                  <span
+                    className="
+                      inline-flex
+                      translate-y-[-1px]
+                      items-center
+                      rounded-full
+                      border
+                      border-[#F59E0B]
+                      bg-[#FFF7E6]
+                      px-3
+                      py-0.5
+                      align-middle
+                      text-[0.72em]
+                      font-black
+                      tracking-[-0.01em]
+                      text-[#E87500]
+                      shadow-[0_2px_6px_rgba(245,158,11,0.12)]
+                      transition-colors
+                      duration-200
+                      group-hover:border-[#EA580C]
+                      group-hover:bg-[#F59E0B]
+                      group-hover:text-white
+                      sm:px-3.5
+                      sm:py-0.5
+                    "
+                  >
+                    {conferenceShortTitle}
+                  </span>
+                </span>
+              </>
+            ) : (
+              <>
+                <span>{conferenceTitle}</span>
+                <span
+                  className="
+                    ml-2
+                    inline-flex
+                    translate-y-[-1px]
+                    items-center
+                    rounded-full
+                    border
+                    border-[#F59E0B]
+                    bg-[#FFF7E6]
+                    px-3
+                    py-0.5
+                    align-middle
+                    text-[0.72em]
+                    font-black
+                    tracking-[-0.01em]
+                    text-[#E87500]
+                    shadow-[0_2px_6px_rgba(245,158,11,0.12)]
+                    transition-colors
+                    duration-200
+                    group-hover:border-[#EA580C]
+                    group-hover:bg-[#F59E0B]
+                    group-hover:text-white
+                    sm:px-3.5
+                    sm:py-0.5
+                  "
+                >
+                  {conferenceShortTitle}
+                </span>
+              </>
+            )}
           </h1>
         </Link>
       </div>
@@ -225,9 +262,8 @@ export const Navbar = () => {
                     >
                       <span>{item.label}</span>
                       <ChevronDown
-                        className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                          souvenirDropdownOpen ? 'rotate-180 text-[#E87500]' : 'text-slate-400'
-                        }`}
+                        className={`h-3.5 w-3.5 transition-transform duration-200 ${souvenirDropdownOpen ? 'rotate-180 text-[#E87500]' : 'text-slate-400'
+                          }`}
                       />
 
                       {/* Animated orange underline */}
@@ -667,9 +703,8 @@ export const Navbar = () => {
 
                           <span>{item.label}</span>
                           <ChevronDown
-                            className={`h-4 w-4 transition-transform duration-200 ${
-                              mobileSouvenirOpen ? 'rotate-180 text-[#E87500]' : 'text-slate-400'
-                            }`}
+                            className={`h-4 w-4 transition-transform duration-200 ${mobileSouvenirOpen ? 'rotate-180 text-[#E87500]' : 'text-slate-400'
+                              }`}
                           />
                         </button>
 

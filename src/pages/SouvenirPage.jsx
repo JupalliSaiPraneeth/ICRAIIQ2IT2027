@@ -44,14 +44,14 @@ export const SouvenirPage = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-slate-50/60 text-slate-900 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="relative min-h-screen bg-slate-50/60 text-slate-900 py-12 px-5 sm:px-8 lg:px-10">
       {/* Background subtle decoration */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 right-0 h-96 w-96 rounded-full bg-amber-100/40 blur-3xl" />
         <div className="absolute top-1/2 -left-20 h-96 w-96 rounded-full bg-orange-100/30 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl space-y-12">
+      <div className="relative mx-auto max-w-[1280px] space-y-12">
         {/* Header Section */}
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-amber-300 bg-amber-50 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#E87500]">

@@ -58,8 +58,8 @@ export const GalleryPage = () => {
               closeImage();
             }}
             className={`min-w-[240px] sm:min-w-[260px] rounded-lg border px-4 py-2.5 text-sm sm:text-base transition-all duration-200 ${activeConference === 'conference-1'
-                ? 'border-[#F97316] bg-[#F97316] font-bold text-white shadow-md'
-                : 'border-orange-200 bg-[#FFFBF8] text-slate-900 hover:border-[#F97316] hover:bg-orange-50'
+              ? 'border-[#F97316] bg-[#F97316] font-bold text-white shadow-md'
+              : 'border-orange-200 bg-[#FFFBF8] text-slate-900 hover:border-[#F97316] hover:bg-orange-50'
               }`}
           >
             1st International Conference
@@ -72,8 +72,8 @@ export const GalleryPage = () => {
               closeImage();
             }}
             className={`min-w-[240px] sm:min-w-[260px] rounded-lg border px-4 py-2.5 text-sm sm:text-base transition-all duration-200 ${activeConference === 'conference-2'
-                ? 'border-[#F97316] bg-[#F97316] font-bold text-white shadow-md'
-                : 'border-orange-200 bg-[#FFFBF8] text-slate-900 hover:border-[#F97316] hover:bg-orange-50'
+              ? 'border-[#F97316] bg-[#F97316] font-bold text-white shadow-md'
+              : 'border-orange-200 bg-[#FFFBF8] text-slate-900 hover:border-[#F97316] hover:bg-orange-50'
               }`}
           >
             2nd International Conference

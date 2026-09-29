@@ -27,7 +27,7 @@ export const TracksPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-50/50 pb-20 pt-8 sm:pt-12 text-slate-800 antialiased selection:bg-[#e47c14] selection:text-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
 
         {/* =========================================================
             CLEAN PAGE HEADING (Top gap eliminated & badge removed)

@@ -9,7 +9,7 @@ export const PublicationPage = () => {
     <div className="relative min-h-screen bg-navy-950 text-slate-100 pt-28 pb-24">
       <ScientificBackground variant="dark" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <div className="relative max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-10 z-10">
         
         <SectionHeading
           number="08 / PUBLICATION"

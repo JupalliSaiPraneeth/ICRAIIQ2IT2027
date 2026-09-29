@@ -16,8 +16,8 @@ export const BrochurePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFFBF8] px-4 py-12 text-slate-900 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-5xl space-y-10">
+    <div className="min-h-screen bg-[#FFFBF8] px-5 py-12 text-slate-900 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-[1280px] space-y-10">
         {/* Page Header */}
         <div className="text-center space-y-3">
           <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#F97316]">

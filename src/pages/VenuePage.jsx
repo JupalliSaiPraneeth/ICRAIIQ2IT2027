@@ -9,193 +9,184 @@ import {
   X,
   BusFront,
   ChevronRight,
+  Search,
+  Building2,
+  Calendar,
+  Compass,
+  Mail,
+  Copy,
+  Check,
+  Sparkles,
+  Info,
+  Clock,
+  ShieldCheck,
 } from 'lucide-react';
 import { conferenceData } from '../data/conferenceData';
 
-/*
-  ICRAIIQ2IT 2027 — Venue / Location Page
-  -----------------------------------------
-  Redesigned from the supplied Vijayawada reference screenshots.
+/* ================================================================
+   ICRAIQ2IT 2027 — Venue & Host City Guide
+   Academic Conference Standard Design
+   ================================================================ */
 
-  Visual direction:
-  - Clean white academic conference layout
-  - Pink #F97316 + deep navy typography
-  - Vijayawada introduction on the left
-  - "HOW TO REACH" travel cards on the right
-  - Major Attractions grid
-  - Featured Attractions image gallery
-  - Contact / campus location section with map
-  - Responsive 1 / 2 / 3 / 5-column layouts
-  - Image lightbox
-  - No dark ScientificBackground
-*/
+const RAW_ATTRACTIONS = [
+  { name: 'Akkanna Madanna Caves', category: 'heritage', description: '7th-century rock-cut cave monuments dedicated to Shiva.' },
+  { name: 'Amaravati Shrine', category: 'heritage', description: 'Historic Buddhist stupa site and ancient Amaralingeswara temple.' },
+  { name: 'AP High Court', category: 'capital', description: 'High Court of Andhra Pradesh located at Nelapadu, Amaravati.' },
+  { name: 'AP Secretariat', category: 'capital', description: 'Administrative headquarters of Andhra Pradesh government in Velagapudi.' },
+  { name: "Asia's Largest Mango Market", category: 'culture', description: 'Renowned agricultural trade hub at Nunna operating during mango season.' },
+  { name: 'Bapu Museum', category: 'culture', description: 'State-of-the-art archaeological museum with historic antiquities & art.' },
+  { name: 'Bhavani Island', category: 'nature', description: 'Scenic 133-acre river island on Krishna River with recreation & boating.' },
+  { name: 'Gandhi Hill', category: 'culture', description: 'Historic memorial monument with Gandhi stupa, library & sound-and-light show.' },
+  { name: 'Gunadala Matha Shrine', category: 'heritage', description: 'Prominent Catholic pilgrimage shrine with church carved on hill slopes.' },
+  { name: 'Hailand', category: 'culture', description: 'Sprawling cultural and amusement theme park near Mangalagiri.' },
+  { name: 'Hazratbal Mosque', category: 'heritage', description: 'Prominent Islamic shrine housing a sacred relic visited by thousands.' },
+  { name: 'Hinkar Thirtha Jain Temple', category: 'heritage', description: 'Majestic Jain pilgrimage center with intricate marble carving architecture.' },
+  { name: 'ISKCON Temple', category: 'heritage', description: 'Spiritual cultural center and temple on the banks of Krishna River.' },
+  { name: 'Kanaka Durga Temple', category: 'heritage', description: 'Presiding deity of Vijayawada flanked high atop Indrakeeladri Hills.' },
+  { name: 'Kolleru Lake', category: 'nature', description: 'One of India’s largest freshwater lakes and protected bird sanctuary.' },
+  { name: 'Kondapalli Fort', category: 'heritage', description: '14th-century hill citadel famous for historical bastions and toy craftsmen.' },
+  { name: 'Kuchipudi Kala Kshetram', category: 'culture', description: 'World-renowned village and center of classical Kuchipudi dance heritage.' },
+  { name: 'Mangalagiri Panakala Swami', category: 'heritage', description: 'Historic hill temple of Sri Lakshmi Narasimha Swamy with ancient gopuram.' },
+  { name: 'Manginapudi Beach', category: 'nature', description: 'Historic natural black-sand beach located near Machilipatnam.' },
+  { name: 'Mogalrajapuram Caves', category: 'heritage', description: '5th-century rock architecture featuring shrines of Nataraja and Vinayaka.' },
+  { name: 'Pavitra Sangamam', category: 'nature', description: 'Sacred confluence point where Godavari waters unite with Krishna River.' },
+  { name: 'Prakasam Barrage', category: 'nature', description: '1.2 km road-cum-water regulator structure over the majestic Krishna River.' },
+  { name: 'Rajiv Gandhi Park', category: 'culture', description: 'Horticultural city park featuring musical fountains and mini zoo.' },
+  { name: 'Scrap Sculpture Park', category: 'culture', description: 'Innovative eco-park featuring artistic sculptures crafted from scrap metals.' },
+  { name: 'Subramanya Swami Temple', category: 'heritage', description: 'Revered hill temple in Kothapeta offering scenic city panoramic views.' },
+  { name: 'Undavalli Caves', category: 'heritage', description: 'Famous 4-tiered 7th-century rock sanctuary with colossal Anantasayana Vishnu.' },
+  { name: 'Uppalapadu Bird Sanctuary', category: 'nature', description: 'Protected water wetland sanctuary hosting endangered migratory birds.' },
+];
 
-const ATTRACTIONS = [
-  'Akkanna Madanna Caves',
-  'Amaravati Shrine',
-  'Bhavani Island',
-  'Gandhi Hill',
-  'Gunadala Matha Shrine',
-  'Hailand',
-  'Hazratbal Mosque',
-  'Hinkar Thirtha Jain Temple',
-  'Kolleru Lake',
-  'Kondapalli Fort',
-  'Kuchipudi Kala Kshetram',
-  'Mangalagiri Panakala Swami',
-  'Manginapudi Beach',
-  'Mogalrajapuram Caves',
-  'Pavitra Sangamam',
-  'Prakasam Barrage',
-  'Rajiv Gandhi Park',
-  'Scrap Sculpture Park',
-  'Subramanya Swami Temple',
-  'Undavalli Caves',
-  'Uppalapadu Bird Sanctuary',
-  'Bapu Museum',
+const CATEGORY_TABS = [
+  { id: 'all', label: 'All Attractions', count: 27 },
+  { id: 'heritage', label: 'Heritage & Shrines', count: 12 },
+  { id: 'nature', label: 'Nature & Waterfront', count: 6 },
+  { id: 'culture', label: 'Culture & Parks', count: 6 },
+  { id: 'capital', label: 'Capital & Commerce', count: 3 },
 ];
 
 const DEFAULT_VIJAYAWADA_DESCRIPTION = [
-  `Vijayawada, the second-largest city in Andhra Pradesh, lies on the banks of the Krishna River, flanked by the Indrakeeladri Hills. Known as “The Business Capital of Andhra Pradesh,” it is a key center for commerce, politics, and agriculture. Major attractions include the Kanaka Durga Temple, Prakasam Barrage, Undavalli Caves, Bhavani Island, Gandhi Hill, and Mogalarajapuram Caves.`,
-  `Weather in February: February offers pleasant weather, with temperatures ranging between 20°C to 30°C, making it an ideal time for sightseeing. During April (conference dates: 09–10 April 2027), the climate is pleasant and sunny, welcoming delegates from across the globe.`,
-  `Vijayawada is well connected by air, rail, and road. The Vijayawada International Airport (13.5 km from the city) operates flights to Delhi, Mumbai, Chennai, Bengaluru, Hyderabad, and more. The Vijayawada Railway Junction is a major station on the Chennai-Howrah and Chennai-Delhi routes. The city also has a robust road network with frequent bus services from various parts of India. Vijayawada’s strategic location, tourist spots, and connectivity make it a perfect destination for both business and leisure travel.`
+  `Vijayawada, the second-largest city in Andhra Pradesh, lies on the banks of the Krishna River, flanked by the Indrakeeladri Hills. Known as “The Business Capital of Andhra Pradesh,” it is a key center for commerce, politics, education, and culture. Major attractions include the historic Kanaka Durga Temple, Prakasam Barrage, Undavalli Caves, Bhavani Island, Gandhi Hill, and Mogalarajapuram Caves.`,
+  `The city serves as the gateway to the Amaravati Capital Region, harmoniously uniting deep historic traditions with rapid modern technological innovation. April in Vijayawada offers pleasant, warm, and sunny weather with temperatures typically between 28°C and 34°C, creating an ideal setting for academic sessions and pleasant city sightseeing.`,
+  `Vijayawada is exceptionally well-connected through air, rail, and road infrastructure. The Vijayawada International Airport operates regular flights to major Indian metros. Vijayawada Junction is one of the busiest railway hubs in the nation, while an extensive network of national highways (NH-16 and NH-65) ensures smooth ground transit.`
+];
+
+const DEFAULT_TRAVEL = {
+  air: {
+    title: 'By Air',
+    hub: 'Vijayawada International Airport (VGA)',
+    distance: '~22 km from NRIIT Campus',
+    description: 'Located in Gannavaram, the airport operates direct daily flights connecting Vijayawada to Delhi, Mumbai, Bengaluru, Hyderabad, Chennai, and other major hubs. Pre-paid airport taxis and ride-hailing services (Ola/Uber) are readily available 24/7.',
+    badge: 'Code: VGA'
+  },
+  rail: {
+    title: 'By Rail',
+    hub: 'Vijayawada Railway Junction (BZA)',
+    distance: '~24 km from NRIIT Campus',
+    description: 'A major premier A1-category junction on the Chennai–Howrah and Chennai–New Delhi trunk routes with over 250 express trains stopping daily. Frequent bus services and taxis operate directly from the railway station to the campus along Nuzvid Road.',
+    badge: 'Code: BZA'
+  },
+  road: {
+    title: 'By Road',
+    hub: 'National & State Highway Network',
+    distance: 'Direct Highway Frontage',
+    description: 'Strategically accessible via NH-16 (Kolkata–Chennai) and NH-65 (Pune–Machilipatnam). State road transport (APSRTC) and private luxury coaches link Vijayawada with all Southern and Central Indian cities. The campus is directly situated on the Vijayawada–Nuzvid State Highway.',
+    badge: 'NH-16 / NH-65'
+  },
+};
+
+const DEFAULT_GALLERY = [
+  {
+    id: 'featured-1',
+    title: 'Dr RVR NRIIT University Campus',
+    category: 'Conference Venue',
+    image: '/newblock.png',
+    description: 'Main academic blocks, research centers, and international conference auditoriums.'
+  },
+  {
+    id: 'featured-2',
+    title: 'Prakasam Barrage across Krishna River',
+    category: 'Iconic Landmark',
+    image: 'https://nriit.edu.in/icraiq2it-2026/001.jpg',
+    description: '1.2 km road bridge and water regulator across the Krishna River, illuminated at night.'
+  },
+  {
+    id: 'featured-3',
+    title: 'Vijayawada Riverfront Cityscape',
+    category: 'Scenic Panorama',
+    image: 'https://nriit.edu.in/icraiq2it-2026/002.webp',
+    description: 'Panoramic riverfront view with the surrounding Indrakeeladri hills and river basin.'
+  },
+  {
+    id: 'featured-4',
+    title: 'Aerial View of Vijayawada',
+    category: 'City Heritage',
+    image: 'https://nriit.edu.in/icraiq2it-2026/003.jpg',
+    description: 'Aerial perspective showcasing the city layout, waterways, and natural landscape.'
+  },
+  {
+    id: 'featured-5',
+    title: 'Krishna Riverfront & Barrage',
+    category: 'Riverfront',
+    image: 'https://nriit.edu.in/icraiq2it-2026/004.jpg',
+    description: 'Lush greenery and calm river waters framing the city outskirts.'
+  },
+  {
+    id: 'featured-6',
+    title: 'NRI University Innovation Hub',
+    category: 'Academic Venue',
+    image: 'https://nriit.edu.in/icraiq2it-2026/005.jpg',
+    description: 'Advanced laboratories, seminar halls, and smart classrooms supporting conference sessions.'
+  },
 ];
 
 const DEFAULT_CONTACTS = [
   {
     name: 'Dr. K. V. Sambasiva Rao',
+    role: 'Dean, Research & Development',
     designation: 'Professor & Dean, R & D, Dr RVR NRIIT (DTBU)',
     email: 'icraiq2it27@nriit.edu.in',
   },
   {
     name: 'Dr. D. Sunitha',
+    role: 'Dean, School of Computer Studies',
     designation: 'HOD & Dean : School of Computer Studies, Dr RVR NRIIT (DTBU)',
     email: 'icraiq2it27@nriit.edu.in',
   },
 ];
 
 const DEFAULT_ADDRESS = [
-  'Dr RVR NRI Institute of Technology, Deemed to be University',
+  'Dr RVR NRI Institute of Technology (Deemed to be University)',
   'Pothavarappadu, Agiripalli Mandalam',
-  'Eluru District, Andhra Pradesh, India',
-  'Pin – 521212',
+  'Eluru District / Vijayawada Rural, Andhra Pradesh, India',
+  'PIN Code – 521212',
 ];
 
 const DEFAULT_COORDINATES = {
   primary: '16.66327986299729, 80.73777642559249',
   secondary: '16.663338876474548, 80.7378364640956',
+  display: '16.6633° N, 80.7378° E',
 };
 
-const DEFAULT_TRAVEL = {
-  air: `Vijayawada International Airport (13.5 km from the city, ~22 km from campus) operates flights to Delhi, Mumbai, Chennai, Bengaluru, Hyderabad, and more.`,
-  rail: `Vijayawada Railway Junction is a major station on the Chennai-Howrah and Chennai-Delhi routes with frequent trains.`,
-  road: `The city has a robust road network with frequent bus services from various parts of India along the Vijayawada–Nuzvid State Highway.`,
-};
-
-const DEFAULT_GALLERY = [
-  {
-    id: 'featured-1',
-    title: 'Kanaka Durga Temple',
-    category: 'Heritage & Spirituality',
-    image: '/images/venue/kanaka-durga-temple.jpg',
-  },
-  {
-    id: 'featured-2',
-    title: 'Gandhi Hill',
-    category: 'City Attractions',
-    image: '/images/venue/gandhi-hill.jpg',
-  },
-  {
-    id: 'featured-3',
-    title: 'Prakasam Barrage',
-    category: 'Vijayawada',
-    image: '/images/venue/prakasam-barrage.jpg',
-  },
-  {
-    id: 'featured-4',
-    title: 'Bhavani Island',
-    category: 'Nature & Recreation',
-    image: '/images/venue/bhavani-island.jpg',
-  },
-];
-
-const getValue = (value, fallback) =>
-  value === undefined || value === null || value === ''
+function getValue(value, fallback) {
+  return value === undefined || value === null || value === ''
     ? fallback
     : value;
-
-const getMapQuery = (data) =>
-  getValue(
-    data.organizer?.mapQuery,
-    'Dr RVR NRI Institute of Technology, Pothavarappadu, Agiripalli Mandalam, Andhra Pradesh 521212'
-  );
-
-function TravelCard({ icon: Icon, title, children, centered = false }) {
-  return (
-    <article
-      className={`rounded-xl border border-orange-100 bg-white p-5 shadow-[0_4px_12px_rgba(15,23,42,0.10)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#F97316]/40 hover:shadow-[0_8px_20px_rgba(15,23,42,0.12)] ${centered ? 'text-center' : ''
-        }`}
-    >
-      <div
-        className={`flex items-center gap-3 ${centered ? 'justify-center' : ''
-          }`}
-      >
-        <Icon className="h-6 w-6 shrink-0 text-[#F97316]" />
-        <h3 className="text-[21px] font-extrabold text-[#F97316]">
-          {title}
-        </h3>
-      </div>
-
-      <p
-        className={`mt-3 text-[15px] leading-7 text-[#29405f] ${centered ? 'mx-auto max-w-sm' : ''
-          }`}
-      >
-        {children}
-      </p>
-    </article>
-  );
-}
-
-function AttractionItem({ name }) {
-  return (
-    <div className="rounded-lg border border-[#FB923C] bg-white px-4 py-3 text-[14px] font-medium text-[#17213a] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#FFF7ED] hover:shadow-sm">
-      {name}
-    </div>
-  );
-}
-
-function GalleryCard({ item, onOpen }) {
-  return (
-    <button
-      type="button"
-      onClick={() => onOpen(item)}
-      className="group relative aspect-[1.55/1] overflow-hidden rounded-xl border border-orange-100 bg-orange-50 text-left shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F97316] focus-visible:ring-offset-2"
-    >
-      <img
-        src={item.image}
-        alt={item.title}
-        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-        loading="lazy"
-      />
-
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent px-4 pb-4 pt-12">
-        <div className="text-[10px] font-bold uppercase tracking-wider text-[#FDBA74]">
-          {item.category || 'Featured Attraction'}
-        </div>
-        <div className="mt-1 truncate text-sm font-bold text-white">
-          {item.title}
-        </div>
-      </div>
-    </button>
-  );
 }
 
 export const VenuePage = () => {
   const [activeImage, setActiveImage] = useState(null);
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [copied, setCopied] = useState(false);
 
   const data = conferenceData || {};
 
-  const mapQuery = getMapQuery(data);
+  const mapQuery = getValue(
+    data.organizer?.mapQuery,
+    'Dr RVR NRI Institute of Technology, Pothavarappadu, Agiripalli Mandalam, Andhra Pradesh 521212'
+  );
   const mapUrl = `https://maps.google.com/?q=${encodeURIComponent(mapQuery)}`;
   const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(
     mapQuery
@@ -205,29 +196,6 @@ export const VenuePage = () => {
     Array.isArray(data.venueDescription) && data.venueDescription.length
       ? data.venueDescription
       : DEFAULT_VIJAYAWADA_DESCRIPTION;
-
-  const travel = {
-    air: getValue(data.venueTravel?.air, DEFAULT_TRAVEL.air),
-    rail: getValue(data.venueTravel?.rail, DEFAULT_TRAVEL.rail),
-    road: getValue(data.venueTravel?.road, DEFAULT_TRAVEL.road),
-  };
-
-  const address =
-    Array.isArray(data.organizer?.addressLines) &&
-      data.organizer.addressLines.length
-      ? data.organizer.addressLines
-      : DEFAULT_ADDRESS;
-
-  const coordinates = {
-    primary: getValue(
-      data.organizer?.coordinates?.primary,
-      DEFAULT_COORDINATES.primary
-    ),
-    secondary: getValue(
-      data.organizer?.coordinates?.secondary,
-      DEFAULT_COORDINATES.secondary
-    ),
-  };
 
   const contacts =
     Array.isArray(data.venueContacts) && data.venueContacts.length
@@ -239,274 +207,651 @@ export const VenuePage = () => {
       Array.isArray(data.campusGallery) && data.campusGallery.length
         ? data.campusGallery
         : DEFAULT_GALLERY;
-
     return source;
   }, [data.campusGallery]);
 
+  const filteredAttractions = useMemo(() => {
+    return RAW_ATTRACTIONS.filter((item) => {
+      const matchesCategory =
+        activeCategory === 'all' || item.category === activeCategory;
+      const matchesSearch =
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.description.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [activeCategory, searchQuery]);
+
+  const handleCopyCoordinates = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(DEFAULT_COORDINATES.primary);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
   return (
-    <main className="min-h-screen bg-white text-[#17213a]">
+    <main className="min-h-screen bg-white text-slate-900 antialiased selection:bg-orange-500 selection:text-white">
+
       {/* =========================================================
-          1. VIJAYAWADA INTRODUCTION + HOW TO REACH
+          HERO / PAGE TITLE BANNER
          ========================================================= */}
-      <section className="bg-white px-5 pb-12 pt-10 sm:px-8 lg:px-10 lg:pb-14 lg:pt-12">
-        <div className="mx-auto max-w-[1540px]">
-          <header className="text-center">
-            <h1 className="text-4xl font-extrabold uppercase tracking-[-0.02em] text-[#F97316] sm:text-5xl">
-              Vijayawada
-            </h1>
-          </header>
+      <section className="bg-white px-5 pb-2 pt-6 sm:px-8 sm:pb-3 sm:pt-8 lg:px-10">
+        <div className="mx-auto max-w-[1280px] text-center">
+          {/* Main Heading */}
+          <h1 className="text-3xl font-black uppercase tracking-tight text-slate-900 sm:text-4xl md:text-5xl lg:text-[46px]">
+            Conference Venue & <span className="text-orange-600">Host City</span>
+          </h1>
 
-          <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(520px,0.95fr)] lg:gap-14">
-            {/* City information */}
-            <div className="max-w-[820px] space-y-6">
-              {descriptions.map((paragraph, index) => (
-                <p
-                  key={index}
-                  className="text-[16px] leading-7 text-[#173c69] sm:text-[17px]"
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </div>
+          <div className="mx-auto mt-2.5 h-1 w-20 rounded-full bg-orange-500" />
+        </div>
+      </section>
 
-            {/* How to reach */}
-            <div>
-              <h2 className="text-center text-3xl font-extrabold uppercase text-[#F97316] sm:text-[30px]">
-                How to Reach
+      {/* =========================================================
+          1. CITY OVERVIEW + HOW TO REACH (Balanced Two Columns)
+         ========================================================= */}
+      <section className="bg-white px-5 pb-12 pt-4 sm:px-8 sm:pb-14 sm:pt-5 lg:px-10 lg:pb-16 lg:pt-6">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+
+            {/* Left: About Vijayawada */}
+            <div className="lg:col-span-6 xl:col-span-6">
+              <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-orange-600">
+                <span className="h-[2px] w-6 bg-orange-600" />
+                <span>Host Destination</span>
+              </div>
+
+              <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+                About Vijayawada
               </h2>
+              <p className="mt-1 text-sm font-semibold text-orange-600">
+                The Commercial & Cultural Capital of Andhra Pradesh
+              </p>
 
-              <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
-                <TravelCard icon={Plane} title="By Air">
-                  {travel.air}
-                </TravelCard>
+              <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-slate-600 sm:text-[16px]">
+                {descriptions.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
 
-                <TravelCard icon={Train} title="By Rail">
-                  {travel.rail}
-                </TravelCard>
-
-                <div className="sm:col-span-2 sm:mx-auto sm:w-[68%]">
-                  <TravelCard icon={BusFront} title="By Road" centered>
-                    {travel.road}
-                  </TravelCard>
+              {/* Destination Highlights Pill Grid */}
+              <div className="mt-6 rounded-2xl border border-orange-100 bg-orange-50/40 p-5">
+                <div className="text-xs font-black uppercase tracking-wider text-orange-700">
+                  Vijayawada Fast Facts for Delegates
+                </div>
+                <div className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 text-xs font-semibold text-slate-700">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-orange-500" />
+                    <span>Location: Banks of Krishna River</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-orange-500" />
+                    <span>April Weather: 28°C – 34°C (Sunny)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-orange-500" />
+                    <span>Rail: A1 Premier Junction (BZA)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-orange-500" />
+                    <span>Airport: Gannavaram Int'l (VGA)</span>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* Right: How to Reach */}
+            <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-between">
+              <div>
+                <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-orange-600">
+                  <span className="h-[2px] w-6 bg-orange-600" />
+                  <span>Travel & Connectivity</span>
+                </div>
+
+                <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+                  How to Reach the Venue
+                </h2>
+                <p className="mt-1 text-sm font-semibold text-slate-500">
+                  Seamless transit options by air, railway, and national highway network.
+                </p>
+
+                <div className="mt-6 space-y-4">
+                  {/* By Air */}
+                  <article className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:border-orange-400 hover:shadow-md">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-orange-100 text-orange-600 transition-colors group-hover:bg-orange-600 group-hover:text-white">
+                          <Plane className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <h3 className="text-base font-bold text-slate-900 group-hover:text-orange-600 sm:text-lg">
+                            {DEFAULT_TRAVEL.air.title}
+                          </h3>
+                          <div className="text-xs font-medium text-slate-500">
+                            {DEFAULT_TRAVEL.air.hub}
+                          </div>
+                        </div>
+                      </div>
+                      <span className="shrink-0 rounded-full border border-orange-200 bg-orange-50 px-2.5 py-0.5 text-[11px] font-extrabold text-orange-700">
+                        {DEFAULT_TRAVEL.air.badge}
+                      </span>
+                    </div>
+                    <div className="mt-2.5 text-xs font-bold text-orange-600">
+                      {DEFAULT_TRAVEL.air.distance}
+                    </div>
+                    <p className="mt-1 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                      {DEFAULT_TRAVEL.air.description}
+                    </p>
+                  </article>
+
+                  {/* By Rail */}
+                  <article className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:border-orange-400 hover:shadow-md">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-orange-100 text-orange-600 transition-colors group-hover:bg-orange-600 group-hover:text-white">
+                          <Train className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <h3 className="text-base font-bold text-slate-900 group-hover:text-orange-600 sm:text-lg">
+                            {DEFAULT_TRAVEL.rail.title}
+                          </h3>
+                          <div className="text-xs font-medium text-slate-500">
+                            {DEFAULT_TRAVEL.rail.hub}
+                          </div>
+                        </div>
+                      </div>
+                      <span className="shrink-0 rounded-full border border-orange-200 bg-orange-50 px-2.5 py-0.5 text-[11px] font-extrabold text-orange-700">
+                        {DEFAULT_TRAVEL.rail.badge}
+                      </span>
+                    </div>
+                    <div className="mt-2.5 text-xs font-bold text-orange-600">
+                      {DEFAULT_TRAVEL.rail.distance}
+                    </div>
+                    <p className="mt-1 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                      {DEFAULT_TRAVEL.rail.description}
+                    </p>
+                  </article>
+
+                  {/* By Road */}
+                  <article className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:border-orange-400 hover:shadow-md">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-orange-100 text-orange-600 transition-colors group-hover:bg-orange-600 group-hover:text-white">
+                          <BusFront className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <h3 className="text-base font-bold text-slate-900 group-hover:text-orange-600 sm:text-lg">
+                            {DEFAULT_TRAVEL.road.title}
+                          </h3>
+                          <div className="text-xs font-medium text-slate-500">
+                            {DEFAULT_TRAVEL.road.hub}
+                          </div>
+                        </div>
+                      </div>
+                      <span className="shrink-0 rounded-full border border-orange-200 bg-orange-50 px-2.5 py-0.5 text-[11px] font-extrabold text-orange-700">
+                        {DEFAULT_TRAVEL.road.badge}
+                      </span>
+                    </div>
+                    <div className="mt-2.5 text-xs font-bold text-orange-600">
+                      {DEFAULT_TRAVEL.road.distance}
+                    </div>
+                    <p className="mt-1 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                      {DEFAULT_TRAVEL.road.description}
+                    </p>
+                  </article>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* =========================================================
-          2. MAJOR ATTRACTIONS
+          2. MAJOR ATTRACTIONS (Interactive Directory & Search)
          ========================================================= */}
-      <section className="border-t border-orange-100 bg-[#FFFBF8] px-5 py-10 sm:px-8 lg:px-10 lg:py-12">
-        <div className="mx-auto max-w-[1540px]">
-          <h2 className="text-3xl font-extrabold text-[#F97316] sm:text-[30px]">
-            Major Attractions
-          </h2>
+      <section className="border-t border-orange-100 bg-[#FFFBF8] px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
+        <div className="mx-auto max-w-[1280px]">
 
-          <div className="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            {ATTRACTIONS.map((attraction) => (
-              <AttractionItem key={attraction} name={attraction} />
+          {/* Section Header */}
+          <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+            <div>
+              <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-orange-600">
+                <span className="h-[2px] w-6 bg-orange-600" />
+                <span>Destination Guide</span>
+              </div>
+              <h2 className="mt-1 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+                Major Attractions in & Around Vijayawada
+              </h2>
+              <p className="mt-1 text-sm text-slate-500">
+                Explore 27 prominent cultural landmarks, spiritual shrines, historic caves, and natural spots.
+              </p>
+            </div>
+
+            {/* Quick Search Input */}
+            <div className="relative w-full sm:w-72">
+              <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search attractions..."
+                className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-4 text-xs font-semibold text-slate-800 placeholder-slate-400 shadow-sm transition focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                >
+                  <X className="h-3.5 w-3.5" />
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Filter Tabs */}
+          <div className="mt-6 flex flex-wrap items-center gap-2 border-b border-orange-100 pb-4">
+            {CATEGORY_TABS.map((tab) => {
+              const active = activeCategory === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveCategory(tab.id)}
+                  className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold transition-all duration-200 ${
+                    active
+                      ? 'bg-orange-600 text-white shadow-md shadow-orange-500/25'
+                      : 'border border-slate-200 bg-white text-slate-600 hover:border-orange-300 hover:bg-orange-50/50 hover:text-orange-600'
+                  }`}
+                >
+                  <span>{tab.label}</span>
+                  <span
+                    className={`rounded-full px-1.5 py-0.2 text-[10px] ${
+                      active ? 'bg-white/25 text-white' : 'bg-slate-100 text-slate-500'
+                    }`}
+                  >
+                    {tab.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Attractions Grid */}
+          {filteredAttractions.length > 0 ? (
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {filteredAttractions.map((attraction) => (
+                <a
+                  key={attraction.name}
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    attraction.name + ' Vijayawada Andhra Pradesh'
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:border-orange-500 hover:shadow-md hover:shadow-orange-500/10"
+                >
+                  <div>
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-4 w-4 shrink-0 text-orange-500 transition-transform group-hover:scale-110" />
+                        <h3 className="text-sm font-bold text-slate-900 transition-colors group-hover:text-orange-600">
+                          {attraction.name}
+                        </h3>
+                      </div>
+                      <ExternalLink className="h-3 w-3 shrink-0 text-slate-300 opacity-0 transition-opacity group-hover:opacity-100 group-hover:text-orange-500" />
+                    </div>
+
+                    <p className="mt-2 text-xs leading-relaxed text-slate-500 line-clamp-2">
+                      {attraction.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-2 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    <span className="capitalize text-orange-600/80">
+                      {attraction.category}
+                    </span>
+                    <span className="text-[10px] text-slate-400 group-hover:text-orange-600">
+                      View on Map →
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          ) : (
+            <div className="mt-8 rounded-2xl border border-dashed border-orange-200 bg-white p-10 text-center">
+              <p className="text-sm font-semibold text-slate-600">
+                No attractions found matching "{searchQuery}".
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery('');
+                  setActiveCategory('all');
+                }}
+                className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-orange-600 hover:underline"
+              >
+                Reset Search Filters
+              </button>
+            </div>
+          )}
+
+        </div>
+      </section>
+
+      {/* =========================================================
+          3. FEATURED ATTRACTIONS PHOTO GALLERY
+         ========================================================= */}
+      <section className="bg-white px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+            <div>
+              <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-orange-600">
+                <span className="h-[2px] w-6 bg-orange-600" />
+                <span>Visual Highlights</span>
+              </div>
+              <h2 className="mt-1 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+                Featured Destination Gallery
+              </h2>
+              <p className="mt-1 text-sm text-slate-500">
+                Click on any photo to inspect full cinematic view.
+              </p>
+            </div>
+
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500">
+              <ImageIcon className="h-4 w-4 text-orange-600" />
+              <span>Interactive Lightbox Enabled</span>
+            </span>
+          </div>
+
+          <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {gallery.map((item, index) => (
+              <button
+                key={item.id || index}
+                type="button"
+                onClick={() => setActiveImage(item)}
+                className="group relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-900 text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-400 hover:shadow-xl hover:shadow-orange-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                  onError={(e) => {
+                    // Graceful fallback to block photo if external asset fails
+                    e.currentTarget.src = '/newblock.png';
+                  }}
+                />
+
+                {/* Cinematic Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent transition-opacity duration-300 group-hover:opacity-95" />
+
+                {/* Content Overlay */}
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <span className="inline-block rounded-full bg-white/20 px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-orange-200 backdrop-blur-md">
+                    {item.category || 'Highlight'}
+                  </span>
+
+                  <h3 className="mt-1.5 text-base font-bold text-white drop-shadow-sm sm:text-lg">
+                    {item.title}
+                  </h3>
+
+                  {item.description && (
+                    <p className="mt-1 text-xs text-white/80 line-clamp-2">
+                      {item.description}
+                    </p>
+                  )}
+                </div>
+              </button>
             ))}
           </div>
         </div>
       </section>
 
       {/* =========================================================
-          3. FEATURED ATTRACTIONS
+          4. VENUE LOCATION, MAP & CONFERENCE SECRETARIAT
          ========================================================= */}
-      <section className="bg-white px-5 py-12 sm:px-8 lg:px-10 lg:py-14">
-        <div className="mx-auto max-w-[1540px]">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <h2 className="text-3xl font-extrabold text-[#F97316] sm:text-[30px]">
-              Featured Attractions
-            </h2>
+      <section className="border-t border-orange-100 bg-slate-50/50 px-5 pb-14 pt-12 sm:px-8 lg:px-10 lg:pb-16 lg:pt-16">
+        <div className="mx-auto max-w-[1280px]">
 
-            <span className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
-              <ImageIcon className="h-4 w-4 text-[#F97316]" />
-              Click an image to enlarge
-            </span>
+          {/* Section Header */}
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-orange-600">
+              <span className="h-[2px] w-6 bg-orange-600" />
+              <span>Campus & Secretariat</span>
+              <span className="h-[2px] w-6 bg-orange-600" />
+            </div>
+
+            <h2 className="mt-2 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
+              Venue Location & Secretariat Contacts
+            </h2>
+            <div className="mx-auto mt-2 h-1 w-16 rounded-full bg-orange-500" />
+            <p className="mx-auto mt-2 text-sm text-slate-500">
+              Conference venue premises, geo-coordinates, and key secretariat contact personnel.
+            </p>
           </div>
 
-          {gallery.length > 0 ? (
-            <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {gallery.slice(0, 8).map((item, index) => (
-                <GalleryCard
-                  key={item.id || `${item.title}-${index}`}
-                  item={item}
-                  onOpen={setActiveImage}
+          <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-10">
+
+            {/* Left: Google Maps Interactive Embed */}
+            <div className="lg:col-span-6 xl:col-span-7 flex flex-col">
+              <div className="relative min-h-[380px] flex-1 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:min-h-[460px]">
+                <iframe
+                  title="Dr RVR NRI Institute of Technology Location Map"
+                  src={embedUrl}
+                  className="absolute inset-0 h-full w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
                 />
-              ))}
-            </div>
-          ) : (
-            <div className="mt-5 rounded-xl border border-dashed border-orange-200 bg-orange-50 p-10 text-center text-sm text-slate-500">
-              Featured attraction images will be added soon.
-            </div>
-          )}
-        </div>
-      </section>
 
-      {/* =========================================================
-          4. CONTACT US / LOCATION
-         ========================================================= */}
-      <section className="border-t border-orange-100 bg-white px-5 pb-14 pt-10 sm:px-8 lg:px-10 lg:pb-16">
-        <div className="mx-auto max-w-[1540px]">
-          <h2 className="text-center text-4xl font-extrabold text-[#F97316] sm:text-5xl">
-            Contact Us
-          </h2>
-
-          <div className="mt-10 grid grid-cols-1 items-stretch gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(430px,1fr)] lg:gap-12">
-            {/* Map */}
-            <div className="relative min-h-[390px] overflow-hidden rounded-xl border border-[#FB923C] bg-orange-50 shadow-[0_8px_25px_rgba(15,23,42,0.10)] sm:min-h-[500px]">
-              <iframe
-                title="NRI Institute of Technology location map"
-                src={embedUrl}
-                className="absolute inset-0 h-full w-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-
-              <a
-                href={mapUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-xs font-bold text-[#17213a] shadow-lg transition-colors hover:text-[#EA580C]"
-              >
-                <Navigation className="h-4 w-4 text-[#F97316]" />
-                Open in Google Maps
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+                {/* Floating Directions Badge */}
+                <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-2 sm:left-auto">
+                  <a
+                    href={mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl bg-white/95 px-4 py-2.5 text-xs font-bold text-slate-800 shadow-lg backdrop-blur-md transition-all hover:bg-orange-600 hover:text-white"
+                  >
+                    <Navigation className="h-3.5 w-3.5 text-orange-500 group-hover:text-white" />
+                    <span>Open in Google Maps</span>
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                </div>
+              </div>
             </div>
 
-            {/* Contact information */}
-            <div className="flex flex-col justify-center">
-              <div className="space-y-4 text-[16px] leading-7 text-[#17213a]">
-                {contacts.map((contact, index) => (
-                  <p key={`${contact.email || contact.name}-${index}`}>
-                    <span className="font-medium">
-                      {contact.name}
-                      {contact.designation
-                        ? `, ${contact.designation}`
-                        : ''}
+            {/* Right: Venue Institution & Secretariat Contact Details */}
+            <div className="lg:col-span-6 xl:col-span-5 flex flex-col justify-between space-y-6">
+
+              {/* Institution Box */}
+              <div className="rounded-2xl border border-orange-100 bg-white p-6 shadow-sm">
+                <div className="flex items-start gap-3.5">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
+                    <Building2 className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-orange-600">
+                      Conference Venue Institution
                     </span>
+                    <h3 className="text-lg font-black text-slate-900 sm:text-xl">
+                      {getValue(data.organizer?.name, 'Dr RVR NRI Institute of Technology')}
+                    </h3>
+                    <div className="text-xs font-semibold text-orange-700">
+                      (Deemed to be University)
+                    </div>
+                  </div>
+                </div>
 
-                    {contact.email && (
+                {/* Address */}
+                <div className="mt-4 flex items-start gap-2.5 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-orange-500" />
+                  <div>
+                    {DEFAULT_ADDRESS.map((line, idx) => (
+                      <div key={idx}>{line}</div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Coordinates & Copy */}
+                <div className="mt-4 flex items-center justify-between rounded-xl border border-slate-100 bg-slate-50 px-3.5 py-2.5 text-xs">
+                  <div>
+                    <span className="font-bold text-slate-500">GPS Coordinates: </span>
+                    <span className="font-mono font-bold text-slate-800">{DEFAULT_COORDINATES.display}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleCopyCoordinates}
+                    className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-bold text-orange-600 transition hover:bg-orange-100"
+                    title="Copy latitude & longitude"
+                  >
+                    {copied ? (
                       <>
-                        {' – '}
-                        <a
-                          href={`mailto:${contact.email}`}
-                          className="transition-colors hover:text-[#EA580C]"
-                        >
-                          {contact.email}
-                        </a>
+                        <Check className="h-3.5 w-3.5 text-green-600" />
+                        <span className="text-green-600">Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="h-3.5 w-3.5" />
+                        <span>Copy</span>
                       </>
                     )}
-                  </p>
-                ))}
+                  </button>
+                </div>
               </div>
 
-              <h3 className="mt-5 text-2xl font-extrabold text-[#F97316] sm:text-3xl">
-                {getValue(
-                  data.organizer?.name,
-                  'NRI Institute of Technology'
-                )}
-              </h3>
+              {/* Secretariat Contacts */}
+              <div className="rounded-2xl border border-orange-100 bg-white p-6 shadow-sm">
+                <div className="text-xs font-extrabold uppercase tracking-wider text-orange-600">
+                  Secretariat Key Contacts
+                </div>
 
-              <div className="mt-3 flex items-start gap-3">
-                <MapPin className="mt-1 h-5 w-5 shrink-0 text-[#F97316]" />
+                <div className="mt-4 space-y-4">
+                  {contacts.map((contact, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-start justify-between gap-3 border-b border-slate-100 pb-3 last:border-b-0 last:pb-0"
+                    >
+                      <div>
+                        <div className="text-sm font-bold text-slate-900">
+                          {contact.name}
+                        </div>
+                        <div className="text-xs font-medium text-slate-500">
+                          {contact.designation || contact.role}
+                        </div>
+                      </div>
 
-                <div className="text-[16px] leading-7 text-[#344054]">
-                  {address.map((line, index) => (
-                    <div key={index}>{line}</div>
+                      {contact.email && (
+                        <a
+                          href={`mailto:${contact.email}`}
+                          className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs font-bold text-orange-700 transition hover:bg-orange-600 hover:text-white"
+                          title={`Email ${contact.name}`}
+                        >
+                          <Mail className="h-3 w-3" />
+                          <span>Email</span>
+                        </a>
+                      )}
+                    </div>
                   ))}
                 </div>
-              </div>
 
-              <div className="mt-6">
-                <div className="font-bold text-[#17213a]">
-                  Coordinates:
+                <div className="mt-5 flex flex-wrap items-center gap-3 pt-2">
+                  <a
+                    href={mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-orange-600 px-5 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-orange-500/20 transition hover:-translate-y-0.5 hover:bg-orange-700"
+                  >
+                    <Navigation className="h-4 w-4" />
+                    <span>Get Directions</span>
+                  </a>
+
+                  <a
+                    href="mailto:icraiq2it27@nriit.edu.in"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-xs font-bold uppercase tracking-wider text-slate-700 shadow-sm transition hover:border-orange-400 hover:text-orange-600"
+                  >
+                    <Mail className="h-4 w-4 text-orange-600" />
+                    <span>Contact Helpdesk</span>
+                  </a>
                 </div>
-
-                <div className="text-[15px] leading-7 text-[#344054]">
-                  <div>
-                    Primary: {coordinates.primary}
-                  </div>
-                  <div>
-                    Secondary: {coordinates.secondary}
-                  </div>
-                </div>
               </div>
 
-              <p className="mt-6 max-w-[760px] text-[16px] leading-7 text-[#344054]">
-                The campus is conveniently accessible from Vijayawada city
-                and is surrounded by serene greenery, making it an ideal
-                location for academic and professional events.
-              </p>
-
-              <div className="mt-6">
-                <a
-                  href={mapUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-[#F97316] px-5 py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-[#EA580C] hover:shadow-lg"
-                >
-                  <Navigation className="h-4 w-4" />
-                  Get Directions
-                  <ChevronRight className="h-4 w-4" />
-                </a>
-              </div>
             </div>
+
           </div>
+
         </div>
       </section>
 
       {/* =========================================================
-          5. IMAGE LIGHTBOX
+          5. IMAGE LIGHTBOX MODAL
          ========================================================= */}
       {activeImage && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0b1020]/85 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/85 p-4 backdrop-blur-md"
           role="dialog"
           aria-modal="true"
           aria-label={activeImage.title}
           onClick={() => setActiveImage(null)}
         >
           <div
-            className="relative max-h-[92vh] w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-2xl"
+            className="relative max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl bg-white shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
+            {/* Close Button */}
             <button
               type="button"
               onClick={() => setActiveImage(null)}
-              aria-label="Close image"
-              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/65 text-white transition-colors hover:bg-[#F97316] focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              aria-label="Close image lightbox"
+              className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-orange-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               <X className="h-5 w-5" />
             </button>
 
-            <div className="bg-orange-50">
+            <div className="relative aspect-[16/10] max-h-[75vh] w-full bg-slate-950">
               <img
                 src={activeImage.image}
                 alt={activeImage.title}
-                className="mx-auto max-h-[76vh] w-full object-contain"
+                className="h-full w-full object-contain"
+                onError={(e) => {
+                  e.currentTarget.src = '/newblock.png';
+                }}
               />
             </div>
 
-            <div className="px-5 py-4 text-center">
-              <h3 className="text-lg font-extrabold text-[#17213a]">
-                {activeImage.title}
-              </h3>
+            <div className="border-t border-slate-100 bg-white px-6 py-4">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-orange-600">
+                    {activeImage.category || 'Featured Attraction'}
+                  </span>
+                  <h3 className="text-base font-bold text-slate-900 sm:text-lg">
+                    {activeImage.title}
+                  </h3>
+                </div>
 
-              {activeImage.category && (
-                <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-[#F97316]">
-                  {activeImage.category}
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    activeImage.title + ' Vijayawada Andhra Pradesh'
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden items-center gap-1.5 rounded-lg border border-orange-200 bg-orange-50 px-3 py-1.5 text-xs font-bold text-orange-700 transition hover:bg-orange-600 hover:text-white sm:inline-flex"
+                >
+                  <MapPin className="h-3.5 w-3.5" />
+                  <span>Search Location</span>
+                </a>
+              </div>
+
+              {activeImage.description && (
+                <p className="mt-1 text-xs text-slate-600 sm:text-sm">
+                  {activeImage.description}
                 </p>
               )}
             </div>
           </div>
         </div>
       )}
+
     </main>
   );
 };

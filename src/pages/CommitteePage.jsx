@@ -203,8 +203,8 @@ export const CommitteePage = () => {
       {/* =========================================================
           PAGE HEADER
          ========================================================= */}
-      <section className="bg-white px-4 pb-3 pt-8 sm:px-6 sm:pt-10 lg:px-8">
-        <div className="mx-auto max-w-[1410px]">
+      <section className="bg-white px-5 pb-3 pt-8 sm:px-8 sm:pt-10 lg:px-10">
+        <div className="mx-auto max-w-[1280px]">
           <div className="text-center">
             <div className="mx-auto mb-2 flex items-center justify-center gap-3">
               <span className="hidden h-px w-10 bg-orange-300 sm:block" />
@@ -230,8 +230,8 @@ export const CommitteePage = () => {
       {/* =========================================================
           1. EXECUTIVE LEADERSHIP & STEERING CHAIRS
          ========================================================= */}
-      <section className="bg-white px-4 pt-2 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-[1410px]">
+      <section className="bg-white px-5 pt-2 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1280px]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch mb-5">
             {leadershipSections.map((category) => (
               <CommitteeCard
@@ -247,8 +247,8 @@ export const CommitteePage = () => {
       {/* =========================================================
           2. THREE-COLUMN BALANCED COMMITTEES (Zero empty gaps)
          ========================================================= */}
-      <section className="bg-white px-4 pb-14 sm:px-6 sm:pb-16 lg:px-8">
-        <div className="mx-auto max-w-[1410px]">
+      <section className="bg-white px-5 pb-14 sm:px-8 sm:pb-16 lg:px-10">
+        <div className="mx-auto max-w-[1280px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 items-start">
             {/* Column 1: International Advisory Committee (21 members) */}
             <div className="space-y-4 sm:space-y-5">

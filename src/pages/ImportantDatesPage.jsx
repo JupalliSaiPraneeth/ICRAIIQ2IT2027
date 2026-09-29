@@ -12,7 +12,7 @@ export const ImportantDatesPage = () => {
   return (
     <div className="min-h-screen bg-white pb-20 pt-20 text-slate-800">
 
-      <div className="mx-auto max-w-[1240px] px-5 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
 
         {/* =========================================================
             PAGE HEADER

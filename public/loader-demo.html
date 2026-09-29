@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. RVR NRIIT - Logo Click Loader</title>
+
+  <style>
+    /* Base Page Styling */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      background: #f8fafc;
+      color: #17213a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .interactive-card {
+      max-width: 540px;
+      width: 100%;
+      padding: 36px 30px;
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #fed7aa;
+      box-shadow: 0 10px 30px rgba(224, 108, 39, 0.08);
+      text-align: center;
+    }
+
+    .card-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: #fff7ed;
+      color: #ea580c;
+      border: 1px solid #fed7aa;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      margin: 0 0 10px 0;
+      font-size: 24px;
+      font-weight: 800;
+      color: #17213a;
+    }
+
+    p {
+      margin: 0 0 24px 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #475569;
+    }
+
+    .btn-trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 28px;
+      font-size: 15px;
+      font-weight: 700;
+      background-color: #f97316;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .btn-trigger:hover {
+      background-color: #ea580c;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.45);
+    }
+
+    .hint {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    /* =========================================================
+       FULLSCREEN LOADING OVERLAY
+       ========================================================= */
+    .loader-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .loader-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Logo Container & Pulse */
+    .logo-wrapper {
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+      border-radius: 16px;
+      padding: 16px 20px;
+      background: #ffffff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .loader-logo {
+      width: 320px;
+      max-width: 85vw;
+      height: auto;
+      display: block;
+      animation: logoPulse 1.2s ease-in-out infinite alternate;
+    }
+
+    /* Liquid Shimmer / Wave Sheen Effect across Logo */
+    .logo-wrapper::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0) 15%,
+        rgba(255, 255, 255, 0.85) 50%,
+        rgba(255, 255, 255, 0) 85%
+      );
+      transform: skewX(-25deg);
+      animation: waveSheen 0.85s infinite cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+
+    /* Bottom Animated Accent Progress Bar */
+    .accent-bar {
+      margin-top: 20px;
+      width: 220px;
+      height: 4px;
+      background: #fed7aa;
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .accent-bar::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -50%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, #f97316, #ea580c);
+      border-radius: 999px;
+      animation: barSlide 1s infinite ease-in-out;
+    }
+
+    .loader-status {
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #ea580c;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* Keyframe Animations */
+    @keyframes logoPulse {
+      0% {
+        transform: scale(0.97);
+        filter: drop-shadow(0 2px 8px rgba(234, 88, 12, 0.25));
+      }
+      100% {
+        transform: scale(1.03);
+        filter: drop-shadow(0 10px 24px rgba(234, 88, 12, 0.5));
+      }
+    }
+
+    @keyframes waveSheen {
+      0% {
+        left: -130%;
+      }
+      100% {
+        left: 160%;
+      }
+    }
+
+    @keyframes barSlide {
+      0% {
+        left: -50%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fullscreen Loading Screen with Dr. RVR NRIIT Logo -->
+  <div class="loader-overlay" id="loadingOverlay" aria-hidden="true" role="status">
+    <div class="logo-wrapper">
+      <img src="nrilogo.png" alt="Dr. RVR NRI Institute of Technology Logo" class="loader-logo" />
+    </div>
+    <div class="accent-bar"></div>
+    <div class="loader-status">Loading Conference Portal...</div>
+  </div>
+
+  <!-- Interactive Demo Card -->
+  <div class="interactive-card">
+    <span class="card-badge">Dr. RVR NRIIT • ICRAIIQ2IT 2027</span>
+    <h2>Interactive Click Loader</h2>
+    <p>Click anywhere on this webpage (or click the button below) to trigger the fullscreen <strong>1-second brand liquid shimmer &amp; pulse loader</strong> featuring the official NRIIT University logo.</p>
+    <button type="button" class="btn-trigger">Trigger Action Loader</button>
+    <div class="hint">⚡ Active for exactly 1.0 second per click with self-resetting timer</div>
+  </div>
+
+  <script>
+    const overlay = document.getElementById("loadingOverlay");
+    let loadingTimer = null;
+
+    // Trigger overlay on any click anywhere on the webpage
+    document.addEventListener("click", () => {
+      // Show loader
+      overlay.classList.add("active");
+      overlay.setAttribute("aria-hidden", "false");
+
+      // Reset timer if clicked again during active period
+      if (loadingTimer) clearTimeout(loadingTimer);
+
+      // Hide strictly after exactly 1 second (1000ms)
+      loadingTimer = setTimeout(() => {
+        overlay.classList.remove("active");
+        overlay.setAttribute("aria-hidden", "true");
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

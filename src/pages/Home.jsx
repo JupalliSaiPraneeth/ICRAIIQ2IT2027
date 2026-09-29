@@ -111,12 +111,12 @@ function formatDate(value) {
 
 function StatCard({ value, label, subtext }) {
   return (
-    <article className="group relative overflow-hidden rounded-2xl border border-orange-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-400 hover:shadow-xl hover:shadow-orange-500/10">
-      <div className="text-3xl font-black tracking-tight text-slate-900 transition-colors group-hover:text-orange-600 sm:text-4xl">
+    <article className="group relative overflow-hidden rounded-2xl border border-orange-100/90 bg-white p-6 sm:p-7 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[#F97316]/50 hover:shadow-xl hover:shadow-orange-500/10">
+      <div className="text-3xl font-extrabold tracking-tight text-slate-900 transition-colors group-hover:text-[#F97316] sm:text-4xl">
         {value}
       </div>
 
-      <div className="mt-2 text-xs font-bold uppercase tracking-wider text-orange-600">
+      <div className="mt-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#F97316]">
         {label}
       </div>
 
@@ -162,31 +162,28 @@ function Home() {
       ? data.aboutParagraphs
       : DEFAULT_ABOUT;
 
-  const stats =
-    Array.isArray(data.stats) && data.stats.length > 0
-      ? data.stats.slice(0, 4)
-      : [
-        {
-          value: '5th',
-          label: 'Edition',
-          subtext: 'International Conference',
-        },
-        {
-          value: '2027',
-          label: 'Conference Year',
-          subtext: 'Organized at NRIIT',
-        },
-        {
-          value: 'AI & QI',
-          label: 'Research Focus',
-          subtext: 'Intelligent Computing',
-        },
-        {
-          value: 'Scopus',
-          label: 'Publication',
-          subtext: 'Indexed Proceedings',
-        },
-      ];
+  const stats = [
+    {
+      value: '5th',
+      label: 'EDITION',
+      subtext: 'International Landmark Gathering',
+    },
+    {
+      value: '21',
+      label: 'CONFERENCE TOPICS',
+      subtext: 'Frontier Emerging Disciplines',
+    },
+    {
+      value: '09–10',
+      label: 'CONFERENCE DATES',
+      subtext: 'April 2027 | Blended Mode',
+    },
+    {
+      value: '70+',
+      label: 'GLOBAL COMMITTEE',
+      subtext: 'Distinguished Academicians & Leaders',
+    },
+  ];
 
   const importantDates =
     Array.isArray(data.importantDatesList) &&
@@ -519,48 +516,30 @@ function Home() {
           ABOUT SECTION
          ========================================================= */}
 
-      <section className="border-y border-orange-100 bg-orange-50/20 px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
+      <section className="bg-white px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
         <div className="mx-auto max-w-[1280px]">
 
-          <div className="mb-6 text-center">
-            <span className="text-xs font-extrabold uppercase tracking-[0.14em] text-orange-600">
+          <div className="mb-10 text-center">
+            <span className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#F97316]">
               About The Conference
             </span>
 
-            <h2 className="mx-auto mt-1.5 max-w-4xl text-2xl font-black tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+            <h2 className="mx-auto mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[40px]">
               Advancing Research. Connecting Ideas.
             </h2>
 
-            <div className="mx-auto mt-3 h-1 w-14 rounded-full bg-orange-500" />
+            <div className="mx-auto mt-3.5 h-1 w-14 rounded-full bg-[#F97316]" />
           </div>
 
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(340px,0.9fr)] lg:items-start">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 items-start">
 
-            <div className="space-y-4 text-[15px] leading-[1.75] text-slate-600 sm:text-[16px]">
+            <div className="lg:col-span-7 space-y-4 text-[15px] leading-[1.8] text-slate-600 sm:text-[15.5px]">
               {aboutParagraphs.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
-
-              <div className="flex flex-wrap gap-3 pt-2">
-
-                <Link
-                  to="/about"
-                  className="inline-flex items-center gap-2 rounded-xl bg-orange-600 px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-orange-500/20 transition hover:-translate-y-0.5 hover:bg-orange-700"
-                >
-                  Explore Conference
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-
-                <Link
-                  to="/committee"
-                  className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-bold text-slate-700 shadow-sm transition hover:border-orange-500 hover:text-orange-600"
-                >
-                  Committees
-                </Link>
-              </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3.5">
+            <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               {stats.map((stat, index) => (
                 <StatCard
                   key={`${stat.label}-${index}`}

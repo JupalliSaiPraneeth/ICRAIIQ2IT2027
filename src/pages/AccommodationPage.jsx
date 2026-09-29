@@ -441,7 +441,7 @@ export const AccommodationPage = () => {
       <section className="relative overflow-hidden bg-gradient-to-b from-orange-50/80 via-white to-slate-50 pb-2 pt-4 sm:pb-3 sm:pt-4">
         <div className="pointer-events-none absolute -top-24 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-tr from-orange-300/30 to-amber-200/20 blur-3xl" />
 
-        <div className="relative mx-auto max-w-7xl px-5 text-center sm:px-8 lg:px-10">
+        <div className="relative mx-auto max-w-[1280px] px-5 text-center sm:px-8 lg:px-10">
           <h1 className="text-2xl font-extrabold uppercase tracking-tight text-[#17213a] sm:text-3xl lg:text-4xl">
             Hotels & <span className="text-[#F97316]">Stays</span>
           </h1>
@@ -455,8 +455,8 @@ export const AccommodationPage = () => {
       {/* =========================================================
           1. FEATURED HOTELS GRID (Compact & Professional)
          ========================================================= */}
-      <section className="px-4 py-2 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+      <section className="px-5 py-2 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1280px]">
           {/* Compact 3-column grid layout */}
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {featuredHotels.map((hotel) => (
@@ -469,8 +469,8 @@ export const AccommodationPage = () => {
       {/* =========================================================
           2. BUDGET HOTELS GRID
          ========================================================= */}
-      <section className="px-4 py-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+      <section className="px-5 py-4 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1280px]">
           <div className="rounded-2xl border border-orange-100 bg-white p-4 shadow-xs sm:p-5">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-orange-100 pb-2.5 mb-4">
               <div>
@@ -502,7 +502,7 @@ export const AccommodationPage = () => {
           3. DELEGATE NOTICE & ADVISORY
          ========================================================= */}
       <section className="px-5 py-8 sm:px-8 lg:px-10 pb-16">
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-[1280px]">
           <div className="flex flex-col gap-4 rounded-2xl border border-orange-200/80 bg-gradient-to-r from-orange-500 to-[#e47c14] p-6 text-white shadow-md sm:flex-row sm:items-center sm:justify-between sm:p-8">
             <div className="flex items-start gap-4">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/20 text-white backdrop-blur-xs">

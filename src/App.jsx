@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import ClickLoader from './components/ClickLoader';
 
 // Pages
 import Home from './pages/Home';
@@ -35,6 +36,7 @@ export function App() {
   return (
     <Router>
       <ScrollToTop />
+      <ClickLoader />
       <div className="flex flex-col min-h-screen bg-white text-slate-900 font-sans selection:bg-[#d92d67] selection:text-white">
         <Navbar />
         <main className="flex-grow">
