@@ -8,6 +8,9 @@ import {
   Mail,
   ShieldCheck,
   X,
+  QrCode,
+  Download,
+  Check,
 } from 'lucide-react';
 import { conferenceData } from '../data/conferenceData';
 
@@ -234,20 +237,33 @@ export const RegistrationPage = () => {
   };
 
   const copyAccount = async () => {
-    if (!bankDetails.accountNumber) {
-      setCopyStatus('Account number not configured');
-      window.setTimeout(() => setCopyStatus(''), 2200);
-      return;
-    }
+    const details = [
+      `Account Name: ${bankDetails.accountName}`,
+      `Bank: ${bankDetails.bankName}`,
+      bankDetails.branch ? `Branch: ${bankDetails.branch}` : '',
+      bankDetails.ifsc ? `IFSC Code: ${bankDetails.ifsc}` : '',
+      bankDetails.accountNumber ? `Account Number: ${bankDetails.accountNumber}` : '',
+    ].filter(Boolean).join('\n');
 
     try {
-      await navigator.clipboard.writeText(bankDetails.accountNumber);
-      setCopyStatus('Account number copied');
+      await navigator.clipboard.writeText(details);
+      setCopyStatus('Bank details copied');
     } catch {
       setCopyStatus('Copy unavailable');
     }
 
-    window.setTimeout(() => setCopyStatus(''), 2200);
+    window.setTimeout(() => setCopyStatus(''), 2500);
+  };
+
+  const copyText = async (text, label = 'Copied') => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopyStatus(`${label} copied!`);
+    } catch {
+      setCopyStatus('Copy unavailable');
+    }
+
+    window.setTimeout(() => setCopyStatus(''), 2500);
   };
 
   const scrollToSection = (id) => {
@@ -354,7 +370,14 @@ export const RegistrationPage = () => {
                 active={activeSection === 'bank'}
                 onClick={() => scrollToSection('bank')}
               >
-                Bank Details
+                Bank Details &amp; QR
+              </QuickStepButton>
+
+              <QuickStepButton
+                active={activeSection === 'contact'}
+                onClick={() => scrollToSection('contact-us')}
+              >
+                Contact Us
               </QuickStepButton>
 
               <QuickStepButton
@@ -376,64 +399,95 @@ export const RegistrationPage = () => {
                 Two-step Registration (compact)
               </SectionHeading>
 
-              <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
                 {/* STEP 1 */}
                 <RegistrationStepCard title="Step 1 — Fee Submission">
-                  <p className="text-[18px] font-semibold leading-7 text-black">
-                    {bankDetails.accountName}
-                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 items-start justify-between">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[17px] font-semibold leading-snug text-black">
+                        {bankDetails.accountName}
+                      </p>
 
-                  <p className="mt-1 text-[17px] text-[#405777]">
-                    Bank: {bankDetails.bankName}
-                  </p>
+                      <p className="mt-1 text-[16px] text-[#405777]">
+                        Bank: <strong className="text-black">{bankDetails.bankName}</strong>
+                      </p>
 
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setActiveSection('bank');
-                        setIsBankModalOpen(true);
-                      }}
-                      className="rounded-md border border-[#FB923C] px-3 py-2 text-[16px] text-[#F97316] transition-colors hover:bg-[#FFF7ED]"
-                    >
-                      View/Copy Bank Details
-                    </button>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setActiveSection('bank');
+                            setIsBankModalOpen(true);
+                          }}
+                          className="rounded-md border border-[#FB923C] px-3 py-1.5 text-[15px] font-medium text-[#F97316] transition-colors hover:bg-[#FFF7ED]"
+                        >
+                          View Bank &amp; QR
+                        </button>
 
-                    <button
-                      type="button"
-                      onClick={copyAccount}
-                      className="rounded-md border border-[#111827] px-3 py-2 text-[16px] text-[#111827] transition-colors hover:bg-orange-50"
-                    >
-                      Copy Account
-                    </button>
-                  </div>
+                        <button
+                          type="button"
+                          onClick={copyAccount}
+                          className="rounded-md border border-[#111827] px-3 py-1.5 text-[15px] text-[#111827] transition-colors hover:bg-orange-50"
+                        >
+                          Copy Bank Details
+                        </button>
 
-                  <p className="mt-3 text-[16px] leading-6 text-[#405777]">
-                    Keep payment UTR/receipt for the form.
-                  </p>
+                        <a
+                          href="/bank-qr.png"
+                          download="NRIIT_Conference_BOB_QR.png"
+                          className="inline-flex items-center gap-1 rounded-md border border-orange-200 bg-[#FFF7ED] px-3 py-1.5 text-[15px] font-medium text-[#EA580C] transition-colors hover:bg-orange-100"
+                        >
+                          <Download className="h-3.5 w-3.5" />
+                          Download QR
+                        </a>
+                      </div>
 
-                  {copyStatus && (
-                    <div className="mt-2 text-xs font-medium text-[#F97316]">
-                      {copyStatus}
+                      <p className="mt-3 text-[14px] leading-5 text-[#405777]">
+                        Keep payment UTR/receipt for the form.
+                      </p>
+
+                      {copyStatus && (
+                        <div className="mt-2 text-xs font-semibold text-[#16A34A] flex items-center gap-1">
+                          <Check className="h-3.5 w-3.5" />
+                          {copyStatus}
+                        </div>
+                      )}
                     </div>
-                  )}
+
+                    <div className="flex flex-col items-center justify-center p-2.5 bg-white border border-orange-200 rounded-lg shadow-sm shrink-0 self-center sm:self-start">
+                      <img
+                        src="/bank-qr.png"
+                        alt="Bank of Baroda Fee Payment QR Code"
+                        className="w-24 h-24 object-contain rounded"
+                      />
+                      <span className="mt-1 text-[10px] font-bold tracking-wider text-[#EA580C] uppercase text-center">
+                        BOB / UPI QR
+                      </span>
+                    </div>
+                  </div>
                 </RegistrationStepCard>
 
                 {/* STEP 2 */}
                 <RegistrationStepCard title="Step 2 — Fill Form">
-                  <button
-                    type="button"
-                    onClick={openRegistrationForm}
-                    className="inline-flex items-center gap-2 rounded-md bg-[#F97316] px-3.5 py-2 text-[16px] font-medium text-white transition-colors hover:bg-[#EA580C]"
-                  >
-                    Open Registration Form
-                    <ExternalLink className="h-4 w-4" />
-                  </button>
+                  <div className="flex flex-col h-full justify-between">
+                    <div>
+                      <p className="text-[15px] leading-6 text-[#405777] mb-3">
+                        After remitting the fee via Bank of Baroda or UPI QR, complete your registration and attach the payment reference:
+                      </p>
+                      <button
+                        type="button"
+                        onClick={openRegistrationForm}
+                        className="inline-flex items-center gap-2 rounded-md bg-[#F97316] px-4 py-2.5 text-[16px] font-medium text-white transition-colors hover:bg-[#EA580C]"
+                      >
+                        Open Registration Form
+                        <ExternalLink className="h-4 w-4" />
+                      </button>
+                    </div>
 
-                  <p className="mt-3 text-[17px] leading-7 text-[#405777]">
-                    Upload UTR/transaction reference in the form
-                    where requested.
-                  </p>
+                    <p className="mt-4 text-[15px] leading-6 text-[#405777]">
+                      Upload UTR/transaction reference in the form where requested.
+                    </p>
+                  </div>
                 </RegistrationStepCard>
               </div>
 
@@ -539,7 +593,7 @@ export const RegistrationPage = () => {
       </section>
 
       {/* =========================================================
-          BANK DETAILS
+          BANK DETAILS & PAYMENT QR
          ========================================================= */}
       <section
         id="bank"
@@ -547,29 +601,32 @@ export const RegistrationPage = () => {
       >
         <div className="mx-auto max-w-[1540px]">
           <div className="rounded-lg border border-[#111827] bg-white p-5 sm:p-7">
-            <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-start">
-              <div>
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+              <div className="flex-1">
                 <div className="flex items-center gap-3">
                   <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#FFF7ED] text-[#F97316]">
                     <CreditCard className="h-5 w-5" />
                   </div>
 
-                  <SectionHeading>Bank Details</SectionHeading>
+                  <div>
+                    <SectionHeading>Bank Details &amp; Payment QR</SectionHeading>
+                    <p className="mt-1 text-sm text-slate-500">Official fee remittance details for ICRAIQ2IT-2027</p>
+                  </div>
                 </div>
 
-                <div className="mt-5 space-y-2 text-[16px] leading-7 text-[#405777]">
+                <div className="mt-5 space-y-2.5 text-[16px] leading-7 text-[#405777]">
                   <p>
                     <strong className="text-[#17213a]">
                       Account Name:
                     </strong>{' '}
-                    {bankDetails.accountName}
+                    <span className="font-semibold text-[#111827]">{bankDetails.accountName}</span>
                   </p>
 
                   <p>
                     <strong className="text-[#17213a]">
                       Bank:
                     </strong>{' '}
-                    {bankDetails.bankName}
+                    <span className="font-bold text-[#111827]">{bankDetails.bankName}</span>
                   </p>
 
                   {bankDetails.branch && (
@@ -595,28 +652,147 @@ export const RegistrationPage = () => {
                       <strong className="text-[#17213a]">
                         IFSC:
                       </strong>{' '}
-                      {bankDetails.ifsc}
+                      <span className="font-mono font-semibold text-[#17213a]">{bankDetails.ifsc}</span>
                     </p>
                   )}
                 </div>
+
+                <div className="mt-6 flex flex-wrap gap-2.5">
+                  <button
+                    type="button"
+                    onClick={() => setIsBankModalOpen(true)}
+                    className="rounded-md border border-[#FB923C] px-4 py-2 text-sm font-medium text-[#F97316] hover:bg-[#FFF7ED]"
+                  >
+                    View Full Bank Details &amp; QR
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={copyAccount}
+                    className="inline-flex items-center gap-2 rounded-md border border-[#111827] px-4 py-2 text-sm font-medium text-[#111827] hover:bg-orange-50"
+                  >
+                    <Copy className="h-4 w-4" />
+                    Copy Bank Details
+                  </button>
+
+                  <a
+                    href="/bank-qr.png"
+                    download="NRIIT_Conference_BOB_QR.png"
+                    className="inline-flex items-center gap-2 rounded-md bg-[#FFF7ED] border border-orange-200 px-4 py-2 text-sm font-medium text-[#EA580C] hover:bg-orange-100"
+                  >
+                    <Download className="h-4 w-4" />
+                    Download QR Code
+                  </a>
+                </div>
               </div>
 
-              <div className="flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  onClick={() => setIsBankModalOpen(true)}
-                  className="rounded-md border border-[#FB923C] px-4 py-2.5 text-sm font-medium text-[#F97316] hover:bg-[#FFF7ED]"
+              {/* QR Code Presentation Box */}
+              <div className="flex flex-col items-center justify-center rounded-xl border border-orange-200 bg-[#FFFBF8] p-6 text-center shadow-sm lg:w-[280px] shrink-0 self-center lg:self-start">
+                <div className="rounded-lg bg-white p-3 border border-orange-100 shadow-sm">
+                  <img
+                    src="/bank-qr.png"
+                    alt="Bank of Baroda UPI Payment QR Code"
+                    className="w-40 h-40 object-contain"
+                  />
+                </div>
+                <div className="mt-3">
+                  <p className="text-sm font-bold text-[#111827]">Bank of Baroda / UPI</p>
+                  <p className="text-xs text-slate-500 mt-0.5">Scan with GPay, PhonePe, Paytm, BHIM</p>
+                </div>
+                <a
+                  href="/bank-qr.png"
+                  download="NRIIT_Conference_BOB_QR.png"
+                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-[#F97316] hover:text-[#EA580C] hover:underline"
                 >
-                  View Full Bank Details
-                </button>
+                  <Download className="h-3.5 w-3.5" />
+                  Save QR to Device
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* =========================================================
+          CONTACT US
+         ========================================================= */}
+      <section
+        id="contact-us"
+        className="scroll-mt-6 border-t border-orange-100 bg-[#FFFBF8] px-5 py-12 sm:px-8 lg:px-10"
+      >
+        <div className="mx-auto max-w-[1540px]">
+          <div className="flex items-center gap-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#F97316] text-white">
+              <Mail className="h-5 w-5" />
+            </div>
+
+            <div>
+              <SectionHeading>Contact Us</SectionHeading>
+              <p className="mt-1 text-sm text-slate-500">
+                For conference registration, fee submission, and assistance
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="rounded-lg border border-orange-200 bg-white p-6 shadow-sm flex flex-col justify-between">
+              <div>
+                <span className="inline-block rounded-md bg-[#FFF7ED] px-2.5 py-1 text-xs font-bold text-[#F97316] uppercase tracking-wider mb-3">
+                  Research &amp; Development
+                </span>
+                <h3 className="text-[20px] font-bold text-[#111827]">
+                  Dr. K. V. Sambasiva Rao
+                </h3>
+                <p className="mt-1.5 text-[16px] font-medium text-[#405777]">
+                  Professor &amp; Dean, R &amp; D, Dr RVR NRIIT (DTBU)
+                </p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-orange-100 flex items-center justify-between flex-wrap gap-2">
+                <a
+                  href="mailto:icraiq2it27@nriit.edu.in"
+                  className="inline-flex items-center gap-2 text-[16px] font-medium text-[#F97316] hover:text-[#EA580C] hover:underline"
+                >
+                  <Mail className="h-4 w-4" />
+                  icraiq2it27@nriit.edu.in
+                </a>
                 <button
                   type="button"
-                  onClick={copyAccount}
-                  className="inline-flex items-center gap-2 rounded-md border border-[#111827] px-4 py-2.5 text-sm font-medium text-[#111827] hover:bg-orange-50"
+                  onClick={() => copyText('icraiq2it27@nriit.edu.in', 'Email')}
+                  className="rounded-md border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-orange-50"
                 >
-                  <Copy className="h-4 w-4" />
-                  Copy Account
+                  Copy Email
+                </button>
+              </div>
+            </div>
+
+            <div className="rounded-lg border border-orange-200 bg-white p-6 shadow-sm flex flex-col justify-between">
+              <div>
+                <span className="inline-block rounded-md bg-[#FFF7ED] px-2.5 py-1 text-xs font-bold text-[#F97316] uppercase tracking-wider mb-3">
+                  Convener &amp; Dean
+                </span>
+                <h3 className="text-[20px] font-bold text-[#111827]">
+                  Dr. D. Sunitha
+                </h3>
+                <p className="mt-1.5 text-[16px] font-medium text-[#405777]">
+                  HOD &amp; Dean : School of Computer Studies, Dr RVR NRIIT (DTBU)
+                </p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-orange-100 flex items-center justify-between flex-wrap gap-2">
+                <a
+                  href="mailto:icraiq2it27@nriit.edu.in"
+                  className="inline-flex items-center gap-2 text-[16px] font-medium text-[#F97316] hover:text-[#EA580C] hover:underline"
+                >
+                  <Mail className="h-4 w-4" />
+                  icraiq2it27@nriit.edu.in
+                </a>
+                <button
+                  type="button"
+                  onClick={() => copyText('icraiq2it27@nriit.edu.in', 'Email')}
+                  className="rounded-md border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-orange-50"
+                >
+                  Copy Email
                 </button>
               </div>
             </div>
@@ -629,7 +805,7 @@ export const RegistrationPage = () => {
          ========================================================= */}
       <section
         id="organizer"
-        className="scroll-mt-6 border-t border-orange-100 bg-[#FFFBF8] px-5 py-12 sm:px-8 lg:px-10"
+        className="scroll-mt-6 border-t border-orange-100 bg-white px-5 py-12 sm:px-8 lg:px-10"
       >
         <div className="mx-auto max-w-[1540px]">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -668,57 +844,71 @@ export const RegistrationPage = () => {
          ========================================================= */}
       {isBankModalOpen && (
         <Modal
-          title="Bank Details"
+          title="Bank Details & QR Code"
           onClose={() => setIsBankModalOpen(false)}
         >
-          <div className="space-y-3 text-[15px] leading-7 text-[#405777]">
-            <div>
-              <strong className="text-[#17213a]">
-                Account Name:
-              </strong>
-              <div>{bankDetails.accountName}</div>
-            </div>
-
-            <div>
-              <strong className="text-[#17213a]">
-                Bank:
-              </strong>
-              <div>{bankDetails.bankName}</div>
-            </div>
-
-            {bankDetails.branch && (
+          <div className="grid grid-cols-1 sm:grid-cols-[1fr_150px] gap-5 items-start">
+            <div className="space-y-3 text-[15px] leading-7 text-[#405777]">
               <div>
                 <strong className="text-[#17213a]">
-                  Branch:
+                  Account Name:
                 </strong>
-                <div>{bankDetails.branch}</div>
+                <div className="font-semibold text-[#111827]">{bankDetails.accountName}</div>
               </div>
-            )}
 
-            {bankDetails.accountNumber ? (
               <div>
                 <strong className="text-[#17213a]">
-                  Account Number:
+                  Bank:
                 </strong>
-                <div className="break-all">
-                  {bankDetails.accountNumber}
+                <div className="font-bold text-[#111827]">{bankDetails.bankName}</div>
+              </div>
+
+              {bankDetails.branch && (
+                <div>
+                  <strong className="text-[#17213a]">
+                    Branch:
+                  </strong>
+                  <div>{bankDetails.branch}</div>
                 </div>
-              </div>
-            ) : (
-              <div className="rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-                Account number has not yet been configured in
-                <code className="mx-1">conferenceData</code>.
-              </div>
-            )}
+              )}
 
-            {bankDetails.ifsc && (
-              <div>
-                <strong className="text-[#17213a]">
-                  IFSC:
-                </strong>
-                <div>{bankDetails.ifsc}</div>
-              </div>
-            )}
+              {bankDetails.accountNumber && (
+                <div>
+                  <strong className="text-[#17213a]">
+                    Account Number:
+                  </strong>
+                  <div className="break-all font-mono">
+                    {bankDetails.accountNumber}
+                  </div>
+                </div>
+              )}
+
+              {bankDetails.ifsc && (
+                <div>
+                  <strong className="text-[#17213a]">
+                    IFSC:
+                  </strong>
+                  <div className="font-mono font-semibold text-[#111827]">{bankDetails.ifsc}</div>
+                </div>
+              )}
+            </div>
+
+            <div className="flex flex-col items-center justify-center p-3 bg-[#FFFBF8] border border-orange-200 rounded-lg text-center">
+              <img
+                src="/bank-qr.png"
+                alt="Bank of Baroda UPI Payment QR Code"
+                className="w-28 h-28 object-contain"
+              />
+              <span className="mt-2 text-xs font-bold text-[#EA580C]">BOB / UPI QR</span>
+              <a
+                href="/bank-qr.png"
+                download="NRIIT_Conference_BOB_QR.png"
+                className="mt-1 text-xs text-[#F97316] underline inline-flex items-center gap-1"
+              >
+                <Download className="h-3 w-3" />
+                Download
+              </a>
+            </div>
           </div>
 
           <div className="mt-6 flex flex-wrap gap-2">
@@ -728,7 +918,7 @@ export const RegistrationPage = () => {
               className="inline-flex items-center gap-2 rounded-md bg-[#F97316] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#EA580C]"
             >
               <Copy className="h-4 w-4" />
-              Copy Account Number
+              Copy Bank Details
             </button>
 
             <button

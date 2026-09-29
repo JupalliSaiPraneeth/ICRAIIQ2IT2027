@@ -145,7 +145,8 @@ function CommitteeCard({ category, members }) {
                     )}
 
                     {affiliation && (
-                      <span className="text-slate-500 text-[12px] sm:text-[12.5px] block sm:inline sm:before:content-[',_']">
+                      <span className="text-slate-600">
+                        {', '}
                         {affiliation}
                       </span>
                     )}

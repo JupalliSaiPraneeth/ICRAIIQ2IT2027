@@ -453,6 +453,15 @@ export const conferenceData = {
     ]
   },
 
+  bankDetails: {
+    accountName: "The Principal, Dr RVR NRI Institute of Technology (Deemed to be University), Agiripalli",
+    bankName: "BANK OF BARODA",
+    branch: "Agiripalli / Pothavarappadu",
+    ifsc: "BARB0AGIRIP",
+    qrCodeUrl: "/bank-qr.png",
+    upiId: "icraiq2it27@barodampay"
+  },
+
   contact: {
     secretariat: "Conference Secretariat, ICRAIQ2IT-2027",
     institution: "Dr RVR NRI Institute of Technology, Deemed to be University",
@@ -464,12 +473,12 @@ export const conferenceData = {
     keyContacts: [
       {
         name: "Dr. K. V. Sambasiva Rao",
-        designation: "Professor & Dean, R & D",
+        designation: "Professor & Dean, R & D, Dr RVR NRIIT (DTBU)",
         email: "icraiq2it27@nriit.edu.in"
       },
       {
         name: "Dr. D. Sunitha",
-        designation: "HOD : Dean : School of Computer Studies",
+        designation: "HOD & Dean : School of Computer Studies, Dr RVR NRIIT (DTBU)",
         email: "icraiq2it27@nriit.edu.in"
       }
     ]

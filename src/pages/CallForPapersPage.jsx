@@ -38,7 +38,7 @@ const DEFAULT_TOPICS = [
 
 const DEFAULT_GUIDELINES = [
   'Maximum number of pages is 6 in 8.25 × 11 inch paper single-column template.',
-  'The Paper format will be IEEE, A4 USA FORMAT SUBMITTED IN LATEX / WORD FORMAT.',
+  'The Paper format will be IEEE, A4 USA FORMAT SUBMITTED IN LATEX / DOCX FORMAT: https://www.ieee.org/conferences/publishing/templates of [A4 (DOC, 30 KB) Updated 2024](https://ieee-org.widen.net/content/ge5anzdecd/original/conference-template-a4.docx)',
   'Plagiarism and AI Similarity must not be above 10 % (without references); check should be performed by the authors and the report must also be attached along with the paper.',
   'Few papers would be allowed as poster presentations.',
   'Paper submission Link: MICROSOFT CMT',
@@ -95,6 +95,51 @@ function SectionTitle({ code, title }) {
   );
 }
 
+function renderGuidelineItem(text) {
+  if (text.includes('ieee.org/conferences/publishing/templates')) {
+    return (
+      <span>
+        The Paper format will be IEEE, A4 USA FORMAT SUBMITTED IN LATEX / DOCX FORMAT:{' '}
+        <a
+          href="https://www.ieee.org/conferences/publishing/templates"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-bold text-[#F97316] underline hover:text-[#ea580c]"
+        >
+          https://www.ieee.org/conferences/publishing/templates
+        </a>{' '}
+        of{' '}
+        <a
+          href="https://ieee-org.widen.net/content/ge5anzdecd/original/conference-template-a4.docx"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-bold text-[#F97316] underline hover:text-[#ea580c]"
+        >
+          A4 (DOC, 30 KB) Updated 2024
+        </a>
+      </span>
+    );
+  }
+
+  if (text.includes('MICROSOFT CMT')) {
+    return (
+      <span>
+        Paper submission Link:{' '}
+        <a
+          href="https://cmt3.research.microsoft.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-bold text-[#F97316] underline hover:text-[#ea580c]"
+        >
+          MICROSOFT CMT
+        </a>
+      </span>
+    );
+  }
+
+  return <span>{text}</span>;
+}
+
 function GuidelineList({ items }) {
   return (
     <ol className="mt-6 space-y-3.5 pl-6 text-[15px] leading-6 text-[#173c69] sm:text-[16px]">
@@ -103,7 +148,9 @@ function GuidelineList({ items }) {
           <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange-100 text-xs font-bold text-orange-600 mt-0.5">
             {index + 1}
           </span>
-          <span className="text-slate-700">{item}</span>
+          <div className="text-slate-700 leading-relaxed">
+            {renderGuidelineItem(item)}
+          </div>
         </li>
       ))}
     </ol>

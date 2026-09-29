@@ -48,12 +48,61 @@ export const PublicationPage = () => {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-            {conferenceData.publicationDetails.guidelines.map((g, idx) => (
-              <div key={idx} className="p-4 rounded-xl bg-navy-850 border border-white/5 flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-brand-400 shrink-0 mt-0.5" />
-                <span className="text-xs text-slate-200 leading-relaxed">{g}</span>
-              </div>
-            ))}
+            {conferenceData.publicationDetails.guidelines.map((g, idx) => {
+              if (g.includes('ieee.org/conferences/publishing/templates')) {
+                return (
+                  <div key={idx} className="p-4 rounded-xl bg-navy-850 border border-white/5 flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-brand-400 shrink-0 mt-0.5" />
+                    <span className="text-xs text-slate-200 leading-relaxed">
+                      The Paper format will be IEEE, A4 USA FORMAT SUBMITTED IN LATEX / DOCX FORMAT:{' '}
+                      <a
+                        href="https://www.ieee.org/conferences/publishing/templates"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold text-amber-400 underline hover:text-amber-300"
+                      >
+                        https://www.ieee.org/conferences/publishing/templates
+                      </a>{' '}
+                      of{' '}
+                      <a
+                        href="https://ieee-org.widen.net/content/ge5anzdecd/original/conference-template-a4.docx"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold text-amber-400 underline hover:text-amber-300"
+                      >
+                        A4 (DOC, 30 KB) Updated 2024
+                      </a>
+                    </span>
+                  </div>
+                );
+              }
+
+              if (g.includes('MICROSOFT CMT')) {
+                return (
+                  <div key={idx} className="p-4 rounded-xl bg-navy-850 border border-white/5 flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-brand-400 shrink-0 mt-0.5" />
+                    <span className="text-xs text-slate-200 leading-relaxed">
+                      Paper submission Link:{' '}
+                      <a
+                        href="https://cmt3.research.microsoft.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold text-amber-400 underline hover:text-amber-300"
+                      >
+                        MICROSOFT CMT
+                      </a>
+                    </span>
+                  </div>
+                );
+              }
+
+              return (
+                <div key={idx} className="p-4 rounded-xl bg-navy-850 border border-white/5 flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-brand-400 shrink-0 mt-0.5" />
+                  <span className="text-xs text-slate-200 leading-relaxed">{g}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
 
