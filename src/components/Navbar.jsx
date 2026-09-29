@@ -101,11 +101,10 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b border-slate-200 transition-[box-shadow,background-color] duration-200 ${
-        isScrolled
+      className={`sticky top-0 z-50 border-b border-slate-200 transition-[box-shadow,background-color] duration-200 ${isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-[0_4px_20px_rgba(15,23,42,0.08)]'
           : 'bg-white shadow-[0_2px_12px_rgba(15,23,42,0.04)]'
-      }`}
+        }`}
     >
 
       {/* =========================================================
