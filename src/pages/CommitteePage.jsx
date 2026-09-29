@@ -104,21 +104,21 @@ const getMemberAffiliation = (member) => {
 
 function CommitteeCard({ category, members }) {
   return (
-    <article className="break-inside-avoid mb-4 sm:mb-5 flex flex-col rounded-xl border border-orange-200 bg-white p-3.5 sm:p-4 shadow-[0_2px_12px_rgba(249,115,22,0.06)] transition-all duration-200 hover:border-orange-400 hover:shadow-[0_8px_20px_rgba(249,115,22,0.10)]">
+    <article className="break-inside-avoid mb-4 sm:mb-5 flex flex-col rounded-xl border border-orange-200 bg-white p-4 sm:p-5 shadow-[0_2px_12px_rgba(249,115,22,0.06)] transition-all duration-200 hover:border-orange-400 hover:shadow-[0_8px_20px_rgba(249,115,22,0.10)]">
       {/* Card heading */}
-      <div className="border-b border-orange-200 pb-2 flex items-center justify-between gap-2">
-        <h2 className="text-[16px] sm:text-[17px] font-extrabold leading-snug text-[#F97316]">
+      <div className="border-b border-orange-200 pb-2.5 flex items-center justify-between gap-2">
+        <h2 className="text-[17px] sm:text-[18.5px] font-extrabold leading-snug text-[#F97316]">
           {category.label}
         </h2>
-        <span className="text-[11px] font-bold text-orange-700 bg-orange-50 px-2 py-0.5 rounded-full border border-orange-200/60 shrink-0">
+        <span className="text-[12px] font-bold text-orange-700 bg-orange-50 px-2.5 py-0.5 rounded-full border border-orange-200/60 shrink-0">
           {members.length} {members.length === 1 ? 'Member' : 'Members'}
         </span>
       </div>
 
       {/* Members */}
-      <div className="pt-2.5">
+      <div className="pt-3">
         {members.length > 0 ? (
-          <ul className="space-y-1.5 sm:space-y-2">
+          <ul className="space-y-2 sm:space-y-2.5">
             {members.map((member, index) => {
               const name = getMemberName(member);
               const role = getMemberRole(member);
@@ -127,11 +127,11 @@ function CommitteeCard({ category, members }) {
               return (
                 <li
                   key={`${name}-${index}`}
-                  className="relative pl-3.5 text-[13px] sm:text-[13.5px] leading-snug text-[#17213a]"
+                  className="relative pl-4 text-[14.5px] sm:text-[15px] leading-relaxed text-[#17213a]"
                 >
                   <span
                     aria-hidden="true"
-                    className="absolute left-0 top-[0.6em] h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[#F97316]"
+                    className="absolute left-0 top-[0.65em] h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[#F97316]"
                   />
 
                   <div>
@@ -156,7 +156,7 @@ function CommitteeCard({ category, members }) {
             })}
           </ul>
         ) : (
-          <div className="py-2 text-xs italic text-slate-400">
+          <div className="py-2.5 text-sm italic text-slate-400">
             Committee information will be updated soon.
           </div>
         )}
@@ -218,7 +218,7 @@ export const CommitteePage = () => {
 
             <div className="mx-auto mt-2 h-1 w-16 rounded-full bg-[#F97316]" />
 
-            <p className="mx-auto mt-2.5 max-w-2xl text-xs leading-relaxed text-slate-500 sm:text-sm">
+            <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-[15.5px]">
               Distinguished academic leaders, chairs, technical committee
               members, and national and international advisory members of
               ICRAIQ2IT - 2027.
