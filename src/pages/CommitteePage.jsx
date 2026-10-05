@@ -104,21 +104,18 @@ const getMemberAffiliation = (member) => {
 
 function CommitteeCard({ category, members }) {
   return (
-    <article className="break-inside-avoid mb-4 sm:mb-5 flex flex-col rounded-xl border border-orange-200 bg-white p-4 sm:p-5 shadow-[0_2px_12px_rgba(249,115,22,0.06)] transition-all duration-200 hover:border-orange-400 hover:shadow-[0_8px_20px_rgba(249,115,22,0.10)]">
+    <article className="break-inside-avoid flex flex-col rounded-xl border border-orange-200/90 bg-white p-3.5 sm:p-4 shadow-[0_2px_10px_rgba(249,115,22,0.04)] transition-all duration-200 hover:border-orange-300 hover:shadow-[0_4px_16px_rgba(249,115,22,0.08)]">
       {/* Card heading */}
-      <div className="border-b border-orange-200 pb-2.5 flex items-center justify-between gap-2">
+      <div className="border-b border-orange-100 pb-2">
         <h2 className="text-[17px] sm:text-[18.5px] font-extrabold leading-snug text-[#F97316]">
           {category.label}
         </h2>
-        <span className="text-[12px] font-bold text-orange-700 bg-orange-50 px-2.5 py-0.5 rounded-full border border-orange-200/60 shrink-0">
-          {members.length} {members.length === 1 ? 'Member' : 'Members'}
-        </span>
       </div>
 
       {/* Members */}
-      <div className="pt-3">
+      <div className="pt-2.5">
         {members.length > 0 ? (
-          <ul className="space-y-2 sm:space-y-2.5">
+          <ul className="space-y-1.5 sm:space-y-2">
             {members.map((member, index) => {
               const name = getMemberName(member);
               const role = getMemberRole(member);
@@ -127,7 +124,7 @@ function CommitteeCard({ category, members }) {
               return (
                 <li
                   key={`${name}-${index}`}
-                  className="relative pl-4 text-[14.5px] sm:text-[15px] leading-relaxed text-[#17213a]"
+                  className="relative pl-3.5 text-[14.5px] sm:text-[15px] leading-snug text-[#17213a]"
                 >
                   <span
                     aria-hidden="true"
@@ -156,7 +153,7 @@ function CommitteeCard({ category, members }) {
             })}
           </ul>
         ) : (
-          <div className="py-2.5 text-sm italic text-slate-400">
+          <div className="py-2 text-sm italic text-slate-400">
             Committee information will be updated soon.
           </div>
         )}
@@ -232,7 +229,7 @@ export const CommitteePage = () => {
          ========================================================= */}
       <section className="bg-white px-5 pt-2 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-[1280px]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch mb-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5 items-stretch mb-3.5">
             {leadershipSections.map((category) => (
               <CommitteeCard
                 key={category.id || category.label}
@@ -247,11 +244,11 @@ export const CommitteePage = () => {
       {/* =========================================================
           2. THREE-COLUMN BALANCED COMMITTEES (Zero empty gaps)
          ========================================================= */}
-      <section className="bg-white px-5 pb-14 sm:px-8 sm:pb-16 lg:px-10">
+      <section className="bg-white px-5 pb-10 sm:px-8 sm:pb-12 lg:px-10">
         <div className="mx-auto max-w-[1280px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 items-start">
             {/* Column 1: International Advisory Committee (21 members) */}
-            <div className="space-y-4 sm:space-y-5">
+            <div className="space-y-3.5 sm:space-y-4">
               {internationalAdvisory && (
                 <CommitteeCard
                   category={internationalAdvisory}
@@ -261,7 +258,7 @@ export const CommitteePage = () => {
             </div>
 
             {/* Column 2: Technical Program (15) + Editorial (7) = 22 members */}
-            <div className="space-y-4 sm:space-y-5">
+            <div className="space-y-3.5 sm:space-y-4">
               {technicalProgram && (
                 <CommitteeCard
                   category={technicalProgram}
@@ -277,7 +274,7 @@ export const CommitteePage = () => {
             </div>
 
             {/* Column 3: National Advisory Committee (28 members) */}
-            <div className="space-y-4 sm:space-y-5 md:col-span-2 lg:col-span-1">
+            <div className="space-y-3.5 sm:space-y-4 md:col-span-2 lg:col-span-1">
               {nationalAdvisory && (
                 <CommitteeCard
                   category={nationalAdvisory}

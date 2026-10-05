@@ -4,7 +4,7 @@ import { Menu, X, ChevronDown, Download, ExternalLink } from 'lucide-react';
 import { conferenceData } from '../data/conferenceData';
 
 const DEFAULT_TITLE =
-  '5th International Conference on Recent Advancements in Artificial Intelligence and Quantum Intelligence and Inclusive Technologies';
+  '5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence and Inclusive Technologies';
 
 const DEFAULT_SHORT_TITLE = 'ICRAIQ2IT - 2027';
 
@@ -190,6 +190,13 @@ export const Navbar = () => {
               </>
             )}
           </h1>
+          <div className="mt-1 flex items-center justify-center gap-1.5 text-[12px] font-extrabold uppercase tracking-widest text-[#EA580C] sm:text-[13.5px]">
+            <span>April 9-10</span>
+            <span className="text-slate-300 font-normal">|</span>
+            <span>Vijayawada</span>
+            <span className="text-slate-300 font-normal">|</span>
+            <span>India</span>
+          </div>
         </Link>
       </div>
 

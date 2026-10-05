@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import { Mail, Facebook, Twitter, Youtube, Linkedin, Instagram } from 'lucide-react';
 import { conferenceData } from '../data/conferenceData';
 
-const DEFAULT_TITLE =
-  '5th International Conference on Recent Advancements in Artificial Intelligence and Quantum Intelligence and Inclusive Technologies';
-
 const DEFAULT_SHORT_TITLE = 'ICRAIQ2IT - 2027';
 
 const NAV_PRIMARY = [
@@ -35,7 +32,6 @@ function getDataValue(value, fallback) {
 export const Footer = () => {
   const data = conferenceData || {};
 
-  const conferenceTitle = getDataValue(data.title, DEFAULT_TITLE);
   const conferenceShortTitle = getDataValue(
     data.shortTitle || data.acronym,
     DEFAULT_SHORT_TITLE
@@ -54,14 +50,14 @@ export const Footer = () => {
 
   return (
     <footer className="bg-[#f1f3f6] text-[#263653]">
-      <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-10 px-5 py-14 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.35fr_0.8fr_0.8fr_0.8fr] lg:px-10">
+      <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-6 px-5 py-7 sm:px-8 sm:py-8 md:grid-cols-2 lg:grid-cols-[1.3fr_0.8fr_0.8fr_0.8fr] lg:gap-8 lg:px-10">
         {/* Brand */}
         <div>
-          <Link to="/" className="flex items-center gap-3.5 group">
+          <Link to="/" className="flex items-center gap-3 group">
             <img
               src="/nrilogo.png"
               alt="NRI Institute of Technology Logo"
-              className="h-14 sm:h-16 w-auto object-contain rounded-xl bg-white p-1.5 shadow-sm transition-transform duration-200 group-hover:scale-105"
+              className="h-12 sm:h-14 w-auto object-contain rounded-xl bg-white p-1 shadow-xs transition-transform duration-200 group-hover:scale-105"
             />
             <div>
               <div className="text-sm font-extrabold leading-tight text-[#1d315f]">
@@ -75,13 +71,9 @@ export const Footer = () => {
             </div>
           </Link>
 
-          <div className="mt-5 text-lg font-extrabold text-[#1d315f]">
+          <div className="mt-2.5 text-base sm:text-lg font-extrabold text-[#1d315f]">
             {conferenceShortTitle}
           </div>
-
-          <p className="mt-3 max-w-sm text-sm leading-6 text-slate-600">
-            {conferenceTitle}.
-          </p>
         </div>
 
         {/* Navigation */}
@@ -90,7 +82,7 @@ export const Footer = () => {
             Navigation
           </h3>
 
-          <div className="mt-4 space-y-2.5">
+          <div className="mt-2.5 space-y-1.5">
             {NAV_PRIMARY.slice(1, 7).map((item) => (
               <Link
                 key={item.label}
@@ -109,7 +101,7 @@ export const Footer = () => {
             Quick Links
           </h3>
 
-          <div className="mt-4 space-y-2.5">
+          <div className="mt-2.5 space-y-1.5">
             {NAV_SECONDARY.map((item) => {
               if (item.label === 'BROCHURE') {
                 return (
@@ -160,13 +152,13 @@ export const Footer = () => {
 
           <a
             href={`mailto:${email}`}
-            className="mt-4 flex items-start gap-2 text-sm leading-6 text-slate-600 transition hover:text-[#f97316]"
+            className="mt-2.5 flex items-start gap-2 text-sm leading-6 text-slate-600 transition hover:text-[#f97316]"
           >
             <Mail className="mt-0.5 h-4 w-4 shrink-0" />
             <span className="break-all">{email}</span>
           </a>
 
-          <div className="mt-5 flex items-center gap-2">
+          <div className="mt-3 flex items-center gap-2">
             {[
               { label: 'Facebook', icon: Facebook, href: data.social?.facebook },
               { label: 'Twitter', icon: Twitter, href: data.social?.twitter },
@@ -183,9 +175,9 @@ export const Footer = () => {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-300 bg-white text-[#344054] transition hover:border-[#f97316] hover:text-[#f97316]"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-300 bg-white text-[#344054] transition hover:border-[#f97316] hover:text-[#f97316]"
                 >
-                  <Icon className="h-4 w-4" />
+                  <Icon className="h-3.5 w-3.5" />
                 </a>
               );
             })}
@@ -193,7 +185,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="border-t border-slate-200 bg-[#e7eaf0] px-5 py-5 text-center">
+      <div className="border-t border-slate-200 bg-[#e7eaf0] px-5 py-3 sm:py-3.5 text-center">
         <p className="text-xs font-medium text-slate-600 sm:text-sm">
           © 2027 {conferenceShortTitle} – All Rights Reserved
           <span className="mx-2 hidden sm:inline">|</span>

@@ -13,12 +13,12 @@ import {
 import { conferenceData } from '../data/conferenceData';
 
 const DEFAULT_TITLE =
-  '5th International Conference on Recent Advancements in Artificial Intelligence and Quantum Intelligence and Inclusive Technologies';
+  '5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence and Inclusive Technologies';
 
 const DEFAULT_SHORT_TITLE = 'ICRAIQ2IT - 2027';
 
 const DEFAULT_ABOUT = [
-  'The 5th International Conference on Recent Advancements in Artificial Intelligence and Quantum Intelligence and Inclusive Technologies (ICRAIQ2IT – 2027) is scheduled to be held during 09–10 April 2027 at Dr RVR NRI Institute of Technology (Deemed to be University), Vijayawada, India.',
+  'The 5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence and Inclusive Technologies (ICRAIQ2IT – 2027) is scheduled to be held during 09–10 April 2027 at Dr RVR NRI Institute of Technology (Deemed to be University), Vijayawada, India.',
   'The conference aims to provide a premier international platform for academicians, scientists, researchers, industry professionals, innovators, and students to exchange ideas, present research outcomes, and discuss emerging trends in Artificial Intelligence, Quantum-Inspired Computing, and Deep Technology Innovations.',
   'ICRAIQ2IT – 2027 seeks to bridge the gap between theoretical research and practical applications by encouraging interdisciplinary collaboration and knowledge sharing among experts from academia, industry, research laboratories, and technological institutions across the globe.',
   'The event will feature keynote addresses, invited talks, technical paper presentations, workshops, and panel discussions delivered by eminent researchers, distinguished academicians, and industry leaders from around the world.'
@@ -41,7 +41,7 @@ const FALLBACK_SLIDES = [
     ],
   },
   {
-    image: 'https://nriit.edu.in/icraiq2it-2026/001.jpg',
+    image: 'https://nriit.edu.in/icraiq2it-2026/icraic2it-29-scaled.jpg',
     alt: 'Prakasam Barrage and Krishna River in Vijayawada',
     title: 'PRAKASAM BARRAGE',
     subtitle: 'Iconic Landmark on the Krishna River',
@@ -52,7 +52,7 @@ const FALLBACK_SLIDES = [
     ],
   },
   {
-    image: 'https://nriit.edu.in/icraiq2it-2026/002.webp',
+    image: 'https://nriit.edu.in/icraiq2it-2026/icraic2it-4-scaled.jpg',
     alt: 'Vijayawada Cityscape, Krishna River and Prakasam Barrage at Sunset',
     title: 'VIJAYAWADA',
     subtitle: 'A City Shaped by the Krishna River',
@@ -63,7 +63,7 @@ const FALLBACK_SLIDES = [
     ],
   },
   {
-    image: 'https://nriit.edu.in/icraiq2it-2026/003.jpg',
+    image: 'https://nriit.edu.in/icraiq2it-2026/32.jpg',
     alt: 'Aerial View of Vijayawada with Krishna River and Hills',
     title: 'VIJAYAWADA',
     subtitle: 'A City of Heritage, Nature and Innovation',
@@ -74,7 +74,7 @@ const FALLBACK_SLIDES = [
     ],
   },
   {
-    image: 'https://nriit.edu.in/icraiq2it-2026/004.jpg',
+    image: 'https://nriit.edu.in/icraiq2it-2026/43.jpg',
     alt: 'Prakasam Barrage and Krishna River with Vijayawada Hills',
     title: 'KRISHNA RIVER',
     subtitle: 'A Serene Riverfront Landmark of Vijayawada',
@@ -85,7 +85,7 @@ const FALLBACK_SLIDES = [
     ],
   },
   {
-    image: 'https://nriit.edu.in/icraiq2it-2026/005.jpg',
+    image: 'https://nriit.edu.in/icraiq2it-2026/53.jpg',
     alt: 'NRI University Academic Campus in Vijayawada',
     title: 'NRI UNIVERSITY',
     subtitle: 'Where Education Meets Research and Innovation',
@@ -159,8 +159,8 @@ function Home() {
     Array.isArray(data.aboutConference) && data.aboutConference.length > 0
       ? data.aboutConference
       : Array.isArray(data.aboutParagraphs) && data.aboutParagraphs.length > 0
-      ? data.aboutParagraphs
-      : DEFAULT_ABOUT;
+        ? data.aboutParagraphs
+        : DEFAULT_ABOUT;
 
   const stats = [
     {
@@ -299,7 +299,7 @@ function Home() {
           HERO — 3D ROLLING STACK PHOTO CAROUSEL
          ========================================================= */}
 
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white px-3 pb-12 pt-6 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white px-3 pb-3 pt-2 sm:px-6 sm:pb-4 lg:px-8">
 
         {/* Soft Ambient Background Glows */}
 
@@ -495,7 +495,7 @@ function Home() {
 
           {/* Bottom Pagination Dots */}
 
-          <div className="mt-6 flex items-center justify-center gap-2">
+          <div className="mt-3 flex items-center justify-center gap-2">
             {slides.map((_, idx) => (
               <button
                 key={`dot-${idx}`}
@@ -503,8 +503,8 @@ function Home() {
                 onClick={() => setActiveSlide(idx)}
                 aria-label={`Go to slide ${idx + 1}`}
                 className={`h-2.5 rounded-full transition-all duration-300 ${idx === activeSlide
-                    ? 'w-7 bg-orange-600 shadow-sm shadow-orange-500/40'
-                    : 'w-2.5 bg-slate-300 hover:bg-slate-400'
+                  ? 'w-7 bg-orange-600 shadow-sm shadow-orange-500/40'
+                  : 'w-2.5 bg-slate-300 hover:bg-slate-400'
                   }`}
               />
             ))}
@@ -516,39 +516,25 @@ function Home() {
           ABOUT SECTION
          ========================================================= */}
 
-      <section className="bg-white px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
+      <section className="bg-white px-5 py-3.5 sm:px-8 sm:py-4.5 lg:px-10 lg:py-5">
         <div className="mx-auto max-w-[1280px]">
 
-          <div className="mb-10 text-center">
+          <div className="mb-3 text-center">
             <span className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#F97316]">
               About The Conference
             </span>
 
-            <h2 className="mx-auto mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[40px]">
+            <h2 className="mx-auto mt-1.5 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[40px]">
               Advancing Research. Connecting Ideas.
             </h2>
 
-            <div className="mx-auto mt-3.5 h-1 w-14 rounded-full bg-[#F97316]" />
+            <div className="mx-auto mt-2 h-1 w-12 rounded-full bg-[#F97316]" />
           </div>
 
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 items-start">
-
-            <div className="lg:col-span-7 space-y-4 text-[15px] leading-[1.8] text-slate-600 sm:text-[15.5px]">
-              {aboutParagraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
-
-            <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-              {stats.map((stat, index) => (
-                <StatCard
-                  key={`${stat.label}-${index}`}
-                  value={stat.value}
-                  label={stat.label}
-                  subtext={stat.subtext}
-                />
-              ))}
-            </div>
+          <div className="space-y-2 text-justify text-[15px] leading-[1.65] text-slate-600 sm:text-[15.5px]">
+            {aboutParagraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
         </div>
       </section>
@@ -558,10 +544,10 @@ function Home() {
          ========================================================= */}
 
       {tracks.length > 0 && (
-        <section className="bg-white px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
+        <section className="bg-white px-5 py-3.5 sm:px-8 sm:py-4.5 lg:px-10 lg:py-5">
           <div className="mx-auto max-w-[1280px]">
 
-            <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+            <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
 
               <div>
                 <span className="text-xs font-extrabold uppercase tracking-[0.14em] text-orange-600">
@@ -575,50 +561,40 @@ function Home() {
 
               <Link
                 to="/tracks"
-                className="inline-flex items-center gap-2 text-sm font-extrabold uppercase tracking-wider text-orange-600 transition hover:text-orange-700"
+                className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-orange-600 transition hover:text-orange-700 sm:text-sm"
               >
                 View All Tracks
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
-            <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-3.5 grid grid-cols-1 gap-2.5 md:grid-cols-2 md:gap-3">
               {tracks.map((track, index) => (
-                <article
+                <Link
                   key={track.id || track.number || index}
-                  className="group rounded-2xl border border-orange-100 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-lg hover:shadow-orange-500/10"
+                  to="/tracks"
+                  className="group relative flex items-start gap-3.5 rounded-xl border border-slate-200/90 bg-white p-3.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:bg-orange-50/20 hover:shadow-md hover:shadow-orange-500/5 sm:p-4"
                 >
-                  <div className="flex items-start justify-between gap-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange-100/70 font-mono text-xs font-black text-orange-700 transition-colors group-hover:bg-orange-600 group-hover:text-white sm:text-sm">
+                    {track.number ||
+                      String(index + 1).padStart(2, '0')}
+                  </span>
 
-                    <span className="text-2xl font-black text-orange-600">
-                      {track.number ||
-                        String(index + 1).padStart(2, '0')}
-                    </span>
-
-                    <div className="rounded-full border border-orange-200 bg-orange-50 px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-orange-700">
-                      Track Focus
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <h3 className="text-sm font-bold text-slate-900 transition-colors group-hover:text-orange-600 sm:text-[15px]">
+                        {track.title}
+                      </h3>
+                      <ArrowRight className="h-4 w-4 shrink-0 text-slate-300 transition-all duration-200 group-hover:translate-x-1 group-hover:text-orange-600" />
                     </div>
+
+                    {track.description && (
+                      <p className="mt-1 line-clamp-1 text-xs text-slate-500 sm:text-[13px]">
+                        {track.description}
+                      </p>
+                    )}
                   </div>
-
-                  <h3 className="mt-3.5 text-base font-bold leading-snug text-slate-900 transition group-hover:text-orange-600 sm:text-lg">
-                    {track.title}
-                  </h3>
-
-                  {track.description && (
-                    <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-slate-600 sm:text-sm">
-                      {track.description}
-                    </p>
-                  )}
-
-                  <Link
-                    to="/call-for-papers"
-                    className="mt-4 inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-orange-600 transition group-hover:text-orange-700"
-                  >
-                    Submit Paper
-
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </article>
+                </Link>
               ))}
             </div>
           </div>
@@ -630,10 +606,10 @@ function Home() {
          ========================================================= */}
 
       {importantDates.length > 0 && (
-        <section className="border-t border-orange-100 bg-slate-50 px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
+        <section className="border-t border-orange-100 bg-slate-50 px-5 py-3.5 sm:px-8 sm:py-4.5 lg:px-10 lg:py-5">
           <div className="mx-auto max-w-[1180px]">
 
-            <div className="mb-6 text-center">
+            <div className="mb-3 text-center">
               <span className="text-xs font-extrabold uppercase tracking-[0.14em] text-orange-600">
                 Timelines & Milestones
               </span>
@@ -643,37 +619,40 @@ function Home() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div className="mt-3.5 grid grid-cols-1 gap-2.5 md:grid-cols-2 md:gap-3">
               {importantDates.map((item, index) => (
-                <article
+                <Link
                   key={`${item.title}-${index}`}
-                  className="flex gap-4 rounded-2xl border border-orange-100 bg-white p-5 shadow-sm transition hover:border-orange-300 hover:shadow-md"
+                  to="/important-dates"
+                  className="group relative flex items-center justify-between gap-3.5 rounded-xl border border-slate-200/90 bg-white p-3.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:bg-orange-50/20 hover:shadow-md hover:shadow-orange-500/5 sm:p-4"
                 >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-orange-200 bg-orange-50 text-orange-600">
-                    <CalendarDays className="h-5 w-5" />
+                  <div className="flex items-center gap-3 min-w-0">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange-100/70 text-orange-700 transition-colors group-hover:bg-orange-600 group-hover:text-white">
+                      <CalendarDays className="h-4 w-4" />
+                    </span>
+                    <div className="min-w-0">
+                      <div className="text-[10px] font-extrabold uppercase tracking-wider text-orange-600">
+                        {item.status || 'Milestone'}
+                      </div>
+                      <h3 className="truncate text-sm font-bold text-slate-900 transition-colors group-hover:text-orange-600 sm:text-[15px]">
+                        {item.title}
+                      </h3>
+                    </div>
                   </div>
 
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-extrabold uppercase tracking-wider text-orange-600">
-                      {item.status || 'Milestone'}
-                    </div>
-
-                    <h3 className="mt-0.5 text-sm font-bold text-slate-900 sm:text-base">
-                      {item.title}
-                    </h3>
-
-                    <div className="mt-1 text-xs font-black text-orange-600 sm:text-sm">
+                  <div className="shrink-0 text-right">
+                    <span className="inline-block rounded-md border border-orange-200/80 bg-orange-50/80 px-2.5 py-1 text-xs font-black text-orange-700 transition-colors group-hover:border-orange-300 sm:text-[13px]">
                       {item.date}
-                    </div>
+                    </span>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
 
-            <div className="mt-6 text-center">
+            <div className="mt-3 text-center">
               <Link
                 to="/important-dates"
-                className="inline-flex items-center gap-2 rounded-xl border-2 border-orange-600 bg-white px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider text-orange-600 transition hover:bg-orange-600 hover:text-white"
+                className="inline-flex items-center gap-1.5 rounded-xl border-2 border-orange-600 bg-white px-5 py-2 text-xs font-extrabold uppercase tracking-wider text-orange-600 transition hover:bg-orange-600 hover:text-white"
               >
                 View Complete Schedule
                 <ArrowRight className="h-4 w-4" />
@@ -687,10 +666,10 @@ function Home() {
           CMT ACKNOWLEDGMENT
          ========================================================= */}
 
-      <section className="border-t border-orange-100 bg-white px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
+      <section className="border-t border-orange-100 bg-white px-5 py-3.5 sm:px-8 sm:py-4.5 lg:px-10 lg:py-5">
         <div className="mx-auto max-w-[1050px]">
 
-          <div className="relative overflow-hidden rounded-2xl border border-orange-100 bg-gradient-to-br from-slate-50 via-white to-orange-50/40 p-6 shadow-sm sm:p-8">
+          <div className="relative overflow-hidden rounded-2xl border border-orange-100 bg-gradient-to-br from-slate-50 via-white to-orange-50/40 p-4 shadow-sm sm:p-6">
 
             {/* Decorative Elements */}
 
@@ -702,8 +681,8 @@ function Home() {
 
               {/* Section Label */}
 
-              <div className="mb-4 flex items-center gap-3">
-                <span className="h-[2px] w-8 bg-orange-600" />
+              <div className="mb-3 flex items-center gap-2.5">
+                <span className="h-[2px] w-6 bg-orange-600" />
 
                 <span className="text-xs font-extrabold uppercase tracking-[0.16em] text-orange-600">
                   Conference Acknowledgment
@@ -718,7 +697,7 @@ function Home() {
 
               {/* Acknowledgment Text */}
 
-              <p className="mt-4 max-w-4xl text-sm leading-7 text-slate-600 sm:text-[15px]">
+              <p className="mt-2.5 max-w-4xl text-sm leading-relaxed text-slate-600 sm:text-[14.5px]">
                 The Microsoft CMT service was used for managing the
                 peer-reviewing process for this conference. This service
                 was provided for free by Microsoft and they bore all
@@ -727,52 +706,6 @@ function Home() {
               </p>
 
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-          CALL FOR PAPERS CTA
-         ========================================================= */}
-
-      <section className="relative overflow-hidden bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 px-5 py-10 text-white shadow-inner sm:px-8 lg:px-10 lg:py-12">
-
-        <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border border-white/20" />
-
-        <div className="absolute -bottom-36 -left-16 h-80 w-80 rounded-full border border-white/20" />
-
-        <div className="relative mx-auto max-w-[1050px] text-center">
-
-          <div className="inline-block rounded-full bg-white/20 px-3.5 py-1 text-xs font-black uppercase tracking-[0.18em] text-white backdrop-blur-md">
-            Call for Papers Open
-          </div>
-
-          <h2 className="mt-3 text-2xl font-black leading-tight text-white sm:text-3xl lg:text-4xl">
-            Share Your Research with the Global Computing Community
-          </h2>
-
-          <p className="mx-auto mt-3 max-w-3xl text-sm font-medium leading-relaxed text-orange-50">
-            Submit your original contributions in emerging technologies,
-            intelligent quantum algorithms, and inclusive systems to{' '}
-            {conferenceShortTitle}.
-          </p>
-
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3.5">
-
-            <Link
-              to="/call-for-papers"
-              className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-black text-orange-600 shadow-xl transition hover:-translate-y-0.5 hover:bg-orange-50"
-            >
-              Author Guidelines
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-
-            <Link
-              to="/registration"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/50 bg-black/10 px-6 py-3 text-sm font-bold text-white backdrop-blur-md transition hover:bg-white hover:text-orange-600"
-            >
-              Registration Details
-            </Link>
           </div>
         </div>
       </section>

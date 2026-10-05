@@ -3,8 +3,8 @@ export const conferenceData = {
   shortTitle: "ICRAIQ2IT - 2027",
   edition: "5th",
   year: "2027",
-  title: "5th International Conference on Recent Advancements in Artificial Intelligence and Quantum Intelligence and Inclusive Technologies",
-  subtitle: "09 – 10, April 2027 | Vijayawada | India",
+  title: "5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence and Inclusive Technologies",
+  subtitle: "April 9-10|Vijayawada|India",
   theme: "Recent Advancements in Artificial Intelligence, Quantum-Inspired Computing, and Deep Technology Innovations",
   mode: "Blended Mode (Online & In-Person)",
   website: "http://www.rvrnriuniversity.edu.in/icraiq2it-2027",
@@ -95,7 +95,7 @@ export const conferenceData = {
   },
 
   aboutConference: [
-    "This 5th International Conference on Recent Advancements in Artificial Intelligence and Quantum Intelligence and Inclusive Technologies (ICRAIQ2IT – 2027) is scheduled to be held during 09–10 April 2027 at Dr RVR NRI Institute of Technology (Deemed to be University), Vijayawada, Andhra Pradesh, India.",
+    "This 5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence and Inclusive Technologies (ICRAIQ2IT – 2027) is scheduled to be held during 09–10 April 2027 at Dr RVR NRI Institute of Technology (Deemed to be University), Vijayawada, Andhra Pradesh, India.",
     "The conference aims to provide a premier international platform for academicians, scientists, researchers, industry professionals, innovators, and students to exchange ideas, present research outcomes, and discuss emerging trends in Artificial Intelligence, Quantum-Inspired Computing, and Deep Technology Innovations.",
     "ICRAIQ2IT – 2027 seeks to bridge the gap between theoretical research and practical applications by encouraging interdisciplinary collaboration and knowledge sharing among experts from academia, industry, research laboratories, and technological institutions across the globe. The conference will focus on the latest developments in intelligent systems, machine learning, deep learning, quantum-inspired algorithms, automation, cybersecurity, data science, robotics, cloud technologies, and next-generation computing paradigms.",
     "The event will feature keynote addresses, invited talks, technical paper presentations, workshops, and panel discussions delivered by eminent researchers, distinguished academicians, and industry leaders from around the world. These sessions will provide valuable insights into current challenges, innovative solutions, and future research directions in rapidly evolving technological domains.",
