@@ -1,23 +1,10 @@
 import React, { useMemo, useState } from 'react';
-import {
-  Download,
-  FileText,
-  CheckCircle2,
-  ShieldCheck,
-  Lock,
-  ExternalLink,
-  Calendar,
-  BookOpen,
-  ArrowRight,
-  Award,
-  Check,
-} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { conferenceData } from '../data/conferenceData';
 
 const TOPIC_CATEGORIES = [
-  { id: 'all', label: 'All Topics (21)' },
-  { id: 'ai', label: 'AI & Machine Learning' },
+  { id: 'all', label: 'All (21)' },
+  { id: 'ai', label: 'AI & ML' },
   { id: 'quantum', label: 'Quantum & Security' },
   { id: 'cloud', label: 'Cloud & Distributed' },
   { id: 'applications', label: 'Emerging & Applied' },
@@ -50,61 +37,36 @@ const ALL_TOPICS = [
 const GUIDELINES = [
   {
     title: 'Format & Page Limit',
-    desc: 'IEEE standard 2-column layout (A4 USA size). Strict maximum of 6 pages including figures, tables, and bibliography.'
+    desc: 'IEEE standard 2-column layout (A4). Maximum of 6 pages including figures, tables, and bibliography.',
   },
   {
     title: 'Submission Portal',
-    desc: 'Submit complete manuscripts electronically in PDF format exclusively through Microsoft CMT portal.'
+    desc: 'Submit manuscripts in PDF format exclusively through the Microsoft CMT portal.',
   },
   {
     title: 'Originality & Plagiarism (<10%)',
-    desc: 'Unpublished, original research only. Text similarity (including AI assistance) must be strictly below 10% excluding references.'
+    desc: 'Unpublished, original research only. Similarity must be strictly below 10% excluding references.',
   },
   {
-    title: 'Double-Blind Anonymity',
-    desc: 'Omit all author names, affiliations, emails, funding acknowledgments, and self-identifying citations in initial review PDFs.'
+    title: 'Double-Blind Review',
+    desc: 'Omit author names, affiliations, emails, funding notes, and self-identifying citations.',
   },
   {
     title: 'Registration & Presentation',
-    desc: 'At least one author must register by 10th Mar 2027 and present the paper (in-person or virtually) during the conference.'
+    desc: 'At least one author must register by 10th Mar 2027 and present the paper during the conference.',
   },
   {
     title: 'Scopus Proceedings Indexing',
-    desc: 'All peer-reviewed, accepted, and registered presented papers will be submitted for inclusion in Scopus-indexed proceedings.'
-  }
+    desc: 'All peer-reviewed, accepted, and presented papers will be submitted for Scopus-indexed proceedings.',
+  },
 ];
 
 const IMPORTANT_DATES = [
-  {
-    title: 'Manuscript Submission',
-    date: '24th Jan, 2027',
-    badge: 'Submission Closes',
-    status: 'urgent'
-  },
-  {
-    title: 'Acceptance Notification',
-    date: '24th Feb, 2027',
-    badge: 'Peer Review',
-    status: 'normal'
-  },
-  {
-    title: 'Author Registration',
-    date: '10th Mar, 2027',
-    badge: 'Registration Due',
-    status: 'normal'
-  },
-  {
-    title: 'Camera Ready Due',
-    date: '30th Mar, 2027',
-    badge: 'Final Files',
-    status: 'normal'
-  },
-  {
-    title: 'Conference Dates',
-    date: '09–10 Apr, 2027',
-    badge: 'Blended Mode',
-    status: 'urgent'
-  }
+  { title: 'Manuscript Submission', date: '24th Jan, 2027', badge: 'Submission Closes', urgent: true },
+  { title: 'Acceptance Notification', date: '24th Feb, 2027', badge: 'Peer Review' },
+  { title: 'Author Registration', date: '10th Mar, 2027', badge: 'Registration Due' },
+  { title: 'Camera Ready Due', date: '30th Mar, 2027', badge: 'Final Files' },
+  { title: 'Conference Dates', date: '09–10 Apr, 2027', badge: 'Technical Sessions', urgent: true },
 ];
 
 export const CallForPapersPage = () => {
@@ -123,180 +85,204 @@ export const CallForPapersPage = () => {
     'https://ieee-org.widen.net/content/ge5anzdecd/original/conference-template-a4.docx';
 
   return (
-    <main className="min-h-screen bg-white text-[#17213a] antialiased">
+    <main className="min-h-screen bg-slate-50 text-[#17213a] antialiased pb-8">
 
       {/* ── HEADER ── */}
-      <section className="bg-white border-b border-slate-200 py-6">
-        <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10 text-center">
-          <h1 className="text-2xl sm:text-3xl lg:text-[36px] font-black tracking-tight text-[#17213a]">
+      <section className="bg-white border-b border-slate-200 py-5">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-[#17213a]">
             Call for Papers &amp; <span className="text-[#F97316]">Submission Guidelines</span>
           </h1>
-          <div className="mx-auto mt-2 h-[3px] w-12 bg-[#F97316]" />
-          <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
-            Submit original research in AI, Quantum Intelligence, and Inclusive Technologies.
-            Accepted &amp; presented papers will be published with Scopus indexation.
+          <div className="mx-auto mt-1.5 h-1 w-10 bg-[#F97316] rounded-full" />
+          <p className="mx-auto mt-2 max-w-xl text-xs sm:text-sm text-slate-500">
+            Submit original manuscripts in AI, Quantum Computing, and Deep-Tech Innovations.
           </p>
 
-          {/* Action Buttons */}
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+          {/* Quick Actions */}
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
             <a
               href="https://cmt3.research.microsoft.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#F97316] px-5 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-white transition hover:bg-[#ea580c]"
+              className="inline-flex items-center bg-[#F97316] hover:bg-[#ea580c] text-white px-3.5 py-1.5 text-xs font-bold rounded transition-colors"
             >
-              <Lock className="h-3.5 w-3.5" />
-              <span>Submit Paper (CMT)</span>
-              <ExternalLink className="h-3 w-3" />
+              Submit via CMT
             </a>
             <a
               href={ieeeDocxUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 border border-orange-300 px-4 py-2 text-xs sm:text-sm font-bold text-[#F97316] transition hover:bg-[#F97316] hover:text-white"
+              className="inline-flex items-center border border-[#F97316] text-[#F97316] hover:bg-orange-50 px-3.5 py-1.5 text-xs font-bold rounded transition-colors"
             >
-              <Download className="h-3.5 w-3.5" />
-              <span>IEEE Template (DOCX)</span>
+              IEEE Template (DOCX)
             </a>
             <a
               href={ieeeTemplateUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 border border-slate-300 px-4 py-2 text-xs sm:text-sm font-bold text-slate-600 transition hover:border-[#F97316] hover:text-[#F97316]"
+              className="inline-flex items-center border border-slate-300 text-slate-600 hover:border-[#F97316] hover:text-[#F97316] px-3.5 py-1.5 text-xs font-bold rounded transition-colors"
             >
-              <ExternalLink className="h-3.5 w-3.5" />
-              <span>LaTeX Portal</span>
+              LaTeX Portal
             </a>
-          </div>
-
-          {/* Spec Strip */}
-          <div className="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-xs font-semibold text-slate-600">
-            <span className="inline-flex items-center gap-1.5"><FileText className="h-3.5 w-3.5 text-[#F97316]" /> IEEE A4 2-Column</span>
-            <span className="inline-flex items-center gap-1.5"><BookOpen className="h-3.5 w-3.5 text-[#F97316]" /> Max 6 Pages</span>
-            <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-[#F97316]" /> Plagiarism &lt; 10%</span>
-            <span className="inline-flex items-center gap-1.5"><Lock className="h-3.5 w-3.5 text-[#F97316]" /> Double-Blind Review</span>
-            <span className="inline-flex items-center gap-1.5 text-[#F97316] font-bold"><Award className="h-3.5 w-3.5" /> Scopus Indexation</span>
-            <span className="text-slate-500">Deadline: <strong className="text-[#F97316]">24th Jan, 2027</strong></span>
+            <span className="inline-flex items-center bg-orange-100 text-[#ea580c] px-3 py-1.5 text-xs font-bold rounded">
+              Deadline: 24th Jan, 2027
+            </span>
           </div>
         </div>
       </section>
 
-      {/* ── TWO-COLUMN CONTENT ── */}
-      <section className="bg-[#FFFBF8] py-5 border-b border-slate-200">
-        <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-5 items-start">
+      {/* ── MAIN CONTENT (TWO COLUMNS, NO ICONS) ── */}
+      <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8 mt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
 
-            {/* LEFT */}
-            <div className="lg:col-span-6 space-y-4">
+          {/* LEFT COLUMN: SCOPE + DEADLINES */}
+          <div className="flex flex-col gap-4">
 
-              {/* CFP Scope */}
-              <div className="border border-slate-200 bg-white p-4 sm:p-5">
-                <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-3">
-                  <div className="flex items-center gap-2">
-                    <FileText className="h-4 w-4 text-[#F97316]" />
-                    <h2 className="text-base font-extrabold text-[#17213a]">Call for Papers Scope</h2>
-                  </div>
-                  <span className="border border-orange-300 px-2 py-0.5 text-[11px] font-bold text-[#F97316]">
-                    5th Edition
-                  </span>
+            {/* Scope */}
+            <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
+              <div className="flex items-center justify-between mb-2">
+                <h2 className="text-sm font-bold text-[#17213a]">Call for Papers Scope</h2>
+                <span className="border border-orange-200 bg-orange-50 px-2 py-0.5 text-[10px] font-bold text-[#F97316] rounded">
+                  5th Edition
+                </span>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Academicians, researchers, postgraduate scholars, and industry professionals are invited to submit
+                original, high-quality, unpublished research papers across conference tracks.
+              </p>
+
+              {/* 3 Spec Tiles */}
+              <div className="mt-3 grid grid-cols-3 gap-2 pt-2 border-t border-slate-100">
+                <div className="bg-slate-50 border border-slate-200/70 rounded p-2 text-center">
+                  <span className="text-[9px] font-bold uppercase text-slate-400 block">Dates &amp; Mode</span>
+                  <strong className="text-xs text-slate-900 block mt-0.5">09–10 Apr 2027</strong>
+                  <span className="text-[10px] text-slate-500 block">Blended</span>
                 </div>
-                <p className="text-sm leading-relaxed text-slate-700">
-                  Academicians, researchers, postgraduate scholars, and industry professionals are invited to submit original, high-quality, unpublished research papers in Artificial Intelligence, Quantum-Inspired Computing, Deep-Tech Innovations, and Inclusive Cyber-Physical Systems.
-                </p>
-                <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2">
-                  {[
-                    { label: 'Dates & Mode', value: '09–10 April 2027', sub: 'Blended (Online & In-Person)' },
-                    { label: 'Publication', value: 'Official Proceedings', sub: 'Scopus Indexation', highlight: true },
-                    { label: 'Paper Format', value: 'IEEE USA Format', sub: '6 Pages Maximum' },
-                  ].map((tile) => (
-                    <div key={tile.label} className="border border-slate-200 bg-[#FFFBF8] p-3">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">{tile.label}</span>
-                      <strong className="text-sm text-slate-900 block mt-0.5">{tile.value}</strong>
-                      <span className={`text-[11px] block mt-0.5 ${tile.highlight ? 'text-[#F97316] font-bold' : 'text-slate-500'}`}>{tile.sub}</span>
-                    </div>
-                  ))}
+                <div className="bg-orange-50/60 border border-orange-200/60 rounded p-2 text-center">
+                  <span className="text-[9px] font-bold uppercase text-orange-600 block">Proceedings</span>
+                  <strong className="text-xs text-slate-900 block mt-0.5">Scopus Indexed</strong>
+                  <span className="text-[10px] text-[#F97316] font-semibold block">Official</span>
+                </div>
+                <div className="bg-slate-50 border border-slate-200/70 rounded p-2 text-center">
+                  <span className="text-[9px] font-bold uppercase text-slate-400 block">Paper Format</span>
+                  <strong className="text-xs text-slate-900 block mt-0.5">IEEE A4</strong>
+                  <span className="text-[10px] text-slate-500 block">Max 6 Pages</span>
                 </div>
               </div>
+            </div>
 
-              {/* Important Dates */}
-              <div className="border border-slate-200 bg-white p-4 sm:p-5">
-                <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-3">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4 text-[#F97316]" />
-                    <h2 className="text-base font-extrabold text-[#17213a]">Important Deadlines</h2>
-                  </div>
-                  <span className="text-[11px] font-semibold text-slate-400">5 Milestones</span>
+            {/* Important Deadlines */}
+            <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm flex-1 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-2.5">
+                  <h2 className="text-sm font-bold text-[#17213a]">Important Deadlines</h2>
+                  <span className="text-[10px] font-semibold text-slate-400">5 Milestones</span>
                 </div>
-                <div className="divide-y divide-slate-100">
+
+                <div className="border border-slate-200 rounded divide-y divide-slate-100">
                   {IMPORTANT_DATES.map((item, idx) => (
                     <div
                       key={idx}
-                      className={`flex items-center justify-between py-2.5 ${item.status === 'urgent' ? 'bg-orange-50/50 -mx-4 px-4 sm:-mx-5 sm:px-5' : ''}`}
+                      className={`flex items-center justify-between px-3 py-2 text-xs transition-colors ${item.urgent ? 'bg-orange-50/50' : 'bg-white hover:bg-slate-50'
+                        }`}
                     >
-                      <div className="flex items-center gap-3">
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center bg-orange-100 text-[11px] font-black text-orange-700">
+                      <div className="flex items-center gap-2.5">
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-orange-100 text-[10px] font-bold text-orange-700">
                           {idx + 1}
                         </span>
                         <div>
-                          <div className="text-xs sm:text-sm font-bold text-[#17213a]">{item.title}</div>
-                          <span className="text-[10px] text-slate-400 uppercase font-semibold">{item.badge}</span>
+                          <span className="font-bold text-[#17213a]">{item.title}</span>
+                          <span className="ml-2 text-[10px] font-medium text-slate-400 uppercase tracking-wide">
+                            {item.badge}
+                          </span>
                         </div>
                       </div>
-                      <span className="text-sm font-black text-[#F97316]">{item.date}</span>
+                      <span className="font-extrabold text-[#F97316] shrink-0 text-xs">
+                        {item.date}
+                      </span>
                     </div>
                   ))}
                 </div>
               </div>
-            </div>
 
-            {/* RIGHT */}
-            <div className="lg:col-span-6">
-              <div className="border border-slate-200 bg-white p-4 sm:p-5">
-                <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-3">
-                  <div className="flex items-center gap-2">
-                    <ShieldCheck className="h-4 w-4 text-[#F97316]" />
-                    <h2 className="text-base font-extrabold text-[#17213a]">Submission Guidelines</h2>
-                  </div>
-                  <span className="text-[11px] font-bold text-[#F97316]">Double-Blind Review</span>
-                </div>
-                <div className="divide-y divide-slate-100">
-                  {GUIDELINES.map((item, idx) => (
-                    <div key={idx} className="py-2.5 flex gap-3">
-                      <Check className="h-4 w-4 text-[#F97316] shrink-0 mt-0.5" />
-                      <div>
-                        <h3 className="text-xs sm:text-sm font-bold text-[#17213a]">{item.title}</h3>
-                        <p className="mt-0.5 text-xs text-slate-600 leading-relaxed">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              <div className="mt-2.5 text-[11px] text-slate-400 text-center">
+                All deadlines close at 23:59 IST on the specified dates.
               </div>
             </div>
 
           </div>
-        </div>
-      </section>
 
-      {/* ── RESEARCH TOPICS ── */}
-      <section className="bg-white py-5">
-        <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
-            <div>
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#F97316]">Technical Domains</span>
-              <h2 className="text-lg sm:text-xl font-black text-[#17213a]">Conference Research Topics</h2>
+          {/* RIGHT COLUMN: SUBMISSION GUIDELINES */}
+          <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm flex flex-col">
+            <div className="flex items-center justify-between mb-2.5">
+              <h2 className="text-sm font-bold text-[#17213a]">Submission Guidelines</h2>
+              <span className="border border-orange-200 bg-orange-50 px-2 py-0.5 text-[10px] font-bold text-[#F97316] rounded">
+                Double-Blind Review
+              </span>
             </div>
-            {/* Filter tabs */}
-            <div className="flex flex-wrap gap-1.5">
+
+            <div className="border border-slate-200 rounded divide-y divide-slate-100 flex-1 flex flex-col">
+              {GUIDELINES.map((item, idx) => (
+                <div key={idx} className="px-3 py-2.5 flex-1 flex flex-col justify-center hover:bg-slate-50 transition-colors">
+                  <h3 className="text-xs font-bold text-[#17213a]">{item.title}</h3>
+                  <p className="text-[11px] text-slate-500 leading-relaxed mt-0.5">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Direct Author Links Strip */}
+            <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs">
+              <span className="text-slate-500 text-[11px]">Need formatting help?</span>
+              <div className="flex items-center gap-3">
+                <a
+                  href={ieeeDocxUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-[#F97316] hover:underline text-xs"
+                >
+                  DOCX
+                </a>
+                <span className="text-slate-300">•</span>
+                <a
+                  href={ieeeTemplateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-slate-600 hover:text-[#F97316] hover:underline text-xs"
+                >
+                  LaTeX
+                </a>
+                <span className="text-slate-300">•</span>
+                <a
+                  href="https://cmt3.research.microsoft.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-[#F97316] hover:underline text-xs"
+                >
+                  CMT Portal &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* ── RESEARCH TOPICS (COMPACT & SIMPLE) ── */}
+        <div className="mt-4 bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 pb-2.5 border-b border-slate-100">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#F97316]">Technical Domains</span>
+              <h2 className="text-sm font-bold text-[#17213a]">Conference Research Topics</h2>
+            </div>
+            <div className="flex flex-wrap gap-1">
               {TOPIC_CATEGORIES.map((cat) => (
                 <button
                   key={cat.id}
                   type="button"
                   onClick={() => setSelectedCat(cat.id)}
-                  className={`px-3 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-wide transition-all border ${
-                    selectedCat === cat.id
+                  className={`px-2.5 py-1 text-[11px] font-semibold rounded border transition-colors ${selectedCat === cat.id
                       ? 'bg-[#F97316] text-white border-[#F97316]'
-                      : 'bg-white text-slate-600 border-slate-300 hover:border-[#F97316] hover:text-[#F97316]'
-                  }`}
+                      : 'bg-white text-slate-600 border-slate-200 hover:border-[#F97316] hover:text-[#F97316]'
+                    }`}
                 >
                   {cat.label}
                 </button>
@@ -308,32 +294,29 @@ export const CallForPapersPage = () => {
             {filteredTopics.map((topic, index) => (
               <div
                 key={index}
-                className="flex items-center gap-3 border-l-2 border-[#F97316] bg-[#FFFBF8] border border-slate-200 px-3 py-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:bg-orange-50 transition-colors"
+                className="flex items-center gap-2 border border-slate-100 bg-slate-50/50 hover:bg-orange-50/60 rounded px-2.5 py-1.5 text-xs text-slate-700 transition-colors"
               >
-                <span className="h-1.5 w-1.5 shrink-0 bg-[#F97316]" />
-                <span>{topic.name}</span>
+                <span className="h-1.5 w-1.5 shrink-0 bg-[#F97316] rounded-full" />
+                <span className="truncate">{topic.name}</span>
               </div>
             ))}
           </div>
 
-          <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between flex-wrap gap-2 text-xs">
-            <span className="text-slate-500">
-              Showing {filteredTopics.length} of {ALL_TOPICS.length} topics
-            </span>
+          <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+            <span>Showing {filteredTopics.length} of {ALL_TOPICS.length} topics</span>
             <Link
               to="/tracks"
               className="inline-flex items-center gap-1 font-bold text-[#F97316] hover:underline"
             >
-              <span>View Track Sessions &amp; Chairs</span>
-              <ArrowRight className="h-3.5 w-3.5" />
+              View Track Sessions &amp; Chairs &rarr;
             </Link>
           </div>
         </div>
-      </section>
+
+      </div>
 
     </main>
   );
 };
 
 export default CallForPapersPage;
-
