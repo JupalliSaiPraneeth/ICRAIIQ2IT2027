@@ -107,12 +107,12 @@ function formatDate(value) {
 
 function StatCard({ value, label, subtext }) {
   return (
-    <article className="group relative overflow-hidden rounded-2xl border border-orange-100/90 bg-white p-6 sm:p-7 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[#F97316]/50 hover:shadow-xl hover:shadow-orange-500/10">
+    <article className="group relative overflow-hidden rounded-2xl border border-orange-100/90 bg-white p-4 sm:p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[#F97316]/50 hover:shadow-xl hover:shadow-orange-500/10">
       <div className="text-3xl font-extrabold tracking-tight text-slate-900 transition-colors group-hover:text-[#F97316] sm:text-4xl">
         {value}
       </div>
 
-      <div className="mt-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#F97316]">
+      <div className="mt-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#F97316]">
         {label}
       </div>
 
@@ -259,7 +259,7 @@ function Home() {
       setActiveSlide(
         (current) => (current + 1) % slides.length
       );
-    }, 6000);
+    }, 1000);
 
     return () => window.clearInterval(timer);
   }, [slides.length]);
@@ -295,7 +295,7 @@ function Home() {
           HERO — 3D ROLLING STACK PHOTO CAROUSEL
          ========================================================= */}
 
-      <section className="relative overflow-hidden bg-white px-3 pb-3 pt-2 sm:px-6 sm:pb-4 lg:px-8">
+      <section className="relative overflow-hidden bg-white px-3 pb-2 pt-1.5 sm:px-6 sm:pb-3 lg:px-8">
 
         {/* Soft Ambient Background Glows */}
 
@@ -415,7 +415,7 @@ function Home() {
 
           {/* Bottom Pagination Dots */}
 
-          <div className="mt-3 flex items-center justify-center gap-2">
+          <div className="mt-2 flex items-center justify-center gap-1.5">
             {slides.map((_, idx) => (
               <button
                 key={`dot-${idx}`}
@@ -436,22 +436,22 @@ function Home() {
           ABOUT SECTION
          ========================================================= */}
 
-      <section className="bg-white px-5 py-3.5 sm:px-8 sm:py-4.5 lg:px-10 lg:py-5">
+      <section className="bg-white px-5 py-2.5 sm:px-8 sm:py-3 lg:px-10 lg:py-3.5">
         <div className="mx-auto max-w-[1280px]">
 
-          <div className="mb-3 text-center">
+          <div className="mb-2 text-center">
             <span className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#F97316]">
               About The Conference
             </span>
 
-            <h2 className="mx-auto mt-1.5 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[40px]">
+            <h2 className="mx-auto mt-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[40px]">
               Advancing Research. Connecting Ideas.
             </h2>
 
-            <div className="mx-auto mt-2 h-1 w-12 rounded-full bg-[#F97316]" />
+            <div className="mx-auto mt-1.5 h-1 w-12 rounded-full bg-[#F97316]" />
           </div>
 
-          <div className="space-y-2 text-justify text-[15px] leading-[1.65] text-slate-600 sm:text-[15.5px]">
+          <div className="space-y-1.5 text-justify text-[15px] leading-[1.65] text-slate-600 sm:text-[15.5px]">
             {aboutParagraphs.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
@@ -464,7 +464,7 @@ function Home() {
          ========================================================= */}
 
       {tracks.length > 0 && (
-        <section className="bg-white px-5 py-3.5 sm:px-8 sm:py-4.5 lg:px-10 lg:py-5">
+        <section className="bg-white px-5 py-2.5 sm:px-8 sm:py-3 lg:px-10 lg:py-3.5">
           <div className="mx-auto max-w-[1280px]">
 
             <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
@@ -488,12 +488,12 @@ function Home() {
               </Link>
             </div>
 
-            <div className="mt-3.5 grid grid-cols-1 gap-2.5 md:grid-cols-2 md:gap-3">
+            <div className="mt-2.5 grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-2.5">
               {tracks.map((track, index) => (
                 <Link
                   key={track.id || track.number || index}
                   to="/tracks"
-                  className="group relative flex items-start gap-3.5 rounded-xl border border-slate-200/90 bg-white p-3.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:bg-orange-50/20 hover:shadow-md hover:shadow-orange-500/5 sm:p-4"
+                  className="group relative flex items-start gap-2.5 rounded-xl border border-slate-200/90 bg-white p-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:bg-orange-50/20 hover:shadow-md hover:shadow-orange-500/5 sm:p-3.5"
                 >
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange-100/70 font-mono text-xs font-black text-orange-700 transition-colors group-hover:bg-orange-600 group-hover:text-white sm:text-sm">
                     {track.number ||
@@ -526,10 +526,10 @@ function Home() {
          ========================================================= */}
 
       {importantDates.length > 0 && (
-        <section className="bg-white px-5 py-3.5 sm:px-8 sm:py-4.5 lg:px-10 lg:py-5">
+        <section className="bg-white px-5 py-2.5 sm:px-8 sm:py-3 lg:px-10 lg:py-3.5">
           <div className="mx-auto max-w-[1180px]">
 
-            <div className="mb-3 text-center">
+            <div className="mb-2 text-center">
               <span className="text-xs font-extrabold uppercase tracking-[0.14em] text-orange-600">
                 Timelines & Milestones
               </span>
@@ -539,14 +539,14 @@ function Home() {
               </h2>
             </div>
 
-            <div className="mt-3.5 grid grid-cols-1 gap-2.5 md:grid-cols-2 md:gap-3">
+            <div className="mt-2.5 grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-2.5">
               {importantDates.map((item, index) => (
                 <div
                   key={`${item.title}-${index}`}
-                  className="group relative flex items-center justify-between gap-3.5 rounded-xl border border-slate-200/90 bg-white p-3.5 shadow-xs sm:p-4"
+                  className="group relative flex items-center justify-between gap-2.5 rounded-xl border border-slate-200/90 bg-white p-3 shadow-xs sm:p-3.5"
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange-100/70 text-orange-700">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-orange-100/70 text-orange-700">
                       <CalendarDays className="h-4 w-4" />
                     </span>
                     <div className="min-w-0">
@@ -560,7 +560,7 @@ function Home() {
                   </div>
 
                   <div className="shrink-0 text-right">
-                    <span className="inline-block rounded-md border border-orange-200/80 bg-orange-50/80 px-2.5 py-1 text-xs font-black text-orange-700 sm:text-[13px]">
+                    <span className="inline-block rounded-md border border-orange-200/80 bg-orange-50/80 px-2 py-1 text-xs font-black text-orange-700 sm:text-[13px]">
                       {item.date}
                     </span>
                   </div>
@@ -575,10 +575,10 @@ function Home() {
           CMT ACKNOWLEDGMENT
          ========================================================= */}
 
-      <section className="bg-white px-5 py-3.5 sm:px-8 sm:py-4.5 lg:px-10 lg:py-5">
+      <section className="bg-white px-5 py-2.5 sm:px-8 sm:py-3 lg:px-10 lg:py-3.5">
         <div className="mx-auto max-w-[1050px]">
 
-          <div className="relative overflow-hidden rounded-2xl border border-orange-100 bg-gradient-to-br from-slate-50 via-white to-orange-50/40 p-4 shadow-sm sm:p-6">
+          <div className="relative overflow-hidden rounded-2xl border border-orange-100 bg-gradient-to-br from-slate-50 via-white to-orange-50/40 p-3.5 shadow-sm sm:p-4">
 
             {/* Decorative Elements */}
 
@@ -590,7 +590,7 @@ function Home() {
 
               {/* Section Label */}
 
-              <div className="mb-3 flex items-center gap-2.5">
+              <div className="mb-2 flex items-center gap-2">
                 <span className="h-[2px] w-6 bg-orange-600" />
 
                 <span className="text-xs font-extrabold uppercase tracking-[0.16em] text-orange-600">
@@ -606,7 +606,7 @@ function Home() {
 
               {/* Acknowledgment Text */}
 
-              <p className="mt-2.5 max-w-4xl text-sm leading-relaxed text-slate-600 sm:text-[14.5px]">
+              <p className="mt-2 max-w-4xl text-sm leading-relaxed text-slate-600 sm:text-[14.5px]">
                 The Microsoft CMT service was used for managing the
                 peer-reviewing process for this conference. This service
                 was provided for free by Microsoft and they bore all

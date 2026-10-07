@@ -235,7 +235,7 @@ export const VenuePage = () => {
       {/* =========================================================
           HERO / PAGE TITLE BANNER
          ========================================================= */}
-      <section className="bg-white px-5 pb-2 pt-6 sm:px-8 sm:pb-3 sm:pt-8 lg:px-10">
+      <section className="bg-white px-5 pb-1.5 pt-5 sm:px-8 sm:pb-2 sm:pt-6 lg:px-10">
         <div className="mx-auto max-w-[1280px] text-center">
           {/* Main Heading */}
           <h1 className="text-3xl font-black uppercase tracking-tight text-slate-900 sm:text-4xl lg:text-[42px]">
@@ -249,9 +249,9 @@ export const VenuePage = () => {
       {/* =========================================================
           1. CITY OVERVIEW + HOW TO REACH (Balanced Two Columns)
          ========================================================= */}
-      <section className="bg-white px-5 pb-6 pt-3 sm:px-8 sm:pb-8 sm:pt-4 lg:px-10 lg:pb-8 lg:pt-5">
+      <section className="bg-white px-5 pb-4 pt-2 sm:px-8 sm:pb-5 sm:pt-3 lg:px-10 lg:pb-5 lg:pt-3">
         <div className="mx-auto max-w-[1280px]">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-5">
 
             {/* Left: About Vijayawada */}
             <div className="lg:col-span-6 xl:col-span-6">
@@ -260,25 +260,25 @@ export const VenuePage = () => {
                 <span>Host Destination</span>
               </div>
 
-              <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+              <h2 className="mt-1.5 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
                 About Vijayawada
               </h2>
               <p className="mt-1 text-sm font-semibold text-orange-600">
                 The Commercial & Cultural Capital of Andhra Pradesh
               </p>
 
-              <div className="mt-5 space-y-4 text-justify text-[15px] leading-relaxed text-slate-600 sm:text-[16px]">
+              <div className="mt-3 space-y-2.5 text-justify text-[15px] leading-relaxed text-slate-600 sm:text-[16px]">
                 {descriptions.map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}
               </div>
 
               {/* Destination Highlights Pill Grid */}
-              <div className="mt-6 rounded-2xl bg-orange-50/40 p-5">
+              <div className="mt-3 rounded-2xl bg-orange-50/40 p-3">
                 <div className="text-xs font-black uppercase tracking-wider text-orange-700">
                   Vijayawada Fast Facts for Delegates
                 </div>
-                <div className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 text-xs font-semibold text-slate-700">
+                <div className="mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2 text-xs font-semibold text-slate-700">
                   <div className="flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full bg-orange-500" />
                     <span>Location: Banks of Krishna River</span>
@@ -307,18 +307,18 @@ export const VenuePage = () => {
                   <span>Travel & Connectivity</span>
                 </div>
 
-                <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+                <h2 className="mt-1.5 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
                   How to Reach the Venue
                 </h2>
                 <p className="mt-1 text-sm font-semibold text-slate-500">
                   Seamless transit options by air, railway, and national highway network.
                 </p>
 
-                <div className="mt-6 space-y-3.5">
+                <div className="mt-3 space-y-2">
                   {/* By Air */}
-                  <article className="group rounded-2xl bg-orange-50/45 p-4 sm:p-5 transition-all duration-200 hover:bg-orange-50/75">
+                  <article className="group rounded-2xl bg-orange-50/45 p-3 sm:p-4 transition-all duration-200 hover:bg-orange-50/75">
                     <div className="flex items-start justify-between gap-3">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2.5">
                         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-orange-600 shadow-xs transition-colors group-hover:bg-orange-600 group-hover:text-white">
                           <Plane className="h-5 w-5" />
                         </div>
@@ -344,9 +344,9 @@ export const VenuePage = () => {
                   </article>
 
                   {/* By Rail */}
-                  <article className="group rounded-2xl bg-orange-50/45 p-4 sm:p-5 transition-all duration-200 hover:bg-orange-50/75">
+                  <article className="group rounded-2xl bg-orange-50/45 p-3 sm:p-4 transition-all duration-200 hover:bg-orange-50/75">
                     <div className="flex items-start justify-between gap-3">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2.5">
                         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-orange-600 shadow-xs transition-colors group-hover:bg-orange-600 group-hover:text-white">
                           <Train className="h-5 w-5" />
                         </div>
@@ -372,9 +372,9 @@ export const VenuePage = () => {
                   </article>
 
                   {/* By Road */}
-                  <article className="group rounded-2xl bg-orange-50/45 p-4 sm:p-5 transition-all duration-200 hover:bg-orange-50/75">
+                  <article className="group rounded-2xl bg-orange-50/45 p-3 sm:p-4 transition-all duration-200 hover:bg-orange-50/75">
                     <div className="flex items-start justify-between gap-3">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2.5">
                         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-orange-600 shadow-xs transition-colors group-hover:bg-orange-600 group-hover:text-white">
                           <BusFront className="h-5 w-5" />
                         </div>
@@ -409,11 +409,11 @@ export const VenuePage = () => {
       {/* =========================================================
           2. MAJOR ATTRACTIONS (Interactive Directory & Search)
          ========================================================= */}
-      <section className="bg-white px-5 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
+      <section className="bg-white px-5 py-4 sm:px-8 sm:py-5 lg:px-10 lg:py-6">
         <div className="mx-auto max-w-[1280px]">
 
           {/* Section Header */}
-          <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div className="flex flex-col justify-between gap-3 md:flex-row md:items-end">
             <div>
               <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-orange-600">
                 <span className="h-[2px] w-6 bg-orange-600" />
@@ -450,7 +450,7 @@ export const VenuePage = () => {
           </div>
 
           {/* Filter Tabs */}
-          <div className="mt-6 flex flex-wrap items-center gap-2 border-b border-orange-100 pb-4">
+          <div className="mt-4 flex flex-wrap items-center gap-1.5 border-b border-orange-100 pb-3">
             {CATEGORY_TABS.map((tab) => {
               const active = activeCategory === tab.id;
               return (
@@ -458,7 +458,7 @@ export const VenuePage = () => {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveCategory(tab.id)}
-                  className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold transition-all duration-200 ${
+                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold transition-all duration-200 ${
                     active
                       ? 'bg-orange-600 text-white shadow-md shadow-orange-500/25'
                       : 'border border-slate-200 bg-white text-slate-600 hover:border-orange-300 hover:bg-orange-50/50 hover:text-orange-600'
@@ -479,7 +479,7 @@ export const VenuePage = () => {
 
           {/* Attractions Grid */}
           {filteredAttractions.length > 0 ? (
-            <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {filteredAttractions.map((attraction) => (
                 <a
                   key={attraction.name}
@@ -488,7 +488,7 @@ export const VenuePage = () => {
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative flex flex-col justify-between rounded-xl bg-white p-2.5 sm:px-3 sm:py-2.5 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm"
+                  className="group relative flex flex-col justify-between rounded-xl bg-white p-2 sm:px-2.5 sm:py-2 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm"
                 >
                   <div className="flex items-center justify-between gap-1.5">
                     <div className="flex items-center gap-1.5 min-w-0">
@@ -500,7 +500,7 @@ export const VenuePage = () => {
                     <ExternalLink className="h-3 w-3 shrink-0 text-slate-300 opacity-0 transition-opacity group-hover:opacity-100 group-hover:text-orange-500" />
                   </div>
 
-                  <div className="mt-2 flex items-center justify-end pt-1">
+                  <div className="mt-1 flex items-center justify-end pt-0.5">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 group-hover:text-orange-600">
                       View on Map →
                     </span>
@@ -509,7 +509,7 @@ export const VenuePage = () => {
               ))}
             </div>
           ) : (
-            <div className="mt-8 rounded-2xl border border-dashed border-orange-200 bg-white p-10 text-center">
+            <div className="mt-4 rounded-2xl border border-dashed border-orange-200 bg-white p-6 text-center">
               <p className="text-sm font-semibold text-slate-600">
                 No attractions found matching "{searchQuery}".
               </p>
@@ -519,7 +519,7 @@ export const VenuePage = () => {
                   setSearchQuery('');
                   setActiveCategory('all');
                 }}
-                className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-orange-600 hover:underline"
+                className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold text-orange-600 hover:underline"
               >
                 Reset Search Filters
               </button>
@@ -532,9 +532,9 @@ export const VenuePage = () => {
       {/* =========================================================
           3. FEATURED ATTRACTIONS PHOTO GALLERY
          ========================================================= */}
-      <section className="bg-white px-5 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
+      <section className="bg-white px-5 py-4 sm:px-8 sm:py-5 lg:px-10 lg:py-6">
         <div className="mx-auto max-w-[1280px]">
-          <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+          <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
             <div>
               <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-orange-600">
                 <span className="h-[2px] w-6 bg-orange-600" />
@@ -554,7 +554,7 @@ export const VenuePage = () => {
             </span>
           </div>
 
-          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {gallery.map((item, index) => (
               <button
                 key={item.id || index}
@@ -601,7 +601,7 @@ export const VenuePage = () => {
       {/* =========================================================
           4. VENUE LOCATION, MAP & CONFERENCE SECRETARIAT
          ========================================================= */}
-      <section className="bg-white px-5 pb-10 pt-7 sm:px-8 sm:pb-12 sm:pt-8 lg:px-10 lg:pb-12 lg:pt-10">
+      <section className="bg-white px-5 pb-6 pt-4 sm:px-8 sm:pb-7 sm:pt-5 lg:px-10 lg:pb-7 lg:pt-6">
         <div className="mx-auto max-w-[1280px]">
 
           {/* Section Header */}
@@ -612,7 +612,7 @@ export const VenuePage = () => {
               <span className="h-[2px] w-6 bg-orange-600" />
             </div>
 
-            <h2 className="mt-2 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
+            <h2 className="mt-1.5 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
               Venue Location & Secretariat Contacts
             </h2>
             <div className="mx-auto mt-2 h-1 w-16 rounded-full bg-orange-500" />
@@ -621,7 +621,7 @@ export const VenuePage = () => {
             </p>
           </div>
 
-          <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-12 lg:items-stretch lg:gap-6">
+          <div className="mt-3 grid grid-cols-1 gap-2.5 lg:grid-cols-12 lg:items-stretch lg:gap-3">
 
             {/* Left: Google Maps Interactive Embed */}
             <div className="lg:col-span-6 xl:col-span-7 flex flex-col h-full">
@@ -652,10 +652,10 @@ export const VenuePage = () => {
             </div>
 
             {/* Right: Venue Institution & Secretariat Contact Details */}
-            <div className="lg:col-span-6 xl:col-span-5 flex flex-col gap-3.5">
+            <div className="lg:col-span-6 xl:col-span-5 flex flex-col gap-2.5">
 
               {/* Institution Box */}
-              <div className="rounded-xl border border-orange-100 bg-white p-3.5 sm:p-4 shadow-xs">
+              <div className="rounded-xl border border-orange-100 bg-white p-3 shadow-xs">
                 <div>
                   <h3 className="text-base font-black text-slate-900 sm:text-lg">
                     {getValue(data.organizer?.name, 'Dr RVR NRI Institute of Technology')}
@@ -668,7 +668,7 @@ export const VenuePage = () => {
                 </div>
 
                 {/* Address */}
-                <div className="mt-2.5 flex items-start gap-2 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                <div className="mt-2 flex items-start gap-2 text-xs leading-relaxed text-slate-600 sm:text-sm">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-orange-500" />
                   <div>
                     {DEFAULT_ADDRESS.map((line, idx) => (
@@ -678,7 +678,7 @@ export const VenuePage = () => {
                 </div>
 
                 {/* Coordinates & Copy */}
-                <div className="mt-2.5 flex items-center justify-between rounded-lg border border-slate-100 bg-slate-50 px-3 py-1.5 text-xs">
+                <div className="mt-2 flex items-center justify-between rounded-lg border border-slate-100 bg-slate-50 px-2.5 py-1 text-xs">
                   <div>
                     <span className="font-bold text-slate-500">GPS Coordinates: </span>
                     <span className="font-mono font-bold text-slate-800">{DEFAULT_COORDINATES.display}</span>
@@ -705,16 +705,16 @@ export const VenuePage = () => {
               </div>
 
               {/* Secretariat Contacts */}
-              <div className="rounded-xl border border-orange-100 bg-white p-3.5 sm:p-4 shadow-xs">
+              <div className="rounded-xl border border-orange-100 bg-white p-3 shadow-xs">
                 <div className="text-xs font-extrabold uppercase tracking-wider text-orange-600">
                   Secretariat Key Contacts
                 </div>
 
-                <div className="mt-2.5 space-y-2">
+                <div className="mt-2 space-y-1.5">
                   {contacts.map((contact, idx) => (
                     <div
                       key={idx}
-                      className="flex items-start justify-between gap-3 border-b border-slate-100 pb-2 last:border-b-0 last:pb-0"
+                      className="flex items-start justify-between gap-2 border-b border-slate-100 pb-1.5 last:border-b-0 last:pb-0"
                     >
                       <div>
                         <div className="text-sm font-bold text-slate-900">
@@ -739,12 +739,12 @@ export const VenuePage = () => {
                   ))}
                 </div>
 
-                <div className="mt-3.5 flex flex-wrap items-center gap-2.5 pt-1">
+                <div className="mt-2.5 flex flex-wrap items-center gap-2 pt-1">
                   <a
                     href={mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-orange-600 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-orange-500/20 transition hover:-translate-y-0.5 hover:bg-orange-700"
+                    className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-orange-600 px-3 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-orange-500/20 transition hover:-translate-y-0.5 hover:bg-orange-700"
                   >
                     <Navigation className="h-3.5 w-3.5" />
                     <span>Get Directions</span>
@@ -752,7 +752,7 @@ export const VenuePage = () => {
 
                   <a
                     href="mailto:icraiq2it27@nriit.edu.in"
-                    className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-slate-700 shadow-xs transition hover:border-orange-400 hover:text-orange-600"
+                    className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold uppercase tracking-wider text-slate-700 shadow-xs transition hover:border-orange-400 hover:text-orange-600"
                   >
                     <Mail className="h-3.5 w-3.5 text-orange-600" />
                     <span>Contact Helpdesk</span>

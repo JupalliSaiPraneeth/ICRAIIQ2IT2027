@@ -56,7 +56,7 @@ export const ContactPage = () => {
       {/* =========================================================
           HERO SECTION: ACADEMIC SECRETARIAT DIRECTORY (COMPACT)
          ========================================================= */}
-      <section className="bg-white py-3">
+      <section className="bg-white py-2">
         <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
           <div className="text-center">
             <h1 className="mx-auto text-3xl font-black tracking-tight text-[#17213a] sm:text-4xl lg:text-[42px] lg:leading-[1.18]">
@@ -68,10 +68,10 @@ export const ContactPage = () => {
               Contact us about submissions, registration, or conference logistics.
             </p>
 
-            <div className="mt-2 flex flex-wrap items-center justify-center gap-2">
+            <div className="mt-1.5 flex flex-wrap items-center justify-center gap-1.5">
               <a
                 href={`mailto:${contactEmail}`}
-                className="inline-flex items-center gap-1.5 rounded-md bg-[#F97316] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#ea580c]"
+                className="inline-flex items-center gap-1.5 rounded-md bg-[#F97316] px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-[#ea580c]"
               >
                 <Mail className="h-3.5 w-3.5" />
                 <span>Email Secretariat</span>
@@ -81,7 +81,7 @@ export const ContactPage = () => {
                 href={mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-[#F97316] hover:text-[#F97316]"
+                className="inline-flex items-center gap-1.5 rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm font-semibold text-slate-700 transition hover:border-[#F97316] hover:text-[#F97316]"
               >
                 <Navigation className="h-3.5 w-3.5" />
                 <span>Open Campus in Maps</span>
@@ -104,28 +104,28 @@ export const ContactPage = () => {
       {/* =========================================================
           KEY LEADERSHIP & CONTACT PERSONS (SYMMETRICAL 2-COL CARDS)
          ========================================================= */}
-      <section className="bg-white py-2">
+      <section className="bg-white py-1.5">
         <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
-          <div className="mb-2">
+          <div className="mb-1.5">
             <h2 className="text-xl font-bold tracking-tight text-[#17213a] sm:text-2xl">
               Key contacts
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-1.5 md:grid-cols-2">
             {/* Card 1: Dr. K. V. Sambasiva Rao */}
-            <div className="rounded-lg border border-slate-200 bg-white p-3">
+            <div className="rounded-lg border border-slate-200 bg-white p-2.5">
               <div>
                 <h3 className="text-base font-bold text-[#17213a]">Dr. K. V. Sambasiva Rao</h3>
-                <p className="mt-1 text-sm font-medium text-slate-600">
+                <p className="mt-0.5 text-sm font-medium text-slate-600">
                   Professor &amp; Dean, R &amp; D, Dr RVR NRIIT (DTBU)
                 </p>
-                <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                <p className="mt-0.5 text-sm leading-relaxed text-slate-600">
                   Academic papers, peer review, and publication inquiries.
                 </p>
               </div>
 
-              <div className="mt-2 border-t border-slate-100 pt-2">
+              <div className="mt-1.5 border-t border-slate-100 pt-1.5">
                 <a
                   href={`mailto:${contactEmail}?subject=${encodeURIComponent('[ICRAIIQ2IT-2027] Query for Dr. K. V. Sambasiva Rao')}`}
                   className="text-sm font-semibold text-[#F97316] hover:underline"
@@ -136,18 +136,18 @@ export const ContactPage = () => {
             </div>
 
             {/* Card 2: Dr. D. Sunitha */}
-            <div className="rounded-lg border border-slate-200 bg-white p-3">
+            <div className="rounded-lg border border-slate-200 bg-white p-2.5">
               <div>
                 <h3 className="text-base font-bold text-[#17213a]">Dr. D. Sunitha</h3>
-                <p className="mt-1 text-sm font-medium text-slate-600">
+                <p className="mt-0.5 text-sm font-medium text-slate-600">
                   HOD &amp; Dean : School of Computer Studies, Dr RVR NRIIT (DTBU)
                 </p>
-                <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                <p className="mt-0.5 text-sm leading-relaxed text-slate-600">
                   Conference operations, scheduling, and delegate assistance.
                 </p>
               </div>
 
-              <div className="mt-2 border-t border-slate-100 pt-2">
+              <div className="mt-1.5 border-t border-slate-100 pt-1.5">
                 <a
                   href={`mailto:${contactEmail}?subject=${encodeURIComponent('[ICRAIIQ2IT-2027] Query for Dr. D. Sunitha')}`}
                   className="text-sm font-semibold text-[#F97316] hover:underline"
@@ -163,29 +163,29 @@ export const ContactPage = () => {
       {/* =========================================================
           CAMPUS HEADQUARTERS & INTERACTIVE MAP (COMPACT 2-COL)
          ========================================================= */}
-      <section className="bg-white py-2">
+      <section className="bg-white py-1.5">
         <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
-          <div className="mb-2">
+          <div className="mb-1.5">
             <h2 className="text-xl font-bold tracking-tight text-[#17213a] sm:text-2xl">
               Campus location
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 items-start gap-2 lg:grid-cols-2">
+          <div className="grid grid-cols-1 items-start gap-1.5 lg:grid-cols-2">
             {/* LEFT: SECRETARIAT PARTICULARS (6 Cols) */}
-            <div className="rounded-lg border border-slate-200 bg-white p-3">
+            <div className="rounded-lg border border-slate-200 bg-white p-2.5">
               <div>
                 <div className="font-bold text-base text-[#17213a]">
                     {organizer.name || 'Dr RVR NRI Institute of Technology (Deemed to be University)'}
                 </div>
-                <div className="mt-1 text-sm font-medium text-[#F97316]">
+                <div className="mt-0.5 text-sm font-medium text-[#F97316]">
                     {organizer.school || 'School of Computer Studies'}
                 </div>
-                <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                <p className="mt-0.5 text-sm leading-relaxed text-slate-600">
                     {organizer.address || 'Pothavarappadu, Agiripalli Mandalam, Eluru District, Vijayawada Rural, Andhra Pradesh, India Pin - 521212'}
                 </p>
 
-                <div className="mt-2 flex flex-wrap items-center gap-2 text-sm">
+                <div className="mt-1.5 flex flex-wrap items-center gap-1.5 text-sm">
                   <span className="font-mono text-slate-600">{coordinates}</span>
                   <button
                     type="button"
@@ -196,18 +196,18 @@ export const ContactPage = () => {
                   </button>
                 </div>
 
-                <div className="mt-2 grid grid-cols-2 gap-2 text-sm">
-                  <div className="rounded-md bg-slate-50 p-2">
+                <div className="mt-1.5 grid grid-cols-2 gap-1.5 text-sm">
+                  <div className="rounded-md bg-slate-50 p-1.5">
                     <span className="font-semibold text-slate-700">Airport (VGA)</span>
                     <p className="mt-0.5 text-slate-600">About 22 km · 30 min drive</p>
                   </div>
-                  <div className="rounded-md bg-slate-50 p-2">
+                  <div className="rounded-md bg-slate-50 p-1.5">
                     <span className="font-semibold text-slate-700">Railway (BZA)</span>
                     <p className="mt-0.5 text-slate-600">About 23 km · 35 min drive</p>
                   </div>
                 </div>
 
-                <div className="mt-2 flex flex-wrap gap-2 border-t border-slate-100 pt-2">
+                <div className="mt-1.5 flex flex-wrap gap-1.5 border-t border-slate-100 pt-1.5">
                   <button
                     type="button"
                     onClick={() => copyText(organizer.address || 'Pothavarappadu, Agiripalli Mandalam, Eluru District, Vijayawada Rural, Andhra Pradesh, India Pin - 521212', 'Campus Address')}
@@ -251,20 +251,20 @@ export const ContactPage = () => {
       {/* =========================================================
           DIRECT INQUIRY DESK / MESSAGE FORM (COMPACT)
          ========================================================= */}
-      <section className="bg-white py-2">
+      <section className="bg-white py-1.5">
         <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
           <div className="rounded-lg border border-slate-200 bg-white p-3">
-            <div className="mb-2">
+            <div className="mb-1.5">
               <h2 className="text-xl font-bold tracking-tight text-[#17213a] sm:text-2xl">
                 Send an inquiry
               </h2>
-              <p className="mt-1 text-sm text-slate-600">
+              <p className="mt-0.5 text-sm text-slate-600">
                 Complete the form to open an email addressed to the secretariat.
               </p>
             </div>
 
-            <form onSubmit={handleSendMessage} className="mx-auto max-w-4xl space-y-2">
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+            <form onSubmit={handleSendMessage} className="mx-auto max-w-4xl space-y-1.5">
+              <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
                 <div>
                   <label className="mb-1 block text-sm font-medium text-slate-700">
                     Name *
@@ -294,7 +294,7 @@ export const ContactPage = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
                 <div>
                   <label className="mb-1 block text-sm font-medium text-slate-700">
                     Topic *
@@ -342,10 +342,10 @@ export const ContactPage = () => {
                 />
               </div>
 
-              <div className="flex flex-wrap items-center gap-3 pt-1">
+              <div className="flex flex-wrap items-center gap-2 pt-0.5">
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-1.5 rounded-md bg-[#F97316] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#ea580c]"
+                  className="inline-flex items-center gap-1.5 rounded-md bg-[#F97316] px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-[#ea580c]"
                 >
                   <Send className="h-3.5 w-3.5" />
                   <span>Send inquiry</span>

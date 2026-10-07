@@ -293,7 +293,7 @@ const CompactHotelCard = ({ hotel }) => {
           )}
         </div>
 
-        <div className="p-3.5">
+        <div className="p-2.5">
           <h3 className="text-base font-bold text-[#17213a]">
             {hotel.name}
           </h3>
@@ -304,7 +304,7 @@ const CompactHotelCard = ({ hotel }) => {
         </div>
       </div>
 
-      <div className="mt-auto px-3.5 pb-3.5">
+      <div className="mt-auto px-2.5 pb-2.5">
         <a
           href={hotel.bookingUrl}
           target="_blank"
@@ -320,9 +320,9 @@ const CompactHotelCard = ({ hotel }) => {
 
 const CompactBudgetCard = ({ hotel }) => {
   return (
-    <article className="flex flex-col justify-between rounded-lg border border-slate-200 bg-white p-3.5 transition-colors hover:border-orange-300">
+    <article className="flex flex-col justify-between rounded-lg border border-slate-200 bg-white p-2.5 transition-colors hover:border-orange-300">
       <div>
-        <div className="flex items-start gap-2.5">
+        <div className="flex items-start gap-2">
           <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-slate-100">
             <ImageOrPlaceholder
               src={hotel.image}
@@ -345,7 +345,7 @@ const CompactBudgetCard = ({ hotel }) => {
               <span className="truncate">{hotel.location}</span>
             </div>
 
-            <div className="mt-1.5 flex flex-wrap gap-1">
+            <div className="mt-1 flex flex-wrap gap-1">
               {hotel.amenities.map((item, idx) => (
                 <span
                   key={idx}
@@ -359,7 +359,7 @@ const CompactBudgetCard = ({ hotel }) => {
         </div>
       </div>
 
-      <div className="mt-2.5 flex justify-end border-t border-slate-100 pt-2">
+      <div className="mt-2 flex justify-end border-t border-slate-100 pt-1.5">
         <a
           href={hotel.bookingUrl}
           target="_blank"
@@ -376,25 +376,25 @@ const CompactBudgetCard = ({ hotel }) => {
 export const AccommodationPage = () => {
   return (
     <main className="min-h-screen bg-white text-[#17213a]">
-      <section className="bg-white py-6 sm:py-8">
+      <section className="bg-white py-4 sm:py-5">
         <div className="mx-auto max-w-[1280px] px-5 text-center sm:px-8 lg:px-10">
           <h1 className="text-3xl font-black uppercase tracking-tight text-[#17213a] sm:text-4xl lg:text-[42px]">
             Accommodation
           </h1>
-          <div className="mx-auto mt-3 h-1 w-24 rounded-full bg-[#F97316]" />
+          <div className="mx-auto mt-2 h-1 w-24 rounded-full bg-[#F97316]" />
 
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600">
+          <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
             Hotel options in Vijayawada for ICRAIIQ2IT 2027 delegates. Contact each property to confirm rates and availability.
           </p>
         </div>
       </section>
 
-      <section className="px-5 py-5 sm:px-8 lg:px-10">
+      <section className="px-5 py-3 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-[1280px]">
-          <div className="mb-3">
+          <div className="mb-2">
             <h2 className="text-xl font-bold text-[#17213a]">Recommended hotels</h2>
           </div>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
             {featuredHotels.map((hotel) => (
               <CompactHotelCard key={hotel.name} hotel={hotel} />
             ))}
@@ -402,15 +402,15 @@ export const AccommodationPage = () => {
         </div>
       </section>
 
-      <section className="px-5 py-2 sm:px-8 lg:px-10">
+      <section className="px-5 py-1.5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-[1280px]">
-          <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+          <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
             <div>
               <h2 className="text-xl font-bold text-[#17213a]">Budget stays</h2>
-              <p className="mt-1 text-sm text-slate-600">Indicative range: ₹1,000–₹2,000 per day. Confirm directly with the hotel.</p>
+              <p className="mt-0.5 text-sm text-slate-600">Indicative range: ₹1,000–₹2,000 per day. Confirm directly with the hotel.</p>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
             {budgetHotels.map((hotel) => (
               <CompactBudgetCard key={hotel.name} hotel={hotel} />
             ))}
@@ -418,8 +418,8 @@ export const AccommodationPage = () => {
         </div>
       </section>
 
-      <section className="px-5 pb-8 pt-5 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-[1280px] pt-2 text-sm text-slate-600">
+      <section className="px-5 pb-5 pt-3 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1280px] pt-1 text-sm text-slate-600">
           Please contact hotels directly to confirm room availability and any conference rates.
         </div>
       </section>

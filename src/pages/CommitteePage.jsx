@@ -99,7 +99,7 @@ function CommitteeTableRow({ category, members, isLast }) {
     <tr className={!isLast ? 'border-b border-slate-200' : ''}>
       {/* Left: Category label */}
       <td
-        className="w-[200px] min-w-[140px] align-top py-4 px-5 bg-orange-50/70 border-r border-slate-200"
+        className="w-[200px] min-w-[140px] align-top py-2.5 px-3 bg-orange-50/70 border-r border-slate-200"
         style={{ verticalAlign: 'top' }}
       >
         <span className="block text-[13px] font-extrabold uppercase tracking-wide text-[#F97316] leading-tight">
@@ -108,9 +108,9 @@ function CommitteeTableRow({ category, members, isLast }) {
       </td>
 
       {/* Right: Members */}
-      <td className="align-top py-4 px-5" style={{ verticalAlign: 'top' }}>
+      <td className="align-top py-2.5 px-3" style={{ verticalAlign: 'top' }}>
         {members.length > 0 ? (
-          <ul className="space-y-2">
+          <ul className="space-y-1">
             {members.map((member, index) => {
               const name = getMemberName(member);
               const role = getMemberRole(member);
@@ -118,7 +118,7 @@ function CommitteeTableRow({ category, members, isLast }) {
               return (
                 <li
                   key={`${name}-${index}`}
-                  className="flex items-baseline gap-2 text-[14px] leading-snug text-[#17213a]"
+                  className="flex items-baseline gap-1.5 text-[14px] leading-snug text-[#17213a]"
                 >
                   <span
                     aria-hidden="true"
@@ -154,16 +154,16 @@ function CommitteeTable({ title, sections }) {
           <tr className="bg-[#F97316]">
             <th
               colSpan={2}
-              className="py-3 px-5 text-[13px] font-bold uppercase tracking-widest text-white"
+              className="py-2 px-4 text-[13px] font-bold uppercase tracking-widest text-white"
             >
               {title}
             </th>
           </tr>
           <tr className="border-b border-slate-200 bg-orange-50">
-            <th className="py-2 px-5 text-[11px] font-semibold uppercase tracking-widest text-slate-500 border-r border-slate-200">
+            <th className="py-1.5 px-4 text-[11px] font-semibold uppercase tracking-widest text-slate-500 border-r border-slate-200">
               Role / Category
             </th>
-            <th className="py-2 px-5 text-[11px] font-semibold uppercase tracking-widest text-slate-500">
+            <th className="py-1.5 px-4 text-[11px] font-semibold uppercase tracking-widest text-slate-500">
               Members
             </th>
           </tr>
@@ -225,14 +225,14 @@ export const CommitteePage = () => {
       {/* =========================================================
           PAGE HEADER
          ========================================================= */}
-      <section className="bg-white px-5 pb-4 pt-8 sm:px-8 sm:pt-10 lg:px-10">
+      <section className="bg-white px-5 pb-2 pt-5 sm:px-8 sm:pt-6 lg:px-10">
         <div className="mx-auto max-w-[1280px]">
           <div className="text-center">
             <h1 className="text-3xl font-extrabold tracking-tight text-[#17213a] sm:text-4xl lg:text-[42px] lg:leading-[1.18]">
               Conference Committee
             </h1>
-            <div className="mx-auto mt-3 h-1 w-24 rounded-full bg-[#F97316]" />
-            <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-[15.5px]">
+            <div className="mx-auto mt-2 h-1 w-24 rounded-full bg-[#F97316]" />
+            <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-[15.5px]">
               Distinguished academic leaders, chairs, technical committee
               members, and national and international advisory members of
               ICRAIQ2IT - 2027.
@@ -244,8 +244,8 @@ export const CommitteePage = () => {
       {/* =========================================================
           ALL COMMITTEE TABLES
          ========================================================= */}
-      <section className="bg-white px-5 pb-12 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-[1280px] space-y-6">
+      <section className="bg-white px-5 pb-6 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1280px] space-y-3">
 
           {/* 1. Executive Leadership */}
           {leadershipSections.length > 0 && (
