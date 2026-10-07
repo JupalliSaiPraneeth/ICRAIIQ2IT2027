@@ -51,13 +51,13 @@ export const PublicationPage = () => {
                 return (
                   <div key={idx} className="p-4 rounded-xl bg-navy-850 border border-white/5 flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-brand-400 shrink-0 mt-0.5" />
-                    <span className="text-xs text-slate-200 leading-relaxed">
+                    <span className="min-w-0 text-xs text-slate-200 leading-relaxed">
                       The Paper format will be IEEE, A4 USA FORMAT SUBMITTED IN LATEX / DOCX FORMAT:{' '}
                       <a
                         href="https://www.ieee.org/conferences/publishing/templates"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-bold text-amber-400 underline hover:text-amber-300"
+                        className="break-all font-bold text-amber-400 underline hover:text-amber-300"
                       >
                         https://www.ieee.org/conferences/publishing/templates
                       </a>{' '}

@@ -205,7 +205,7 @@ export const Navbar = () => {
           DESKTOP NAVIGATION (Adaptive Single Row, Zero Line-Wrap)
       ========================================================= */}
       <nav
-        className="hidden border-t border-slate-100 lg:block"
+        className="hidden border-t border-slate-100 xl:block"
         aria-label="Primary navigation"
       >
         <div className="mx-auto w-full max-w-[1600px] px-2 sm:px-3 lg:px-4">
@@ -519,36 +519,14 @@ export const Navbar = () => {
         className="
           flex
           items-center
-          justify-between
+          justify-end
           border-t
           border-slate-100
           px-5
           py-4
-          lg:hidden
+          xl:hidden
         "
       >
-        <Link
-          to="/"
-          className="flex items-center gap-2"
-        >
-          <span
-            className="
-              rounded-full
-              border
-              border-[#F59E0B]
-              bg-[#FFF7E6]
-              px-3
-              py-1
-              text-sm
-              font-black
-              tracking-[0.03em]
-              text-[#E87500]
-            "
-          >
-            {conferenceShortTitle}
-          </span>
-        </Link>
-
         <button
           type="button"
           onClick={() => setMobileMenuOpen(true)}
@@ -592,7 +570,7 @@ export const Navbar = () => {
             z-[100]
             bg-[#07152F]/60
             backdrop-blur-sm
-            lg:hidden
+            xl:hidden
           "
         >
           <aside

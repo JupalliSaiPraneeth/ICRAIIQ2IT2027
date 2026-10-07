@@ -183,7 +183,7 @@ export const CallForPapersPage = () => {
                   {IMPORTANT_DATES.map((item, idx) => (
                     <div
                       key={idx}
-                      className={`flex items-center justify-between px-3 py-2 text-xs transition-colors ${item.urgent ? 'bg-orange-50/50' : 'bg-white hover:bg-slate-50'
+                      className={`flex flex-wrap items-center justify-between gap-x-2 gap-y-1 px-2 py-2 text-xs transition-colors sm:px-3 ${item.urgent ? 'bg-orange-50/50' : 'bg-white hover:bg-slate-50'
                         }`}
                     >
                       <div className="flex items-center gap-2.5">

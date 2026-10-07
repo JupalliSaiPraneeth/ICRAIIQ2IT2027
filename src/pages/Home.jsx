@@ -5,10 +5,6 @@ import {
   ArrowRight,
   CalendarDays,
   MapPin,
-  Image as ImageIcon,
-  Mountain,
-  Landmark,
-  Building2,
 } from 'lucide-react';
 import { conferenceData } from '../data/conferenceData';
 
@@ -369,7 +365,7 @@ function Home() {
 
               return (
                 <div
-                  key={`${slide.title}-${index}`}
+                  key={`${slide.image}-${index}`}
                   className="absolute left-1/2 top-1/2 h-[92%] w-[92%] overflow-hidden rounded-[24px] border border-white/80 bg-slate-900 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.22)] transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] sm:w-[84%] sm:rounded-[28px] md:w-[78%] lg:w-[74%] xl:w-[72%]"
                   style={{
                     transform,
@@ -390,82 +386,6 @@ function Home() {
                     draggable="false"
                   />
 
-                  {/* Multi-stage Cinematic Shadow Overlays */}
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10" />
-
-                  <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/40 to-transparent" />
-
-                  {/* Top-Right "Explore Gallery" Glass Pill */}
-
-                  <Link
-                    to="/gallery"
-                    className="absolute right-4 top-4 z-20 flex items-center gap-1.5 rounded-full border border-white/30 bg-black/30 px-3.5 py-1.5 text-[11px] font-semibold text-white shadow-lg backdrop-blur-md transition-all duration-200 hover:bg-white hover:text-slate-900 sm:right-6 sm:top-6 sm:px-4 sm:py-2 sm:text-xs"
-                  >
-                    <ImageIcon className="h-3.5 w-3.5" />
-                    <span>Explore Gallery</span>
-                    <ArrowRight className="h-3 w-3" />
-                  </Link>
-
-                  {/* Bottom Content Area */}
-
-                  <div className="absolute bottom-4 left-5 right-5 z-20 sm:bottom-6 sm:left-7 sm:right-7">
-
-                    {/* Header Tag */}
-
-                    <div className="flex items-center gap-2 text-white/90">
-                      <span className="h-[2px] w-5 bg-white sm:w-7" />
-
-                      <span className="text-[9px] font-black uppercase tracking-[0.22em] sm:text-[11px]">
-                        EXPLORE
-                      </span>
-                    </div>
-
-                    {/* Main Title */}
-
-                    <h2 className="mt-0.5 text-3xl font-black uppercase leading-tight tracking-tight text-white drop-shadow-md sm:text-4xl lg:text-[42px]">
-                      {slide.title}
-                    </h2>
-
-                    {/* Subtitle */}
-
-                    <p className="mt-0.5 text-xs font-medium text-white/90 sm:text-sm">
-                      {slide.subtitle}
-                    </p>
-
-                    {/* Badges / Pill Tags */}
-
-                    <div className="mt-2.5 flex flex-wrap items-center gap-2">
-                      {slide.pills?.map((pill, pIdx) => (
-                        <span
-                          key={pIdx}
-                          className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/15 px-2.5 py-1 text-[10px] font-bold text-white shadow-sm backdrop-blur-md sm:text-xs"
-                        >
-                          {pill.icon === 'mountain' && (
-                            <Mountain className="h-3.5 w-3.5 text-orange-400" />
-                          )}
-
-                          {pill.icon === 'landmark' && (
-                            <Landmark className="h-3.5 w-3.5 text-orange-400" />
-                          )}
-
-                          {pill.icon === 'building' && (
-                            <Building2 className="h-3.5 w-3.5 text-orange-400" />
-                          )}
-
-                          <span>{pill.label}</span>
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Footer Row: Discover Text */}
-
-                    <div className="mt-3 flex items-center justify-between border-t border-white/15 pt-2">
-                      <div className="text-[9px] font-black uppercase tracking-[0.2em] text-white/75 sm:text-[10px]">
-                        DISCOVER &nbsp;•&nbsp; RESEARCH &nbsp;•&nbsp; COLLABORATE
-                      </div>
-                    </div>
-                  </div>
                 </div>
               );
             })}
