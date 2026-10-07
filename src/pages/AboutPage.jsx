@@ -3,10 +3,6 @@ import {
   Globe,
   MapPin,
   ArrowRight,
-  Cpu,
-  Layers,
-  ShieldCheck,
-  Sparkles,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { conferenceData } from '../data/conferenceData';
@@ -49,111 +45,58 @@ export const AboutPage = () => {
       {/* 2. Side-by-Side Content (Borders Removed) */}
       <section className="px-5 py-2 sm:px-8 sm:py-2.5 lg:px-10">
         <div className="mx-auto max-w-[1240px]">
-          <div className="grid grid-cols-1 gap-3 lg:grid-cols-12 lg:gap-4 items-stretch">
-            {/* Left: About Conference & Pillars (7 cols) - Borderless */}
-            <div className="lg:col-span-7 flex flex-col justify-between p-1.5 sm:p-2">
-              <div>
-                <h2 className="text-xl font-black text-[#17213a] sm:text-2xl">
-                  About ICRAIQ2IT – 2027
-                </h2>
-
-                <div className="mt-2.5 space-y-2 text-justify text-sm leading-relaxed text-slate-700 sm:text-[15px]">
-                  <p>
-                    The <strong>5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence and Inclusive Technologies (ICRAIQ2IT – 2027)</strong> is scheduled to be held during <strong>09–10 April 2027</strong> in Blended mode.
-                  </p>
-                  <p>
-                    The conference provides a premier international platform for academicians, scientists, researchers, industry professionals, innovators, and students to exchange ideas, present groundbreaking research outcomes, and debate emerging theoretical models across computational sciences.
-                  </p>
-                  <p>
-                    ICRAIQ2IT – 2027 bridges the gap between foundational laboratory research and practical industry applications by fostering interdisciplinary collaboration among experts across the globe.
-                  </p>
-                </div>
-
-                {/* Core Pillars */}
-                <div className="mt-3 pt-2">
-                  <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">
-                    Core Technical Pillars
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    <div className="rounded-xl bg-orange-50/50 p-2.5 flex items-start gap-2">
-                      <Cpu className="h-4.5 w-4.5 text-[#F97316] shrink-0 mt-0.5" />
-                      <div>
-                        <div className="text-sm font-bold text-slate-900">Artificial Intelligence &amp; ML</div>
-                        <div className="text-xs text-slate-500">LLMs, Generative AI &amp; Explainable Systems</div>
-                      </div>
-                    </div>
-
-                    <div className="rounded-xl bg-orange-50/50 p-2.5 flex items-start gap-2">
-                      <Layers className="h-4.5 w-4.5 text-[#F97316] shrink-0 mt-0.5" />
-                      <div>
-                        <div className="text-sm font-bold text-slate-900">Quantum Inspired Systems</div>
-                        <div className="text-xs text-slate-500">Quantum Algorithms, Crypto &amp; Simulation</div>
-                      </div>
-                    </div>
-
-                    <div className="rounded-xl bg-orange-50/50 p-2.5 flex items-start gap-2">
-                      <ShieldCheck className="h-4.5 w-4.5 text-[#F97316] shrink-0 mt-0.5" />
-                      <div>
-                        <div className="text-sm font-bold text-slate-900">Cybersecurity &amp; Cloud</div>
-                        <div className="text-xs text-slate-500">Zero-Trust, Blockchain &amp; Forensics</div>
-                      </div>
-                    </div>
-
-                    <div className="rounded-xl bg-orange-50/50 p-2.5 flex items-start gap-2">
-                      <Sparkles className="h-4.5 w-4.5 text-[#F97316] shrink-0 mt-0.5" />
-                      <div>
-                        <div className="text-sm font-bold text-slate-900">Inclusive Deep-Tech</div>
-                        <div className="text-xs text-slate-500">Smart Systems, Robotics &amp; Sustainability</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          <div className="space-y-3">
+            <div className="px-1.5 sm:px-2">
+              <div className="space-y-2 text-justify text-sm leading-relaxed text-slate-700 sm:text-[15px]">
+                <p>
+                  The <strong>5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence and Inclusive Technologies (ICRAIQ2IT – 2027)</strong> is scheduled to be held during <strong>09–10 April 2027</strong> in Blended mode.
+                </p>
+                <p>
+                  The conference provides a premier international platform for academicians, scientists, researchers, industry professionals, innovators, and students to exchange ideas, present groundbreaking research outcomes, and debate emerging theoretical models across computational sciences.
+                </p>
+                <p>
+                  ICRAIQ2IT – 2027 bridges the gap between foundational laboratory research and practical industry applications by fostering interdisciplinary collaboration among experts across the globe.
+                </p>
               </div>
+            </div>
 
-              {/* Submission Footer */}
-              <div className="mt-3 flex flex-wrap items-center justify-between gap-2 pt-2 text-sm">
-                <span className="text-slate-600">
+            <div className="rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm sm:p-4">
+              <h2 className="text-xl font-black text-[#17213a] sm:text-2xl">
+                Conference Objectives
+              </h2>
+
+              <div className="mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
+                {objectives.slice(0, 5).map((objective, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-1.5 rounded-xl bg-slate-50/70 px-2.5 py-1.5"
+                  >
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-white">
+                      {index + 1}
+                    </span>
+                    <p className="text-[13px] leading-snug text-slate-700 sm:text-[13.5px]">
+                      {objective}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-0 xl:flex-nowrap">
+              <div className="min-w-0 flex-[2] rounded-xl bg-orange-50/70 px-3 py-2 text-xs leading-snug text-slate-700 sm:text-[13px] xl:w-fit xl:flex-none xl:whitespace-nowrap">
+                <strong>Publication:</strong> Accepted papers will be submitted for inclusion in official proceedings with Scopus indexation.
+              </div>
+              <div className="flex min-w-0 flex-[1] flex-nowrap items-center justify-between gap-2 rounded-xl bg-slate-50 px-3 py-2 text-sm xl:flex-1">
+                <span className="whitespace-nowrap text-slate-600">
                   Submissions via <strong>Microsoft CMT</strong> • IEEE format
                 </span>
                 <Link
                   to="/call-for-papers"
-                  className="inline-flex items-center gap-1 font-bold text-[#F97316] hover:underline"
+                  className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap font-bold text-[#F97316] hover:underline"
                 >
                   <span>Guidelines</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-              </div>
-            </div>
-
-            {/* Right: Conference Objectives (5 cols) - Borderless */}
-            <div className="lg:col-span-5 flex flex-col p-1.5 sm:p-2">
-              <div className="flex flex-col">
-                <h2 className="text-xl font-black text-[#17213a] sm:text-2xl">
-                  Conference Objectives
-                </h2>
-
-                <div className="mt-2.5 flex flex-col gap-2">
-                  {objectives.slice(0, 5).map((objective, index) => (
-                    <div
-                      key={index}
-                      className="flex items-start gap-2 rounded-xl bg-slate-50/70 px-3 py-2"
-                    >
-                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-white mt-0.5">
-                        {index + 1}
-                      </span>
-                      <p className="text-[13px] sm:text-[13.5px] leading-snug text-slate-700">
-                        {objective}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Scopus Proceedings Note */}
-              <div className="mt-2.5 rounded-xl bg-orange-50/70 px-3 py-2 text-xs sm:text-[13px] leading-snug text-slate-700">
-                <span>
-                  <strong>Publication:</strong> Accepted papers will be submitted for inclusion in official proceedings with Scopus indexation.
-                </span>
               </div>
             </div>
           </div>

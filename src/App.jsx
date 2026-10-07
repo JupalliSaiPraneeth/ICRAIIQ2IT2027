@@ -7,7 +7,6 @@ import BackToTop from './components/BackToTop';
 // Pages
 import Home from './pages/Home';
 import AboutPage from './pages/AboutPage';
-import TracksPage from './pages/TracksPage';
 import CallForPapersPage from './pages/CallForPapersPage';
 import SpeakersPage from './pages/SpeakersPage';
 import CommitteePage from './pages/CommitteePage';
@@ -40,7 +39,6 @@ export function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/tracks" element={<TracksPage />} />
             <Route path="/call-for-papers" element={<CallForPapersPage />} />
             <Route path="/speakers" element={<SpeakersPage />} />
             <Route path="/committee" element={<CommitteePage />} />

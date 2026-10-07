@@ -479,21 +479,13 @@ function Home() {
                 </h2>
               </div>
 
-              <Link
-                to="/tracks"
-                className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-orange-600 transition hover:text-orange-700 sm:text-sm"
-              >
-                View All Tracks
-                <ArrowRight className="h-4 w-4" />
-              </Link>
             </div>
 
             <div className="mt-2.5 grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-2.5">
               {tracks.map((track, index) => (
-                <Link
+                <article
                   key={track.id || track.number || index}
-                  to="/tracks"
-                  className="group relative flex items-start gap-2.5 rounded-xl border border-slate-200/90 bg-white p-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:bg-orange-50/20 hover:shadow-md hover:shadow-orange-500/5 sm:p-3.5"
+                  className="group relative flex items-start gap-2.5 rounded-xl border border-slate-200/90 bg-white p-3 sm:p-3.5"
                 >
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange-100/70 font-mono text-xs font-black text-orange-700 transition-colors group-hover:bg-orange-600 group-hover:text-white sm:text-sm">
                     {track.number ||
@@ -502,10 +494,9 @@ function Home() {
 
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center justify-between gap-2">
-                      <h3 className="text-sm font-bold text-slate-900 transition-colors group-hover:text-orange-600 sm:text-[15px]">
+                      <h3 className="text-sm font-bold text-slate-900 sm:text-[15px]">
                         {track.title}
                       </h3>
-                      <ArrowRight className="h-4 w-4 shrink-0 text-slate-300 transition-all duration-200 group-hover:translate-x-1 group-hover:text-orange-600" />
                     </div>
 
                     {track.description && (
@@ -514,7 +505,7 @@ function Home() {
                       </p>
                     )}
                   </div>
-                </Link>
+                </article>
               ))}
             </div>
           </div>

@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { conferenceData } from '../data/conferenceData';
 
 const TOPIC_CATEGORIES = [
@@ -304,12 +303,6 @@ export const CallForPapersPage = () => {
 
           <div className="mt-3 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
             <span>Showing {filteredTopics.length} of {ALL_TOPICS.length} topics</span>
-            <Link
-              to="/tracks"
-              className="inline-flex items-center gap-1.5 font-bold text-sm text-[#F97316] hover:underline"
-            >
-              View Track Sessions &amp; Chairs &rarr;
-            </Link>
           </div>
         </div>
 

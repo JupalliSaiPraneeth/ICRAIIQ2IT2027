@@ -127,13 +127,6 @@ export const Footer = () => {
                 </Link>
               );
             })}
-
-            <Link
-              to="/tracks"
-              className="block text-sm text-slate-600 transition hover:text-[#f97316]"
-            >
-              Research Tracks
-            </Link>
           </div>
         </div>
 
