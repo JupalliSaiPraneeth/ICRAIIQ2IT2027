@@ -115,16 +115,16 @@ export const RegistrationPage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-slate-50 text-[#17213a] antialiased pb-6">
+    <main className="min-h-screen bg-white text-[#17213a] antialiased pb-6">
 
       {/* ── HEADER ── */}
-      <section className="bg-white border-b border-slate-200 py-4 sm:py-5">
+      <section className="bg-white py-4 sm:py-5">
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-[#17213a]">
+          <h1 className="text-3xl font-black uppercase tracking-tight text-[#17213a] sm:text-4xl lg:text-[42px]">
             Conference Registration &amp; <span className="text-[#F97316]">Fee Guidelines</span>
           </h1>
-          <div className="mx-auto mt-1.5 h-1 w-10 bg-[#F97316] rounded-full" />
-          <p className="mx-auto mt-2 max-w-xl text-xs sm:text-sm text-slate-500">
+          <div className="mx-auto mt-3 h-1 w-24 rounded-full bg-[#F97316]" />
+          <p className="mx-auto mt-4 max-w-xl text-xs sm:text-sm text-slate-500">
             Author and delegate registration portal for accepted manuscripts, presentations, and proceedings.
           </p>
 
@@ -401,10 +401,10 @@ export const RegistrationPage = () => {
         </div>
 
         {/* ── 3. POLICIES & SECRETARIAT (BALANCED 2-COLUMNS) ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 items-stretch">
 
           {/* LEFT: POLICIES */}
-          <div className="bg-white border border-slate-200 rounded-lg p-3.5 shadow-sm">
+          <div className="bg-white border border-slate-200 rounded-lg p-3.5 shadow-sm h-full flex flex-col">
             <div>
               <div className="flex items-center justify-between mb-2">
                 <h2 className="text-sm font-bold text-[#17213a]">Registration Directives &amp; Policies</h2>
@@ -420,13 +420,13 @@ export const RegistrationPage = () => {
               </ul>
             </div>
 
-            <div className="mt-2.5 pt-2 border-t border-slate-100 text-[11px] text-slate-400">
+            <div className="mt-auto pt-2 border-t border-slate-100 text-[11px] text-slate-400">
               Unpresented papers will not be forwarded to proceedings publisher.
             </div>
           </div>
 
           {/* RIGHT: SECRETARIAT ASSISTANCE */}
-          <div className="bg-white border border-slate-200 rounded-lg p-3.5 shadow-sm">
+          <div className="bg-white border border-slate-200 rounded-lg p-3.5 shadow-sm h-full flex flex-col">
             <div>
               <div className="flex items-center justify-between mb-2">
                 <h2 className="text-sm font-bold text-[#17213a]">Registration Secretariat &amp; Inquiries</h2>
@@ -450,7 +450,7 @@ export const RegistrationPage = () => {
               </div>
             </div>
 
-            <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+            <div className="mt-auto pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
               <a
                 href="mailto:icraiq2it27@nriit.edu.in"
                 className="font-bold text-[#F97316] hover:underline"

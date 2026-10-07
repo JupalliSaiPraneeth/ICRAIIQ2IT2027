@@ -1,25 +1,4 @@
 import React, { useState } from 'react';
-import {
-  Hotel,
-  MapPin,
-  Star,
-  ExternalLink,
-  Sparkles,
-  Info,
-  Building2,
-  Tag,
-  CheckCircle2,
-} from 'lucide-react';
-
-/*
-  AccommodationPage.jsx — Professional Small-Size Grid Design
-  -------------------------------------------------------------
-  - Sleek, compact hotel grid layout (3-col desktop / 2-col tablet / 1-col mobile)
-  - Balanced card height with clean image headers & rating overlays
-  - Professional typography, subtle micro-animations & consistent brand colors (#e47c14 / #F97316)
-  - High scannability across 15 featured hotels & 8 budget hotels
-  - Robust image error fallbacks & direct booking link integration
-*/
 
 const featuredHotels = [
   {
@@ -200,15 +179,6 @@ const featuredHotels = [
 
 const budgetHotels = [
   {
-    name: 'Hotel Ilapuram',
-    rating: '4.2',
-    location: 'Governorpet',
-    image:
-      'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=280&fit=crop',
-    amenities: ['Free WiFi', 'AC', 'Breakfast'],
-    bookingUrl: 'https://ilapuram.com/',
-  },
-  {
     name: 'Hotel Sree Vasudev',
     rating: '4.0',
     location: 'Bunder Road',
@@ -283,9 +253,9 @@ const ImageOrPlaceholder = ({ src, alt, className = '' }) => {
   if (!src || hasError) {
     return (
       <div
-        className={`flex items-center justify-center bg-orange-50/80 ${className}`}
+        className={`flex items-center justify-center bg-slate-100 text-xs text-slate-500 ${className}`}
       >
-        <Hotel className="h-10 w-10 text-[#F97316]/50" />
+        Image unavailable
       </div>
     );
   }
@@ -301,79 +271,59 @@ const ImageOrPlaceholder = ({ src, alt, className = '' }) => {
   );
 };
 
-/* Professional Compact Featured Hotel Card */
 const CompactHotelCard = ({ hotel }) => {
   return (
-    <article className="group flex flex-col justify-between overflow-hidden rounded-xl border border-orange-100/90 bg-white shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[#F97316]/40 hover:shadow-xl">
+    <article className="flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white transition-colors hover:border-orange-300">
       <div>
-        {/* Card Image Header */}
-        <div className="relative aspect-[1.85/1] w-full overflow-hidden bg-orange-50">
+        <div className="relative aspect-[1.85/1] w-full overflow-hidden bg-slate-100">
           <ImageOrPlaceholder
             src={hotel.image}
             alt={hotel.imageAlt}
-            className="h-full w-full transition-transform duration-500 group-hover:scale-108"
+            className="h-full w-full"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-
-          {/* Rating Badge */}
-          <div className="absolute top-2.5 right-2.5 flex items-center gap-1 rounded-md bg-slate-900/85 px-2 py-0.5 text-xs font-bold text-white shadow-xs">
-            <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-            <span>{hotel.rating}</span>
+          <div className="absolute right-2 top-2 rounded bg-white/95 px-2 py-1 text-xs font-semibold text-slate-700">
+            Rating {hotel.rating}
           </div>
 
-          {/* Category Tag Badge */}
           {hotel.tag && (
-            <div className="absolute bottom-2.5 left-2.5 rounded-md bg-[#F97316] px-2 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider shadow-xs">
+            <div className="absolute bottom-2 left-2 rounded bg-white/95 px-2 py-1 text-xs font-medium text-slate-700">
               {hotel.tag}
             </div>
           )}
         </div>
 
-        {/* Card Body */}
-        <div className="p-3.5 sm:p-4">
-          <h3 className="text-sm sm:text-base font-extrabold text-[#17213a] line-clamp-1 group-hover:text-[#e47c14] transition-colors">
+        <div className="p-3.5">
+          <h3 className="text-base font-bold text-[#17213a]">
             {hotel.name}
           </h3>
 
-          <p className="mt-1 text-xs leading-snug text-slate-600 line-clamp-2 min-h-[32px]">
+          <p className="mt-1 text-sm leading-relaxed text-slate-600">
             {hotel.description}
           </p>
-
-          <div className="mt-2.5 flex items-center justify-between text-xs text-slate-500 border-t border-orange-100/60 pt-2">
-            <span className="font-semibold text-slate-700">{hotel.reviews}</span>
-            <span className="flex items-center gap-1 text-[#F97316] font-bold text-[11px]">
-              <CheckCircle2 className="h-3.5 w-3.5" />
-              Verified Stay
-            </span>
-          </div>
         </div>
       </div>
 
-      {/* Card Footer Action */}
-      <div className="p-3.5 sm:p-4 pt-0">
+      <div className="mt-auto px-3.5 pb-3.5">
         <a
           href={hotel.bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-slate-900 px-3.5 py-2 text-xs font-bold text-white shadow-xs transition-all duration-200 hover:bg-[#F97316] hover:shadow-md"
+          className="inline-flex w-full items-center justify-center rounded-md bg-[#17213a] px-3.5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#F97316]"
         >
           Book Now
-          <ExternalLink className="h-3.5 w-3.5" />
         </a>
       </div>
     </article>
   );
 };
 
-/* Compact Budget Hotel Card */
 const CompactBudgetCard = ({ hotel }) => {
   return (
-    <article className="group flex flex-col justify-between overflow-hidden rounded-xl border border-orange-100 bg-white p-3.5 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-[#F97316]/40 hover:shadow-md">
+    <article className="flex flex-col justify-between rounded-lg border border-slate-200 bg-white p-3.5 transition-colors hover:border-orange-300">
       <div>
         <div className="flex items-start gap-2.5">
-          {/* Thumb Image */}
-          <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg border border-orange-100 bg-orange-50">
+          <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-slate-100">
             <ImageOrPlaceholder
               src={hotel.image}
               alt={hotel.name}
@@ -381,20 +331,17 @@ const CompactBudgetCard = ({ hotel }) => {
             />
           </div>
 
-          {/* Details */}
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-1">
-              <h3 className="text-xs font-extrabold text-[#17213a] line-clamp-1 group-hover:text-[#e47c14] transition-colors">
+              <h3 className="text-sm font-bold text-[#17213a]">
                 {hotel.name}
               </h3>
-              <div className="flex shrink-0 items-center gap-0.5 rounded-md bg-orange-50 px-1.5 py-0.5 text-[10px] font-bold text-[#F97316]">
-                <Star className="h-2.5 w-2.5 fill-[#F97316]" />
+              <div className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 text-xs font-medium text-slate-700">
                 {hotel.rating}
               </div>
             </div>
 
-            <div className="mt-0.5 flex items-center gap-1 text-[11px] text-slate-500">
-              <MapPin className="h-3 w-3 shrink-0 text-[#F97316]" />
+            <div className="mt-0.5 text-xs text-slate-500">
               <span className="truncate">{hotel.location}</span>
             </div>
 
@@ -412,20 +359,14 @@ const CompactBudgetCard = ({ hotel }) => {
         </div>
       </div>
 
-      {/* Action Footer */}
-      <div className="mt-2.5 flex items-center justify-between border-t border-slate-100 pt-2">
-        <span className="text-[11px] font-bold text-[#e47c14]">
-          ₹1,000 – ₹2,000 / day
-        </span>
-
+      <div className="mt-2.5 flex justify-end border-t border-slate-100 pt-2">
         <a
           href={hotel.bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 rounded-md bg-orange-500 px-2.5 py-1 text-xs font-bold text-white transition-colors hover:bg-[#e47c14]"
+          className="inline-flex items-center rounded-md bg-[#17213a] px-2.5 py-1 text-xs font-semibold text-white transition-colors hover:bg-[#F97316]"
         >
           Book
-          <ExternalLink className="h-3 w-3" />
         </a>
       </div>
     </article>
@@ -434,31 +375,26 @@ const CompactBudgetCard = ({ hotel }) => {
 
 export const AccommodationPage = () => {
   return (
-    <main className="min-h-screen bg-slate-50 text-[#17213a]">
-      {/* =========================================================
-          HERO BANNER
-         ========================================================= */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-orange-50/80 via-white to-slate-50 pb-2 pt-4 sm:pb-3 sm:pt-4">
-        <div className="pointer-events-none absolute -top-24 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-tr from-orange-300/30 to-amber-200/20 blur-3xl" />
-
-        <div className="relative mx-auto max-w-[1280px] px-5 text-center sm:px-8 lg:px-10">
-          <h1 className="text-2xl font-extrabold uppercase tracking-tight text-[#17213a] sm:text-3xl lg:text-4xl">
-            Hotels & <span className="text-[#F97316]">Stays</span>
+    <main className="min-h-screen bg-white text-[#17213a]">
+      <section className="bg-white py-6 sm:py-8">
+        <div className="mx-auto max-w-[1280px] px-5 text-center sm:px-8 lg:px-10">
+          <h1 className="text-3xl font-black uppercase tracking-tight text-[#17213a] sm:text-4xl lg:text-[42px]">
+            Accommodation
           </h1>
+          <div className="mx-auto mt-3 h-1 w-24 rounded-full bg-[#F97316]" />
 
-          <p className="mx-auto mt-1 max-w-2xl text-xs leading-relaxed text-slate-600 sm:text-sm">
-            Recommended hotels and budget-friendly accommodations in Vijayawada for ICRAIQ2IT - 2027 attendees and delegates.
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600">
+            Hotel options in Vijayawada for ICRAIIQ2IT 2027 delegates. Contact each property to confirm rates and availability.
           </p>
         </div>
       </section>
 
-      {/* =========================================================
-          1. FEATURED HOTELS GRID (Compact & Professional)
-         ========================================================= */}
-      <section className="px-5 py-2 sm:px-8 lg:px-10">
+      <section className="px-5 py-5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-[1280px]">
-          {/* Compact 3-column grid layout */}
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mb-3">
+            <h2 className="text-xl font-bold text-[#17213a]">Recommended hotels</h2>
+          </div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {featuredHotels.map((hotel) => (
               <CompactHotelCard key={hotel.name} hotel={hotel} />
             ))}
@@ -466,71 +402,25 @@ export const AccommodationPage = () => {
         </div>
       </section>
 
-      {/* =========================================================
-          2. BUDGET HOTELS GRID
-         ========================================================= */}
-      <section className="px-5 py-4 sm:px-8 lg:px-10">
+      <section className="px-5 py-2 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-[1280px]">
-          <div className="rounded-2xl border border-orange-100 bg-white p-4 shadow-xs sm:p-5">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-orange-100 pb-2.5 mb-4">
-              <div>
-                <h2 className="text-lg font-extrabold uppercase tracking-tight text-[#17213a] sm:text-xl">
-                  Budget Hotels in <span className="text-[#F97316]">Vijayawada</span>
-                </h2>
-                <p className="mt-0.5 text-[11px] text-slate-500 sm:text-xs">
-                  Affordable stay options for delegates and student researchers
-                </p>
-              </div>
-
-              <div className="flex items-center gap-1.5 text-xs font-bold text-[#17213a]">
-                <Tag className="h-3.5 w-3.5 text-[#F97316]" />
-                <span>Budget: ₹1,000 – ₹2,000 / day</span>
-              </div>
+          <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+            <div>
+              <h2 className="text-xl font-bold text-[#17213a]">Budget stays</h2>
+              <p className="mt-1 text-sm text-slate-600">Indicative range: ₹1,000–₹2,000 per day. Confirm directly with the hotel.</p>
             </div>
-
-            {/* Compact 4-column budget grid */}
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {budgetHotels.map((hotel) => (
-                <CompactBudgetCard key={hotel.name} hotel={hotel} />
-              ))}
-            </div>
+          </div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {budgetHotels.map((hotel) => (
+              <CompactBudgetCard key={hotel.name} hotel={hotel} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* =========================================================
-          3. DELEGATE NOTICE & ADVISORY
-         ========================================================= */}
-      <section className="px-5 py-8 sm:px-8 lg:px-10 pb-16">
-        <div className="mx-auto max-w-[1280px]">
-          <div className="flex flex-col gap-4 rounded-2xl border border-orange-200/80 bg-gradient-to-r from-orange-500 to-[#e47c14] p-6 text-white shadow-md sm:flex-row sm:items-center sm:justify-between sm:p-8">
-            <div className="flex items-start gap-4">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/20 text-white backdrop-blur-xs">
-                <Info className="h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="text-lg font-extrabold text-white">
-                  Accommodation Advisory for Delegates
-                </h3>
-                <p className="mt-1 text-xs sm:text-sm leading-relaxed text-orange-100 max-w-3xl">
-                  Delegates are advised to contact hotels directly or use the booking links provided to confirm room availability and special conference rates early.
-                </p>
-              </div>
-            </div>
-
-            <div className="shrink-0">
-              <a
-                href="#top"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-xs font-extrabold text-[#17213a] shadow-xs transition-colors hover:bg-slate-100"
-              >
-                Back to Top
-              </a>
-            </div>
-          </div>
+      <section className="px-5 pb-8 pt-5 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1280px] pt-2 text-sm text-slate-600">
+          Please contact hotels directly to confirm room availability and any conference rates.
         </div>
       </section>
     </main>

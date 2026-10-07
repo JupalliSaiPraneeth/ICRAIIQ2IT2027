@@ -44,7 +44,7 @@ export const SouvenirPage = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-slate-50/60 text-slate-900 py-12 px-5 sm:px-8 lg:px-10">
+    <div className="relative min-h-screen bg-white text-slate-900 py-12 px-5 sm:px-8 lg:px-10">
       {/* Background subtle decoration */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 right-0 h-96 w-96 rounded-full bg-amber-100/40 blur-3xl" />
@@ -59,7 +59,7 @@ export const SouvenirPage = () => {
             <span>Official Conference Archives</span>
           </div>
 
-          <h1 className="text-3xl font-extrabold tracking-tight text-[#1D315F] sm:text-5xl">
+          <h1 className="text-3xl font-extrabold tracking-tight text-[#1D315F] sm:text-4xl lg:text-[42px]">
             Conference Souvenir Volumes
           </h1>
 

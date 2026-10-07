@@ -85,15 +85,15 @@ export const CallForPapersPage = () => {
     'https://ieee-org.widen.net/content/ge5anzdecd/original/conference-template-a4.docx';
 
   return (
-    <main className="min-h-screen bg-slate-50 text-[#17213a] antialiased pb-8">
+    <main className="min-h-screen bg-white text-[#17213a] antialiased pb-8">
 
       {/* ── HEADER ── */}
-      <section className="bg-white border-b border-slate-200 py-5">
+      <section className="bg-white py-5">
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-[#17213a]">
+          <h1 className="text-3xl font-black uppercase tracking-tight text-[#17213a] sm:text-4xl lg:text-[42px]">
             Call for Papers &amp; <span className="text-[#F97316]">Submission Guidelines</span>
           </h1>
-          <div className="mx-auto mt-1.5 h-1 w-10 bg-[#F97316] rounded-full" />
+          <div className="mx-auto mt-3 h-1 w-24 rounded-full bg-[#F97316]" />
           <p className="mx-auto mt-2 max-w-xl text-xs sm:text-sm text-slate-500">
             Submit original manuscripts in AI, Quantum Computing, and Deep-Tech Innovations.
           </p>

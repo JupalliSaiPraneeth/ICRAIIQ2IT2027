@@ -26,14 +26,14 @@ export const TracksPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50/50 pb-20 pt-8 sm:pt-12 text-slate-800 antialiased selection:bg-[#e47c14] selection:text-white">
+    <div className="min-h-screen bg-white pb-20 pt-8 sm:pt-12 text-slate-800 antialiased selection:bg-[#e47c14] selection:text-white">
       <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
 
         {/* =========================================================
             CLEAN PAGE HEADING (Top gap eliminated & badge removed)
         ========================================================= */}
         <div className="text-center mb-6 sm:mb-8">
-          <h1 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <h1 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl lg:text-[42px]">
             Conference Research Tracks
           </h1>
           <p className="mx-auto mt-2 max-w-2xl text-sm sm:text-base text-slate-500 font-medium">

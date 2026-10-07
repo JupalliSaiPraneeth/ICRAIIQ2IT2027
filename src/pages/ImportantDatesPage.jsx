@@ -21,12 +21,12 @@ export const ImportantDatesPage = () => {
 
           <h1
             className="
-              text-4xl
+              text-3xl
               font-extrabold
               tracking-[-0.035em]
               text-[#17213B]
-              sm:text-5xl
-              lg:text-[54px]
+              sm:text-4xl
+              lg:text-[42px]
               lg:leading-[1.08]
             "
           >
@@ -398,7 +398,7 @@ export const ImportantDatesPage = () => {
               mx-auto
               mt-2
               max-w-2xl
-              text-sm
+              text-base
               leading-6
               text-slate-500
             "

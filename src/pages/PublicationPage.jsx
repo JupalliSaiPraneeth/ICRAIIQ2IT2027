@@ -1,13 +1,11 @@
 import React from 'react';
 import { BookOpen, CheckCircle2, ShieldCheck, ExternalLink, Award } from 'lucide-react';
 import { conferenceData } from '../data/conferenceData';
-import ScientificBackground from '../components/ScientificBackground';
 import SectionHeading from '../components/SectionHeading';
 
 export const PublicationPage = () => {
   return (
-    <div className="relative min-h-screen bg-navy-950 text-slate-100 pt-28 pb-24">
-      <ScientificBackground variant="dark" />
+    <div className="relative min-h-screen bg-white text-[#17213a] py-8 sm:py-10">
 
       <div className="relative max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-10 z-10">
         
@@ -16,7 +14,7 @@ export const PublicationPage = () => {
           eyebrow="INDEXING ECOSYSTEM"
           title="Publication Opportunities & Proceedings"
           subtitle={conferenceData.publicationDetails.description}
-          variant="dark"
+          variant="light"
         />
 
         {/* Indexing Partners Grid */}

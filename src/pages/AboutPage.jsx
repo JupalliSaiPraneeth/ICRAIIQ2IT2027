@@ -39,7 +39,8 @@ export const AboutPage = () => {
           <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-[#17213a] sm:text-4xl lg:text-[42px] lg:leading-[1.18]">
             About the Conference
           </h1>
-          <p className="mx-auto mt-2 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
+          <div className="mx-auto mt-3 h-1 w-24 rounded-full bg-[#F97316]" />
+          <p className="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
             A premier international forum advancing research in Artificial Intelligence, Quantum Intelligence, and Inclusive Technologies.
           </p>
         </div>

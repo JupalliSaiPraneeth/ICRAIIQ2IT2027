@@ -228,14 +228,10 @@ export const CommitteePage = () => {
       <section className="bg-white px-5 pb-4 pt-8 sm:px-8 sm:pt-10 lg:px-10">
         <div className="mx-auto max-w-[1280px]">
           <div className="text-center">
-            <div className="mx-auto mb-2 flex items-center justify-center gap-3">
-              <span className="hidden h-px w-10 bg-orange-300 sm:block" />
-              <h1 className="text-3xl font-extrabold uppercase tracking-tight text-[#F97316] sm:text-4xl lg:text-[40px]">
-                Conference Committee
-              </h1>
-              <span className="hidden h-px w-10 bg-orange-300 sm:block" />
-            </div>
-            <div className="mx-auto mt-2 h-1 w-16 rounded-full bg-[#F97316]" />
+            <h1 className="text-3xl font-extrabold tracking-tight text-[#17213a] sm:text-4xl lg:text-[42px] lg:leading-[1.18]">
+              Conference Committee
+            </h1>
+            <div className="mx-auto mt-3 h-1 w-24 rounded-full bg-[#F97316]" />
             <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-[15.5px]">
               Distinguished academic leaders, chairs, technical committee
               members, and national and international advisory members of

@@ -16,7 +16,7 @@ export const BrochurePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFFBF8] px-5 py-12 text-slate-900 sm:px-8 lg:px-10">
+    <div className="min-h-screen bg-white px-5 py-12 text-slate-900 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-[1280px] space-y-10">
         {/* Page Header */}
         <div className="text-center space-y-3">
@@ -25,7 +25,7 @@ export const BrochurePage = () => {
             <span>Official Conference Brochure</span>
           </div>
 
-          <h1 className="text-3xl font-extrabold leading-tight text-[#1d315f] sm:text-4xl lg:text-5xl">
+          <h1 className="text-3xl font-extrabold leading-tight text-[#1d315f] sm:text-4xl lg:text-[42px]">
             ICRAIQ2IT - 2027 Information Brochure
           </h1>
 

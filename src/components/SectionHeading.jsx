@@ -25,7 +25,7 @@ export const SectionHeading = ({
       </div>
 
       {/* Main Section Title */}
-      <h2 className={`text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight ${
+      <h2 className={`text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight leading-tight ${
         isDark ? 'text-white' : 'text-slate-900'
       }`}>
         {title}

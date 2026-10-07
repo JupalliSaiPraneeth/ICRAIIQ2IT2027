@@ -238,7 +238,7 @@ export const VenuePage = () => {
       <section className="bg-white px-5 pb-2 pt-6 sm:px-8 sm:pb-3 sm:pt-8 lg:px-10">
         <div className="mx-auto max-w-[1280px] text-center">
           {/* Main Heading */}
-          <h1 className="text-3xl font-black uppercase tracking-tight text-slate-900 sm:text-4xl md:text-5xl lg:text-[46px]">
+          <h1 className="text-3xl font-black uppercase tracking-tight text-slate-900 sm:text-4xl lg:text-[42px]">
             Conference Venue & <span className="text-orange-600">Host City</span>
           </h1>
 
@@ -409,7 +409,7 @@ export const VenuePage = () => {
       {/* =========================================================
           2. MAJOR ATTRACTIONS (Interactive Directory & Search)
          ========================================================= */}
-      <section className="border-t border-orange-100 bg-[#FFFBF8] px-5 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
+      <section className="bg-white px-5 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
         <div className="mx-auto max-w-[1280px]">
 
           {/* Section Header */}
@@ -601,7 +601,7 @@ export const VenuePage = () => {
       {/* =========================================================
           4. VENUE LOCATION, MAP & CONFERENCE SECRETARIAT
          ========================================================= */}
-      <section className="border-t border-orange-100 bg-slate-50/50 px-5 pb-10 pt-7 sm:px-8 sm:pb-12 sm:pt-8 lg:px-10 lg:pb-12 lg:pt-10">
+      <section className="bg-white px-5 pb-10 pt-7 sm:px-8 sm:pb-12 sm:pt-8 lg:px-10 lg:pb-12 lg:pt-10">
         <div className="mx-auto max-w-[1280px]">
 
           {/* Section Header */}

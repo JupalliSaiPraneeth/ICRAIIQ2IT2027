@@ -299,7 +299,7 @@ function Home() {
           HERO — 3D ROLLING STACK PHOTO CAROUSEL
          ========================================================= */}
 
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white px-3 pb-3 pt-2 sm:px-6 sm:pb-4 lg:px-8">
+      <section className="relative overflow-hidden bg-white px-3 pb-3 pt-2 sm:px-6 sm:pb-4 lg:px-8">
 
         {/* Soft Ambient Background Glows */}
 
@@ -423,7 +423,7 @@ function Home() {
 
                     {/* Main Title */}
 
-                    <h2 className="mt-0.5 text-2xl font-black uppercase leading-tight tracking-tight text-white drop-shadow-md sm:text-3xl md:text-4xl lg:text-[42px]">
+                    <h2 className="mt-0.5 text-3xl font-black uppercase leading-tight tracking-tight text-white drop-shadow-md sm:text-4xl lg:text-[42px]">
                       {slide.title}
                     </h2>
 
@@ -606,7 +606,7 @@ function Home() {
          ========================================================= */}
 
       {importantDates.length > 0 && (
-        <section className="border-t border-orange-100 bg-slate-50 px-5 py-3.5 sm:px-8 sm:py-4.5 lg:px-10 lg:py-5">
+        <section className="bg-white px-5 py-3.5 sm:px-8 sm:py-4.5 lg:px-10 lg:py-5">
           <div className="mx-auto max-w-[1180px]">
 
             <div className="mb-3 text-center">
@@ -655,7 +655,7 @@ function Home() {
           CMT ACKNOWLEDGMENT
          ========================================================= */}
 
-      <section className="border-t border-orange-100 bg-white px-5 py-3.5 sm:px-8 sm:py-4.5 lg:px-10 lg:py-5">
+      <section className="bg-white px-5 py-3.5 sm:px-8 sm:py-4.5 lg:px-10 lg:py-5">
         <div className="mx-auto max-w-[1050px]">
 
           <div className="relative overflow-hidden rounded-2xl border border-orange-100 bg-gradient-to-br from-slate-50 via-white to-orange-50/40 p-4 shadow-sm sm:p-6">
