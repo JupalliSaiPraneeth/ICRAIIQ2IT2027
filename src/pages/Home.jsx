@@ -446,7 +446,7 @@ function Home() {
 
             </div>
 
-            <div className="mt-2.5 grid grid-cols-1 gap-0 md:grid-cols-2">
+            <div className="mt-2.5 grid grid-cols-1 gap-0 lg:grid-cols-2">
               {tracks.map((track, index) => (
                 <article
                   key={track.id || track.number || index}
@@ -458,7 +458,7 @@ function Home() {
                   </span>
 
                   <div className="min-w-0 flex-1">
-                    <h3 className="break-words text-justify text-sm font-bold leading-snug text-slate-900 sm:text-[15px] lg:text-left">
+                    <h3 className="min-w-0 truncate whitespace-nowrap text-left text-[9px] font-bold leading-snug text-slate-900 sm:text-[11px] md:text-xs lg:text-[15px]">
                       {track.title}
                     </h3>
                   </div>
@@ -487,25 +487,23 @@ function Home() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 gap-0 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-0 lg:grid-cols-2">
               {importantDates.map((item, index) => (
                 <div
                   key={`${item.title}-${index}`}
-                  className="group relative flex min-w-0 flex-col items-stretch gap-1.5 border border-slate-200/90 bg-white p-2.5 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:gap-2 sm:p-3"
+                  className="group relative flex min-w-0 flex-row items-center justify-between gap-1.5 border border-slate-200/90 bg-white p-2.5 shadow-sm sm:gap-2 sm:p-3"
                 >
-                  <div className="flex min-w-0 items-start">
-                    <div className="min-w-0 flex-1">
-                      <div className="text-[10px] font-extrabold uppercase tracking-wider text-orange-600">
-                        {item.status || 'Milestone'}
-                      </div>
-                      <h3 className="break-words text-justify text-sm font-bold leading-snug text-slate-900 sm:text-[15px] lg:text-left">
-                        {item.title}
-                      </h3>
+                  <div className="flex min-w-0 flex-1 items-center gap-1.5 lg:flex-col lg:items-start lg:gap-0">
+                    <div className="shrink-0 text-[9px] font-extrabold uppercase tracking-wider text-orange-600 sm:text-[10px]">
+                      {item.status || 'Milestone'}
                     </div>
+                    <h3 className="min-w-0 flex-1 truncate whitespace-nowrap text-left text-[9px] font-bold leading-snug text-slate-900 sm:text-[11px] md:text-xs lg:text-[15px]">
+                      {item.title}
+                    </h3>
                   </div>
 
                   <div className="shrink-0 text-left sm:text-right">
-                    <span className="inline-block whitespace-nowrap rounded-md border border-orange-200/80 bg-orange-50/80 px-2.5 py-1.5 text-xs font-black text-orange-700 sm:text-[13px]">
+                    <span className="inline-block whitespace-nowrap rounded-md border border-orange-200/80 bg-orange-50/80 px-1.5 py-1 text-[10px] font-black text-orange-700 sm:px-2 sm:text-[11px] md:text-xs lg:px-2.5 lg:py-1.5 lg:text-[13px]">
                       {item.date}
                     </span>
                   </div>
