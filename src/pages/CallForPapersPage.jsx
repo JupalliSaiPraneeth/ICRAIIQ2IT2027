@@ -70,6 +70,7 @@ const IMPORTANT_DATES = [
 
 export const CallForPapersPage = () => {
   const [selectedCat, setSelectedCat] = useState('all');
+  const [expandedTopic, setExpandedTopic] = useState(null);
 
   const filteredTopics = useMemo(() => {
     if (selectedCat === 'all') return ALL_TOPICS;
@@ -89,8 +90,9 @@ export const CallForPapersPage = () => {
       {/* ── HEADER ── */}
       <section className="bg-white py-5 sm:py-6">
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl font-black uppercase tracking-tight text-[#17213a] sm:text-4xl lg:text-[42px]">
-            Call for Papers &amp; <span className="text-[#F97316]">Submission Guidelines</span>
+          <h1 className="text-[clamp(1.15rem,5.8vw,2.25rem)] font-black uppercase tracking-tight text-[#17213a] sm:text-4xl lg:text-[42px]">
+            <span className="block whitespace-nowrap lg:inline">Call for Papers &amp; </span>
+            <span className="block whitespace-nowrap text-[#F97316] lg:inline">Submission Guidelines</span>
           </h1>
           <div className="mx-auto mt-2 h-1 w-24 rounded-full bg-[#F97316]" />
           <p className="mx-auto mt-1.5 max-w-2xl text-sm leading-relaxed text-slate-500 sm:text-[15px]">
@@ -98,12 +100,12 @@ export const CallForPapersPage = () => {
           </p>
 
           {/* Quick Actions */}
-          <div className="mt-2.5 flex flex-wrap items-center justify-center gap-2">
+          <div className="mt-2.5 grid grid-cols-2 items-stretch justify-center gap-2 lg:flex lg:flex-wrap">
             <a
               href="https://cmt3.research.microsoft.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center bg-[#F97316] hover:bg-[#ea580c] text-white px-4 py-2 text-sm font-bold rounded transition-colors"
+              className="inline-flex items-center justify-center rounded bg-[#F97316] px-2 py-2 text-center text-xs font-bold text-white transition-colors hover:bg-[#ea580c] sm:px-4 sm:text-sm lg:px-4"
             >
               Submit via CMT
             </a>
@@ -111,7 +113,7 @@ export const CallForPapersPage = () => {
               href={ieeeDocxUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center border border-[#F97316] text-[#F97316] hover:bg-orange-50 px-4 py-2 text-sm font-bold rounded transition-colors"
+              className="inline-flex items-center justify-center rounded border border-[#F97316] px-2 py-2 text-center text-xs font-bold text-[#F97316] transition-colors hover:bg-orange-50 sm:px-4 sm:text-sm lg:px-4"
             >
               IEEE Template (DOCX)
             </a>
@@ -119,11 +121,11 @@ export const CallForPapersPage = () => {
               href={ieeeTemplateUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center border border-slate-300 text-slate-600 hover:border-[#F97316] hover:text-[#F97316] px-4 py-2 text-sm font-bold rounded transition-colors"
+              className="inline-flex items-center justify-center rounded border border-slate-300 px-2 py-2 text-center text-xs font-bold text-slate-600 transition-colors hover:border-[#F97316] hover:text-[#F97316] sm:px-4 sm:text-sm lg:px-4"
             >
               LaTeX Portal
             </a>
-            <span className="inline-flex items-center bg-orange-100 text-[#ea580c] px-3.5 py-2 text-sm font-bold rounded">
+            <span className="inline-flex items-center justify-center rounded bg-orange-100 px-2 py-2 text-center text-[10px] font-bold text-[#ea580c] sm:px-3.5 sm:text-sm">
               Deadline: 24th Jan, 2027
             </span>
           </div>
@@ -182,21 +184,21 @@ export const CallForPapersPage = () => {
                   {IMPORTANT_DATES.map((item, idx) => (
                     <div
                       key={idx}
-                      className={`flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2 text-sm transition-colors sm:px-4 ${item.urgent ? 'bg-orange-50/50' : 'bg-white hover:bg-slate-50'
+                      className={`flex flex-nowrap items-center gap-x-2 px-2 py-2 text-[clamp(9px,2.3vw,14px)] transition-colors sm:gap-x-3 sm:px-3 lg:flex-wrap lg:justify-between lg:gap-y-1.5 lg:px-4 lg:text-sm ${item.urgent ? 'bg-orange-50/50' : 'bg-white hover:bg-slate-50'
                         }`}
                     >
-                      <div className="flex items-center gap-3">
+                      <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3 lg:flex-none">
                         <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-orange-100 text-xs font-bold text-orange-700">
                           {idx + 1}
                         </span>
-                        <div>
-                          <span className="font-bold text-[#17213a]">{item.title}</span>
-                          <span className="ml-2 text-xs font-medium text-slate-400 uppercase tracking-wide">
+                        <div className="flex min-w-0 flex-1 items-center gap-1.5 whitespace-nowrap lg:block">
+                          <span className="truncate font-bold text-[#17213a] lg:inline lg:overflow-visible lg:whitespace-normal">{item.title}</span>
+                          <span className="max-w-[35%] shrink-0 truncate text-[0.72em] font-medium uppercase tracking-wide text-slate-400 lg:ml-2 lg:inline lg:max-w-none lg:overflow-visible lg:whitespace-normal">
                             {item.badge}
                           </span>
                         </div>
                       </div>
-                      <span className="font-extrabold text-[#F97316] shrink-0 text-sm">
+                      <span className="shrink-0 whitespace-nowrap text-[0.9em] font-extrabold text-[#F97316] lg:text-sm">
                         {item.date}
                       </span>
                     </div>
@@ -224,7 +226,7 @@ export const CallForPapersPage = () => {
               {GUIDELINES.map((item, idx) => (
                 <div key={idx} className="px-3.5 py-2 hover:bg-slate-50 transition-colors sm:px-4">
                   <h3 className="text-sm font-bold text-[#17213a] sm:text-[15px]">{item.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed mt-0.5">{item.desc}</p>
+                  <p className="mt-0.5 text-justify text-sm leading-relaxed text-slate-500">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -290,14 +292,19 @@ export const CallForPapersPage = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-            {filteredTopics.map((topic, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-2.5 border border-slate-100 bg-slate-50/50 hover:bg-orange-50/60 rounded-lg px-2.5 py-2 text-sm text-slate-700 transition-colors"
+            {filteredTopics.map((topic) => (
+              <button
+                key={topic.name}
+                type="button"
+                aria-expanded={expandedTopic === topic.name}
+                onClick={() => setExpandedTopic((current) => current === topic.name ? null : topic.name)}
+                className="flex w-full min-w-0 items-center gap-2.5 rounded-lg border border-slate-100 bg-slate-50/50 px-2.5 py-2 text-left text-sm text-slate-700 transition-colors hover:bg-orange-50/60"
               >
                 <span className="h-1.5 w-1.5 shrink-0 bg-[#F97316] rounded-full" />
-                <span className="truncate">{topic.name}</span>
-              </div>
+                <span className={expandedTopic === topic.name ? 'min-w-0 whitespace-normal break-words' : 'min-w-0 truncate'}>
+                  {topic.name}
+                </span>
+              </button>
             ))}
           </div>
 

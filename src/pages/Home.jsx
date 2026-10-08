@@ -458,7 +458,7 @@ function Home() {
                   </span>
 
                   <div className="min-w-0 flex-1">
-                    <h3 className="min-w-0 truncate whitespace-nowrap text-left text-[9px] font-bold leading-snug text-slate-900 sm:text-[11px] md:text-xs lg:text-[15px]">
+                    <h3 className="min-w-0 truncate whitespace-nowrap text-left text-[11px] font-bold leading-snug text-slate-900 sm:text-sm md:text-[15px] lg:text-[15px]">
                       {track.title}
                     </h3>
                   </div>
@@ -494,10 +494,10 @@ function Home() {
                   className="group relative flex min-w-0 flex-row items-center justify-between gap-1.5 border border-slate-200/90 bg-white p-2.5 shadow-sm sm:gap-2 sm:p-3"
                 >
                   <div className="flex min-w-0 flex-1 items-center gap-1.5 lg:flex-col lg:items-start lg:gap-0">
-                    <div className="shrink-0 text-[9px] font-extrabold uppercase tracking-wider text-orange-600 sm:text-[10px]">
+                    <div className="hidden shrink-0 text-[9px] font-extrabold uppercase tracking-wider text-orange-600 lg:block">
                       {item.status || 'Milestone'}
                     </div>
-                    <h3 className="min-w-0 flex-1 truncate whitespace-nowrap text-left text-[9px] font-bold leading-snug text-slate-900 sm:text-[11px] md:text-xs lg:text-[15px]">
+                    <h3 className="min-w-0 flex-1 truncate whitespace-nowrap text-left text-[11px] font-bold leading-snug text-slate-900 sm:text-sm md:text-[15px] lg:text-[15px]">
                       {item.title}
                     </h3>
                   </div>

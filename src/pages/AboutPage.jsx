@@ -86,13 +86,13 @@ export const AboutPage = () => {
               <div className="min-w-0 rounded-xl bg-orange-50/70 px-3 py-2 text-xs leading-snug text-slate-700 [overflow-wrap:anywhere] sm:text-[13px]">
                 <strong>Publication:</strong> Proceedings are planned for consideration by Springer Nature, AIP Publishing, or Taylor &amp; Francis, subject to publisher selection and acceptance. EasyChair is the conference management platform, not a publisher; publication and indexing are not guaranteed.
               </div>
-              <div className="flex min-w-0 flex-wrap items-center justify-between gap-2 rounded-xl bg-slate-50 px-3 py-2 text-sm">
-                <span className="min-w-0 text-slate-600">
+              <div className="min-w-0 rounded-xl bg-slate-50 px-3 py-2 text-sm xl:flex xl:items-center xl:justify-between xl:gap-2">
+                <span className="text-slate-600 xl:min-w-0">
                   Submissions via <strong>Microsoft CMT</strong> • IEEE format
                 </span>
                 <Link
                   to="/call-for-papers"
-                  className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap font-bold text-[#F97316] hover:underline"
+                  className="ml-1 inline-flex align-middle items-center gap-1 whitespace-nowrap font-bold text-[#F97316] hover:underline sm:ml-1.5 xl:ml-0 xl:shrink-0"
                 >
                   <span>Guidelines</span>
                   <ArrowRight className="h-4 w-4" />

@@ -273,30 +273,6 @@ export const VenuePage = () => {
                 ))}
               </div>
 
-              {/* Destination Highlights Pill Grid */}
-              <div className="mt-3 rounded-2xl bg-orange-50/40 p-3">
-                <div className="text-xs font-black uppercase tracking-wider text-orange-700">
-                  Vijayawada Fast Facts for Delegates
-                </div>
-                <div className="mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2 text-xs font-semibold text-slate-700">
-                  <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-orange-500" />
-                    <span>Location: Banks of Krishna River</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-orange-500" />
-                    <span>April Weather: 28°C – 34°C (Sunny)</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-orange-500" />
-                    <span>Rail: A1 Premier Junction (BZA)</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-orange-500" />
-                    <span>Airport: Gannavaram Int'l (VGA)</span>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Right: How to Reach */}
@@ -479,7 +455,7 @@ export const VenuePage = () => {
 
           {/* Attractions Grid */}
           {filteredAttractions.length > 0 ? (
-            <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
               {filteredAttractions.map((attraction) => (
                 <a
                   key={attraction.name}
@@ -498,12 +474,6 @@ export const VenuePage = () => {
                       </h3>
                     </div>
                     <ExternalLink className="h-3 w-3 shrink-0 text-slate-300 opacity-0 transition-opacity group-hover:opacity-100 group-hover:text-orange-500" />
-                  </div>
-
-                  <div className="mt-1 flex items-center justify-end pt-0.5">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 group-hover:text-orange-600">
-                      View on Map →
-                    </span>
                   </div>
                 </a>
               ))}

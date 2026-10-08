@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Facebook, Twitter, Youtube, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, Facebook, Twitter, Youtube, Linkedin, Instagram } from 'lucide-react';
 import { conferenceData } from '../data/conferenceData';
 
 const DEFAULT_SHORT_TITLE = 'ICRAIQ2IT - 2027';
@@ -50,7 +50,7 @@ export const Footer = () => {
 
   return (
     <footer className="bg-[#f1f3f6] text-[#263653]">
-      <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-6 px-5 py-7 sm:px-8 sm:py-8 md:grid-cols-2 lg:grid-cols-[1.3fr_0.8fr_0.8fr_0.8fr] lg:gap-8 lg:px-10">
+      <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-3 px-4 py-4 sm:gap-4 sm:px-8 sm:py-6 md:grid-cols-2 lg:grid-cols-[1.3fr_0.8fr_0.8fr_0.8fr] lg:gap-8 lg:px-10 lg:py-7">
         {/* Brand */}
         <div>
           <Link to="/" className="flex items-center gap-3 group">
@@ -71,7 +71,7 @@ export const Footer = () => {
             </div>
           </Link>
 
-          <div className="mt-2.5 text-base sm:text-lg font-extrabold text-[#1d315f]">
+          <div className="mt-1.5 text-base font-extrabold text-[#1d315f] sm:mt-2.5 sm:text-lg">
             {conferenceShortTitle}
           </div>
         </div>
@@ -82,7 +82,7 @@ export const Footer = () => {
             Navigation
           </h3>
 
-          <div className="mt-2.5 space-y-1.5">
+          <div className="mt-1.5 space-y-0.5 sm:mt-2.5 sm:space-y-1.5">
             {NAV_PRIMARY.slice(1, 7).map((item) => (
               <Link
                 key={item.label}
@@ -101,7 +101,7 @@ export const Footer = () => {
             Quick Links
           </h3>
 
-          <div className="mt-2.5 space-y-1.5">
+          <div className="mt-1.5 space-y-0.5 sm:mt-2.5 sm:space-y-1.5">
             {NAV_SECONDARY.map((item) => {
               if (item.label === 'BROCHURE') {
                 return (
@@ -138,13 +138,21 @@ export const Footer = () => {
 
           <a
             href={`mailto:${email}`}
-            className="mt-2.5 flex items-start gap-2 text-sm leading-6 text-slate-600 transition hover:text-[#f97316]"
+            className="mt-1.5 flex items-start gap-2 text-sm leading-5 text-slate-600 transition hover:text-[#f97316] sm:mt-2.5 sm:leading-6"
           >
             <Mail className="mt-0.5 h-4 w-4 shrink-0" />
             <span className="break-all">{email}</span>
           </a>
 
-          <div className="mt-3 flex items-center gap-2">
+          <a
+            href="tel:+919440948018"
+            className="mt-1.5 flex items-center gap-2 text-sm leading-5 text-slate-600 transition hover:text-[#f97316] sm:mt-2"
+          >
+            <Phone className="h-4 w-4 shrink-0" />
+            <span>Jithendra: +91 94409 48018</span>
+          </a>
+
+          <div className="mt-2 flex items-center gap-2 sm:mt-3">
             {[
               { label: 'Facebook', icon: Facebook, href: data.social?.facebook },
               { label: 'Twitter', icon: Twitter, href: data.social?.twitter },

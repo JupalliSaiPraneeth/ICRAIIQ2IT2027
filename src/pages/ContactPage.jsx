@@ -59,7 +59,7 @@ export const ContactPage = () => {
       <section className="bg-white py-2">
         <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-10">
           <div className="text-center">
-            <h1 className="mx-auto text-3xl font-black tracking-tight text-[#17213a] sm:text-4xl lg:text-[42px] lg:leading-[1.18]">
+            <h1 className="mx-auto whitespace-nowrap text-[clamp(1rem,5vw,2.25rem)] font-black tracking-tight text-[#17213a] sm:text-[clamp(1.75rem,4vw,2.25rem)] lg:text-[42px] lg:leading-[1.18]">
               Contact the <span className="text-[#F97316]">Secretariat</span>
             </h1>
 
@@ -68,10 +68,10 @@ export const ContactPage = () => {
               Contact us about submissions, registration, or conference logistics.
             </p>
 
-            <div className="mt-1.5 flex flex-wrap items-center justify-center gap-1.5">
+            <div className="mt-1.5 grid grid-cols-2 items-stretch gap-1.5 lg:flex lg:flex-wrap lg:items-center lg:justify-center">
               <a
                 href={`mailto:${contactEmail}`}
-                className="inline-flex items-center gap-1.5 rounded-md bg-[#F97316] px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-[#ea580c]"
+                className="inline-flex min-w-0 items-center justify-center gap-1 rounded-md bg-[#F97316] px-1 py-1.5 text-[10px] font-semibold text-white transition hover:bg-[#ea580c] sm:gap-1.5 sm:px-2 sm:text-xs lg:px-3 lg:text-sm"
               >
                 <Mail className="h-3.5 w-3.5" />
                 <span>Email Secretariat</span>
@@ -81,7 +81,7 @@ export const ContactPage = () => {
                 href={mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm font-semibold text-slate-700 transition hover:border-[#F97316] hover:text-[#F97316]"
+                className="inline-flex min-w-0 items-center justify-center gap-1 rounded-md border border-slate-300 bg-white px-1 py-1.5 text-[10px] font-semibold text-slate-700 transition hover:border-[#F97316] hover:text-[#F97316] sm:gap-1.5 sm:px-2 sm:text-xs lg:px-3 lg:text-sm"
               >
                 <Navigation className="h-3.5 w-3.5" />
                 <span>Open Campus in Maps</span>

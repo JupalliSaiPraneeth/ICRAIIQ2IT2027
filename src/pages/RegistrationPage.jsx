@@ -120,8 +120,9 @@ export const RegistrationPage = () => {
       {/* ── HEADER ── */}
       <section className="bg-white py-5 sm:py-6">
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl font-black uppercase tracking-tight text-[#17213a] sm:text-4xl lg:text-[42px]">
-            Conference Registration &amp; <span className="text-[#F97316]">Fee Guidelines</span>
+          <h1 className="text-[clamp(1rem,5vw,2rem)] font-black uppercase tracking-tight text-[#17213a] sm:text-[clamp(1.5rem,4.2vw,2rem)] lg:text-[42px]">
+            <span className="block whitespace-nowrap lg:inline">Conference Registration &amp; </span>
+            <span className="block whitespace-nowrap text-[#F97316] lg:inline">Fee Guidelines</span>
           </h1>
           <div className="mx-auto mt-2 h-1 w-24 rounded-full bg-[#F97316]" />
           <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-slate-500 sm:text-[15px]">
@@ -129,29 +130,29 @@ export const RegistrationPage = () => {
           </p>
 
           {/* Quick Actions */}
-          <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+          <div className="mt-3 grid grid-cols-2 items-stretch justify-center gap-2 lg:flex lg:flex-wrap">
             <button
               type="button"
               onClick={openRegistrationForm}
-              className="inline-flex items-center bg-[#F97316] hover:bg-[#ea580c] text-white px-3 py-1.5 text-sm font-bold rounded transition-colors"
+              className="inline-flex items-center justify-center rounded bg-[#F97316] px-1.5 py-1.5 text-center text-[11px] font-bold text-white transition-colors hover:bg-[#ea580c] sm:px-3 sm:text-sm lg:px-3"
             >
               Fill Registration Form &rarr;
             </button>
             <button
               type="button"
               onClick={() => scrollToSection('bank-remittance')}
-              className="inline-flex items-center border border-[#F97316] text-[#F97316] hover:bg-orange-50 px-3 py-1.5 text-sm font-bold rounded transition-colors"
+              className="inline-flex items-center justify-center rounded border border-[#F97316] px-1.5 py-1.5 text-center text-xs font-bold text-[#F97316] transition-colors hover:bg-orange-50 sm:px-3 sm:text-sm lg:px-3"
             >
               Bank Details
             </button>
             <button
               type="button"
               onClick={() => scrollToSection('fee-schedule')}
-              className="inline-flex items-center border border-slate-300 text-slate-600 hover:border-[#F97316] hover:text-[#F97316] px-3 py-1.5 text-sm font-bold rounded transition-colors"
+              className="inline-flex items-center justify-center rounded border border-slate-300 px-1.5 py-1.5 text-center text-xs font-bold text-slate-600 transition-colors hover:border-[#F97316] hover:text-[#F97316] sm:px-3 sm:text-sm lg:px-3"
             >
               Fee Tiers Table
             </button>
-            <span className="inline-flex items-center bg-orange-100 text-[#ea580c] px-3 py-1.5 text-sm font-bold rounded">
+            <span className="inline-flex items-center justify-center rounded bg-orange-100 px-1 py-1.5 text-center text-[9px] font-bold text-[#ea580c] sm:px-2 sm:text-xs lg:px-3 lg:py-1.5 lg:text-sm">
               Author Reg. Due: 10th Mar 2027
             </span>
           </div>
@@ -181,9 +182,6 @@ export const RegistrationPage = () => {
                   </span>
                   <h2 className="text-base font-bold text-[#17213a] sm:text-lg">Step 1: Remit Registration Fee</h2>
                 </div>
-                <span className="border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs font-bold text-[#F97316] rounded">
-                  Mandatory First
-                </span>
               </div>
               <p className="text-sm text-slate-600 leading-relaxed sm:text-[15px]">
                 Transfer the applicable fee via Bank of Baroda NEFT/RTGS/IMPS or UPI. Retain the UTR transaction number and payment receipt.
@@ -281,9 +279,6 @@ export const RegistrationPage = () => {
                   </span>
                   <h2 className="text-base font-bold text-[#17213a] sm:text-lg">Step 2: Submit Registration Form</h2>
                 </div>
-                <span className="border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-800 rounded">
-                  Final Confirmation
-                </span>
               </div>
               <p className="text-sm text-slate-600 leading-relaxed sm:text-[15px]">
                 Complete the official registration form with your manuscript title, Microsoft CMT Paper ID, author affiliations, and payment proof.
@@ -345,75 +340,47 @@ export const RegistrationPage = () => {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 gap-3 sm:hidden">
-            {FEE_SCHEDULE_DATA.map((row, idx) => (
-              <article
-                key={`mobile-${idx}`}
-                className={`rounded-xl border border-slate-200 p-3 ${
-                  row.isHighlight ? 'bg-slate-50' : 'bg-white'
-                }`}
-              >
-                <h3 className="break-words text-sm font-bold leading-snug text-[#17213a]">
-                  {row.category}
-                </h3>
-                <div className="mt-3 grid grid-cols-2 gap-2">
-                  {[
-                    { label: 'India · Author', value: row.indiaAuthor },
-                    { label: 'India · Listener', value: row.indiaListener },
-                    { label: 'Other countries · Author', value: row.otherAuthor },
-                    { label: 'Other countries · Listener', value: row.otherListener },
-                  ].map((fee) => (
-                    <div key={fee.label} className="min-w-0 rounded-lg bg-white p-2">
-                      <div className="text-[10px] font-semibold leading-snug text-slate-500">
-                        {fee.label}
-                      </div>
-                      <div className="mt-1 break-words text-sm font-bold text-slate-800">
-                        {fee.value}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-
-          {/* Scrollable table for larger screens */}
-          <div className="hidden overflow-x-auto sm:block">
-            <table className="w-full min-w-[720px] border-collapse text-left text-sm">
+          <div
+            className="overflow-x-auto"
+            role="region"
+            aria-label="Registration fee schedule"
+            tabIndex={0}
+          >
+            <table className="w-full min-w-[680px] border-collapse text-left text-xs sm:text-sm lg:min-w-[720px]">
               <thead>
                 <tr className="border-b-2 border-slate-800 text-[#17213a] font-bold">
-                  <th className="py-2.5 px-3">Category</th>
-                  <th className="py-2.5 px-3">
+                  <th className="py-2 px-2 sm:px-3 lg:py-2.5">Category</th>
+                  <th className="py-2 px-2 sm:px-3 lg:py-2.5">
                     India &mdash;<br />
                     Author (Rs.)
                   </th>
-                  <th className="py-2.5 px-3">
+                  <th className="py-2 px-2 sm:px-3 lg:py-2.5">
                     India &mdash;<br />
                     Listener (Rs.)
                   </th>
-                  <th className="py-2.5 px-3">
+                  <th className="py-2 px-2 sm:px-3 lg:py-2.5">
                     Other Countries &mdash;<br />
                     Author (USD)
                   </th>
-                  <th className="py-2.5 px-3">
+                  <th className="py-2 px-2 sm:px-3 lg:py-2.5">
                     Other Countries &mdash;<br />
                     Listener (USD)
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200 text-slate-800">
-                {FEE_SCHEDULE_DATA.map((row, idx) => (
+                {FEE_SCHEDULE_DATA.map((row) => (
                   <tr
-                    key={idx}
+                    key={row.category}
                     className={`transition-colors ${
                       row.isHighlight ? 'bg-slate-50' : 'hover:bg-slate-50/60'
                     }`}
                   >
-                    <td className="py-2 px-3 font-semibold text-[#17213a]">{row.category}</td>
-                    <td className="py-2 px-3">{row.indiaAuthor}</td>
-                    <td className="py-2 px-3">{row.indiaListener}</td>
-                    <td className="py-2 px-3">{row.otherAuthor}</td>
-                    <td className="py-2 px-3">{row.otherListener}</td>
+                    <td className="py-2 px-2 font-semibold text-[#17213a] sm:px-3">{row.category}</td>
+                    <td className="py-2 px-2 sm:px-3">{row.indiaAuthor}</td>
+                    <td className="py-2 px-2 sm:px-3">{row.indiaListener}</td>
+                    <td className="py-2 px-2 sm:px-3">{row.otherAuthor}</td>
+                    <td className="py-2 px-2 sm:px-3">{row.otherListener}</td>
                   </tr>
                 ))}
               </tbody>
@@ -446,7 +413,7 @@ export const RegistrationPage = () => {
                 {notes.map((note, index) => (
                   <li key={index} className="flex items-start gap-2">
                     <span className="text-[#F97316] font-bold shrink-0">•</span>
-                    <span className="leading-relaxed">{note}</span>
+                    <span className="text-justify leading-relaxed">{note}</span>
                   </li>
                 ))}
               </ul>

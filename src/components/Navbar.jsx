@@ -595,16 +595,16 @@ export const Navbar = () => {
 
 
             {/* Mobile links */}
-            <div className="flex-1 overflow-y-auto px-5 py-5">
+            <div className="flex-1 overflow-y-auto px-5 py-2 sm:px-6 sm:py-3">
 
-              <div className="space-y-1.5">
+              <div className="space-y-0.5 sm:space-y-1">
 
                 {[...NAV_PRIMARY, ...NAV_SECONDARY].map((item) => {
                   const active = isActive(item.to);
 
                   if (item.label === 'SOUVENIR') {
                     return (
-                      <div key={item.label} className="space-y-1">
+                      <div key={item.label} className="space-y-0.5">
                         <button
                           type="button"
                           onClick={() => setMobileSouvenirOpen((prev) => !prev)}
@@ -613,12 +613,14 @@ export const Navbar = () => {
                             relative
                             flex
                             w-full
-                            min-h-12
+                            min-h-10
+                            sm:min-h-11
                             items-center
                             justify-between
                             overflow-hidden
                             rounded-xl
-                            px-4
+                            px-3
+                            sm:px-4
                             text-sm
                             font-semibold
                             transition-all
@@ -656,13 +658,13 @@ export const Navbar = () => {
                         </button>
 
                         {mobileSouvenirOpen && (
-                          <div className="ml-3 space-y-1 rounded-xl border border-slate-100 bg-slate-50/80 p-2">
+                          <div className="ml-3 space-y-0.5 rounded-xl border border-slate-100 bg-slate-50/80 p-1.5">
                             <a
                               href="/sov/1sov.pdf"
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={closeMobileMenu}
-                              className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-white hover:text-[#E87500]"
+                              className="flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-white hover:text-[#E87500]"
                             >
                               <span className="text-base select-none">🎁</span>
                               <span>ICRAIC2IT-2022</span>
@@ -672,7 +674,7 @@ export const Navbar = () => {
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={closeMobileMenu}
-                              className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-white hover:text-[#E87500]"
+                              className="flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-white hover:text-[#E87500]"
                             >
                               <span className="text-base select-none">🎁</span>
                               <span>ICRAIC2IT-2025</span>
@@ -691,7 +693,7 @@ export const Navbar = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={closeMobileMenu}
-                        className="group relative flex min-h-12 items-center overflow-hidden rounded-xl px-4 text-sm font-semibold text-[#344054] transition-all duration-200 hover:bg-[#FFF7E6] hover:pl-5 hover:text-[#E87500]"
+                        className="group relative flex min-h-10 items-center overflow-hidden rounded-xl px-3 text-sm font-semibold text-[#344054] transition-all duration-200 hover:bg-[#FFF7E6] hover:pl-4 hover:text-[#E87500] sm:min-h-11 sm:px-4"
                       >
                         <span className="absolute left-0 top-1/2 h-6 w-0 -translate-y-1/2 rounded-r-full bg-[#F59E0B] opacity-0 transition-all duration-200 group-hover:w-1 group-hover:opacity-100" />
                         {item.label}
@@ -708,11 +710,13 @@ export const Navbar = () => {
                         group
                         relative
                         flex
-                        min-h-12
+                        min-h-10
+                        sm:min-h-11
                         items-center
                         overflow-hidden
                         rounded-xl
-                        px-4
+                        px-3
+                        sm:px-4
                         text-sm
                         font-semibold
                         transition-all
@@ -759,57 +763,54 @@ export const Navbar = () => {
                 })}
 
               </div>
-            </div>
 
-
-            {/* Register CTA */}
-            <div className="border-t border-slate-200 p-5">
-
-              <Link
-                to="/registration"
-                onClick={closeMobileMenu}
-                className="
-                  group
-                  relative
-                  flex
-                  min-h-12
-                  items-center
-                  justify-center
-                  overflow-hidden
-                  rounded-xl
-                  bg-gradient-to-r
-                  from-[#F59E0B]
-                  to-[#EA580C]
-                  px-5
-                  text-sm
-                  font-extrabold
-                  uppercase
-                  tracking-wider
-                  text-white
-                  shadow-[0_8px_20px_rgba(234,88,12,0.22)]
-                  transition-all
-                  duration-300
-                  hover:-translate-y-0.5
-                  hover:shadow-[0_12px_25px_rgba(234,88,12,0.30)]
-                "
-              >
-                <span
+              {/* Register CTA */}
+              <div className="mt-2 border-t border-slate-200 pt-2">
+                <Link
+                  to="/registration"
+                  onClick={closeMobileMenu}
                   className="
-                    absolute
-                    inset-0
-                    -translate-x-full
-                    bg-white/10
-                    transition-transform
-                    duration-500
-                    group-hover:translate-x-full
+                    group
+                    relative
+                    flex
+                    min-h-12
+                    items-center
+                    justify-center
+                    overflow-hidden
+                    rounded-xl
+                    bg-gradient-to-r
+                    from-[#F59E0B]
+                    to-[#EA580C]
+                    px-5
+                    text-sm
+                    font-extrabold
+                    uppercase
+                    tracking-wider
+                    text-white
+                    shadow-[0_8px_20px_rgba(234,88,12,0.22)]
+                    transition-all
+                    duration-300
+                    hover:-translate-y-0.5
+                    hover:shadow-[0_12px_25px_rgba(234,88,12,0.30)]
                   "
-                />
+                >
+                  <span
+                    className="
+                      absolute
+                      inset-0
+                      -translate-x-full
+                      bg-white/10
+                      transition-transform
+                      duration-500
+                      group-hover:translate-x-full
+                    "
+                  />
 
-                <span className="relative">
-                  Register Now
-                </span>
-              </Link>
-
+                  <span className="relative">
+                    Register Now
+                  </span>
+                </Link>
+              </div>
             </div>
 
           </aside>

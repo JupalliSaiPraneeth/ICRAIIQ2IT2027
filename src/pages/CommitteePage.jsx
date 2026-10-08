@@ -228,7 +228,7 @@ export const CommitteePage = () => {
       <section className="bg-white px-5 pb-2 pt-5 sm:px-8 sm:pt-6 lg:px-10">
         <div className="mx-auto max-w-[1280px]">
           <div className="text-center">
-            <h1 className="text-3xl font-extrabold tracking-tight text-[#17213a] sm:text-4xl lg:text-[42px] lg:leading-[1.18]">
+            <h1 className="whitespace-nowrap text-xl font-extrabold uppercase tracking-tight text-[#17213a] sm:text-2xl md:text-3xl lg:text-[42px] lg:leading-[1.18]">
               Conference Committee
             </h1>
             <div className="mx-auto mt-2 h-1 w-24 rounded-full bg-[#F97316]" />
