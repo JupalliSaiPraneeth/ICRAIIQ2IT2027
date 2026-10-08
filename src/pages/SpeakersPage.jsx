@@ -6,6 +6,9 @@ import SpeakerModal from '../components/Modals/SpeakerModal';
 
 export const SpeakersPage = () => {
   const [selectedSpeaker, setSelectedSpeaker] = useState(null);
+  const speakers = Array.isArray(conferenceData?.speakers)
+    ? conferenceData.speakers
+    : [];
 
   return (
     <div className="relative min-h-screen bg-white text-[#17213a] py-8 sm:py-10">
@@ -21,12 +24,13 @@ export const SpeakersPage = () => {
         />
 
         {/* Speakers Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {conferenceData.speakers.map((spk) => (
+        {speakers.length > 0 ? (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-8">
+          {speakers.map((spk) => (
             <div 
               key={spk.id}
               onClick={() => setSelectedSpeaker(spk)}
-              className="p-6 rounded-3xl bg-navy-900 border border-white/10 hover:border-brand-500/60 hover:shadow-[0_0_35px_rgba(251,146,0,0.2)] transition-all duration-300 cursor-pointer group flex flex-col justify-between"
+              className="min-w-0 cursor-pointer rounded-2xl border border-slate-200 bg-navy-900 p-4 shadow-sm transition-all duration-300 hover:border-brand-500/60 hover:shadow-[0_0_35px_rgba(251,146,0,0.2)] group sm:p-5 lg:rounded-3xl lg:p-6"
             >
               <div>
                 <div className="relative mb-5 overflow-hidden rounded-2xl aspect-square bg-navy-850 border border-brand-500/20">
@@ -40,7 +44,7 @@ export const SpeakersPage = () => {
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-1 group-hover:text-brand-400 transition-colors">
+                <h3 className="mb-1 break-words text-lg font-bold leading-snug text-white transition-colors group-hover:text-brand-400 sm:text-xl">
                   {spk.name}
                 </h3>
                 <div className="text-xs font-semibold text-brand-400 mb-1">
@@ -48,7 +52,7 @@ export const SpeakersPage = () => {
                 </div>
                 <div className="text-xs text-slate-400 flex items-center gap-1 mb-4">
                   <Globe className="w-3.5 h-3.5 text-brand-400 shrink-0" />
-                  <span>{spk.institution}, {spk.country}</span>
+                  <span className="min-w-0 break-words">{spk.institution}, {spk.country}</span>
                 </div>
               </div>
 
@@ -66,7 +70,12 @@ export const SpeakersPage = () => {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        ) : (
+          <p className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-6 text-center text-sm leading-relaxed text-slate-600 sm:px-6 sm:text-base">
+            Keynote speakers will be announced soon.
+          </p>
+        )}
 
       </div>
 

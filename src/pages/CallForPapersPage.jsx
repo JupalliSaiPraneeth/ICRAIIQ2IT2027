@@ -55,8 +55,8 @@ const GUIDELINES = [
     desc: 'At least one author must register by 10th Mar 2027 and present the paper during the conference.',
   },
   {
-    title: 'Scopus Proceedings Indexing',
-    desc: 'All peer-reviewed, accepted, and presented papers will be submitted for Scopus-indexed proceedings.',
+    title: 'Proceedings Publication & Indexing',
+    desc: 'Accepted and presented papers may be submitted for proceedings consideration. Potential publishing routes are Springer Nature, AIP Publishing, or Taylor & Francis; publisher selection, publication, and indexing are subject to confirmation and acceptance. EasyChair is a conference management platform, not a publisher.',
   },
 ];
 
@@ -159,8 +159,8 @@ export const CallForPapersPage = () => {
                 </div>
                 <div className="bg-orange-50/60 border border-orange-200/60 rounded-lg p-2 text-center">
                   <span className="text-[11px] font-bold uppercase text-orange-600 block">Proceedings</span>
-                  <strong className="text-sm text-slate-900 block mt-1">Scopus Indexed</strong>
-                  <span className="text-xs text-[#F97316] font-semibold block mt-0.5">Official</span>
+                  <strong className="text-sm text-slate-900 block mt-1">Publisher To Be Confirmed</strong>
+                  <span className="text-xs text-[#F97316] font-semibold block mt-0.5">Indexing subject to acceptance</span>
                 </div>
                 <div className="bg-slate-50 border border-slate-200/70 rounded-lg p-2 text-center">
                   <span className="text-[11px] font-bold uppercase text-slate-400 block">Paper Format</span>

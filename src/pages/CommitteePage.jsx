@@ -96,10 +96,10 @@ const getMemberAffiliation = (member) => {
 /* ── Reusable Table Row ── */
 function CommitteeTableRow({ category, members, isLast }) {
   return (
-    <tr className={!isLast ? 'border-b border-slate-200' : ''}>
+    <tr className={`committee-table-row ${!isLast ? 'border-b border-slate-200' : ''}`}>
       {/* Left: Category label */}
       <td
-        className="w-[200px] min-w-[140px] align-top py-2.5 px-3 bg-orange-50/70 border-r border-slate-200"
+        className="committee-category-cell w-[200px] min-w-[140px] align-top bg-orange-50/70 px-3 py-2.5 border-r border-slate-200"
         style={{ verticalAlign: 'top' }}
       >
         <span className="block text-[13px] font-extrabold uppercase tracking-wide text-[#F97316] leading-tight">
@@ -108,7 +108,7 @@ function CommitteeTableRow({ category, members, isLast }) {
       </td>
 
       {/* Right: Members */}
-      <td className="align-top py-2.5 px-3" style={{ verticalAlign: 'top' }}>
+      <td className="committee-members-cell align-top px-3 py-2.5" style={{ verticalAlign: 'top' }}>
         {members.length > 0 ? (
           <ul className="space-y-1">
             {members.map((member, index) => {
@@ -145,7 +145,7 @@ function CommitteeTableRow({ category, members, isLast }) {
 function CommitteeTable({ title, sections }) {
   return (
     <div className="overflow-hidden rounded-xl border border-slate-200 shadow-sm">
-      <table className="w-full border-collapse text-left">
+      <table className="committee-table w-full border-collapse text-left">
         <colgroup>
           <col style={{ width: '200px' }} />
           <col />
@@ -160,10 +160,10 @@ function CommitteeTable({ title, sections }) {
             </th>
           </tr>
           <tr className="border-b border-slate-200 bg-orange-50">
-            <th className="py-1.5 px-4 text-[11px] font-semibold uppercase tracking-widest text-slate-500 border-r border-slate-200">
+            <th className="committee-column-heading py-1.5 px-4 text-[11px] font-semibold uppercase tracking-widest text-slate-500 border-r border-slate-200">
               Role / Category
             </th>
-            <th className="py-1.5 px-4 text-[11px] font-semibold uppercase tracking-widest text-slate-500">
+            <th className="committee-column-heading py-1.5 px-4 text-[11px] font-semibold uppercase tracking-widest text-slate-500">
               Members
             </th>
           </tr>

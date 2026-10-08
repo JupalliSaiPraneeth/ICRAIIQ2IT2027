@@ -34,7 +34,7 @@ const FEE_SCHEDULE_DATA = [
     isHighlight: true,
   },
   {
-    category: 'Publication Fee (Scopus Indexed)',
+    category: 'Proceedings Publication Fee (if applicable)',
     indiaAuthor: '10000',
     indiaListener: '–',
     otherAuthor: '$100',
@@ -45,7 +45,7 @@ const FEE_SCHEDULE_DATA = [
 const DEFAULT_NOTES = [
   'Faculty members, research scholars, postgraduate students from AICTE-approved institutions, and industry professionals are eligible to register.',
   'At least one author of every accepted paper must register by 10th Mar 2027 to ensure paper inclusion in the proceedings.',
-  'Proceedings shall be published with Taylor & Francis / AIP / Springer group / Elsevier subject to approval.',
+  'Proceedings are planned for consideration by Springer Nature, AIP Publishing, or Taylor & Francis, subject to selection and approval. EasyChair is a conference management platform, not a publisher; publication and indexing are subject to confirmation.',
   'All participants will be issued a certificate. Presenters receive a Paper Presentation cum Publication Certificate.',
 ];
 
@@ -191,10 +191,10 @@ export const RegistrationPage = () => {
 
               {/* Bank Details Table */}
               <div className="mt-3 border border-slate-200 rounded-lg divide-y divide-slate-100 text-sm">
-                <div className="p-2.5 bg-slate-50/60 flex items-start justify-between gap-2">
-                  <div>
+                <div className="flex items-start justify-between gap-2 bg-slate-50/60 p-2.5">
+                  <div className="min-w-0">
                     <span className="text-xs font-bold uppercase text-slate-400 block">Beneficiary Name</span>
-                    <strong className="text-sm text-[#17213a] block mt-0.5 leading-snug">{bankDetails.accountName}</strong>
+                    <strong className="mt-0.5 block break-words text-sm leading-snug text-[#17213a]">{bankDetails.accountName}</strong>
                   </div>
                   <button
                     type="button"
@@ -205,16 +205,16 @@ export const RegistrationPage = () => {
                   </button>
                 </div>
 
-                <div className="grid grid-cols-2 divide-x divide-slate-100">
+                <div className="grid grid-cols-1 divide-y divide-slate-100 min-[480px]:grid-cols-2 min-[480px]:divide-y-0 min-[480px]:divide-x">
                   <div className="p-2.5">
                     <span className="text-xs font-bold uppercase text-slate-400 block">Bank &amp; Branch</span>
                     <span className="text-sm font-semibold text-slate-800 block mt-0.5">{bankDetails.bankName}</span>
                     <span className="text-xs text-slate-500 block">{bankDetails.branch}</span>
                   </div>
-                  <div className="p-2 flex items-start justify-between">
-                    <div>
+                  <div className="flex items-start justify-between gap-2 p-2.5">
+                    <div className="min-w-0">
                       <span className="text-xs font-bold uppercase text-slate-400 block">IFSC Code</span>
-                      <strong className="font-mono text-sm text-[#F97316] block mt-0.5">{bankDetails.ifsc}</strong>
+                      <strong className="mt-0.5 block break-all font-mono text-sm text-[#F97316]">{bankDetails.ifsc}</strong>
                       <span className="text-xs text-slate-400 block">5th char zero</span>
                     </div>
                     <button
@@ -227,28 +227,28 @@ export const RegistrationPage = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 divide-x divide-slate-100">
-                  <div className="p-2.5 flex items-start justify-between gap-1.5">
-                    <div>
+                <div className="grid grid-cols-1 divide-y divide-slate-100 min-[480px]:grid-cols-2 min-[480px]:divide-y-0 min-[480px]:divide-x">
+                  <div className="flex items-start justify-between gap-2 p-2.5">
+                    <div className="min-w-0 flex-1">
                       <span className="text-xs font-bold uppercase text-slate-400 block">UPI ID (VPA)</span>
-                      <strong className="font-mono text-sm text-[#17213a] block mt-0.5">{bankDetails.upiId}</strong>
+                      <strong className="mt-0.5 block break-all font-mono text-sm leading-snug text-[#17213a]">{bankDetails.upiId}</strong>
                     </div>
                     <button
                       type="button"
                       onClick={() => copyText(bankDetails.upiId, 'UPI ID')}
-                      className="text-sm font-bold text-[#F97316] hover:underline"
+                      className="shrink-0 text-sm font-bold text-[#F97316] hover:underline"
                     >
                       Copy
                     </button>
                   </div>
-                  <div className="p-2.5">
+                  <div className="min-w-0 p-2.5">
                     <span className="text-xs font-bold uppercase text-slate-400 block">Account Number</span>
-                    <span className="text-sm text-slate-700 block mt-0.5">{bankDetails.accountNumber}</span>
+                    <span className="mt-0.5 block break-words text-sm text-slate-700">{bankDetails.accountNumber}</span>
                   </div>
                 </div>
 
-                <div className="p-2.5 bg-slate-50/40 text-sm text-slate-600 flex items-center justify-between gap-2">
-                  <span>
+                <div className="flex flex-col items-start justify-between gap-2 bg-slate-50/40 p-2.5 text-sm text-slate-600 min-[480px]:flex-row min-[480px]:items-center">
+                  <span className="min-w-0">
                     <strong className="text-slate-700">Remarks / Narration:</strong> Include your Microsoft CMT Paper ID
                   </span>
                   <span className="text-xs text-orange-600 font-semibold bg-orange-50 px-2 py-1 rounded border border-orange-100">
@@ -345,8 +345,40 @@ export const RegistrationPage = () => {
             </span>
           </div>
 
-          {/* Simple Clean Table matching uploaded image */}
-          <div className="overflow-x-auto">
+          <div className="grid grid-cols-1 gap-3 sm:hidden">
+            {FEE_SCHEDULE_DATA.map((row, idx) => (
+              <article
+                key={`mobile-${idx}`}
+                className={`rounded-xl border border-slate-200 p-3 ${
+                  row.isHighlight ? 'bg-slate-50' : 'bg-white'
+                }`}
+              >
+                <h3 className="break-words text-sm font-bold leading-snug text-[#17213a]">
+                  {row.category}
+                </h3>
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  {[
+                    { label: 'India · Author', value: row.indiaAuthor },
+                    { label: 'India · Listener', value: row.indiaListener },
+                    { label: 'Other countries · Author', value: row.otherAuthor },
+                    { label: 'Other countries · Listener', value: row.otherListener },
+                  ].map((fee) => (
+                    <div key={fee.label} className="min-w-0 rounded-lg bg-white p-2">
+                      <div className="text-[10px] font-semibold leading-snug text-slate-500">
+                        {fee.label}
+                      </div>
+                      <div className="mt-1 break-words text-sm font-bold text-slate-800">
+                        {fee.value}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {/* Scrollable table for larger screens */}
+          <div className="hidden overflow-x-auto sm:block">
             <table className="w-full min-w-[720px] border-collapse text-left text-sm">
               <thead>
                 <tr className="border-b-2 border-slate-800 text-[#17213a] font-bold">
@@ -389,7 +421,7 @@ export const RegistrationPage = () => {
           </div>
 
           <div className="mt-3 pt-3 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between text-sm text-slate-500 gap-2">
-            <span>All accepted and presented papers receive formal Scopus proceedings submission.</span>
+            <span>Accepted and presented papers may be submitted for proceedings consideration; publication and indexing depend on publisher selection, acceptance, and confirmation.</span>
             <button
               type="button"
               onClick={openRegistrationForm}

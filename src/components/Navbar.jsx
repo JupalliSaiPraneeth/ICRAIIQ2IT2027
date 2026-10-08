@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Download, ExternalLink } from 'lucide-react';
 import { conferenceData } from '../data/conferenceData';
 
+const DEFAULT_SHORT_TITLE = 'ICRAIQ2IT - 2027';
 const DEFAULT_TITLE =
   '5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence and Inclusive Technologies';
-
-const DEFAULT_SHORT_TITLE = 'ICRAIQ2IT - 2027';
 
 const NAV_PRIMARY = [
   { label: 'HOME', to: '/' },
@@ -61,28 +61,22 @@ export const Navbar = () => {
 
   const data = conferenceData || {};
 
-  const conferenceTitle = getDataValue(
-    data.title,
-    DEFAULT_TITLE
-  );
-
+  const conferenceTitle = getDataValue(data.title, DEFAULT_TITLE);
   const conferenceShortTitle = getDataValue(
     data.shortTitle || data.acronym,
     DEFAULT_SHORT_TITLE
   );
-
   const titleParts = useMemo(() => {
     const splitKey = 'and Inclusive Technologies';
-    if (conferenceTitle.includes(splitKey)) {
-      const idx = conferenceTitle.indexOf(splitKey);
-      return {
-        line1: conferenceTitle.slice(0, idx).trim(),
-        line2: splitKey,
-      };
+    const splitIndex = conferenceTitle.indexOf(splitKey);
+
+    if (splitIndex === -1) {
+      return { firstLine: conferenceTitle, secondLine: '' };
     }
+
     return {
-      line1: conferenceTitle,
-      line2: '',
+      firstLine: conferenceTitle.slice(0, splitIndex).trim(),
+      secondLine: splitKey,
     };
   }, [conferenceTitle]);
 
@@ -90,6 +84,26 @@ export const Navbar = () => {
     setMobileMenuOpen(false);
     setMobileSouvenirOpen(false);
   };
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return undefined;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousRootOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') closeMobileMenu();
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousRootOverflow;
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [mobileMenuOpen]);
 
   const isActive = (path) => {
     if (path === '/') {
@@ -107,94 +121,66 @@ export const Navbar = () => {
         }`}
     >
 
-      {/* =========================================================
-          CONFERENCE TITLE & BADGE (Rock-solid layout, zero jiggling)
-      ========================================================= */}
-      <div className="mx-auto max-w-[1500px] px-4 py-2 sm:px-6 sm:py-2.5 lg:px-8">
+      {/* Compact title and menu for mobile/tablet */}
+      <div className="mx-auto flex max-w-[1500px] items-center gap-3 px-4 py-2 sm:px-6 sm:py-2.5 lg:px-8 xl:hidden">
         <Link
           to="/"
           aria-label={`${conferenceShortTitle} home`}
-          className="group mx-auto block max-w-[1400px] text-center"
+          className="group min-w-0 flex-1 text-left"
         >
-          <h1 className="text-[17px] font-extrabold leading-snug tracking-[-0.02em] text-[#1D315F] sm:text-[21px] lg:text-[24px] xl:text-[26px]">
-            {titleParts.line2 ? (
+          <div className="text-lg font-extrabold leading-tight tracking-[-0.02em] text-[#1D315F] sm:text-xl">
+            {conferenceShortTitle}
+          </div>
+          <div className="mt-1 flex items-center justify-start gap-1.5 text-[10px] font-extrabold uppercase tracking-wide text-[#EA580C] sm:text-[11px]">
+            <span>April 9-10</span>
+            <span className="text-slate-300 font-normal">|</span>
+            <span>Vijayawada</span>
+            <span className="text-slate-300 font-normal">|</span>
+            <span>India</span>
+          </div>
+        </Link>
+        <button
+          type="button"
+          onClick={() => setMobileMenuOpen(true)}
+          aria-label="Open navigation menu"
+          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-[#1D315F] shadow-sm transition-colors hover:border-[#F59E0B] hover:bg-[#FFF7E6] hover:text-[#E87500] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]"
+        >
+          <Menu className="h-5 w-5" />
+        </button>
+      </div>
+
+      {/* Full conference title layout for laptop and monitor screens */}
+      <div className="hidden px-6 py-2 xl:block">
+        <Link
+          to="/"
+          aria-label={`${conferenceShortTitle} home`}
+          className="group mx-auto block max-w-[1500px] text-center"
+        >
+          <h1 className="text-[23px] font-extrabold leading-tight tracking-[-0.025em] text-[#1D315F] 2xl:text-[27px]">
+            {titleParts.secondLine ? (
               <>
-                <span className="block">
-                  {titleParts.line1}
-                </span>
+                <span className="block">{titleParts.firstLine}</span>
                 <span className="mt-0.5 inline-flex flex-wrap items-center justify-center gap-2">
-                  <span>{titleParts.line2}</span>
-                  {/* ORANGE ROUNDED CONFERENCE BADGE */}
-                  <span
-                    className="
-                      inline-flex
-                      translate-y-[-1px]
-                      items-center
-                      rounded-full
-                      border
-                      border-[#F59E0B]
-                      bg-[#FFF7E6]
-                      px-3
-                      py-0.5
-                      align-middle
-                      text-[0.72em]
-                      font-black
-                      tracking-[-0.01em]
-                      text-[#E87500]
-                      shadow-[0_2px_6px_rgba(245,158,11,0.12)]
-                      transition-colors
-                      duration-200
-                      group-hover:border-[#EA580C]
-                      group-hover:bg-[#F59E0B]
-                      group-hover:text-white
-                      sm:px-3.5
-                      sm:py-0.5
-                    "
-                  >
+                  <span>{titleParts.secondLine}</span>
+                  <span className="inline-flex items-center rounded-full border border-[#F59E0B] bg-[#FFF7E6] px-3.5 py-0.5 text-[0.72em] font-black tracking-tight text-[#E87500] shadow-sm transition-colors group-hover:bg-[#F59E0B] group-hover:text-white">
                     {conferenceShortTitle}
                   </span>
                 </span>
               </>
             ) : (
               <>
-                <span>{conferenceTitle}</span>
-                <span
-                  className="
-                    ml-2
-                    inline-flex
-                    translate-y-[-1px]
-                    items-center
-                    rounded-full
-                    border
-                    border-[#F59E0B]
-                    bg-[#FFF7E6]
-                    px-3
-                    py-0.5
-                    align-middle
-                    text-[0.72em]
-                    font-black
-                    tracking-[-0.01em]
-                    text-[#E87500]
-                    shadow-[0_2px_6px_rgba(245,158,11,0.12)]
-                    transition-colors
-                    duration-200
-                    group-hover:border-[#EA580C]
-                    group-hover:bg-[#F59E0B]
-                    group-hover:text-white
-                    sm:px-3.5
-                    sm:py-0.5
-                  "
-                >
+                {conferenceTitle}
+                <span className="ml-2 inline-flex items-center rounded-full border border-[#F59E0B] bg-[#FFF7E6] px-3.5 py-0.5 text-[0.72em] font-black tracking-tight text-[#E87500] shadow-sm transition-colors group-hover:bg-[#F59E0B] group-hover:text-white">
                   {conferenceShortTitle}
                 </span>
               </>
             )}
           </h1>
-          <div className="mt-1 flex items-center justify-center gap-1.5 text-[12px] font-extrabold uppercase tracking-widest text-[#EA580C] sm:text-[13.5px]">
+          <div className="mt-1 flex items-center justify-center gap-2 text-[13.5px] font-extrabold uppercase tracking-[0.14em] text-[#EA580C]">
             <span>April 9-10</span>
-            <span className="text-slate-300 font-normal">|</span>
+            <span className="font-normal text-slate-300">|</span>
             <span>Vijayawada</span>
-            <span className="text-slate-300 font-normal">|</span>
+            <span className="font-normal text-slate-300">|</span>
             <span>India</span>
           </div>
         </Link>
@@ -412,7 +398,6 @@ export const Navbar = () => {
                       xl:tracking-normal
                       2xl:px-2.5
                       2xl:text-[14px]
-
                       ${active
                         ? 'text-[#E87500]'
                         : 'text-[#344054] hover:text-[#E87500]'
@@ -420,21 +405,9 @@ export const Navbar = () => {
                     `}
                   >
                     {item.label}
-
-                    {/* Animated orange underline */}
                     <span
                       className={`
-                        absolute
-                        bottom-0
-                        left-1/2
-                        h-[2px]
-                        -translate-x-1/2
-                        rounded-full
-                        bg-[#F59E0B]
-                        transition-all
-                        duration-300
-                        ease-out
-
+                        absolute bottom-0 left-1/2 h-[2px] -translate-x-1/2 rounded-full bg-[#F59E0B] transition-all duration-300 ease-out
                         ${active
                           ? 'w-full opacity-100'
                           : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
@@ -513,71 +486,35 @@ export const Navbar = () => {
 
 
       {/* =========================================================
-          MOBILE HEADER
-      ========================================================= */}
-      <div
-        className="
-          flex
-          items-center
-          justify-end
-          border-t
-          border-slate-100
-          px-5
-          py-4
-          xl:hidden
-        "
-      >
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen(true)}
-          aria-label="Open navigation menu"
-          className="
-            inline-flex
-            h-11
-            w-11
-            items-center
-            justify-center
-            rounded-xl
-            border
-            border-slate-200
-            bg-white
-            text-[#1D315F]
-            shadow-sm
-            transition-all
-            duration-200
-            hover:border-[#F59E0B]
-            hover:bg-[#FFF7E6]
-            hover:text-[#E87500]
-            hover:shadow-[0_4px_12px_rgba(245,158,11,0.15)]
-            focus:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-[#F59E0B]
-          "
-        >
-          <Menu className="h-5 w-5" />
-        </button>
-      </div>
-
-
-      {/* =========================================================
           MOBILE MENU
       ========================================================= */}
-      {mobileMenuOpen && (
+      {mobileMenuOpen && createPortal((
         <div
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) closeMobileMenu();
+          }}
           className="
             fixed
             inset-0
             z-[100]
+            h-screen
+            h-[100dvh]
             bg-[#07152F]/60
             backdrop-blur-sm
             xl:hidden
           "
         >
           <aside
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
             className="
               ml-auto
               flex
               h-full
+              max-h-screen
+              max-h-[100dvh]
               w-[min(88vw,390px)]
               flex-col
               bg-white
@@ -754,43 +691,9 @@ export const Navbar = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={closeMobileMenu}
-                        className="
-                          group
-                          relative
-                          flex
-                          min-h-12
-                          items-center
-                          overflow-hidden
-                          rounded-xl
-                          px-4
-                          text-sm
-                          font-semibold
-                          text-[#344054]
-                          transition-all
-                          duration-200
-                          hover:bg-[#FFF7E6]
-                          hover:pl-5
-                          hover:text-[#E87500]
-                        "
+                        className="group relative flex min-h-12 items-center overflow-hidden rounded-xl px-4 text-sm font-semibold text-[#344054] transition-all duration-200 hover:bg-[#FFF7E6] hover:pl-5 hover:text-[#E87500]"
                       >
-                        {/* Orange left indicator */}
-                        <span
-                          className="
-                            absolute
-                            left-0
-                            top-1/2
-                            h-6
-                            w-0
-                            -translate-y-1/2
-                            rounded-r-full
-                            bg-[#F59E0B]
-                            opacity-0
-                            transition-all
-                            duration-200
-                            group-hover:w-1
-                            group-hover:opacity-100
-                          "
-                        />
+                        <span className="absolute left-0 top-1/2 h-6 w-0 -translate-y-1/2 rounded-r-full bg-[#F59E0B] opacity-0 transition-all duration-200 group-hover:w-1 group-hover:opacity-100" />
                         {item.label}
                       </a>
                     );
@@ -911,7 +814,7 @@ export const Navbar = () => {
 
           </aside>
         </div>
-      )}
+      ), document.body)}
     </header>
   );
 };

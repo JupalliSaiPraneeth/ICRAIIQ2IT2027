@@ -82,12 +82,12 @@ export const AboutPage = () => {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-0 xl:flex-nowrap">
-              <div className="min-w-0 flex-[2] rounded-xl bg-orange-50/70 px-3 py-2 text-xs leading-snug text-slate-700 sm:text-[13px] xl:w-fit xl:flex-none xl:whitespace-nowrap">
-                <strong>Publication:</strong> Accepted papers will be submitted for inclusion in official proceedings with Scopus indexation.
+            <div className="grid min-w-0 grid-cols-1 gap-2 xl:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+              <div className="min-w-0 rounded-xl bg-orange-50/70 px-3 py-2 text-xs leading-snug text-slate-700 [overflow-wrap:anywhere] sm:text-[13px]">
+                <strong>Publication:</strong> Proceedings are planned for consideration by Springer Nature, AIP Publishing, or Taylor &amp; Francis, subject to publisher selection and acceptance. EasyChair is the conference management platform, not a publisher; publication and indexing are not guaranteed.
               </div>
-              <div className="flex min-w-0 flex-[1] flex-nowrap items-center justify-between gap-2 rounded-xl bg-slate-50 px-3 py-2 text-sm xl:flex-1">
-                <span className="whitespace-nowrap text-slate-600">
+              <div className="flex min-w-0 flex-wrap items-center justify-between gap-2 rounded-xl bg-slate-50 px-3 py-2 text-sm">
+                <span className="min-w-0 text-slate-600">
                   Submissions via <strong>Microsoft CMT</strong> • IEEE format
                 </span>
                 <Link

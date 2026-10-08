@@ -109,3 +109,51 @@
 .animate-pulse-glow {
   animation: pulseGlow 4s ease-in-out infinite;
 }
+
+@media (max-width: 639px) {
+  .committee-table {
+    display: block;
+    width: 100%;
+  }
+
+  .committee-table thead,
+  .committee-table tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .committee-table thead tr:first-child {
+    display: block;
+  }
+
+  .committee-table thead tr:first-child th {
+    display: block;
+  }
+
+  .committee-table thead tr:nth-child(2) {
+    display: none;
+  }
+
+  .committee-table .committee-table-row {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .committee-table .committee-category-cell,
+  .committee-table .committee-members-cell {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    border-right: 0;
+    padding: 0.75rem 1rem;
+  }
+
+  .committee-table .committee-category-cell {
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .committee-table .committee-members-cell {
+    overflow-wrap: anywhere;
+  }
+}

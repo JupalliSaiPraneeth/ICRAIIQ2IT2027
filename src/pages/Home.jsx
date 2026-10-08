@@ -1,17 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
 import {
   ArrowLeft,
   ArrowRight,
-  CalendarDays,
-  MapPin,
 } from 'lucide-react';
 import { conferenceData } from '../data/conferenceData';
-
-const DEFAULT_TITLE =
-  '5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence and Inclusive Technologies';
-
-const DEFAULT_SHORT_TITLE = 'ICRAIQ2IT - 2027';
 
 const DEFAULT_ABOUT = [
   'The 5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence and Inclusive Technologies (ICRAIQ2IT – 2027) is scheduled to be held during 09–10 April 2027 at Dr RVR NRI Institute of Technology (Deemed to be University), Vijayawada, India.',
@@ -19,6 +11,9 @@ const DEFAULT_ABOUT = [
   'ICRAIQ2IT – 2027 seeks to bridge the gap between theoretical research and practical applications by encouraging interdisciplinary collaboration and knowledge sharing among experts from academia, industry, research laboratories, and technological institutions across the globe.',
   'The event will feature keynote addresses, invited talks, technical paper presentations, workshops, and panel discussions delivered by eminent researchers, distinguished academicians, and industry leaders from around the world.'
 ];
+
+const DEFAULT_TITLE =
+  '5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence and Inclusive Technologies';
 
 /* ================================================================
    HERO SLIDES (VIJAYAWADA & CONFERENCE SHOWCASE)
@@ -93,12 +88,6 @@ const FALLBACK_SLIDES = [
   },
 ];
 
-function getDataValue(value, fallback) {
-  return value === undefined || value === null || value === ''
-    ? fallback
-    : value;
-}
-
 function formatDate(value) {
   if (!value) return 'Date to be announced';
   if (typeof value !== 'string') return String(value);
@@ -129,25 +118,7 @@ function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
 
   const data = conferenceData || {};
-
-  const conferenceTitle = getDataValue(
-    data.title,
-    DEFAULT_TITLE
-  );
-
-  const conferenceShortTitle = getDataValue(
-    data.shortTitle || data.acronym,
-    DEFAULT_SHORT_TITLE
-  );
-
-  const organizerName = getDataValue(
-    data.organizer?.name,
-    'Dr RVR NRI Institute of Technology (Deemed to be University)'
-  );
-
-  const conferenceDate = formatDate(
-    data.dates?.conference || data.conferenceDate
-  );
+  const conferenceTitle = data.title || DEFAULT_TITLE;
 
   const slides = useMemo(() => FALLBACK_SLIDES, []);
 
@@ -295,21 +266,15 @@ function Home() {
           HERO — 3D ROLLING STACK PHOTO CAROUSEL
          ========================================================= */}
 
-      <section className="relative overflow-hidden bg-white px-3 pb-2 pt-1.5 sm:px-6 sm:pb-3 lg:px-8">
-
-        {/* Soft Ambient Background Glows */}
-
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-1/2 top-10 h-[450px] w-[750px] -translate-x-1/2 rounded-full bg-orange-100/40 blur-[120px]" />
-
-          <div className="absolute -left-20 top-40 h-[280px] w-[280px] rounded-full bg-blue-100/30 blur-[100px]" />
-        </div>
-
-        <div className="relative mx-auto max-w-[1440px]">
+      <section className="bg-white px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-5">
+        <div className="mx-auto max-w-[1440px]">
+          <h1 className="mx-auto mb-2 max-w-4xl text-center text-2xl font-extrabold leading-tight tracking-tight text-[#1D315F] sm:mb-3 sm:text-3xl md:text-4xl lg:mb-5 xl:hidden">
+            {conferenceTitle}
+          </h1>
 
           {/* Main 3D Card Stack Viewport */}
 
-          <div className="relative mx-auto h-[350px] w-full max-w-[1200px] sm:h-[420px] md:h-[480px] lg:h-[530px] xl:h-[560px]">
+          <div className="relative mx-auto h-[220px] w-full max-w-[1200px] sm:h-[300px] md:h-[380px] lg:h-[530px] xl:h-[560px]">
 
             {slides.map((slide, index) => {
               const position = getRelativePosition(index);
@@ -366,7 +331,7 @@ function Home() {
               return (
                 <div
                   key={`${slide.image}-${index}`}
-                  className="absolute left-1/2 top-1/2 h-[92%] w-[92%] overflow-hidden rounded-[24px] border border-white/80 bg-slate-900 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.22)] transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] sm:w-[84%] sm:rounded-[28px] md:w-[78%] lg:w-[74%] xl:w-[72%]"
+                  className={`${position !== 0 ? 'hidden lg:block' : ''} absolute left-1/2 top-1/2 h-full w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] sm:rounded-3xl lg:h-[92%] lg:w-[74%] lg:rounded-[28px] xl:w-[72%]`}
                   style={{
                     transform,
                     opacity,
@@ -396,7 +361,7 @@ function Home() {
               type="button"
               onClick={goToPrevious}
               aria-label="Previous slide"
-              className="absolute left-1 top-1/2 z-50 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-slate-100 bg-white text-slate-800 shadow-[0_10px_25px_rgba(0,0,0,0.15)] transition-all hover:scale-110 hover:bg-orange-600 hover:text-white sm:left-4 sm:h-13 sm:w-13"
+              className="absolute left-2 top-1/2 z-50 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-100 bg-white text-slate-800 shadow-md transition-all hover:scale-110 hover:bg-orange-600 hover:text-white sm:left-3 sm:h-11 sm:w-11 lg:left-4"
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
@@ -407,7 +372,7 @@ function Home() {
               type="button"
               onClick={goToNext}
               aria-label="Next slide"
-              className="absolute right-1 top-1/2 z-50 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-slate-100 bg-white text-slate-800 shadow-[0_10px_25px_rgba(0,0,0,0.15)] transition-all hover:scale-110 hover:bg-orange-600 hover:text-white sm:right-4 sm:h-13 sm:w-13"
+              className="absolute right-2 top-1/2 z-50 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-100 bg-white text-slate-800 shadow-md transition-all hover:scale-110 hover:bg-orange-600 hover:text-white sm:right-3 sm:h-11 sm:w-11 lg:right-4"
             >
               <ArrowRight className="h-5 w-5" />
             </button>
@@ -415,7 +380,7 @@ function Home() {
 
           {/* Bottom Pagination Dots */}
 
-          <div className="mt-2 flex items-center justify-center gap-1.5">
+          <div className="mt-2 flex items-center justify-center gap-2 sm:mt-3">
             {slides.map((_, idx) => (
               <button
                 key={`dot-${idx}`}
@@ -436,22 +401,22 @@ function Home() {
           ABOUT SECTION
          ========================================================= */}
 
-      <section className="bg-white px-5 py-2.5 sm:px-8 sm:py-3 lg:px-10 lg:py-3.5">
+      <section className="bg-slate-50/60 px-4 py-3 sm:px-6 sm:py-4 lg:px-10 lg:py-6">
         <div className="mx-auto max-w-[1280px]">
 
-          <div className="mb-2 text-center">
+          <div className="mb-2 text-center sm:mb-3">
             <span className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#F97316]">
               About The Conference
             </span>
 
-            <h2 className="mx-auto mt-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[40px]">
+            <h2 className="mx-auto mt-1 max-w-3xl text-2xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-3xl lg:text-[40px]">
               Advancing Research. Connecting Ideas.
             </h2>
 
             <div className="mx-auto mt-1.5 h-1 w-12 rounded-full bg-[#F97316]" />
           </div>
 
-          <div className="space-y-1.5 text-justify text-[15px] leading-[1.65] text-slate-600 sm:text-[15.5px]">
+          <div className="space-y-1.5 text-left text-sm leading-relaxed text-slate-600 sm:text-base md:text-justify">
             {aboutParagraphs.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
@@ -464,46 +429,38 @@ function Home() {
          ========================================================= */}
 
       {tracks.length > 0 && (
-        <section className="bg-white px-5 py-2.5 sm:px-8 sm:py-3 lg:px-10 lg:py-3.5">
+        <section className="bg-white px-4 py-3 sm:px-6 sm:py-4 lg:px-10 lg:py-6">
           <div className="mx-auto max-w-[1280px]">
 
-            <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
+            <div className="flex flex-col justify-between gap-1.5 sm:flex-row sm:items-end">
 
               <div>
                 <span className="text-xs font-extrabold uppercase tracking-[0.14em] text-orange-600">
                   Call for Submissions
                 </span>
 
-                <h2 className="mt-1 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+                <h2 className="mt-1 text-2xl font-black leading-tight tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
                   Conference Research Tracks
                 </h2>
               </div>
 
             </div>
 
-            <div className="mt-2.5 grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-2.5">
+            <div className="mt-2.5 grid grid-cols-1 gap-0 md:grid-cols-2">
               {tracks.map((track, index) => (
                 <article
                   key={track.id || track.number || index}
-                  className="group relative flex items-start gap-2.5 rounded-xl border border-slate-200/90 bg-white p-3 sm:p-3.5"
+                  className="group relative flex min-w-0 items-center gap-2 border border-slate-200/90 bg-white p-2.5 shadow-sm transition-shadow hover:shadow-md sm:gap-2.5 sm:p-3"
                 >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange-100/70 font-mono text-xs font-black text-orange-700 transition-colors group-hover:bg-orange-600 group-hover:text-white sm:text-sm">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-100/70 font-mono text-xs font-black text-orange-700 transition-colors group-hover:bg-orange-600 group-hover:text-white sm:h-9 sm:w-9 sm:text-sm">
                     {track.number ||
                       String(index + 1).padStart(2, '0')}
                   </span>
 
                   <div className="min-w-0 flex-1">
-                    <div className="flex items-center justify-between gap-2">
-                      <h3 className="text-sm font-bold text-slate-900 sm:text-[15px]">
-                        {track.title}
-                      </h3>
-                    </div>
-
-                    {track.description && (
-                      <p className="mt-1 line-clamp-1 text-xs text-slate-500 sm:text-[13px]">
-                        {track.description}
-                      </p>
-                    )}
+                    <h3 className="break-words text-sm font-bold leading-snug text-slate-900 sm:text-[15px]">
+                      {track.title}
+                    </h3>
                   </div>
                 </article>
               ))}
@@ -517,41 +474,38 @@ function Home() {
          ========================================================= */}
 
       {importantDates.length > 0 && (
-        <section className="bg-white px-5 py-2.5 sm:px-8 sm:py-3 lg:px-10 lg:py-3.5">
+        <section className="bg-slate-50/60 px-4 py-3 sm:px-6 sm:py-4 lg:px-10 lg:py-6">
           <div className="mx-auto max-w-[1180px]">
 
-            <div className="mb-2 text-center">
+            <div className="mb-2 text-center sm:mb-3">
               <span className="text-xs font-extrabold uppercase tracking-[0.14em] text-orange-600">
                 Timelines & Milestones
               </span>
 
-              <h2 className="mt-1 text-2xl font-black text-slate-900 sm:text-3xl lg:text-4xl">
+              <h2 className="mt-1 text-2xl font-black leading-tight text-slate-900 sm:text-3xl lg:text-4xl">
                 Important Conference Dates
               </h2>
             </div>
 
-            <div className="mt-2.5 grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-2.5">
+            <div className="grid grid-cols-1 gap-0 md:grid-cols-2">
               {importantDates.map((item, index) => (
                 <div
                   key={`${item.title}-${index}`}
-                  className="group relative flex items-center justify-between gap-2.5 rounded-xl border border-slate-200/90 bg-white p-3 shadow-xs sm:p-3.5"
+                  className="group relative flex min-w-0 flex-col items-stretch gap-1.5 border border-slate-200/90 bg-white p-2.5 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:gap-2 sm:p-3"
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-orange-100/70 text-orange-700">
-                      <CalendarDays className="h-4 w-4" />
-                    </span>
-                    <div className="min-w-0">
+                  <div className="flex min-w-0 items-start">
+                    <div className="min-w-0 flex-1">
                       <div className="text-[10px] font-extrabold uppercase tracking-wider text-orange-600">
                         {item.status || 'Milestone'}
                       </div>
-                      <h3 className="truncate text-sm font-bold text-slate-900 sm:text-[15px]">
+                      <h3 className="break-words text-sm font-bold leading-snug text-slate-900 sm:text-[15px]">
                         {item.title}
                       </h3>
                     </div>
                   </div>
 
-                  <div className="shrink-0 text-right">
-                    <span className="inline-block rounded-md border border-orange-200/80 bg-orange-50/80 px-2 py-1 text-xs font-black text-orange-700 sm:text-[13px]">
+                  <div className="shrink-0 text-left sm:text-right">
+                    <span className="inline-block whitespace-nowrap rounded-md border border-orange-200/80 bg-orange-50/80 px-2.5 py-1.5 text-xs font-black text-orange-700 sm:text-[13px]">
                       {item.date}
                     </span>
                   </div>
@@ -566,10 +520,10 @@ function Home() {
           CMT ACKNOWLEDGMENT
          ========================================================= */}
 
-      <section className="bg-white px-5 py-2.5 sm:px-8 sm:py-3 lg:px-10 lg:py-3.5">
+      <section className="bg-white px-4 py-3 sm:px-6 sm:py-4 lg:px-10 lg:py-6">
         <div className="mx-auto max-w-[1050px]">
 
-          <div className="relative overflow-hidden rounded-2xl border border-orange-100 bg-gradient-to-br from-slate-50 via-white to-orange-50/40 p-3.5 shadow-sm sm:p-4">
+          <div className="relative overflow-hidden rounded-xl border border-orange-100 bg-gradient-to-br from-slate-50 via-white to-orange-50/40 p-3 shadow-sm sm:rounded-2xl sm:p-4">
 
             {/* Decorative Elements */}
 
@@ -581,7 +535,7 @@ function Home() {
 
               {/* Section Label */}
 
-              <div className="mb-2 flex items-center gap-2">
+              <div className="mb-1.5 flex items-center gap-2">
                 <span className="h-[2px] w-6 bg-orange-600" />
 
                 <span className="text-xs font-extrabold uppercase tracking-[0.16em] text-orange-600">
@@ -597,7 +551,7 @@ function Home() {
 
               {/* Acknowledgment Text */}
 
-              <p className="mt-2 max-w-4xl text-sm leading-relaxed text-slate-600 sm:text-[14.5px]">
+              <p className="mt-1.5 max-w-4xl text-sm leading-relaxed text-slate-600 sm:text-[14.5px]">
                 The Microsoft CMT service was used for managing the
                 peer-reviewing process for this conference. This service
                 was provided for free by Microsoft and they bore all

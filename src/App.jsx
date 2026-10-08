@@ -11,7 +11,6 @@ import CallForPapersPage from './pages/CallForPapersPage';
 import SpeakersPage from './pages/SpeakersPage';
 import CommitteePage from './pages/CommitteePage';
 import RegistrationPage from './pages/RegistrationPage';
-import PublicationPage from './pages/PublicationPage';
 import VenuePage from './pages/VenuePage';
 import ContactPage from './pages/ContactPage';
 import AwardsPage from './pages/AwardsPage';
@@ -43,7 +42,6 @@ export function App() {
             <Route path="/speakers" element={<SpeakersPage />} />
             <Route path="/committee" element={<CommitteePage />} />
             <Route path="/registration" element={<RegistrationPage />} />
-            <Route path="/publication" element={<PublicationPage />} />
             <Route path="/venue" element={<VenuePage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/awards" element={<AwardsPage />} />

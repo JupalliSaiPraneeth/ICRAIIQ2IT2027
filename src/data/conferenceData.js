@@ -187,13 +187,12 @@ export const conferenceData = {
 
   publicationDetails: {
     title: "Publication of Proceedings",
-    description: "The conference proceedings shall be published in Taylor & Francis / American Institute of Physics (AIP) / Springer group / Elsevier / EasyChair subject to approval and confirmation. All accepted papers will be compiled into the official conference proceedings and will be Scopus indexation.",
+    description: "Potential proceedings publisher options include Springer Nature, AIP Publishing, and Taylor & Francis; the final publisher and publication are subject to selection and approval. EasyChair is a conference-management platform, not a publisher. Any indexing is subject to the relevant publisher's acceptance and confirmation.",
     partners: [
-      { name: "Scopus", type: "Indexation Partner", note: "All accepted papers compiled into official proceedings with Scopus indexation" },
-      { name: "Taylor & Francis", type: "Publishing Partner", note: "Proceedings publication subject to approval and confirmation" },
-      { name: "AIP (American Institute of Physics)", type: "Publishing Partner", note: "Proceedings publication subject to approval and confirmation" },
-      { name: "Springer Group", type: "Publishing Partner", note: "Proceedings publication subject to approval and confirmation" },
-      { name: "Elsevier / EasyChair", type: "Publishing Partner", note: "Proceedings publication subject to approval and confirmation" }
+      { name: "Springer Nature", type: "Potential Publishing Route", note: "Publisher selection and proceedings acceptance are subject to confirmation." },
+      { name: "AIP Publishing", type: "Potential Publishing Route", note: "Publisher selection and proceedings acceptance are subject to confirmation." },
+      { name: "Taylor & Francis", type: "Potential Publishing Route", note: "Publisher selection and proceedings acceptance are subject to confirmation." },
+      { name: "EasyChair", type: "Conference Management Platform", note: "A conference-management platform, not a publisher." }
     ],
     guidelines: [
       "Maximum number of pages is 6 in 8.25 × 11 inch paper single-column template.",
@@ -498,7 +497,7 @@ export const conferenceData = {
     { label: "Conference Topics", value: "21", subtext: "Frontier Emerging Disciplines" },
     { label: "Conference Dates", value: "09–10", subtext: "April 2027 | Blended Mode" },
     { label: "Global Committee", value: "70+", subtext: "Distinguished Academicians & Leaders" },
-    { label: "Proceedings Indexation", value: "Scopus", subtext: "Taylor & Francis / AIP / Springer / Elsevier / EasyChair" }
+    { label: "Proceedings", value: "To Be Confirmed", subtext: "Potential publishers: Springer Nature / AIP Publishing / Taylor & Francis; EasyChair is a platform" }
   ]
 };
 
