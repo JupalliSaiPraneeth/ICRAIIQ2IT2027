@@ -416,7 +416,7 @@ function Home() {
             <div className="mx-auto mt-1.5 h-1 w-12 rounded-full bg-[#F97316]" />
           </div>
 
-          <div className="space-y-1.5 text-left text-sm leading-relaxed text-slate-600 sm:text-base md:text-justify">
+          <div className="space-y-1.5 text-justify text-sm leading-relaxed text-slate-600 sm:text-base md:text-justify">
             {aboutParagraphs.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
@@ -458,7 +458,7 @@ function Home() {
                   </span>
 
                   <div className="min-w-0 flex-1">
-                    <h3 className="break-words text-sm font-bold leading-snug text-slate-900 sm:text-[15px]">
+                    <h3 className="break-words text-justify text-sm font-bold leading-snug text-slate-900 sm:text-[15px] lg:text-left">
                       {track.title}
                     </h3>
                   </div>
@@ -498,7 +498,7 @@ function Home() {
                       <div className="text-[10px] font-extrabold uppercase tracking-wider text-orange-600">
                         {item.status || 'Milestone'}
                       </div>
-                      <h3 className="break-words text-sm font-bold leading-snug text-slate-900 sm:text-[15px]">
+                      <h3 className="break-words text-justify text-sm font-bold leading-snug text-slate-900 sm:text-[15px] lg:text-left">
                         {item.title}
                       </h3>
                     </div>
