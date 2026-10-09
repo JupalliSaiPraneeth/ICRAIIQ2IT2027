@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import { X, CalendarDays, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { QUADNEXT_IMAGES } from '../data/quadnextImages';
+import { FOURTH_CONFERENCE_IMAGES } from '../data/fourthConferenceImages';
 
 const FIRST_CONFERENCE_IMAGES = ['https://nriit.edu.in/icraiq2it-2026/icraic2it-2-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-3-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-4-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-6-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-7-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-8-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-9-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-10-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-11-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-12-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-13-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-17-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-18-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-19.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-20-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-21-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-22-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-23-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-24-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-26-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-27-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-28-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-29-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-30-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-31-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-32-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-33-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-34-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-36-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-37-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-38-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-39-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-40-scaled.jpg', 'https://nriit.edu.in/icraiq2it-2026/icraic2it-41-scaled.jpg'];
 
@@ -7,31 +9,47 @@ const SECOND_CONFERENCE_IMAGES = ['https://nriit.edu.in/icraiq2it-2026/2.jpg', '
 
 const THIRD_CONFERENCE_URL = 'https://nriit.edu.in/quadnext-2026/';
 
-const firstConference = {
-  id: 'conference-1',
-  label: '1st International Conference',
-  title:
-    '1st International Conference on Recent Advancements and Innovations in Computing Communications and Information Technology',
-  date: '22–24 April 2022',
-  images: FIRST_CONFERENCE_IMAGES,
-};
-
-const secondConference = {
-  id: 'conference-2',
-  label: '2nd International Conference',
-  // Only the image collection was supplied, so no unsupported title/date
-  // has been added here.
-  title: '2nd International Conference',
-  date: '',
-  images: SECOND_CONFERENCE_IMAGES,
+const CONFERENCES_DATA = {
+  'conference-1': {
+    id: 'conference-1',
+    label: '1st International Conference',
+    title:
+      '1st International Conference on Recent Advancements and Innovations in Computing Communications and Information Technology',
+    date: '22–24 April 2022',
+    url: 'https://nriit.edu.in/icraic2it-event/',
+    images: FIRST_CONFERENCE_IMAGES,
+  },
+  'conference-2': {
+    id: 'conference-2',
+    label: '2nd International Conference',
+    title: '2nd International Conference on Recent Advancements in Artificial Intelligence, Computational Intelligence, and Inclusive Technologies',
+    date: '',
+    url: 'https://nriit.edu.in/icraic2it/',
+    images: SECOND_CONFERENCE_IMAGES,
+  },
+  'conference-3': {
+    id: 'conference-3',
+    label: '3rd International Conference (QUADNEXT 2026)',
+    title: 'QUADNEXT 2026 – National & International Summit on Quantum Advancements, Next-Generation Computing, and Emerging Intelligence',
+    date: '2026',
+    url: THIRD_CONFERENCE_URL,
+    images: QUADNEXT_IMAGES,
+  },
+  'conference-4': {
+    id: 'conference-4',
+    label: '4th International Conference',
+    title: '4th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence, and Inclusive Technologies',
+    date: '2026',
+    url: 'https://www.nriit.edu.in/icraiq2it-2026/',
+    images: FOURTH_CONFERENCE_IMAGES,
+  },
 };
 
 export const GalleryPage = () => {
   const [activeConference, setActiveConference] = useState('conference-1');
   const [activeImg, setActiveImg] = useState(null);
 
-  const selectedConference =
-    activeConference === 'conference-2' ? secondConference : firstConference;
+  const selectedConference = CONFERENCES_DATA[activeConference] || CONFERENCES_DATA['conference-1'];
 
   const openImage = (image, index) => {
     setActiveImg({
@@ -43,6 +61,37 @@ export const GalleryPage = () => {
 
   const closeImage = () => setActiveImg(null);
 
+  const nextImage = () => {
+    if (!activeImg) return;
+    const nextIdx = (activeImg.index + 1) % selectedConference.images.length;
+    setActiveImg({
+      image: selectedConference.images[nextIdx],
+      title: `${selectedConference.label} - Image ${nextIdx + 1}`,
+      index: nextIdx,
+    });
+  };
+
+  const prevImage = () => {
+    if (!activeImg) return;
+    const prevIdx = (activeImg.index - 1 + selectedConference.images.length) % selectedConference.images.length;
+    setActiveImg({
+      image: selectedConference.images[prevIdx],
+      title: `${selectedConference.label} - Image ${prevIdx + 1}`,
+      index: prevIdx,
+    });
+  };
+
+  useEffect(() => {
+    if (!activeImg) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') closeImage();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeImg, selectedConference]);
+
   return (
     <div className="min-h-screen bg-white px-4 py-5 text-slate-900 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-[1700px]">
@@ -50,14 +99,14 @@ export const GalleryPage = () => {
         {/* =====================================================
             CONFERENCE SELECTOR
            ===================================================== */}
-        <div className="mb-6 flex flex-wrap items-center justify-center gap-3">
+        <div className="mb-6 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
           <button
             type="button"
             onClick={() => {
               setActiveConference('conference-1');
               closeImage();
             }}
-            className={`min-w-[240px] sm:min-w-[260px] rounded-lg border px-4 py-2.5 text-sm sm:text-base transition-all duration-200 ${activeConference === 'conference-1'
+            className={`min-w-[190px] sm:min-w-[220px] rounded-lg border px-3.5 py-2 text-xs sm:text-sm font-semibold transition-all duration-200 ${activeConference === 'conference-1'
               ? 'border-[#F97316] bg-[#F97316] font-bold text-white shadow-md'
               : 'border-orange-200 bg-[#FFFBF8] text-slate-900 hover:border-[#F97316] hover:bg-orange-50'
               }`}
@@ -71,7 +120,7 @@ export const GalleryPage = () => {
               setActiveConference('conference-2');
               closeImage();
             }}
-            className={`min-w-[240px] sm:min-w-[260px] rounded-lg border px-4 py-2.5 text-sm sm:text-base transition-all duration-200 ${activeConference === 'conference-2'
+            className={`min-w-[190px] sm:min-w-[220px] rounded-lg border px-3.5 py-2 text-xs sm:text-sm font-semibold transition-all duration-200 ${activeConference === 'conference-2'
               ? 'border-[#F97316] bg-[#F97316] font-bold text-white shadow-md'
               : 'border-orange-200 bg-[#FFFBF8] text-slate-900 hover:border-[#F97316] hover:bg-orange-50'
               }`}
@@ -79,32 +128,35 @@ export const GalleryPage = () => {
             2nd International Conference
           </button>
 
-          <a
-            href={THIRD_CONFERENCE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-w-[240px] sm:min-w-[260px] items-center justify-center gap-2 rounded-lg border border-orange-200 bg-[#FFFBF8] px-4 py-2.5 text-sm sm:text-base text-slate-900 transition-all duration-200 hover:border-[#F97316] hover:bg-orange-50"
+          <button
+            type="button"
+            onClick={() => {
+              setActiveConference('conference-3');
+              closeImage();
+            }}
+            className={`min-w-[190px] sm:min-w-[220px] rounded-lg border px-3.5 py-2 text-xs sm:text-sm font-semibold transition-all duration-200 ${activeConference === 'conference-3'
+              ? 'border-[#F97316] bg-[#F97316] font-bold text-white shadow-md'
+              : 'border-orange-200 bg-[#FFFBF8] text-slate-900 hover:border-[#F97316] hover:bg-orange-50'
+              }`}
           >
             3rd International Conference
-            <ExternalLink className="h-4 w-4" />
-          </a>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              setActiveConference('conference-4');
+              closeImage();
+            }}
+            className={`min-w-[190px] sm:min-w-[220px] rounded-lg border px-3.5 py-2 text-xs sm:text-sm font-semibold transition-all duration-200 ${activeConference === 'conference-4'
+              ? 'border-[#F97316] bg-[#F97316] font-bold text-white shadow-md'
+              : 'border-orange-200 bg-[#FFFBF8] text-slate-900 hover:border-[#F97316] hover:bg-orange-50'
+              }`}
+          >
+            4th International Conference
+          </button>
         </div>
 
-        {/* =====================================================
-            CONFERENCE INFORMATION
-           ===================================================== */}
-        <div className="mb-5 text-center">
-          <h1 className="mx-auto max-w-[1500px] text-lg font-medium leading-7 text-slate-950 sm:text-xl">
-            {selectedConference.title}
-          </h1>
-
-          {selectedConference.date && (
-            <div className="mt-2 inline-flex items-center gap-2 text-xl font-medium text-[#EA580C] sm:text-2xl">
-              <CalendarDays className="h-6 w-6 text-[#FB923C]" />
-              <span>{selectedConference.date}</span>
-            </div>
-          )}
-        </div>
 
         {/* =====================================================
             PHOTO GRID
@@ -121,7 +173,7 @@ export const GalleryPage = () => {
               <img
                 src={image}
                 alt={`${selectedConference.label} - Image ${index + 1}`}
-                loading={index < 4 ? 'eager' : 'lazy'}
+                loading={index < 8 ? 'eager' : 'lazy'}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 onError={(e) => {
                   e.currentTarget.style.opacity = '0.25';
@@ -138,19 +190,21 @@ export const GalleryPage = () => {
         </div>
 
         {/* =====================================================
-            THIRD CONFERENCE NOTICE
+            EXTERNAL WEBSITE LINK NOTICE
            ===================================================== */}
-        <div className="mt-6 text-center">
-          <a
-            href={THIRD_CONFERENCE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-[#F97316] px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-md transition-all hover:bg-[#EA580C]"
-          >
-            Visit 3rd International Conference Website
-            <ExternalLink className="h-4 w-4" />
-          </a>
-        </div>
+        {selectedConference.url && (
+          <div className="mt-6 text-center">
+            <a
+              href={selectedConference.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-[#F97316] px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-md transition-all hover:bg-[#EA580C]"
+            >
+              Visit {selectedConference.label} Website
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          </div>
+        )}
       </div>
 
       {/* =====================================================
@@ -177,12 +231,30 @@ export const GalleryPage = () => {
               <X className="h-5 w-5" />
             </button>
 
-            <div className="flex min-h-0 flex-1 items-center justify-center bg-[#FFFBF8]">
+            <div className="relative flex min-h-0 flex-1 items-center justify-center bg-[#FFFBF8]">
+              <button
+                type="button"
+                onClick={prevImage}
+                className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-slate-950/75 p-2 text-white shadow-lg transition-colors hover:bg-[#F97316]"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </button>
+
               <img
                 src={activeImg.image}
                 alt={activeImg.title}
                 className="max-h-[82vh] w-full object-contain"
               />
+
+              <button
+                type="button"
+                onClick={nextImage}
+                className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-slate-950/75 p-2 text-white shadow-lg transition-colors hover:bg-[#F97316]"
+                aria-label="Next image"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
             </div>
 
             <div className="flex items-center justify-between bg-white px-5 py-3">

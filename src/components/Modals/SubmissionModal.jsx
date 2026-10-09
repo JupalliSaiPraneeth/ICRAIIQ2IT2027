@@ -62,7 +62,7 @@ export const SubmissionModal = ({ isOpen, onClose }) => {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="p-3 rounded-xl bg-brand-500/10 border border-brand-500/30 text-xs text-brand-300 flex items-center gap-3">
                 <Lock className="w-4 h-4 shrink-0 text-brand-400" />
-                <span>Double-blind review. Personal metadata is hidden during peer evaluation.</span>
+                <span>Peer review process. Submissions are evaluated by expert reviewers.</span>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -148,7 +148,7 @@ export const SubmissionModal = ({ isOpen, onClose }) => {
               <div className="p-4 rounded-xl bg-navy-850 border-2 border-dashed border-brand-500/40 text-center hover:border-brand-500 transition-colors cursor-pointer">
                 <UploadCloud className="w-8 h-8 text-brand-400 mx-auto mb-2" />
                 <div className="text-xs font-bold text-white">Upload PDF Manuscript (Max 15MB)</div>
-                <div className="text-[11px] text-slate-400">Strictly double-blind template format</div>
+                <div className="text-[11px] text-slate-400">Strictly IEEE standard template format</div>
               </div>
 
               <div className="pt-2 flex items-center justify-end gap-3">

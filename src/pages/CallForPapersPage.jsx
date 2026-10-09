@@ -47,16 +47,12 @@ const GUIDELINES = [
     desc: 'Unpublished, original research only. Similarity must be strictly below 10% excluding references.',
   },
   {
-    title: 'Double-Blind Review',
-    desc: 'Omit author names, affiliations, emails, funding notes, and self-identifying citations.',
+    title: 'Peer Review Process',
+    desc: "All submitted manuscripts are evaluated by two subject experts. If both reviewers recommend acceptance, the manuscript may be accepted, subject to the final decision of the conference's editorial committee. If the reviewers' recommendations differ, the manuscript will be referred to a third reviewer for further evaluation. Acceptance requires at least two positive recommendations out of the three reviews, along with the final approval of the conference's editorial committee.",
   },
   {
     title: 'Registration & Presentation',
     desc: 'At least one author must register by 10th Mar 2027 and present the paper during the conference.',
-  },
-  {
-    title: 'Proceedings Publication & Indexing',
-    desc: 'Accepted and presented papers may be submitted for proceedings consideration. Potential publishing routes are Springer Nature, AIP Publishing, or Taylor & Francis; publisher selection, publication, and indexing are subject to confirmation and acceptance. EasyChair is a conference management platform, not a publisher.',
   },
 ];
 
@@ -144,7 +140,7 @@ export const CallForPapersPage = () => {
               <div className="flex items-center justify-between gap-3 mb-1.5">
                 <h2 className="text-base font-bold text-[#17213a] sm:text-lg">Call for Papers Scope</h2>
                 <span className="border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs font-bold text-[#F97316] rounded">
-                  5th Edition
+                  5<sup>th</sup> Edition
                 </span>
               </div>
               <p className="text-sm text-slate-600 leading-relaxed sm:text-[15px]">
@@ -154,19 +150,17 @@ export const CallForPapersPage = () => {
 
               {/* 3 Spec Tiles */}
               <div className="mt-2.5 grid grid-cols-1 gap-2 border-t border-slate-100 pt-2.5 sm:grid-cols-3">
-                <div className="bg-slate-50 border border-slate-200/70 rounded-lg p-2 text-center">
-                  <span className="text-[11px] font-bold uppercase text-slate-400 block">Dates &amp; Mode</span>
+                <div className="bg-slate-50 border border-slate-200/70 rounded-lg p-2 text-center flex flex-col justify-center">
+                  <span className="text-[11px] font-bold uppercase text-slate-400 block">Dates</span>
                   <strong className="text-sm text-slate-900 block mt-1">09–10 Apr 2027</strong>
-                  <span className="text-xs text-slate-500 block mt-0.5">Blended</span>
                 </div>
-                <div className="bg-orange-50/60 border border-orange-200/60 rounded-lg p-2 text-center">
+                <div className="bg-orange-50/60 border border-orange-200/60 rounded-lg p-2 text-center flex flex-col justify-center">
                   <span className="text-[11px] font-bold uppercase text-orange-600 block">Proceedings</span>
-                  <strong className="text-sm text-slate-900 block mt-1">Publisher To Be Confirmed</strong>
-                  <span className="text-xs text-[#F97316] font-semibold block mt-0.5">Indexing subject to acceptance</span>
+                  <strong className="text-sm text-slate-900 block mt-1">Scopus Indexed</strong>
                 </div>
                 <div className="bg-slate-50 border border-slate-200/70 rounded-lg p-2 text-center">
                   <span className="text-[11px] font-bold uppercase text-slate-400 block">Paper Format</span>
-                  <strong className="text-sm text-slate-900 block mt-1">IEEE A4</strong>
+                  <strong className="text-sm text-slate-900 block mt-1">IEEE A4 USA</strong>
                   <span className="text-xs text-slate-500 block mt-0.5">Max 6 Pages</span>
                 </div>
               </div>
@@ -215,11 +209,8 @@ export const CallForPapersPage = () => {
 
           {/* RIGHT COLUMN: SUBMISSION GUIDELINES */}
           <div className="bg-white border border-slate-200 rounded-xl p-3.5 sm:p-4 shadow-sm flex flex-col">
-            <div className="flex items-center justify-between gap-3 mb-2">
+            <div className="mb-2">
               <h2 className="text-base font-bold text-[#17213a] sm:text-lg">Submission Guidelines</h2>
-              <span className="border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs font-bold text-[#F97316] rounded">
-                Double-Blind Review
-              </span>
             </div>
 
             <div className="border border-slate-200 rounded divide-y divide-slate-100">
@@ -281,8 +272,8 @@ export const CallForPapersPage = () => {
                   type="button"
                   onClick={() => setSelectedCat(cat.id)}
                   className={`px-2.5 py-1 text-xs font-semibold rounded border transition-colors sm:text-sm ${selectedCat === cat.id
-                      ? 'bg-[#F97316] text-white border-[#F97316]'
-                      : 'bg-white text-slate-600 border-slate-200 hover:border-[#F97316] hover:text-[#F97316]'
+                    ? 'bg-[#F97316] text-white border-[#F97316]'
+                    : 'bg-white text-slate-600 border-slate-200 hover:border-[#F97316] hover:text-[#F97316]'
                     }`}
                 >
                   {cat.label}

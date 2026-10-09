@@ -53,7 +53,7 @@ export const BrochurePage = () => {
                 </h2>
                 <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-[#F97316]" />
                 <p className="mt-4 text-xs leading-5 text-slate-500">
-                  5th International Conference on Recent Advancements in AI, Quantum Intelligence & Inclusive Technologies
+                  5<sup>th</sup> International Conference on Recent Advancements in AI, Quantum Intelligence &amp; Inclusive Technologies
                 </p>
                 <div className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-orange-50 px-3 py-1 text-[11px] font-bold text-orange-700">
                   <span>PDF Document • 830 KB</span>

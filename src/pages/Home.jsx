@@ -15,6 +15,21 @@ const DEFAULT_ABOUT = [
 const DEFAULT_TITLE =
   '5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence and Inclusive Technologies';
 
+const formatWithSuperscript = (text) => {
+  if (typeof text !== 'string') return text;
+  const parts = text.split(/(5th)/gi);
+  if (parts.length === 1) return text;
+  return parts.map((part, index) =>
+    part.toLowerCase() === '5th' ? (
+      <span key={index}>
+        5<sup>th</sup>
+      </span>
+    ) : (
+      part
+    )
+  );
+};
+
 /* ================================================================
    HERO SLIDES (VIJAYAWADA & CONFERENCE SHOWCASE)
    ================================================================ */
@@ -131,7 +146,11 @@ function Home() {
 
   const stats = [
     {
-      value: '5th',
+      value: (
+        <>
+          5<sup>th</sup>
+        </>
+      ),
       label: 'EDITION',
       subtext: 'International Landmark Gathering',
     },
@@ -266,15 +285,15 @@ function Home() {
           HERO — 3D ROLLING STACK PHOTO CAROUSEL
          ========================================================= */}
 
-      <section className="bg-white px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-5">
-        <div className="mx-auto max-w-[1440px]">
-          <h1 className="mx-auto mb-2 max-w-4xl text-center text-2xl font-extrabold leading-tight tracking-tight text-[#1D315F] sm:mb-3 sm:text-3xl md:text-4xl lg:mb-5 xl:hidden">
-            {conferenceTitle}
+      <section className="bg-white px-4 py-2 sm:px-6 sm:py-2.5 lg:px-8 lg:py-3.5">
+        <div className="mx-auto max-w-[1320px]">
+          <h1 className="mx-auto mb-2 max-w-4xl text-center text-2xl font-extrabold leading-tight tracking-tight text-[#1D315F] sm:mb-3 sm:text-3xl md:text-4xl lg:mb-4 xl:hidden">
+            {formatWithSuperscript(conferenceTitle)}
           </h1>
 
           {/* Main 3D Card Stack Viewport */}
 
-          <div className="relative mx-auto h-[220px] w-full max-w-[1200px] sm:h-[300px] md:h-[380px] lg:h-[530px] xl:h-[560px]">
+          <div className="relative mx-auto h-[200px] w-full max-w-[1050px] sm:h-[270px] md:h-[345px] lg:h-[460px] xl:h-[490px]">
 
             {slides.map((slide, index) => {
               const position = getRelativePosition(index);
@@ -331,7 +350,7 @@ function Home() {
               return (
                 <div
                   key={`${slide.image}-${index}`}
-                  className={`${position !== 0 ? 'hidden lg:block' : ''} absolute left-1/2 top-1/2 h-full w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] sm:rounded-3xl lg:h-[92%] lg:w-[74%] lg:rounded-[28px] xl:w-[72%]`}
+                  className={`${position !== 0 ? 'hidden lg:block' : ''} absolute left-1/2 top-1/2 h-full w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] sm:rounded-3xl lg:h-[92%] lg:w-[71%] lg:rounded-[24px] xl:w-[69%]`}
                   style={{
                     transform,
                     opacity,
@@ -418,7 +437,7 @@ function Home() {
 
           <div className="space-y-1.5 text-justify text-sm leading-relaxed text-slate-600 sm:text-base md:text-justify">
             {aboutParagraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
+              <p key={index}>{formatWithSuperscript(paragraph)}</p>
             ))}
           </div>
         </div>

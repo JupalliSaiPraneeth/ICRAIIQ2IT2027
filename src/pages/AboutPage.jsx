@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-  Globe,
-  MapPin,
   ArrowRight,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -49,7 +47,7 @@ export const AboutPage = () => {
             <div className="px-1.5 sm:px-2">
               <div className="space-y-2 text-justify text-sm leading-relaxed text-slate-700 sm:text-[15px]">
                 <p>
-                  The <strong>5th International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence and Inclusive Technologies (ICRAIQ2IT – 2027)</strong> is scheduled to be held during <strong>09–10 April 2027</strong> in Blended mode.
+                  The <strong>5<sup>th</sup> International Conference on Recent Advancements in Artificial Intelligence, Quantum Intelligence and Inclusive Technologies (ICRAIQ2IT – 2027)</strong> is scheduled to be held during <strong>09–10 April 2027</strong> in Blended mode.
                 </p>
                 <p>
                   The conference provides a premier international platform for academicians, scientists, researchers, industry professionals, innovators, and students to exchange ideas, present groundbreaking research outcomes, and debate emerging theoretical models across computational sciences.
@@ -65,16 +63,16 @@ export const AboutPage = () => {
                 Conference Objectives
               </h2>
 
-              <div className="mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-2.5 flex flex-col gap-2">
                 {objectives.slice(0, 5).map((objective, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-1.5 rounded-xl bg-slate-50/70 px-2.5 py-1.5"
+                    className="flex items-start sm:items-center gap-2.5 rounded-xl bg-slate-50/80 px-3 py-2 transition-colors hover:bg-orange-50/50"
                   >
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-white">
+                    <span className="mt-0.5 sm:mt-0 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-white">
                       {index + 1}
                     </span>
-                    <p className="text-[13px] leading-snug text-slate-700 sm:text-[13.5px]">
+                    <p className="flex-1 text-[13.5px] leading-relaxed text-slate-700 sm:text-[14px]">
                       {objective}
                     </p>
                   </div>
@@ -82,17 +80,17 @@ export const AboutPage = () => {
               </div>
             </div>
 
-            <div className="grid min-w-0 grid-cols-1 gap-2 xl:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
-              <div className="min-w-0 rounded-xl bg-orange-50/70 px-3 py-2 text-xs leading-snug text-slate-700 [overflow-wrap:anywhere] sm:text-[13px]">
-                <strong>Publication:</strong> Proceedings are planned for consideration by Springer Nature, AIP Publishing, or Taylor &amp; Francis, subject to publisher selection and acceptance. EasyChair is the conference management platform, not a publisher; publication and indexing are not guaranteed.
-              </div>
-              <div className="min-w-0 rounded-xl bg-slate-50 px-3 py-2 text-sm xl:flex xl:items-center xl:justify-between xl:gap-2">
-                <span className="text-slate-600 xl:min-w-0">
+            <div className="min-w-0 rounded-xl bg-orange-50/70 px-3.5 py-3 text-xs leading-relaxed text-slate-700 [overflow-wrap:anywhere] sm:text-[13px]">
+              <p>
+                <strong>Publication:</strong> The conference proceedings are proposed for publication in Scopus-indexed proceedings, subject to approval and acceptance by <strong>Springer Nature, AIP Publishing, or Taylor &amp; Francis</strong>. Microsoft CMT is used as the conference management platform for handling paper submissions and the peer-review process. Proceedings of previous editions of the conference were indexed in Scopus, as detailed in the publication history below. However, publication and Scopus indexing of the current edition are subject to the respective publisher’s approval and Scopus’s indexing policies.
+              </p>
+              <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2 border-t border-orange-200/60 pt-2 text-xs sm:text-[13px]">
+                <span className="text-slate-700">
                   Submissions via <strong>Microsoft CMT</strong> • IEEE format
                 </span>
                 <Link
                   to="/call-for-papers"
-                  className="ml-1 inline-flex align-middle items-center gap-1 whitespace-nowrap font-bold text-[#F97316] hover:underline sm:ml-1.5 xl:ml-0 xl:shrink-0"
+                  className="inline-flex items-center gap-1 font-bold text-[#F97316] hover:underline shrink-0"
                 >
                   <span>Guidelines</span>
                   <ArrowRight className="h-4 w-4" />
@@ -127,31 +125,11 @@ export const AboutPage = () => {
       <section className="px-5 pt-1.5 pb-4 sm:px-8 sm:pt-2 sm:pb-5 lg:px-10">
         <div className="mx-auto max-w-[1240px]">
           <div className="rounded-2xl bg-orange-50/40 p-3 sm:p-4">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-sm leading-relaxed text-slate-600">
-                  Pothavarappadu, Agiripalli Mandalam, Vijayawada Rural, Andhra Pradesh, India — 521212.
-                  Conveniently accessible from Vijayawada International Airport (~22 km) and Railway Junction (~23 km).
-                </p>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-2 shrink-0">
-                <Link
-                  to="/venue"
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#F97316] px-4 py-2 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#ea580c]"
-                >
-                  <MapPin className="h-4 w-4" />
-                  <span>Venue Guide</span>
-                </Link>
-
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-xs transition-colors hover:text-[#F97316]"
-                >
-                  <Globe className="h-4 w-4 text-[#F97316]" />
-                  <span>Contact</span>
-                </Link>
-              </div>
+            <div>
+              <p className="text-sm leading-relaxed text-slate-600">
+                Pothavarappadu, Agiripalli Mandalam, Vijayawada Rural, Andhra Pradesh, India — 521212.
+                Conveniently accessible from Vijayawada International Airport (~22 km) and Railway Junction (~23 km).
+              </p>
             </div>
           </div>
         </div>

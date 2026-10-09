@@ -453,7 +453,7 @@ export const conferenceData = {
   },
 
   bankDetails: {
-    accountName: "The Principal, Dr RVR NRI Institute of Technology (Deemed to be University), Agiripalli",
+    accountName: "The Principal",
     bankName: "BANK OF BARODA",
     branch: "Agiripalli / Pothavarappadu",
     ifsc: "BARB0AGIRIP",

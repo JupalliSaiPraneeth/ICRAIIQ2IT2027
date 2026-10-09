@@ -14,7 +14,7 @@ export const InfoStrip = () => {
       icon: FileCheck,
       label: "SUBMISSION DEADLINE",
       value: conferenceData.dates.submissionDeadline,
-      sub: "Double-Blind Scopus Proceedings"
+      sub: "Scopus-Indexed Proceedings"
     },
     {
       icon: UserCheck,

@@ -5,7 +5,6 @@ import {
   Train,
   Navigation,
   ExternalLink,
-  Image as ImageIcon,
   X,
   BusFront,
   ChevronRight,
@@ -141,21 +140,6 @@ const DEFAULT_GALLERY = [
   },
 ];
 
-const DEFAULT_CONTACTS = [
-  {
-    name: 'Dr. K. V. Sambasiva Rao',
-    role: 'Dean, Research & Development',
-    designation: 'Professor & Dean, R & D, Dr RVR NRIIT (DTBU)',
-    email: 'icraiq2it27@nriit.edu.in',
-  },
-  {
-    name: 'Dr. D. Sunitha',
-    role: 'Dean, School of Computer Studies',
-    designation: 'HOD & Dean : School of Computer Studies, Dr RVR NRIIT (DTBU)',
-    email: 'icraiq2it27@nriit.edu.in',
-  },
-];
-
 const DEFAULT_ADDRESS = [
   'Dr RVR NRI Institute of Technology (Deemed to be University)',
   'Pothavarappadu, Agiripalli Mandalam',
@@ -196,11 +180,6 @@ export const VenuePage = () => {
     Array.isArray(data.venueDescription) && data.venueDescription.length
       ? data.venueDescription
       : DEFAULT_VIJAYAWADA_DESCRIPTION;
-
-  const contacts =
-    Array.isArray(data.venueContacts) && data.venueContacts.length
-      ? data.venueContacts
-      : DEFAULT_CONTACTS;
 
   const gallery = useMemo(() => {
     const source =
@@ -254,25 +233,26 @@ export const VenuePage = () => {
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-5">
 
             {/* Left: About Vijayawada */}
-            <div className="lg:col-span-6 xl:col-span-6">
-              <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-orange-600">
-                <span className="h-[2px] w-6 bg-orange-600" />
-                <span>Host Destination</span>
+            <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-between">
+              <div>
+                <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-orange-600">
+                  <span className="h-[2px] w-6 bg-orange-600" />
+                  <span>Host Destination</span>
+                </div>
+
+                <h2 className="mt-1.5 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+                  About Vijayawada
+                </h2>
+                <p className="mt-1 text-sm font-semibold text-orange-600">
+                  The Commercial & Cultural Capital of Andhra Pradesh
+                </p>
               </div>
 
-              <h2 className="mt-1.5 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
-                About Vijayawada
-              </h2>
-              <p className="mt-1 text-sm font-semibold text-orange-600">
-                The Commercial & Cultural Capital of Andhra Pradesh
-              </p>
-
-              <div className="mt-3 space-y-2.5 text-justify text-[15px] leading-relaxed text-slate-600 sm:text-[16px]">
+              <div className="mt-3 flex-1 flex flex-col justify-between gap-3 text-justify text-[14.5px] leading-relaxed text-slate-600 sm:text-[15.5px] sm:leading-[1.75]">
                 {descriptions.map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}
               </div>
-
             </div>
 
             {/* Right: How to Reach */}
@@ -289,98 +269,98 @@ export const VenuePage = () => {
                 <p className="mt-1 text-sm font-semibold text-slate-500">
                   Seamless transit options by air, railway, and national highway network.
                 </p>
+              </div>
 
-                <div className="mt-3 space-y-2">
+              <div className="mt-3 flex-1 flex flex-col justify-between gap-2">
                   {/* By Air */}
-                  <article className="group rounded-2xl bg-orange-50/45 p-3 sm:p-4 transition-all duration-200 hover:bg-orange-50/75">
+                  <article className="group rounded-2xl bg-orange-50/45 p-2.5 sm:px-3 sm:py-2.5 transition-all duration-200 hover:bg-orange-50/75">
                     <div className="flex items-start justify-between gap-3">
-                      <div className="flex items-center gap-2.5">
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-orange-600 shadow-xs transition-colors group-hover:bg-orange-600 group-hover:text-white">
-                          <Plane className="h-5 w-5" />
+                      <div className="flex items-center gap-2">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-orange-600 shadow-xs transition-colors group-hover:bg-orange-600 group-hover:text-white">
+                          <Plane className="h-4 w-4" />
                         </div>
                         <div>
-                          <h3 className="text-base font-bold text-slate-900 group-hover:text-orange-600 sm:text-lg">
+                          <h3 className="text-sm font-bold text-slate-900 group-hover:text-orange-600 sm:text-base">
                             {DEFAULT_TRAVEL.air.title}
                           </h3>
-                          <div className="text-xs font-medium text-slate-500">
+                          <div className="text-[11px] font-medium text-slate-500">
                             {DEFAULT_TRAVEL.air.hub}
                           </div>
                         </div>
                       </div>
-                      <span className="shrink-0 rounded-full bg-white px-2.5 py-0.5 text-[11px] font-extrabold text-orange-700 shadow-xs">
+                      <span className="shrink-0 rounded-full bg-white px-2 py-0.5 text-[10px] font-extrabold text-orange-700 shadow-xs">
                         {DEFAULT_TRAVEL.air.badge}
                       </span>
                     </div>
-                    <div className="mt-2 text-xs font-bold text-orange-600">
+                    <div className="mt-1 text-xs font-bold text-orange-600">
                       {DEFAULT_TRAVEL.air.distance}
                     </div>
-                    <p className="mt-1 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                    <p className="mt-0.5 text-xs leading-relaxed text-slate-600 sm:text-[13px]">
                       {DEFAULT_TRAVEL.air.description}
                     </p>
                   </article>
 
                   {/* By Rail */}
-                  <article className="group rounded-2xl bg-orange-50/45 p-3 sm:p-4 transition-all duration-200 hover:bg-orange-50/75">
+                  <article className="group rounded-2xl bg-orange-50/45 p-2.5 sm:px-3 sm:py-2.5 transition-all duration-200 hover:bg-orange-50/75">
                     <div className="flex items-start justify-between gap-3">
-                      <div className="flex items-center gap-2.5">
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-orange-600 shadow-xs transition-colors group-hover:bg-orange-600 group-hover:text-white">
-                          <Train className="h-5 w-5" />
+                      <div className="flex items-center gap-2">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-orange-600 shadow-xs transition-colors group-hover:bg-orange-600 group-hover:text-white">
+                          <Train className="h-4 w-4" />
                         </div>
                         <div>
-                          <h3 className="text-base font-bold text-slate-900 group-hover:text-orange-600 sm:text-lg">
+                          <h3 className="text-sm font-bold text-slate-900 group-hover:text-orange-600 sm:text-base">
                             {DEFAULT_TRAVEL.rail.title}
                           </h3>
-                          <div className="text-xs font-medium text-slate-500">
+                          <div className="text-[11px] font-medium text-slate-500">
                             {DEFAULT_TRAVEL.rail.hub}
                           </div>
                         </div>
                       </div>
-                      <span className="shrink-0 rounded-full bg-white px-2.5 py-0.5 text-[11px] font-extrabold text-orange-700 shadow-xs">
+                      <span className="shrink-0 rounded-full bg-white px-2 py-0.5 text-[10px] font-extrabold text-orange-700 shadow-xs">
                         {DEFAULT_TRAVEL.rail.badge}
                       </span>
                     </div>
-                    <div className="mt-2 text-xs font-bold text-orange-600">
+                    <div className="mt-1 text-xs font-bold text-orange-600">
                       {DEFAULT_TRAVEL.rail.distance}
                     </div>
-                    <p className="mt-1 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                    <p className="mt-0.5 text-xs leading-relaxed text-slate-600 sm:text-[13px]">
                       {DEFAULT_TRAVEL.rail.description}
                     </p>
                   </article>
 
                   {/* By Road */}
-                  <article className="group rounded-2xl bg-orange-50/45 p-3 sm:p-4 transition-all duration-200 hover:bg-orange-50/75">
+                  <article className="group rounded-2xl bg-orange-50/45 p-2.5 sm:px-3 sm:py-2.5 transition-all duration-200 hover:bg-orange-50/75">
                     <div className="flex items-start justify-between gap-3">
-                      <div className="flex items-center gap-2.5">
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-orange-600 shadow-xs transition-colors group-hover:bg-orange-600 group-hover:text-white">
-                          <BusFront className="h-5 w-5" />
+                      <div className="flex items-center gap-2">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-orange-600 shadow-xs transition-colors group-hover:bg-orange-600 group-hover:text-white">
+                          <BusFront className="h-4 w-4" />
                         </div>
                         <div>
-                          <h3 className="text-base font-bold text-slate-900 group-hover:text-orange-600 sm:text-lg">
+                          <h3 className="text-sm font-bold text-slate-900 group-hover:text-orange-600 sm:text-base">
                             {DEFAULT_TRAVEL.road.title}
                           </h3>
-                          <div className="text-xs font-medium text-slate-500">
+                          <div className="text-[11px] font-medium text-slate-500">
                             {DEFAULT_TRAVEL.road.hub}
                           </div>
                         </div>
                       </div>
-                      <span className="shrink-0 rounded-full bg-white px-2.5 py-0.5 text-[11px] font-extrabold text-orange-700 shadow-xs">
+                      <span className="shrink-0 rounded-full bg-white px-2 py-0.5 text-[10px] font-extrabold text-orange-700 shadow-xs">
                         {DEFAULT_TRAVEL.road.badge}
                       </span>
                     </div>
-                    <div className="mt-2 text-xs font-bold text-orange-600">
+                    <div className="mt-1 text-xs font-bold text-orange-600">
                       {DEFAULT_TRAVEL.road.distance}
                     </div>
-                    <p className="mt-1 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                    <p className="mt-0.5 text-xs leading-relaxed text-slate-600 sm:text-[13px]">
                       {DEFAULT_TRAVEL.road.description}
                     </p>
                   </article>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* =========================================================
           2. MAJOR ATTRACTIONS (Interactive Directory & Search)
@@ -517,11 +497,6 @@ export const VenuePage = () => {
                 Click on any photo to inspect full cinematic view.
               </p>
             </div>
-
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500">
-              <ImageIcon className="h-4 w-4 text-orange-600" />
-              <span>Interactive Lightbox Enabled</span>
-            </span>
           </div>
 
           <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
@@ -578,23 +553,23 @@ export const VenuePage = () => {
           <div className="text-center">
             <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-orange-600">
               <span className="h-[2px] w-6 bg-orange-600" />
-              <span>Campus & Secretariat</span>
+              <span>Campus Location</span>
               <span className="h-[2px] w-6 bg-orange-600" />
             </div>
 
             <h2 className="mt-1.5 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
-              Venue Location & Secretariat Contacts
+              Venue Location &amp; Campus Map
             </h2>
             <div className="mx-auto mt-2 h-1 w-16 rounded-full bg-orange-500" />
             <p className="mx-auto mt-2 text-sm text-slate-500">
-              Conference venue premises, geo-coordinates, and key secretariat contact personnel.
+              Conference venue premises, geo-coordinates, and travel navigation.
             </p>
           </div>
 
           <div className="mt-3 grid grid-cols-1 gap-2.5 lg:grid-cols-12 lg:items-stretch lg:gap-3">
 
             {/* Left: Google Maps Interactive Embed */}
-            <div className="lg:col-span-6 xl:col-span-7 flex flex-col h-full">
+            <div className="lg:col-span-7 xl:col-span-7 flex flex-col h-full">
               <div className="relative min-h-[300px] h-full flex-1 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xs">
                 <iframe
                   title="Dr RVR NRI Institute of Technology Location Map"
@@ -621,11 +596,9 @@ export const VenuePage = () => {
               </div>
             </div>
 
-            {/* Right: Venue Institution & Secretariat Contact Details */}
-            <div className="lg:col-span-6 xl:col-span-5 flex flex-col gap-2.5">
-
-              {/* Institution Box */}
-              <div className="rounded-xl border border-orange-100 bg-white p-3 shadow-xs">
+            {/* Right: Venue Institution Details */}
+            <div className="lg:col-span-5 xl:col-span-5 flex flex-col justify-between rounded-xl border border-orange-100 bg-white p-4 shadow-xs">
+              <div>
                 <div>
                   <h3 className="text-base font-black text-slate-900 sm:text-lg">
                     {getValue(data.organizer?.name, 'Dr RVR NRI Institute of Technology')}
@@ -638,7 +611,7 @@ export const VenuePage = () => {
                 </div>
 
                 {/* Address */}
-                <div className="mt-2 flex items-start gap-2 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                <div className="mt-3 flex items-start gap-2 text-xs leading-relaxed text-slate-600 sm:text-sm">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-orange-500" />
                   <div>
                     {DEFAULT_ADDRESS.map((line, idx) => (
@@ -648,7 +621,7 @@ export const VenuePage = () => {
                 </div>
 
                 {/* Coordinates & Copy */}
-                <div className="mt-2 flex items-center justify-between rounded-lg border border-slate-100 bg-slate-50 px-2.5 py-1 text-xs">
+                <div className="mt-3 flex items-center justify-between rounded-lg border border-slate-100 bg-slate-50 px-2.5 py-1.5 text-xs">
                   <div>
                     <span className="font-bold text-slate-500">GPS Coordinates: </span>
                     <span className="font-mono font-bold text-slate-800">{DEFAULT_COORDINATES.display}</span>
@@ -674,62 +647,26 @@ export const VenuePage = () => {
                 </div>
               </div>
 
-              {/* Secretariat Contacts */}
-              <div className="rounded-xl border border-orange-100 bg-white p-3 shadow-xs">
-                <div className="text-xs font-extrabold uppercase tracking-wider text-orange-600">
-                  Secretariat Key Contacts
-                </div>
+              {/* Navigation Actions */}
+              <div className="mt-4 flex flex-wrap items-center gap-2 pt-3 border-t border-slate-100">
+                <a
+                  href={mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-orange-600 px-3 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-orange-500/20 transition hover:-translate-y-0.5 hover:bg-orange-700"
+                >
+                  <Navigation className="h-3.5 w-3.5" />
+                  <span>Get Directions</span>
+                </a>
 
-                <div className="mt-2 space-y-1.5">
-                  {contacts.map((contact, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-start justify-between gap-2 border-b border-slate-100 pb-1.5 last:border-b-0 last:pb-0"
-                    >
-                      <div>
-                        <div className="text-sm font-bold text-slate-900">
-                          {contact.name}
-                        </div>
-                        <div className="text-xs font-medium text-slate-500">
-                          {contact.designation || contact.role}
-                        </div>
-                      </div>
-
-                      {contact.email && (
-                        <a
-                          href={`mailto:${contact.email}`}
-                          className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-orange-200 bg-orange-50 px-2 py-0.5 text-xs font-bold text-orange-700 transition hover:bg-orange-600 hover:text-white"
-                          title={`Email ${contact.name}`}
-                        >
-                          <Mail className="h-3 w-3" />
-                          <span>Email</span>
-                        </a>
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-2.5 flex flex-wrap items-center gap-2 pt-1">
-                  <a
-                    href={mapUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-orange-600 px-3 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-orange-500/20 transition hover:-translate-y-0.5 hover:bg-orange-700"
-                  >
-                    <Navigation className="h-3.5 w-3.5" />
-                    <span>Get Directions</span>
-                  </a>
-
-                  <a
-                    href="mailto:icraiq2it27@nriit.edu.in"
-                    className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold uppercase tracking-wider text-slate-700 shadow-xs transition hover:border-orange-400 hover:text-orange-600"
-                  >
-                    <Mail className="h-3.5 w-3.5 text-orange-600" />
-                    <span>Contact Helpdesk</span>
-                  </a>
-                </div>
+                <a
+                  href="mailto:icraiq2it27@nriit.edu.in"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold uppercase tracking-wider text-slate-700 shadow-xs transition hover:border-orange-400 hover:text-orange-600"
+                >
+                  <Mail className="h-3.5 w-3.5 text-orange-600" />
+                  <span>Contact Helpdesk</span>
+                </a>
               </div>
-
             </div>
 
           </div>

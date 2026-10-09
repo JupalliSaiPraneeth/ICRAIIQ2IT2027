@@ -10,7 +10,7 @@ const NAV_PRIMARY = [
   { label: 'ABOUT', to: '/about' },
   { label: 'COMMITTEES', to: '/committee' },
   { label: 'LOCATION', to: '/venue' },
-  { label: 'AUTHORS GUIDELINES', to: '/call-for-papers' },
+  { label: 'CALL FOR PAPERS', to: '/call-for-papers' },
   { label: 'REGISTRATION', to: '/registration' },
   { label: 'AWARDS', to: '/awards' },
   { label: 'ACCOMMODATION', to: '/accommodation' },
@@ -19,7 +19,7 @@ const NAV_PRIMARY = [
 
 const NAV_SECONDARY = [
   { label: 'GALLERY', to: '/gallery' },
-  { label: 'SOUVENIR', to: '/souvenir' },
+  { label: 'PREVIOUS PROCEEDINGS', to: '/previous-proceedings' },
   { label: 'BROCHURE', to: '/brochure' },
 ];
 
@@ -53,19 +53,19 @@ export const Footer = () => {
       <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-3 px-4 py-4 sm:gap-4 sm:px-8 sm:py-6 md:grid-cols-2 lg:grid-cols-[1.3fr_0.8fr_0.8fr_0.8fr] lg:gap-8 lg:px-10 lg:py-7">
         {/* Brand */}
         <div>
-          <Link to="/" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center gap-3.5 group">
             <img
               src="/nrilogo.png"
               alt="NRI Institute of Technology Logo"
-              className="h-12 sm:h-14 w-auto object-contain rounded-xl bg-white p-1 shadow-xs transition-transform duration-200 group-hover:scale-105"
+              className="h-16 sm:h-20 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
             />
             <div>
-              <div className="text-sm font-extrabold leading-tight text-[#1d315f]">
+              <div className="text-sm sm:text-base font-extrabold leading-tight text-[#1d315f]">
                 Dr RVR NRI Institute of
                 <br />
                 <span className="text-[#f97316]">Technology</span>
               </div>
-              <div className="text-[11px] font-semibold text-slate-500">
+              <div className="text-[11px] sm:text-xs font-semibold text-slate-500">
                 Deemed to be University • NAAC A+
               </div>
             </div>

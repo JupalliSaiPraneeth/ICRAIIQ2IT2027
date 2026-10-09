@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
@@ -16,7 +16,7 @@ import ContactPage from './pages/ContactPage';
 import AwardsPage from './pages/AwardsPage';
 import AccommodationPage from './pages/AccommodationPage';
 import GalleryPage from './pages/GalleryPage';
-import SouvenirPage from './pages/SouvenirPage';
+import PreviousProceedingsPage from './pages/PreviousProceedingsPage';
 import BrochurePage from './pages/BrochurePage';
 
 // Scroll to top automatically on route change
@@ -47,7 +47,8 @@ export function App() {
             <Route path="/awards" element={<AwardsPage />} />
             <Route path="/accommodation" element={<AccommodationPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/souvenir" element={<SouvenirPage />} />
+            <Route path="/previous-proceedings" element={<PreviousProceedingsPage />} />
+            <Route path="/souvenir" element={<Navigate to="/previous-proceedings" replace />} />
             <Route path="/brochure" element={<BrochurePage />} />
             <Route path="*" element={<Home />} />
           </Routes>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { conferenceData } from '../data/conferenceData';
 
 const DEFAULT_BANK_DETAILS = {
-  accountName: 'The Principal, Dr RVR NRI Institute of Technology (Deemed to be University)',
+  accountName: 'The Principal',
   bankName: 'BANK OF BARODA',
   accountNumber: 'Available upon invoice / submission request',
   ifsc: 'BARB0AGIRIP',
@@ -13,40 +13,33 @@ const DEFAULT_BANK_DETAILS = {
 const FEE_SCHEDULE_DATA = [
   {
     category: 'Students / Research Scholars',
-    indiaAuthor: '1000',
-    indiaListener: '1000',
+    indiaAuthor: '3000',
+    indiaListener: '3000',
     otherAuthor: '$75',
     otherListener: '$75',
   },
   {
     category: 'Academician',
-    indiaAuthor: '1500',
-    indiaListener: '1000',
+    indiaAuthor: '4000',
+    indiaListener: '4000',
     otherAuthor: '$75',
     otherListener: '$75',
   },
   {
     category: 'Industry Professional',
-    indiaAuthor: '3000',
-    indiaListener: '2500',
+    indiaAuthor: '4000',
+    indiaListener: '4000',
     otherAuthor: '$75',
     otherListener: '$75',
     isHighlight: true,
   },
   {
-    category: 'Proceedings Publication Fee (if applicable)',
+    category: 'Publication Fee for Proceedings',
     indiaAuthor: '10000',
     indiaListener: '–',
     otherAuthor: '$100',
     otherListener: '–',
   },
-];
-
-const DEFAULT_NOTES = [
-  'Faculty members, research scholars, postgraduate students from AICTE-approved institutions, and industry professionals are eligible to register.',
-  'At least one author of every accepted paper must register by 10th Mar 2027 to ensure paper inclusion in the proceedings.',
-  'Proceedings are planned for consideration by Springer Nature, AIP Publishing, or Taylor & Francis, subject to selection and approval. EasyChair is a conference management platform, not a publisher; publication and indexing are subject to confirmation.',
-  'All participants will be issued a certificate. Presenters receive a Paper Presentation cum Publication Certificate.',
 ];
 
 const getValue = (value, fallback) =>
@@ -72,10 +65,6 @@ export const RegistrationPage = () => {
     branch: getValue(data.bankDetails?.branch, DEFAULT_BANK_DETAILS.branch),
     upiId: getValue(data.bankDetails?.upiId, DEFAULT_BANK_DETAILS.upiId),
   };
-
-  const notes = data.registrationNotes && data.registrationNotes.length
-    ? data.registrationNotes
-    : DEFAULT_NOTES;
 
   const openRegistrationForm = () => {
     if (registrationFormUrl) {
@@ -189,18 +178,9 @@ export const RegistrationPage = () => {
 
               {/* Bank Details Table */}
               <div className="mt-3 border border-slate-200 rounded-lg divide-y divide-slate-100 text-sm">
-                <div className="flex items-start justify-between gap-2 bg-slate-50/60 p-2.5">
-                  <div className="min-w-0">
-                    <span className="text-xs font-bold uppercase text-slate-400 block">Beneficiary Name</span>
-                    <strong className="mt-0.5 block break-words text-sm leading-snug text-[#17213a]">{bankDetails.accountName}</strong>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => copyText(bankDetails.accountName, 'Beneficiary Name')}
-                    className="shrink-0 text-sm font-bold text-[#F97316] hover:underline"
-                  >
-                    Copy
-                  </button>
+                <div className="bg-slate-50/60 p-2.5">
+                  <span className="text-xs font-bold uppercase text-slate-400 block">Beneficiary Name</span>
+                  <strong className="mt-0.5 block break-words text-sm leading-snug text-[#17213a]">{bankDetails.accountName}</strong>
                 </div>
 
                 <div className="grid grid-cols-1 divide-y divide-slate-100 min-[480px]:grid-cols-2 min-[480px]:divide-y-0 min-[480px]:divide-x">
@@ -305,14 +285,7 @@ export const RegistrationPage = () => {
             </div>
 
             {/* Bottom Actions for Step 2 */}
-            <div className="mt-3 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-sm">
-              <button
-                type="button"
-                onClick={openRegistrationForm}
-                className="bg-[#F97316] hover:bg-[#ea580c] text-white px-4 py-2 text-sm font-bold rounded transition-colors"
-              >
-                Open Registration Form &rarr;
-              </button>
+            <div className="mt-3 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-end gap-2 text-sm">
               <div className="flex items-center gap-2 text-slate-500 text-sm">
                 <span>Queries?</span>
                 <button
@@ -372,9 +345,8 @@ export const RegistrationPage = () => {
                 {FEE_SCHEDULE_DATA.map((row) => (
                   <tr
                     key={row.category}
-                    className={`transition-colors ${
-                      row.isHighlight ? 'bg-slate-50' : 'hover:bg-slate-50/60'
-                    }`}
+                    className={`transition-colors ${row.isHighlight ? 'bg-slate-50' : 'hover:bg-slate-50/60'
+                      }`}
                   >
                     <td className="py-2 px-2 font-semibold text-[#17213a] sm:px-3">{row.category}</td>
                     <td className="py-2 px-2 sm:px-3">{row.indiaAuthor}</td>
@@ -387,86 +359,16 @@ export const RegistrationPage = () => {
             </table>
           </div>
 
-          <div className="mt-3 pt-3 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between text-sm text-slate-500 gap-2">
-            <span>Accepted and presented papers may be submitted for proceedings consideration; publication and indexing depend on publisher selection, acceptance, and confirmation.</span>
-            <button
-              type="button"
-              onClick={openRegistrationForm}
-              className="bg-[#F97316] hover:bg-[#ea580c] text-white px-4 py-2 text-sm font-bold rounded transition-colors self-start sm:self-auto"
-            >
-              Fill Registration Form &rarr;
-            </button>
+          <div className="mt-3 pt-3 border-t border-slate-100 text-sm text-slate-500 space-y-1">
+            <p>
+              Accepted and presented papers may be submitted for proceedings consideration; publication and indexing depend on publisher selection, acceptance, and confirmation.
+            </p>
+            <p className="font-semibold text-slate-700">
+              Extra page charges: ₹1,500 extra for each additional page.
+            </p>
           </div>
         </div>
 
-        {/* ── 3. POLICIES & SECRETARIAT (BALANCED 2-COLUMNS) ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2.5 lg:gap-3 items-stretch">
-
-          {/* LEFT: POLICIES */}
-          <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-sm h-full flex flex-col">
-            <div>
-              <div className="flex items-center justify-between gap-2 mb-2">
-                <h2 className="text-base font-bold text-[#17213a] sm:text-lg">Registration Directives &amp; Policies</h2>
-                <span className="text-xs font-semibold text-slate-400">Terms</span>
-              </div>
-              <ul className="space-y-2 text-sm text-slate-600 mt-2.5">
-                {notes.map((note, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <span className="text-[#F97316] font-bold shrink-0">•</span>
-                    <span className="text-justify leading-relaxed">{note}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-3 pt-3 border-t border-slate-100 text-sm text-slate-400">
-              Unpresented papers will not be forwarded to proceedings publisher.
-            </div>
-          </div>
-
-          {/* RIGHT: SECRETARIAT ASSISTANCE */}
-          <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-sm h-full flex flex-col">
-            <div>
-              <div className="flex items-center justify-between gap-2 mb-2">
-                <h2 className="text-base font-bold text-[#17213a] sm:text-lg">Registration Secretariat &amp; Inquiries</h2>
-                <span className="border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs font-bold text-[#F97316] rounded">
-                  Helpdesk
-                </span>
-              </div>
-              <p className="text-sm text-slate-600 leading-relaxed mb-2.5">
-                For queries regarding fee remittance, invoicing, author registration, or presentations:
-              </p>
-
-              <div className="space-y-2 text-sm">
-                <div className="border border-slate-100 rounded-lg p-2.5 bg-slate-50/50">
-                  <strong className="text-sm text-[#17213a] block">Dr. K. V. Sambasiva Rao</strong>
-                  <span className="text-sm text-slate-500 block mt-0.5">Professor &amp; Dean, R &amp; D, Dr RVR NRIIT (DTBU)</span>
-                </div>
-                <div className="border border-slate-100 rounded-lg p-2.5 bg-slate-50/50">
-                  <strong className="text-sm text-[#17213a] block">Dr. D. Sunitha</strong>
-                  <span className="text-sm text-slate-500 block mt-0.5">HOD &amp; Dean : School of Computer Studies, Dr RVR NRIIT (DTBU)</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-3 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-sm">
-              <a
-                href="mailto:icraiq2it27@nriit.edu.in"
-                className="font-bold text-[#F97316] hover:underline"
-              >
-                icraiq2it27@nriit.edu.in
-              </a>
-              <button
-                type="button"
-                onClick={() => copyText('icraiq2it27@nriit.edu.in', 'Secretariat Email')}
-                className="font-bold text-slate-600 hover:text-[#F97316] hover:underline text-sm"
-              >
-                Copy Email
-              </button>
-            </div>
-          </div>
-
-        </div>
 
       </div>
 
