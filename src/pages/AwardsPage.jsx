@@ -34,9 +34,6 @@ export const AwardsPage = () => {
               Awards &amp; <span className="text-[#F97316]">Recognition</span>
             </h1>
             <div className="mx-auto mt-1.5 h-1 w-24 rounded-full bg-[#F97316]" />
-            <p className="mx-auto mt-1.5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-[15px]">
-              ICRAIIQ2IT 2027 recognizes outstanding research and presentations across its technical tracks.
-            </p>
           </div>
         </div>
       </section>

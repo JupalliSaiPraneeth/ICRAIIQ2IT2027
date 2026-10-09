@@ -91,9 +91,7 @@ export const CallForPapersPage = () => {
             <span className="block whitespace-nowrap text-[#F97316] lg:inline">Submission Guidelines</span>
           </h1>
           <div className="mx-auto mt-2 h-1 w-24 rounded-full bg-[#F97316]" />
-          <p className="mx-auto mt-1.5 max-w-2xl text-sm leading-relaxed text-slate-500 sm:text-[15px]">
-            Submit original manuscripts in AI, Quantum Computing, and Deep-Tech Innovations.
-          </p>
+
 
           {/* Quick Actions */}
           <div className="mt-2.5 grid grid-cols-2 items-stretch justify-center gap-2 lg:flex lg:flex-wrap">
