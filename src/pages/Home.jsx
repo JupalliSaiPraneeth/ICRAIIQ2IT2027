@@ -472,8 +472,7 @@ function Home() {
                   className="group relative flex min-w-0 items-center gap-2 border border-slate-200/90 bg-white p-2.5 shadow-sm transition-shadow hover:shadow-md sm:gap-2.5 sm:p-3"
                 >
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-100/70 font-mono text-xs font-black text-orange-700 transition-colors group-hover:bg-orange-600 group-hover:text-white sm:h-9 sm:w-9 sm:text-sm">
-                    {track.number ||
-                      String(index + 1).padStart(2, '0')}
+                    {parseInt(track.number, 10) || index + 1}
                   </span>
 
                   <div className="min-w-0 flex-1">

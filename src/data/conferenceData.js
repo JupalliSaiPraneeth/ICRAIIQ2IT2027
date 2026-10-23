@@ -239,7 +239,7 @@ export const conferenceData = {
   tracks: [
     {
       id: "track-01",
-      number: "01",
+      number: "1",
       title: "Artificial Intelligence and Intelligent Systems",
       description: "Machine learning, deep neural paradigms, generative models, and intelligent automated systems.",
       topics: [
@@ -251,7 +251,7 @@ export const conferenceData = {
     },
     {
       id: "track-02",
-      number: "02",
+      number: "2",
       title: "Quantum Inspired Computing and Security",
       description: "Quantum algorithms, quantum cryptography, and deep mathematical computing architectures.",
       topics: [
@@ -262,7 +262,7 @@ export const conferenceData = {
     },
     {
       id: "track-03",
-      number: "03",
+      number: "3",
       title: "Data Science, Analytics & Cloud Computing",
       description: "Big data analytics, distributed systems, business intelligence, and high-performance infrastructure.",
       topics: [
@@ -273,7 +273,7 @@ export const conferenceData = {
     },
     {
       id: "track-04",
-      number: "04",
+      number: "4",
       title: "Edge Computing, IoT and Smart Systems",
       description: "Embedded micro-architectures, sensor technologies, IoT infrastructure, and intelligent automation.",
       topics: [
@@ -284,7 +284,7 @@ export const conferenceData = {
     },
     {
       id: "track-05",
-      number: "05",
+      number: "5",
       title: "Cybersecurity, Blockchain & Digital Forensics",
       description: "Defensive architectures, smart contracts, tamper-proof systems, and cyber-threat investigation.",
       topics: [
@@ -295,7 +295,7 @@ export const conferenceData = {
     },
     {
       id: "track-06",
-      number: "06",
+      number: "6",
       title: "Computer Vision & Speech Technologies",
       description: "Image processing, spatial perception, natural language processing, and multimodal speech synthesis.",
       topics: [
@@ -306,7 +306,7 @@ export const conferenceData = {
     },
     {
       id: "track-07",
-      number: "07",
+      number: "7",
       title: "Applied AI in Societal & Industrial Domains",
       description: "Transformative applications in healthcare, smart agriculture, climate sustainability, and logistics.",
       topics: [
@@ -317,7 +317,7 @@ export const conferenceData = {
     },
     {
       id: "track-08",
-      number: "08",
+      number: "8",
       title: "Deep-Tech Innovations & Entrepreneurship",
       description: "Emerging deep-tech paradigms, technological incubation, innovation ecosystems, and tech entrepreneurship.",
       topics: [
