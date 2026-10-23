@@ -453,12 +453,11 @@ export const conferenceData = {
   },
 
   bankDetails: {
-    accountName: "The Principal",
-    bankName: "BANK OF BARODA",
-    branch: "Agiripalli / Pothavarappadu",
-    ifsc: "BARB0AGIRIP",
-    qrCodeUrl: "/bank-qr.png",
-    upiId: "icraiq2it27@barodampay"
+    bank: "Bank of Baroda, Benz Circle Branch",
+    accountName: "Principal, NRI Institute of Technology",
+    accountNumber: "26360100033044",
+    ifsc: "BARB0BENVIJ",
+    accountType: "Savings"
   },
 
   contact: {

@@ -93,6 +93,23 @@ const getMemberAffiliation = (member) => {
   );
 };
 
+const renderCategoryLabel = (label) => {
+  if (!label || typeof label !== 'string') return label;
+  if (/co-convener/i.test(label)) {
+    const parts = label.split(/\s*(Co-Convener)/i);
+    return (
+      <span className="whitespace-nowrap lg:whitespace-normal">
+        {parts[0].trim()}
+        <span className="inline lg:hidden"> </span>
+        <br className="hidden lg:block" />
+        <span className="whitespace-nowrap">{parts[1]}</span>
+        {parts.slice(2).join('')}
+      </span>
+    );
+  }
+  return label;
+};
+
 /* ── Reusable Table Row ── */
 function CommitteeTableRow({ category, members, isLast }) {
   return (
@@ -103,7 +120,7 @@ function CommitteeTableRow({ category, members, isLast }) {
         style={{ verticalAlign: 'top' }}
       >
         <span className="block text-[13px] font-extrabold uppercase tracking-wide text-[#F97316] leading-tight">
-          {category.label}
+          {renderCategoryLabel(category.label)}
         </span>
       </td>
 

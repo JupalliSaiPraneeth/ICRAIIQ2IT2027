@@ -276,7 +276,7 @@ export const VenuePage = () => {
                   <article className="group rounded-2xl bg-orange-50/45 p-2.5 sm:px-3 sm:py-2.5 transition-all duration-200 hover:bg-orange-50/75">
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-center gap-2">
-                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-orange-600 shadow-xs transition-colors group-hover:bg-orange-600 group-hover:text-white">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-orange-600 shadow-xs transition-colors group-hover:bg-orange-600 group-hover:text-white">
                           <Plane className="h-4 w-4" />
                         </div>
                         <div>
@@ -304,7 +304,7 @@ export const VenuePage = () => {
                   <article className="group rounded-2xl bg-orange-50/45 p-2.5 sm:px-3 sm:py-2.5 transition-all duration-200 hover:bg-orange-50/75">
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-center gap-2">
-                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-orange-600 shadow-xs transition-colors group-hover:bg-orange-600 group-hover:text-white">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-orange-600 shadow-xs transition-colors group-hover:bg-orange-600 group-hover:text-white">
                           <Train className="h-4 w-4" />
                         </div>
                         <div>
@@ -332,7 +332,7 @@ export const VenuePage = () => {
                   <article className="group rounded-2xl bg-orange-50/45 p-2.5 sm:px-3 sm:py-2.5 transition-all duration-200 hover:bg-orange-50/75">
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-center gap-2">
-                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-orange-600 shadow-xs transition-colors group-hover:bg-orange-600 group-hover:text-white">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-orange-600 shadow-xs transition-colors group-hover:bg-orange-600 group-hover:text-white">
                           <BusFront className="h-4 w-4" />
                         </div>
                         <div>
@@ -444,16 +444,16 @@ export const VenuePage = () => {
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative flex flex-col justify-between rounded-xl bg-white p-2 sm:px-2.5 sm:py-2 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm"
+                  className="group relative flex min-h-[44px] items-center justify-between rounded-xl border border-slate-200/90 bg-slate-50/70 px-3 py-2.5 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:bg-orange-50/40 hover:shadow-sm active:bg-orange-50 sm:bg-white sm:px-2.5 sm:py-2"
                 >
-                  <div className="flex items-center justify-between gap-1.5">
-                    <div className="flex items-center gap-1.5 min-w-0">
+                  <div className="flex w-full items-center justify-between gap-2">
+                    <div className="flex min-w-0 items-center gap-2">
                       <MapPin className="h-3.5 w-3.5 shrink-0 text-orange-500 transition-transform group-hover:scale-110" />
-                      <h3 className="text-sm font-bold text-slate-900 transition-colors group-hover:text-orange-600 line-clamp-1">
+                      <h3 className="truncate text-xs font-bold text-slate-800 transition-colors group-hover:text-orange-600 sm:line-clamp-1 sm:text-sm">
                         {attraction.name}
                       </h3>
                     </div>
-                    <ExternalLink className="h-3 w-3 shrink-0 text-slate-300 opacity-0 transition-opacity group-hover:opacity-100 group-hover:text-orange-500" />
+                    <ExternalLink className="h-3.5 w-3.5 shrink-0 text-orange-500/70 opacity-100 transition-all group-hover:text-orange-600 sm:text-slate-300 sm:opacity-0 sm:group-hover:opacity-100" />
                   </div>
                 </a>
               ))}

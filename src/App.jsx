@@ -30,7 +30,12 @@ function ScrollToTop() {
 
 export function App() {
   return (
-    <Router>
+    <Router
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
       <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-white text-slate-900 font-sans selection:bg-[#d92d67] selection:text-white">
         <Navbar />

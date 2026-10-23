@@ -122,17 +122,29 @@ export const Navbar = () => {
         }`}
     >
 
-      {/* Compact title and menu for mobile/tablet */}
-      <div className="mx-auto flex max-w-[1500px] items-center gap-3 px-4 py-2 sm:px-6 sm:py-2.5 lg:px-8 xl:hidden">
+      {/* Compact title, logo and menu for mobile/tablet */}
+      <div className="mx-auto flex max-w-[1500px] items-center gap-3 px-3 py-1.5 sm:px-6 sm:py-2 lg:px-8 xl:hidden">
+        <Link
+          to="/"
+          aria-label="NRI Institute of Technology Home"
+          className="shrink-0 flex items-center"
+        >
+          <img
+            src="/nrilogo.png"
+            alt="NRI Institute of Technology Logo"
+            className="h-12 sm:h-14 w-auto object-contain"
+          />
+        </Link>
+        <div className="h-8 w-px bg-slate-200 shrink-0" aria-hidden="true" />
         <Link
           to="/"
           aria-label={`${conferenceShortTitle} home`}
           className="group min-w-0 flex-1 text-left"
         >
-          <div className="text-lg font-extrabold leading-tight tracking-[-0.02em] text-[#1D315F] sm:text-xl">
+          <div className="text-base sm:text-lg font-extrabold leading-tight tracking-[-0.02em] text-[#1D315F]">
             {conferenceShortTitle}
           </div>
-          <div className="mt-1 flex items-center justify-start gap-1.5 text-[10px] font-extrabold uppercase tracking-wide text-[#EA580C] sm:text-[11px]">
+          <div className="mt-0.5 flex items-center justify-start gap-1.5 text-[10px] font-extrabold uppercase tracking-wide text-[#EA580C] sm:text-[11px]">
             <span>April 9-10</span>
             <span className="text-slate-300 font-normal">|</span>
             <span>Vijayawada</span>
@@ -144,47 +156,69 @@ export const Navbar = () => {
           type="button"
           onClick={() => setMobileMenuOpen(true)}
           aria-label="Open navigation menu"
-          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-[#1D315F] shadow-sm transition-colors hover:border-[#F59E0B] hover:bg-[#FFF7E6] hover:text-[#E87500] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]"
+          className="inline-flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-[#1D315F] shadow-sm transition-colors hover:border-[#F59E0B] hover:bg-[#FFF7E6] hover:text-[#E87500] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]"
         >
           <Menu className="h-5 w-5" />
         </button>
       </div>
 
-      {/* Full conference title layout for laptop and monitor screens */}
-      <div className="hidden px-6 py-2 xl:block">
-        <Link
-          to="/"
-          aria-label={`${conferenceShortTitle} home`}
-          className="group mx-auto block max-w-[1500px] text-center"
-        >
-          <h1 className="text-[23px] font-extrabold leading-tight tracking-[-0.025em] text-[#1D315F] 2xl:text-[27px]">
-            {titleParts.secondLine ? (
-              <>
-                <span className="block">{formatWithSuperscript(titleParts.firstLine)}</span>
-                <span className="mt-0.5 inline-flex flex-wrap items-center justify-center gap-2">
-                  <span>{titleParts.secondLine}</span>
-                  <span className="inline-flex items-center rounded-full border border-[#F59E0B] bg-[#FFF7E6] px-3.5 py-0.5 text-[0.72em] font-black tracking-tight text-[#E87500] shadow-sm transition-colors group-hover:bg-[#F59E0B] group-hover:text-white">
-                    {conferenceShortTitle}
-                  </span>
-                </span>
-              </>
-            ) : (
-              <>
-                {formatWithSuperscript(conferenceTitle)}
-                <span className="ml-2 inline-flex items-center rounded-full border border-[#F59E0B] bg-[#FFF7E6] px-3.5 py-0.5 text-[0.72em] font-black tracking-tight text-[#E87500] shadow-sm transition-colors group-hover:bg-[#F59E0B] group-hover:text-white">
-                  {conferenceShortTitle}
-                </span>
-              </>
-            )}
-          </h1>
-          <div className="mt-1 flex items-center justify-center gap-2 text-[13.5px] font-extrabold uppercase tracking-[0.14em] text-[#EA580C]">
-            <span>April 9-10</span>
-            <span className="font-normal text-slate-300">|</span>
-            <span>Vijayawada</span>
-            <span className="font-normal text-slate-300">|</span>
-            <span>India</span>
+      {/* Full conference title layout with Prominent Institution Logo for laptop and monitor screens */}
+      <div className="hidden py-2 xl:block">
+        <div className="mx-auto w-full max-w-[1680px] 2xl:max-w-[1780px] px-6 lg:px-8 2xl:px-10">
+          <div className="flex w-full items-center justify-between gap-5 xl:gap-8 min-h-[82px] 2xl:min-h-[92px]">
+            {/* Prominent Host Institution Logo (Parallel to HOME on the left) */}
+            <div className="shrink-0 flex items-center">
+              <Link
+                to="/"
+                aria-label="NRI Institute of Technology Home"
+                className="flex items-center group transition-transform duration-200 hover:scale-105"
+              >
+                <img
+                  src="/nrilogo.png"
+                  alt="NRI Institute of Technology Logo"
+                  className="h-[78px] xl:h-[84px] 2xl:h-[92px] w-auto object-contain drop-shadow-xs"
+                />
+              </Link>
+            </div>
+
+            {/* Conference Title (Spans across parallel to the navbar components) */}
+            <Link
+              to="/"
+              aria-label={`${conferenceShortTitle} home`}
+              className="group flex-1 min-w-0 text-center px-2"
+            >
+              <h1 className="text-[19px] xl:text-[21px] 2xl:text-[24.5px] font-extrabold leading-snug tracking-[0.012em] 2xl:tracking-[0.018em] text-[#1D315F]">
+                {titleParts.secondLine ? (
+                  <>
+                    <span className="block whitespace-nowrap">
+                      {formatWithSuperscript(titleParts.firstLine)}
+                    </span>
+                    <span className="mt-0.5 inline-flex flex-wrap items-center justify-center gap-2">
+                      <span>{titleParts.secondLine}</span>
+                      <span className="inline-flex items-center rounded-full border border-[#F59E0B] bg-[#FFF7E6] px-3.5 py-0.5 text-[0.74em] font-black tracking-[0.03em] text-[#E87500] shadow-sm transition-colors group-hover:bg-[#F59E0B] group-hover:text-white">
+                        {conferenceShortTitle}
+                      </span>
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    {formatWithSuperscript(conferenceTitle)}
+                    <span className="ml-2 inline-flex items-center rounded-full border border-[#F59E0B] bg-[#FFF7E6] px-3.5 py-0.5 text-[0.74em] font-black tracking-[0.03em] text-[#E87500] shadow-sm transition-colors group-hover:bg-[#F59E0B] group-hover:text-white">
+                      {conferenceShortTitle}
+                    </span>
+                  </>
+                )}
+              </h1>
+              <div className="mt-1 flex items-center justify-center gap-2 text-[12.5px] 2xl:text-[13.5px] font-extrabold uppercase tracking-[0.16em] text-[#EA580C]">
+                <span>April 9-10</span>
+                <span className="font-normal text-slate-300">|</span>
+                <span>Vijayawada</span>
+                <span className="font-normal text-slate-300">|</span>
+                <span>India</span>
+              </div>
+            </Link>
           </div>
-        </Link>
+        </div>
       </div>
 
 
@@ -195,7 +229,7 @@ export const Navbar = () => {
         className="hidden border-t border-slate-100 xl:block"
         aria-label="Primary navigation"
       >
-        <div className="mx-auto w-full max-w-[1600px] px-2 sm:px-3 lg:px-4">
+        <div className="mx-auto w-full max-w-[1680px] 2xl:max-w-[1780px] px-6 lg:px-8 2xl:px-10">
           <div
             className="
               flex
@@ -203,12 +237,8 @@ export const Navbar = () => {
               w-full
               flex-nowrap
               items-center
-              justify-center
-              gap-x-1
+              justify-between
               py-1
-              lg:gap-x-1.5
-              xl:gap-x-2.5
-              2xl:gap-x-4
             "
           >
             {[...NAV_PRIMARY, ...NAV_SECONDARY].map((item) => {
@@ -230,23 +260,22 @@ export const Navbar = () => {
                       whitespace-nowrap
                       items-center
                       rounded-md
-                      px-1.5
+                      px-2
                       py-1
-                      text-[11.5px]
+                      text-[12px]
                       font-bold
-                      tracking-tight
+                      tracking-[0.02em]
                       transition-all
                       duration-200
                       ease-out
                       focus:outline-none
                       focus-visible:ring-2
                       focus-visible:ring-[#F59E0B]
-                      lg:text-[12px]
-                      xl:px-2
-                      xl:text-[13px]
-                      xl:tracking-normal
-                      2xl:px-2.5
-                      2xl:text-[14px]
+                      lg:text-[12.5px]
+                      xl:px-2.5
+                      xl:text-[13.5px]
+                      2xl:px-3
+                      2xl:text-[14.5px]
                       ${active
                         ? 'text-[#E87500]'
                         : 'text-[#344054] hover:text-[#E87500]'
@@ -280,23 +309,22 @@ export const Navbar = () => {
                     whitespace-nowrap
                     items-center
                     rounded-md
-                    px-1.5
+                    px-2
                     py-1
-                    text-[11.5px]
+                    text-[12px]
                     font-bold
-                    tracking-tight
+                    tracking-[0.02em]
                     transition-all
                     duration-200
                     ease-out
                     focus:outline-none
                     focus-visible:ring-2
                     focus-visible:ring-[#F59E0B]
-                    lg:text-[12px]
-                    xl:px-2
-                    xl:text-[13px]
-                    xl:tracking-normal
-                    2xl:px-2.5
-                    2xl:text-[14px]
+                    lg:text-[12.5px]
+                    xl:px-2.5
+                    xl:text-[13.5px]
+                    2xl:px-3
+                    2xl:text-[14.5px]
 
                     ${active
                       ? 'text-[#E87500]'

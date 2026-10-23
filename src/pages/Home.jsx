@@ -350,7 +350,7 @@ function Home() {
               return (
                 <div
                   key={`${slide.image}-${index}`}
-                  className={`${position !== 0 ? 'hidden lg:block' : ''} absolute left-1/2 top-1/2 h-full w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] sm:rounded-3xl lg:h-[92%] lg:w-[71%] lg:rounded-[24px] xl:w-[69%]`}
+                  className={`${position !== 0 ? 'hidden lg:block' : ''} absolute left-1/2 top-1/2 h-full w-full overflow-hidden border border-slate-200 bg-slate-100 shadow-sm transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] lg:h-[92%] lg:w-[71%] xl:w-[69%]`}
                   style={{
                     transform,
                     opacity,

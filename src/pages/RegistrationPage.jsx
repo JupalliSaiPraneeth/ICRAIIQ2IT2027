@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { conferenceData } from '../data/conferenceData';
 
 const DEFAULT_BANK_DETAILS = {
-  accountName: 'The Principal',
-  bankName: 'BANK OF BARODA',
-  accountNumber: 'Available upon invoice / submission request',
-  ifsc: 'BARB0AGIRIP',
-  branch: 'Agiripalli / Pothavarappadu',
-  upiId: 'icraiq2it27@barodampay',
+  bank: 'Bank of Baroda, Benz Circle Branch',
+  accountName: 'Principal, NRI Institute of Technology',
+  accountNumber: '26360100033044',
+  ifsc: 'BARB0BENVIJ',
+  accountType: 'Savings',
 };
 
 const FEE_SCHEDULE_DATA = [
@@ -35,7 +34,7 @@ const FEE_SCHEDULE_DATA = [
   },
   {
     category: 'Publication Fee for Proceedings',
-    indiaAuthor: '10000',
+    indiaAuthor: '6000',
     indiaListener: '–',
     otherAuthor: '$100',
     otherListener: '–',
@@ -58,12 +57,11 @@ export const RegistrationPage = () => {
     '';
 
   const bankDetails = {
+    bank: getValue(data.bankDetails?.bank, DEFAULT_BANK_DETAILS.bank),
     accountName: getValue(data.bankDetails?.accountName, DEFAULT_BANK_DETAILS.accountName),
-    bankName: getValue(data.bankDetails?.bankName, DEFAULT_BANK_DETAILS.bankName),
     accountNumber: getValue(data.bankDetails?.accountNumber, DEFAULT_BANK_DETAILS.accountNumber),
     ifsc: getValue(data.bankDetails?.ifsc, DEFAULT_BANK_DETAILS.ifsc),
-    branch: getValue(data.bankDetails?.branch, DEFAULT_BANK_DETAILS.branch),
-    upiId: getValue(data.bankDetails?.upiId, DEFAULT_BANK_DETAILS.upiId),
+    accountType: getValue(data.bankDetails?.accountType, DEFAULT_BANK_DETAILS.accountType),
   };
 
   const openRegistrationForm = () => {
@@ -86,14 +84,13 @@ export const RegistrationPage = () => {
 
   const copyAllBankDetails = async () => {
     const details = [
-      `Beneficiary Name: ${bankDetails.accountName}`,
-      `Bank: ${bankDetails.bankName}`,
-      `Branch: ${bankDetails.branch}`,
-      `IFSC Code: ${bankDetails.ifsc}`,
-      `Account Number: ${bankDetails.accountNumber}`,
-      `UPI ID: ${bankDetails.upiId}`,
+      `Bank: ${bankDetails.bank}`,
+      `Account Name: ${bankDetails.accountName}`,
+      `Account No.: ${bankDetails.accountNumber}`,
+      `IFSC: ${bankDetails.ifsc}`,
+      `Account Type: ${bankDetails.accountType}`,
     ].join('\n');
-    copyText(details, 'Complete bank details');
+    copyText(details, 'Complete payment details');
   };
 
   const scrollToSection = (id) => {
@@ -127,17 +124,17 @@ export const RegistrationPage = () => {
             </button>
             <button
               type="button"
-              onClick={() => scrollToSection('bank-remittance')}
+              onClick={() => scrollToSection('fee-schedule')}
               className="inline-flex items-center justify-center rounded border border-[#F97316] px-1.5 py-1.5 text-center text-xs font-bold text-[#F97316] transition-colors hover:bg-orange-50 sm:px-3 sm:text-sm lg:px-3"
             >
-              Bank Details
+              Fee Tiers Table
             </button>
             <button
               type="button"
-              onClick={() => scrollToSection('fee-schedule')}
+              onClick={() => scrollToSection('payment-details')}
               className="inline-flex items-center justify-center rounded border border-slate-300 px-1.5 py-1.5 text-center text-xs font-bold text-slate-600 transition-colors hover:border-[#F97316] hover:text-[#F97316] sm:px-3 sm:text-sm lg:px-3"
             >
-              Fee Tiers Table
+              Payment Details
             </button>
             <span className="inline-flex items-center justify-center rounded bg-orange-100 px-1 py-1.5 text-center text-[9px] font-bold text-[#ea580c] sm:px-2 sm:text-xs lg:px-3 lg:py-1.5 lg:text-sm">
               Author Reg. Due: 10th Mar 2027
@@ -156,150 +153,7 @@ export const RegistrationPage = () => {
       {/* ── MAIN CONTENT (COMPACT SPACING, NO GAPS) ── */}
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8 mt-2.5 space-y-2.5">
 
-        {/* ── 1. TWO-STEP PROCEDURE ── */}
-        <div id="bank-remittance" className="grid grid-cols-1 lg:grid-cols-2 gap-2.5 lg:gap-3">
-
-          {/* STEP 1: BANK REMITTANCE */}
-          <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-sm h-full flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between gap-2 mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded bg-orange-100 text-sm font-bold text-orange-700">
-                    1
-                  </span>
-                  <h2 className="text-base font-bold text-[#17213a] sm:text-lg">Step 1: Remit Registration Fee</h2>
-                </div>
-              </div>
-              <p className="text-sm text-slate-600 leading-relaxed sm:text-[15px]">
-                Transfer the applicable fee via Bank of Baroda NEFT/RTGS/IMPS or UPI. Retain the UTR transaction number and payment receipt.
-              </p>
-
-              {/* Bank Details Table */}
-              <div className="mt-3 border border-slate-200 rounded-lg divide-y divide-slate-100 text-sm">
-                <div className="bg-slate-50/60 p-2.5">
-                  <span className="text-xs font-bold uppercase text-slate-400 block">Beneficiary Name</span>
-                  <strong className="mt-0.5 block break-words text-sm leading-snug text-[#17213a]">{bankDetails.accountName}</strong>
-                </div>
-
-                <div className="grid grid-cols-1 divide-y divide-slate-100 min-[480px]:grid-cols-2 min-[480px]:divide-y-0 min-[480px]:divide-x">
-                  <div className="p-2.5">
-                    <span className="text-xs font-bold uppercase text-slate-400 block">Bank &amp; Branch</span>
-                    <span className="text-sm font-semibold text-slate-800 block mt-0.5">{bankDetails.bankName}</span>
-                    <span className="text-xs text-slate-500 block">{bankDetails.branch}</span>
-                  </div>
-                  <div className="flex items-start justify-between gap-2 p-2.5">
-                    <div className="min-w-0">
-                      <span className="text-xs font-bold uppercase text-slate-400 block">IFSC Code</span>
-                      <strong className="mt-0.5 block break-all font-mono text-sm text-[#F97316]">{bankDetails.ifsc}</strong>
-                      <span className="text-xs text-slate-400 block">5th char zero</span>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => copyText(bankDetails.ifsc, 'IFSC Code')}
-                      className="text-sm font-bold text-[#F97316] hover:underline"
-                    >
-                      Copy
-                    </button>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 divide-y divide-slate-100 min-[480px]:grid-cols-2 min-[480px]:divide-y-0 min-[480px]:divide-x">
-                  <div className="flex items-start justify-between gap-2 p-2.5">
-                    <div className="min-w-0 flex-1">
-                      <span className="text-xs font-bold uppercase text-slate-400 block">UPI ID (VPA)</span>
-                      <strong className="mt-0.5 block break-all font-mono text-sm leading-snug text-[#17213a]">{bankDetails.upiId}</strong>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => copyText(bankDetails.upiId, 'UPI ID')}
-                      className="shrink-0 text-sm font-bold text-[#F97316] hover:underline"
-                    >
-                      Copy
-                    </button>
-                  </div>
-                  <div className="min-w-0 p-2.5">
-                    <span className="text-xs font-bold uppercase text-slate-400 block">Account Number</span>
-                    <span className="mt-0.5 block break-words text-sm text-slate-700">{bankDetails.accountNumber}</span>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-start justify-between gap-2 bg-slate-50/40 p-2.5 text-sm text-slate-600 min-[480px]:flex-row min-[480px]:items-center">
-                  <span className="min-w-0">
-                    <strong className="text-slate-700">Remarks / Narration:</strong> Include your Microsoft CMT Paper ID
-                  </span>
-                  <span className="text-xs text-orange-600 font-semibold bg-orange-50 px-2 py-1 rounded border border-orange-100">
-                    Important
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Actions for Step 1 */}
-            <div className="mt-3 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-sm">
-              <button
-                type="button"
-                onClick={copyAllBankDetails}
-                className="font-bold text-[#F97316] hover:underline text-sm"
-              >
-                Copy All Bank Info
-              </button>
-              <span className="text-slate-500 text-sm">Save UTR receipt for Step 2</span>
-            </div>
-          </div>
-
-          {/* STEP 2: SUBMIT REGISTRATION FORM */}
-          <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-sm h-full flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between gap-2 mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded bg-[#17213a] text-sm font-bold text-white">
-                    2
-                  </span>
-                  <h2 className="text-base font-bold text-[#17213a] sm:text-lg">Step 2: Submit Registration Form</h2>
-                </div>
-              </div>
-              <p className="text-sm text-slate-600 leading-relaxed sm:text-[15px]">
-                Complete the official registration form with your manuscript title, Microsoft CMT Paper ID, author affiliations, and payment proof.
-              </p>
-
-              {/* Form Checklist Box */}
-              <div className="mt-3 border border-slate-200 rounded-lg divide-y divide-slate-100 text-sm">
-                <div className="p-2.5 bg-slate-50/60 font-bold uppercase text-xs text-slate-400">
-                  Required Details for Registration Form
-                </div>
-                <div className="p-2.5 text-slate-700">
-                  <span className="font-semibold block text-slate-800">1. Microsoft CMT Paper ID &amp; Paper Title</span>
-                  <span className="text-sm text-slate-500 block mt-0.5">As approved in peer review notification.</span>
-                </div>
-                <div className="p-2.5 text-slate-700">
-                  <span className="font-semibold block text-slate-800">2. Presenting Author &amp; Institutional Affiliation</span>
-                  <span className="text-sm text-slate-500 block mt-0.5">Full name, department, institution, and country.</span>
-                </div>
-                <div className="p-2.5 text-slate-700">
-                  <span className="font-semibold block text-slate-800">3. Bank UTR / Reference Number &amp; Receipt Proof</span>
-                  <span className="text-sm text-slate-500 block mt-0.5">Upload screenshot or transaction slip.</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Actions for Step 2 */}
-            <div className="mt-3 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-end gap-2 text-sm">
-              <div className="flex items-center gap-2 text-slate-500 text-sm">
-                <span>Queries?</span>
-                <button
-                  type="button"
-                  onClick={() => copyText('icraiq2it27@nriit.edu.in', 'Secretariat Email')}
-                  className="font-bold text-[#F97316] hover:underline"
-                >
-                  Copy Email
-                </button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* ── 2. REGISTRATION CATEGORIES & FEE TIERS (EXACT PHOTO TABLE FORMAT) ── */}
+        {/* ── 1. REGISTRATION CATEGORIES & FEE TIERS (EXACT PHOTO TABLE FORMAT) ── */}
         <div id="fee-schedule" className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 pb-3 border-b border-slate-100">
             <div>
@@ -367,6 +221,151 @@ export const RegistrationPage = () => {
           </div>
         </div>
 
+        {/* ── 2. PAYMENT DETAILS (LEFT) & PUBLICATION / PAGE GUIDELINES (RIGHT) ── */}
+        <div id="payment-details" className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4 items-stretch">
+
+          {/* Left Grid: Bank Details */}
+          <div className="bg-white border border-slate-200 rounded-xl p-3 sm:p-4 shadow-sm h-full flex flex-col justify-between">
+            <div>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-2 pb-2 border-b border-slate-100">
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#F97316]">Account Remittance</span>
+                  <h2 className="text-base sm:text-lg font-bold text-[#17213a]">Payment Details</h2>
+                </div>
+                <button
+                  type="button"
+                  onClick={copyAllBankDetails}
+                  className="inline-flex items-center gap-1.5 self-start sm:self-auto rounded-lg border border-orange-200 bg-orange-50/70 px-2.5 py-1 text-xs font-bold text-orange-700 shadow-2xs transition hover:bg-orange-100"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  Copy Payment Details
+                </button>
+              </div>
+
+              <div className="overflow-x-auto" role="region" aria-label="Payment details table" tabIndex={0}>
+                <table className="w-full border-collapse text-left text-xs sm:text-sm">
+                  <thead>
+                    <tr className="border-b-2 border-slate-800 text-[#17213a] font-bold">
+                      <th className="py-1.5 px-2.5 sm:py-2 sm:px-3 w-36 sm:w-44 whitespace-nowrap">Particulars</th>
+                      <th className="py-1.5 px-2.5 sm:py-2 sm:px-3">Details</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 text-slate-800">
+                    <tr className="hover:bg-slate-50/60 transition-colors">
+                      <td className="py-1.5 px-2.5 sm:py-2 sm:px-3 font-semibold text-[#17213a] whitespace-nowrap">Bank</td>
+                      <td className="py-1.5 px-2.5 sm:py-2 sm:px-3 font-medium text-slate-800">{bankDetails.bank}</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/60 transition-colors">
+                      <td className="py-1.5 px-2.5 sm:py-2 sm:px-3 font-semibold text-[#17213a] whitespace-nowrap">Account Name</td>
+                      <td className="py-1.5 px-2.5 sm:py-2 sm:px-3 font-semibold text-slate-900">{bankDetails.accountName}</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/60 transition-colors">
+                      <td className="py-1.5 px-2.5 sm:py-2 sm:px-3 font-semibold text-[#17213a] whitespace-nowrap">Account No.</td>
+                      <td className="py-1.5 px-2.5 sm:py-2 sm:px-3">
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 text-xs sm:text-sm">
+                            {bankDetails.accountNumber}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => copyText(bankDetails.accountNumber, 'Account Number')}
+                            className="inline-flex items-center gap-1 text-xs font-bold text-[#F97316] hover:text-[#ea580c] hover:underline"
+                          >
+                            Copy
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/60 transition-colors">
+                      <td className="py-1.5 px-2.5 sm:py-2 sm:px-3 font-semibold text-[#17213a] whitespace-nowrap">IFSC</td>
+                      <td className="py-1.5 px-2.5 sm:py-2 sm:px-3">
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono font-bold text-[#ea580c] bg-orange-50 px-2 py-0.5 rounded border border-orange-200 text-xs sm:text-sm">
+                            {bankDetails.ifsc}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => copyText(bankDetails.ifsc, 'IFSC Code')}
+                            className="inline-flex items-center gap-1 text-xs font-bold text-[#F97316] hover:text-[#ea580c] hover:underline"
+                          >
+                            Copy
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/60 transition-colors">
+                      <td className="py-1.5 px-2.5 sm:py-2 sm:px-3 font-semibold text-[#17213a] whitespace-nowrap">Account Type</td>
+                      <td className="py-1.5 px-2.5 sm:py-2 sm:px-3 font-medium text-slate-800">{bankDetails.accountType}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Grid: Publication & Registration Guidelines (Height Balanced, No Tinted BG) */}
+          <div className="bg-white border border-slate-200 rounded-xl p-3 sm:p-4 shadow-sm h-full flex flex-col justify-between">
+            <div>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-2 pb-2 border-b border-slate-100">
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#F97316]">Publication &amp; Notes</span>
+                  <h2 className="text-base sm:text-lg font-bold text-[#17213a]">Guidelines &amp; Additional Charges</h2>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                {/* Point 1: Publication with ISBN number */}
+                <div className="rounded-lg border border-slate-200 bg-white py-2 px-3 flex items-center justify-between gap-3">
+                  <div>
+                    <h4 className="text-sm font-bold text-[#17213a]">
+                      Publication with ISBN Number
+                    </h4>
+                    <p className="text-xs text-slate-500">
+                      (Google Scholar Indexed)
+                    </p>
+                  </div>
+                  <span className="shrink-0 font-bold text-sm sm:text-base text-[#F97316]">
+                    ₹2,000
+                  </span>
+                </div>
+
+                {/* Point 2: Extra page beyond six pages */}
+                <div className="rounded-lg border border-slate-200 bg-white py-2 px-3 flex items-center justify-between gap-3">
+                  <div>
+                    <h4 className="text-sm font-bold text-[#17213a]">
+                      Extra Page Charges
+                    </h4>
+                    <p className="text-xs text-slate-500">
+                      Beyond six (6) pages
+                    </p>
+                  </div>
+                  <span className="shrink-0 font-bold text-sm sm:text-base text-[#17213a]">
+                    ₹1,500 <span className="text-xs font-normal text-slate-500">/ page extra</span>
+                  </span>
+                </div>
+
+                {/* Additional Remittance Points */}
+                <div className="rounded-lg border border-slate-200 bg-white py-2 px-3 text-xs text-slate-600 space-y-1">
+                  <div className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#F97316]" />
+                    <span>
+                      <strong className="text-slate-800">Accepted Transfer Modes:</strong> NEFT, RTGS, IMPS, Net Banking, or UPI to the account on the left.
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#F97316]" />
+                    <span>
+                      <strong className="text-slate-800">Paper Reference:</strong> Mandatorily quote your Paper ID in remarks and retain transaction UTR number / payment proof.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
 
       </div>
 
