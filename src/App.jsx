@@ -17,6 +17,7 @@ import AwardsPage from './pages/AwardsPage';
 import AccommodationPage from './pages/AccommodationPage';
 import GalleryPage from './pages/GalleryPage';
 import PreviousProceedingsPage from './pages/PreviousProceedingsPage';
+import ConferenceArchivesPage from './pages/ConferenceArchivesPage';
 import BrochurePage from './pages/BrochurePage';
 
 // Scroll to top automatically on route change
@@ -51,8 +52,10 @@ export function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/awards" element={<AwardsPage />} />
             <Route path="/accommodation" element={<AccommodationPage />} />
-            <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/previous-proceedings" element={<PreviousProceedingsPage />} />
+            <Route path="/archives" element={<ConferenceArchivesPage />} />
+            <Route path="/conference-archives" element={<ConferenceArchivesPage />} />
+            <Route path="/gallery" element={<ConferenceArchivesPage defaultTab="gallery" />} />
+            <Route path="/previous-proceedings" element={<ConferenceArchivesPage defaultTab="proceedings" />} />
             <Route path="/souvenir" element={<Navigate to="/previous-proceedings" replace />} />
             <Route path="/brochure" element={<BrochurePage />} />
             <Route path="*" element={<Home />} />

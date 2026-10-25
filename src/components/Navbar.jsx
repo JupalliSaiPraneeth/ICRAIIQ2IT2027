@@ -21,8 +21,7 @@ const NAV_PRIMARY = [
 ];
 
 const NAV_SECONDARY = [
-  { label: 'GALLERY', to: '/gallery' },
-  { label: 'PREVIOUS PROCEEDINGS', to: '/previous-proceedings' },
+  { label: 'CONFERENCE ARCHIVES', to: '/archives' },
   { label: 'BROCHURE', to: '/brochure' },
 ];
 
@@ -111,6 +110,15 @@ export const Navbar = () => {
       return location.pathname === '/';
     }
 
+    if (path === '/archives') {
+      return (
+        location.pathname === '/archives' ||
+        location.pathname === '/conference-archives' ||
+        location.pathname === '/gallery' ||
+        location.pathname === '/previous-proceedings'
+      );
+    }
+
     return location.pathname === path;
   };
 
@@ -130,9 +138,9 @@ export const Navbar = () => {
           className="shrink-0 flex items-center"
         >
           <img
-            src="/nrilogo.png"
-            alt="NRI Institute of Technology Logo"
-            className="h-12 sm:h-14 w-auto object-contain"
+            src="/mainlogo.png"
+            alt="Conference Logo"
+            className="h-12 sm:h-14 w-[68px] sm:w-[78px] object-fill"
           />
         </Link>
         <div className="h-8 w-px bg-slate-200 shrink-0" aria-hidden="true" />
@@ -156,9 +164,9 @@ export const Navbar = () => {
           type="button"
           onClick={() => setMobileMenuOpen(true)}
           aria-label="Open navigation menu"
-          className="inline-flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-[#1D315F] shadow-sm transition-colors hover:border-[#F59E0B] hover:bg-[#FFF7E6] hover:text-[#E87500] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]"
+          className="inline-flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center text-[#1D315F] transition-colors hover:text-[#E87500] focus-visible:outline-none"
         >
-          <Menu className="h-5 w-5" />
+          <Menu className="h-6 w-6" />
         </button>
       </div>
 
@@ -174,9 +182,9 @@ export const Navbar = () => {
                 className="flex items-center group transition-transform duration-200 hover:scale-105"
               >
                 <img
-                  src="/nrilogo.png"
-                  alt="NRI Institute of Technology Logo"
-                  className="h-[78px] xl:h-[84px] 2xl:h-[92px] w-auto object-contain drop-shadow-xs"
+                  src="/mainlogo.png"
+                  alt="Conference Logo"
+                  className="h-[78px] xl:h-[84px] 2xl:h-[92px] w-[108px] xl:w-[122px] 2xl:w-[134px] object-fill drop-shadow-xs"
                 />
               </Link>
             </div>
@@ -248,7 +256,7 @@ export const Navbar = () => {
                 return (
                   <a
                     key={item.label}
-                    href="/brocher/ICRAIQ2IT%20-%202027%20Brochure%20-%20English%2029092026.pdf"
+                    href="/brocher/ICRAIQ2IT_2027_Brochure_3pages_updated%20%281%29.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`
@@ -483,7 +491,7 @@ export const Navbar = () => {
                     return (
                       <a
                         key={item.label}
-                        href="/brocher/ICRAIQ2IT%20-%202027%20Brochure%20-%20English%2029092026.pdf"
+                        href="/brocher/ICRAIQ2IT_2027_Brochure_3pages_updated%20%281%29.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={closeMobileMenu}

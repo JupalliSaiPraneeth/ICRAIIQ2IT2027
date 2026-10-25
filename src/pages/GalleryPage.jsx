@@ -99,14 +99,15 @@ export const GalleryPage = () => {
         {/* =====================================================
             CONFERENCE SELECTOR
            ===================================================== */}
-        <div className="mb-6 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+        {/* Conference Selector Grid (Aligned on Mobile & Tablet) */}
+        <div className="mb-6 grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center gap-2.5 sm:gap-3 max-w-md sm:max-w-2xl lg:max-w-none mx-auto">
           <button
             type="button"
             onClick={() => {
               setActiveConference('conference-1');
               closeImage();
             }}
-            className={`min-w-[190px] sm:min-w-[220px] rounded-lg border px-3.5 py-2 text-xs sm:text-sm font-semibold transition-all duration-200 ${activeConference === 'conference-1'
+            className={`w-full lg:w-auto lg:min-w-[210px] xl:min-w-[230px] rounded-lg border px-3.5 py-2.5 text-center text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center justify-center ${activeConference === 'conference-1'
               ? 'border-[#F97316] bg-[#F97316] font-bold text-white shadow-md'
               : 'border-orange-200 bg-[#FFFBF8] text-slate-900 hover:border-[#F97316] hover:bg-orange-50'
               }`}
@@ -120,7 +121,7 @@ export const GalleryPage = () => {
               setActiveConference('conference-2');
               closeImage();
             }}
-            className={`min-w-[190px] sm:min-w-[220px] rounded-lg border px-3.5 py-2 text-xs sm:text-sm font-semibold transition-all duration-200 ${activeConference === 'conference-2'
+            className={`w-full lg:w-auto lg:min-w-[210px] xl:min-w-[230px] rounded-lg border px-3.5 py-2.5 text-center text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center justify-center ${activeConference === 'conference-2'
               ? 'border-[#F97316] bg-[#F97316] font-bold text-white shadow-md'
               : 'border-orange-200 bg-[#FFFBF8] text-slate-900 hover:border-[#F97316] hover:bg-orange-50'
               }`}
@@ -134,7 +135,7 @@ export const GalleryPage = () => {
               setActiveConference('conference-3');
               closeImage();
             }}
-            className={`min-w-[190px] sm:min-w-[220px] rounded-lg border px-3.5 py-2 text-xs sm:text-sm font-semibold transition-all duration-200 ${activeConference === 'conference-3'
+            className={`w-full lg:w-auto lg:min-w-[210px] xl:min-w-[230px] rounded-lg border px-3.5 py-2.5 text-center text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center justify-center ${activeConference === 'conference-3'
               ? 'border-[#F97316] bg-[#F97316] font-bold text-white shadow-md'
               : 'border-orange-200 bg-[#FFFBF8] text-slate-900 hover:border-[#F97316] hover:bg-orange-50'
               }`}
@@ -148,7 +149,7 @@ export const GalleryPage = () => {
               setActiveConference('conference-4');
               closeImage();
             }}
-            className={`min-w-[190px] sm:min-w-[220px] rounded-lg border px-3.5 py-2 text-xs sm:text-sm font-semibold transition-all duration-200 ${activeConference === 'conference-4'
+            className={`w-full lg:w-auto lg:min-w-[210px] xl:min-w-[230px] rounded-lg border px-3.5 py-2.5 text-center text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center justify-center ${activeConference === 'conference-4'
               ? 'border-[#F97316] bg-[#F97316] font-bold text-white shadow-md'
               : 'border-orange-200 bg-[#FFFBF8] text-slate-900 hover:border-[#F97316] hover:bg-orange-50'
               }`}
@@ -161,7 +162,7 @@ export const GalleryPage = () => {
         {/* =====================================================
             PHOTO GRID
            ===================================================== */}
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3">
           {selectedConference.images.map((image, index) => (
             <button
               key={`${selectedConference.id}-${index}`}

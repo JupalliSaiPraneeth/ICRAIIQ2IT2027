@@ -472,12 +472,18 @@ export const conferenceData = {
       {
         name: "Dr. K. V. Sambasiva Rao",
         designation: "Professor & Dean, R & D, Dr RVR NRIIT (DTBU)",
-        email: "icraiq2it27@nriit.edu.in"
+        email: "kvsrao@nriit.edu.in"
       },
       {
         name: "Dr. D. Sunitha",
         designation: "HOD & Dean : School of Computer Studies, Dr RVR NRIIT (DTBU)",
-        email: "icraiq2it27@nriit.edu.in"
+        email: "sunitha@nriit.edu.in"
+      },
+      {
+        name: "Jithendra",
+        designation: "SPOC (Single Point of Contact), Dr RVR NRIIT (DTBU)",
+        email: "jithendra@nriit.edu.in",
+        phone: "+91 94409 48018"
       }
     ]
   },

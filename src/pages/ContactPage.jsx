@@ -51,11 +51,11 @@ export const ContactPage = () => {
 
               <div className="shrink-0 border-t border-slate-100 pt-1.5 sm:border-t-0 sm:pt-0">
                 <a
-                  href={`mailto:${contactEmail}?subject=${encodeURIComponent('[ICRAIIQ2IT-2027] Query for Dr. K. V. Sambasiva Rao')}`}
+                  href="mailto:kvsrao@nriit.edu.in"
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#F97316] hover:underline"
                 >
                   <Mail className="h-4 w-4" />
-                  <span>Email Dr. Rao</span>
+                  <span>kvsrao@nriit.edu.in</span>
                 </a>
               </div>
             </div>
@@ -75,11 +75,11 @@ export const ContactPage = () => {
 
               <div className="shrink-0 border-t border-slate-100 pt-1.5 sm:border-t-0 sm:pt-0">
                 <a
-                  href={`mailto:${contactEmail}?subject=${encodeURIComponent('[ICRAIIQ2IT-2027] Query for Dr. D. Sunitha')}`}
+                  href="mailto:sunitha@nriit.edu.in"
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#F97316] hover:underline"
                 >
                   <Mail className="h-4 w-4" />
-                  <span>Email Dr. Sunitha</span>
+                  <span>sunitha@nriit.edu.in</span>
                 </a>
               </div>
             </div>
@@ -97,12 +97,19 @@ export const ContactPage = () => {
                 </p>
               </div>
 
-              <div className="shrink-0 border-t border-slate-100 pt-1.5 sm:border-t-0 sm:pt-0">
+              <div className="shrink-0 border-t border-slate-100 pt-1.5 sm:border-t-0 sm:pt-0 flex flex-col sm:items-end gap-1.5">
                 <a
-                  href="tel:+919440948018"
+                  href="mailto:jithendra@nriit.edu.in"
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#F97316] hover:underline"
                 >
-                  <Phone className="h-4 w-4" />
+                  <Mail className="h-4 w-4" />
+                  <span>jithendra@nriit.edu.in</span>
+                </a>
+                <a
+                  href="tel:+919440948018"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-[#F97316] hover:underline"
+                >
+                  <Phone className="h-4 w-4 text-[#F97316]" />
                   <span>+91 94409 48018</span>
                 </a>
               </div>

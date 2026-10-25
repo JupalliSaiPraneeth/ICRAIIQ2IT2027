@@ -18,8 +18,7 @@ const NAV_PRIMARY = [
 ];
 
 const NAV_SECONDARY = [
-  { label: 'GALLERY', to: '/gallery' },
-  { label: 'PREVIOUS PROCEEDINGS', to: '/previous-proceedings' },
+  { label: 'CONFERENCE ARCHIVES', to: '/archives' },
   { label: 'BROCHURE', to: '/brochure' },
 ];
 
@@ -107,7 +106,7 @@ export const Footer = () => {
                 return (
                   <a
                     key={item.label}
-                    href="/brocher/ICRAIQ2IT%20-%202027%20Brochure%20-%20English%2029092026.pdf"
+                    href="/brocher/ICRAIQ2IT_2027_Brochure_3pages_updated%20%281%29.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block text-sm text-slate-600 transition hover:text-[#f97316]"

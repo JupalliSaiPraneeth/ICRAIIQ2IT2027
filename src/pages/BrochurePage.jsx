@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { FileText, Download, CheckCircle2, ExternalLink, Eye, Sparkles } from 'lucide-react';
 
-const BROCHURE_URL = '/brocher/ICRAIQ2IT%20-%202027%20Brochure%20-%20English%2029092026.pdf';
-const BROCHURE_FILENAME = 'ICRAIQ2IT - 2027 Brochure - English.pdf';
+const BROCHURE_URL = '/brocher/ICRAIQ2IT_2027_Brochure_3pages_updated%20%281%29.pdf';
+const BROCHURE_FILENAME = 'ICRAIQ2IT_2027_Brochure.pdf';
 
 export const BrochurePage = () => {
   const [showEmbeddedViewer, setShowEmbeddedViewer] = useState(true);
@@ -56,7 +56,7 @@ export const BrochurePage = () => {
                   5<sup>th</sup> International Conference on Recent Advancements in AI, Quantum Intelligence &amp; Inclusive Technologies
                 </p>
                 <div className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-orange-50 px-3 py-1 text-[11px] font-bold text-orange-700">
-                  <span>PDF Document • 830 KB</span>
+                  <span>PDF Document • 2.4 MB (3 Pages)</span>
                 </div>
               </div>
             </div>
