@@ -1,0 +1,73 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "slug": "brand-primary",
+          "color": "#fb9200",
+          "name": "Brand Orange"
+        },
+        {
+          "slug": "brand-accent",
+          "color": "#F97316",
+          "name": "Orange Accent"
+        },
+        {
+          "slug": "navy-950",
+          "color": "#060911",
+          "name": "Deep Navy"
+        },
+        {
+          "slug": "navy-900",
+          "color": "#0a0f1d",
+          "name": "Surface Navy"
+        },
+        {
+          "slug": "navy-850",
+          "color": "#0f172a",
+          "name": "Navy Card"
+        },
+        {
+          "slug": "navy-header",
+          "color": "#1D315F",
+          "name": "Header Navy"
+        },
+        {
+          "slug": "white",
+          "color": "#ffffff",
+          "name": "Pure White"
+        },
+        {
+          "slug": "slate-50",
+          "color": "#f8fafc",
+          "name": "Slate Light"
+        },
+        {
+          "slug": "slate-900",
+          "color": "#0f172a",
+          "name": "Slate Dark"
+        }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+          "name": "Sans",
+          "slug": "sans"
+        },
+        {
+          "fontFamily": "'JetBrains Mono', monospace",
+          "name": "Mono",
+          "slug": "mono"
+        }
+      ]
+    },
+    "layout": {
+      "contentSize": "1280px",
+      "wideSize": "1440px"
+    }
+  }
+}
