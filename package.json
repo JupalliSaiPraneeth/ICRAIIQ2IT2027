@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "wp": "npx -y @wp-playground/cli start --path=./wordpress/wp-content/themes/icraiiq2it-2027",
+    "wp:build-css": "npx tailwindcss -i ./src/index.css -o ./wordpress/wp-content/themes/icraiiq2it-2027/assets/css/main.css --minify"
   },
   "dependencies": {
     "framer-motion": "^11.0.8",
