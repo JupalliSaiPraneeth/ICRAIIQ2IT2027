@@ -499,9 +499,8 @@ export const RegistrationPage = () => {
                 {FEE_SCHEDULE_DATA.map((row) => (
                   <tr
                     key={row.category}
-                    className={`transition-colors ${
-                      row.isHighlight ? 'bg-orange-50/30 font-medium' : 'hover:bg-slate-50/60'
-                    }`}
+                    className={`transition-colors ${row.isHighlight ? 'bg-orange-50/30 font-medium' : 'hover:bg-slate-50/60'
+                      }`}
                   >
                     <td className="py-2 px-3 font-semibold text-[#17213a]">
                       <div>{row.category}</div>
@@ -590,11 +589,10 @@ export const RegistrationPage = () => {
                         value={reckoner.email}
                         onChange={(e) => setReckoner({ ...reckoner, email: e.target.value })}
                         placeholder="author@institution.edu"
-                        className={`w-full rounded-md border bg-white py-1.5 pl-8 pr-2.5 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 ${
-                          reckoner.email && !isValidEmail(reckoner.email)
+                        className={`w-full rounded-md border bg-white py-1.5 pl-8 pr-2.5 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 ${reckoner.email && !isValidEmail(reckoner.email)
                             ? 'border-red-400 focus:border-red-500 focus:ring-red-400'
                             : 'border-slate-200 focus:border-[#F97316] focus:ring-[#F97316]'
-                        }`}
+                          }`}
                       />
                     </div>
                   </div>
@@ -610,11 +608,10 @@ export const RegistrationPage = () => {
                         value={reckoner.phone}
                         onChange={(e) => setReckoner({ ...reckoner, phone: e.target.value })}
                         placeholder={reckoner.nationality === 'IN' ? '10-digit mobile' : '+1 234 567 890'}
-                        className={`w-full rounded-md border bg-white py-1.5 pl-8 pr-2.5 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 ${
-                          reckoner.phone && !isValidPhone(reckoner.phone, reckoner.nationality)
+                        className={`w-full rounded-md border bg-white py-1.5 pl-8 pr-2.5 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 ${reckoner.phone && !isValidPhone(reckoner.phone, reckoner.nationality)
                             ? 'border-red-400 focus:border-red-500 focus:ring-red-400'
                             : 'border-slate-200 focus:border-[#F97316] focus:ring-[#F97316]'
-                        }`}
+                          }`}
                       />
                     </div>
                   </div>
@@ -629,22 +626,20 @@ export const RegistrationPage = () => {
                     <button
                       type="button"
                       onClick={() => setReckoner({ ...reckoner, nationality: 'IN' })}
-                      className={`rounded-md py-1.5 px-2 text-xs font-bold transition-all text-center ${
-                        reckoner.nationality === 'IN'
+                      className={`rounded-md py-1.5 px-2 text-xs font-bold transition-all text-center ${reckoner.nationality === 'IN'
                           ? 'bg-white text-[#F97316] shadow-2xs'
                           : 'text-slate-600 hover:text-slate-900'
-                      }`}
+                        }`}
                     >
                       Indian (₹ INR)
                     </button>
                     <button
                       type="button"
                       onClick={() => setReckoner({ ...reckoner, nationality: 'INT' })}
-                      className={`rounded-md py-1.5 px-2 text-xs font-bold transition-all text-center ${
-                        reckoner.nationality === 'INT'
+                      className={`rounded-md py-1.5 px-2 text-xs font-bold transition-all text-center ${reckoner.nationality === 'INT'
                           ? 'bg-white text-[#F97316] shadow-2xs'
                           : 'text-slate-600 hover:text-slate-900'
-                      }`}
+                        }`}
                     >
                       International ($ USD)
                     </button>
@@ -717,11 +712,10 @@ export const RegistrationPage = () => {
                         <button
                           type="button"
                           onClick={() => setReckoner({ ...reckoner, proceedings: 'scopus' })}
-                          className={`rounded-md py-1.5 px-2 text-center transition-all ${
-                            reckoner.proceedings === 'scopus'
+                          className={`rounded-md py-1.5 px-2 text-center transition-all ${reckoner.proceedings === 'scopus'
                               ? 'bg-white text-[#F97316] shadow-2xs font-bold'
                               : 'text-slate-600 hover:text-slate-900 font-semibold'
-                          }`}
+                            }`}
                         >
                           <span className="block text-xs">Scopus-indexed</span>
                           <span className="block text-[10px] text-slate-500 font-normal">
@@ -732,11 +726,10 @@ export const RegistrationPage = () => {
                         <button
                           type="button"
                           onClick={() => setReckoner({ ...reckoner, proceedings: 'non' })}
-                          className={`rounded-md py-1.5 px-2 text-center transition-all ${
-                            reckoner.proceedings === 'non'
+                          className={`rounded-md py-1.5 px-2 text-center transition-all ${reckoner.proceedings === 'non'
                               ? 'bg-white text-[#F97316] shadow-2xs font-bold'
                               : 'text-slate-600 hover:text-slate-900 font-semibold'
-                          }`}
+                            }`}
                         >
                           <span className="block text-xs">Non-Scopus</span>
                           <span className="block text-[10px] text-slate-500 font-normal">
@@ -802,11 +795,10 @@ export const RegistrationPage = () => {
                   type="button"
                   onClick={handleDownloadPDF}
                   disabled={missingFields.length > 0}
-                  className={`mt-2 w-full flex items-center justify-center gap-1.5 rounded-lg py-2 px-3 text-xs sm:text-sm font-extrabold transition-all duration-200 ${
-                    missingFields.length > 0
+                  className={`mt-2 w-full flex items-center justify-center gap-1.5 rounded-lg py-2 px-3 text-xs sm:text-sm font-extrabold transition-all duration-200 ${missingFields.length > 0
                       ? 'bg-slate-200 text-slate-400 cursor-not-allowed'
                       : 'bg-[#F97316] hover:bg-[#ea580c] text-white shadow-2xs hover:shadow-xs cursor-pointer'
-                  }`}
+                    }`}
                 >
                   <Download className="h-3.5 w-3.5" />
                   <span>Download payment request (PDF)</span>
@@ -814,9 +806,8 @@ export const RegistrationPage = () => {
 
                 {/* Status / Missing Fields Hint */}
                 <p
-                  className={`mt-1 text-[11px] font-semibold ${
-                    missingFields.length > 0 ? 'text-slate-500' : 'text-emerald-700'
-                  }`}
+                  className={`mt-1 text-[11px] font-semibold ${missingFields.length > 0 ? 'text-slate-500' : 'text-emerald-700'
+                    }`}
                 >
                   {missingFields.length > 0
                     ? `Still needed: ${missingFields.join(', ')}.`

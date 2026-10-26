@@ -41,6 +41,10 @@
   ],
   "rewrites": [
     {
+      "source": "/cmt",
+      "destination": "/cmt.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

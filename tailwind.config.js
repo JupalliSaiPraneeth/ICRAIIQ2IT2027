@@ -3,7 +3,6 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./wordpress/wp-content/themes/icraiiq2it-2027/**/*.{php,js,html}",
   ],
   theme: {
     extend: {

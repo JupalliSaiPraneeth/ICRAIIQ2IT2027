@@ -549,16 +549,6 @@ function Home() {
 
             <div className="relative">
 
-              {/* Section Label */}
-
-              <div className="mb-1.5 flex items-center gap-2">
-                <span className="h-[2px] w-6 bg-orange-600" />
-
-                <span className="text-xs font-extrabold uppercase tracking-[0.16em] text-orange-600">
-                  Conference Acknowledgment
-                </span>
-              </div>
-
               {/* Heading */}
 
               <h2 className="text-xl font-black tracking-tight text-slate-900 sm:text-2xl">
