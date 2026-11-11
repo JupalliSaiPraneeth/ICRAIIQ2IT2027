@@ -223,6 +223,7 @@ export const RegistrationPage = () => {
 
   const registrationFormUrl =
     data.registrationFormUrl ||
+    data.links?.registrationForm ||
     data.links?.registration ||
     data.registrationUrl ||
     '';

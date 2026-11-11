@@ -493,7 +493,7 @@ export const conferenceData = {
     ieeeTemplates: "https://www.ieee.org/conferences/publishing/templates",
     ieeeA4Docx: "https://ieee-org.widen.net/content/ge5anzdecd/original/conference-template-a4.docx",
     contactEmail: "icraiq2it27@nriit.edu.in",
-    registrationForm: "/registration",
+    registrationForm: "https://docs.google.com/forms/d/e/1FAIpQLSeq0a0umN-vM-f3O11ncG1QjlUX2BVJU4i8ptTTOweYav2YxA/viewform?usp=dialog",
     website: "http://www.rvrnriuniversity.edu.in/icraiq2it-2027"
   },
 
